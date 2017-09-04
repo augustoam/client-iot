@@ -12,6 +12,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <main>
+      <%= render 'layouts/topnavbar' %>
+      <div class="container">
+        <!-- Notifications -->
+        <% if notice.present? %>
+          <div class="notice" data-msg="<%= notice %>"></div>  
+        <% end %>
+
+        <% if alert.present? %>
+          <div class="notice" data-msg="<%= alert %>"></div>
+        <% end %>
+
+        <%= yield %>
+      </div>
+    </main>
+    <!-- Footer -->
+    <%= render 'layouts/footer' %>  
   </body>
 </html>
