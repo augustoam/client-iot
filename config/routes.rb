@@ -10,6 +10,8 @@ Rails.application.routes.draw do
    passwords:     'usuarios/devise/passwords' 
   }
 
+  resources :grupos_usuarios
+  
   resources :home do
     get :publish, on: :collection
     get :subscribe, on: :collection

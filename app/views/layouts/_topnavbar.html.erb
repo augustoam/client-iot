@@ -1,4 +1,11 @@
 <ul id="dropdown-nav" class="dropdown-content" style="width: 220px;">
+  <% if current_usuario.admin? %>
+    <li>
+      <%= link_to grupos_usuarios_path, class: "black-text" do %> 
+        <i class="material-icons">person</i>Usuários
+      <% end %>
+    </li>
+  <% end %>  
   <li>
     <%= link_to edit_usuario_registration_path, class: "black-text" do %> 
       <i class="material-icons">vpn_key</i>Mudar Senha

@@ -1,0 +1,19 @@
+<ul class="collection with-header">
+  <li class="collection-header grey lighten-4">
+    <h5>
+      <b>Usuários</b> 
+    </h5>
+  </li>
+
+  <% @grupos_usuarios.each do |grupo_usuario| %>
+    <%= link_to grupo_usuario_path(grupo_usuario), class: "collection-item" do %>
+      <b><%= grupo_usuario.email %></b>
+    <% end %>
+  <% end %>
+</ul>
+
+<div class="fixed-action-btn">   
+  <%= link_to new_usuario_session_path, class: "btn-floating btn-large red" do %>
+    <i class="large material-icons" style="margin-top: 5px;">add</i>
+  <% end %>
+</div>
