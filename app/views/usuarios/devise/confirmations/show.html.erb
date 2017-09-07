@@ -2,7 +2,7 @@
 
 <%= simple_form_for(resource, as: resource_name, url: update_confirmations_path, html: { method: :put }) do |f| %>
 
-  <%= f.input :reset_password_token, as: :hidden %>
+  <%= f.input :confirmation_token, as: :hidden %>
 
 
   <div class="form-inputs">

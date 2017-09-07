@@ -13,10 +13,9 @@ class HomeController < ApplicationController
   end
 
   def subscribe
-    debugger
-    client = MQTT::Client.connect('iot.eclipse.org', 1883)
-    res = client.subscribe('augustoalbertoni')
-    puts res
+    MQTT::Client.connect('iot.eclipse.org', 1883) do |c|
+      c.publish('augustoalbertoni/teste', 'D')
+    end
     redirect_to root_url
   end
 

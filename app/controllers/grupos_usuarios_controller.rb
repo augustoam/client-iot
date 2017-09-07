@@ -1,7 +1,12 @@
 class GruposUsuariosController < ApplicationController
-    def index
-        grupo_usuario = Usuario.find(current_usuario.id).grupo_usuario
-        @grupos_usuarios = Usuario.where(grupo_usuario: grupo_usuario)
-        authorize @grupos_usuarios
+  before_action :set_grupo, only: [:index]
+  
+  def index
+    @grupos_usuarios = @grupo.grupos_usuarios.all 
+  end
+
+  private
+    def set_grupo
+      @grupo = Grupo.find(params[:grupo_id])
     end
 end

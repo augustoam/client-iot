@@ -1,5 +1,5 @@
-class Devise::RegistrationsController < Devise::RegistrationsController
-  layout 'login'
+class ContasController < ApplicationController
+  include ControllerResponder
   before_action :set_usuario, only: [:destroy]
 
   def new
@@ -10,9 +10,9 @@ class Devise::RegistrationsController < Devise::RegistrationsController
     debugger
     generated_password = Devise.friendly_token.first(8)
     @usuario = Usuario.create!(email: params[:usuario][:email], password: generated_password)
-    @usuario.grupo_usuario.create!(grupo_id: params[:usuario][:grupo_id])
-    
-    ConvidarUsuarioByEmailJob.perform_later(@usuario)
+    @usuario.grupos_usuarios.create!(grupo_id: params[:usuario][:grupo_id])
+
+    #ConvidarUsuarioByEmailJob.perform_later(@usuario)
 
     save_and_respond @usuario, notice: "Um e-mail para confirmação da conta será enviado em alguns instantes para #{@usuario.email}", redirect: usuarios_url
   end

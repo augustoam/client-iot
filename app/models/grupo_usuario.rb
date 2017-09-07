@@ -1,4 +1,4 @@
 class GrupoUsuario < ApplicationRecord
-  has_many :usuarios
-  validates :nome, presence: true
+  belongs_to :grupo
+  belongs_to :usuario
 end
