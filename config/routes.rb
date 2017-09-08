@@ -1,25 +1,22 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-  get '/usuarios' => redirect('/usuarios/sign_in')
+  get '/usuarios' => redirect('/devise/sign_in')
 
   devise_for :usuarios, controllers: { 
-   sessions:      'usuarios/devise/sessions',
-   registrations: 'contas',
-   confirmations: 'usuarios/devise/confirmations',
-   passwords:     'usuarios/devise/passwords' 
+   confirmations: 'confirmations'
   }
   as :usuario do
-    put 'update_usuario_confirmation_path' => 'usuarios/devise/confirmations#update',   :as => 'update_confirmations'
+    #get 'usuarios/edit' => 'devise/registrations#edit', :as => 'edit_usuario_registration'
+   # put 'usuarios' => 'devise/registrations#update', :as => 'usuario_registration'
+    patch "/confirm" => "confirmations#confirm"
   end
 
   resources :grupos do
     resources :grupos_usuarios
   end
 
-  resources :contas
-  
-  resources :grupos_usuarios
+  resources :usuarios
 
   resources :home do
     get :publish, on: :collection

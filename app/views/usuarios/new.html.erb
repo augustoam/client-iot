@@ -1,0 +1,10 @@
+<%= simple_form_for @usuario do |f| %>
+  <%= f.hidden_field :grupo_id, value: params[:grupo_id] %>
+  <div class="row">
+    <%= f.input :email, input_html: { class: 'form-control'} %>
+  </div>
+  <div class="row">
+    <%= f.input :admin, as: :boolean, boolean_style: :inline, input_html: {class:"i-checks"} %>
+  </div>
+  <%= save_button %>
+<% end %>

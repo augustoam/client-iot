@@ -5,9 +5,9 @@
     </h5>
   </li>
 
-  <% @grupos_usuarios.each do |grupo_usuario| %>
-    <%= link_to grupo_grupos_usuarios_path(grupo_usuario.grupo), class: "collection-item" do %>
-      <b><%= grupo_usuario.grupo.nome %></b>
+  <% @grupos.each do |grupo| %>
+    <%= link_to grupo_grupos_usuarios_path(grupo.grupo), class: "collection-item" do %>
+      <b><%= grupo.grupo.nome %></b>
     <% end %>
   <% end %>
 </ul>

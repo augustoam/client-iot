@@ -1,6 +1,6 @@
 <h2><%= t(".change_my_password") %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: update_confirmations_path, html: { method: :put }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: confirm_path, method: :patch, html: { role: "form" }) do |f| %>
 
   <%= f.input :confirmation_token, as: :hidden %>
 
