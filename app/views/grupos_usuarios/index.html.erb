@@ -8,7 +8,11 @@
   <% @grupos_usuarios.each do |grupo_usuario| %>
     <li class="collection-item">
       <b><%= grupo_usuario.usuario.email %></b>
-      <%= link_icon_to_destroy(conta_path(grupo_usuario.usuario)) %>
+      <b class="secondary-content">
+        <%= link_to conta_path(grupo_usuario.usuario), method: :delete, data: {confirm: 'Você tem certeza?'}, class: "red-text" do %>
+          <i class="material-icons">clear</i>
+        <% end %>
+      </b>
     </li>
   <% end %>
 </ul>

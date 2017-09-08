@@ -1,4 +1,4 @@
-<h2><%= t(".change_your_password") %></h2>
+<h2><%= t(".change_my_password") %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: update_confirmations_path, html: { method: :put }) do |f| %>
 
@@ -10,8 +10,10 @@
     <%= f.input :password_confirmation, label: t(".confirm_new_password"), required: true %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, t(".change_my_password"), class: "btn btn-block btn-primary" %>
+  <div class='row'>
+    <div class='col s12'>
+      <%= f.button :submit, t(".change_my_password"), class: "col s12 waves-effect waves-light btn cyan" %>
+    </div>
   </div>
 <% end %>
 

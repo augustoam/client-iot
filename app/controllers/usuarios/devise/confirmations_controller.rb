@@ -24,14 +24,20 @@ class Usuarios::Devise::ConfirmationsController < Devise::ConfirmationsControlle
   protected
 
   def with_unconfirmed_confirmable
-    @confirmable = Usuario.find_or_initialize_with_error_by(:confirmation_token, params[:confirmation_token])
+    @confirmation_token = params[:confirmation_token]
+    @confirmable = Usuario.find_or_initialize_with_error_by(:confirmation_token, @confirmation_token)
     if !@confirmable.new_record?
       @confirmable.only_if_unconfirmed {yield}
     end
   end
 
   def do_show
-    @confirmable = Usuario.find_or_initialize_with_error_by(:confirmation_token, params[:confirmation_token])
+    @confirmation_token = params[:confirmation_token]
+    if !@confirmation_token
+     @confirmation_token = params[:usuario][:confirmation_token]   
+    end
+
+    @confirmable = Usuario.find_or_initialize_with_error_by(:confirmation_token, @confirmation_token)
     @requires_password = true
     self.resource = @confirmable
     render 'usuarios/devise/confirmations/show' #Change this if you don't have the views on default path

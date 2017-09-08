@@ -1,8 +1,8 @@
 <ul id="dropdown-nav" class="dropdown-content" style="width: 220px;">
   <% if current_usuario.admin? %>
     <li>
-      <%= link_to grupos_usuarios_path, class: "black-text" do %> 
-        <i class="material-icons">person</i>Usuários
+      <%= link_to grupos_path, class: "black-text" do %> 
+        <i class="material-icons">person</i>Grupos
       <% end %>
     </li>
   <% end %>  

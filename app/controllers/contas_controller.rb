@@ -7,14 +7,12 @@ class ContasController < ApplicationController
   end
 
   def create
-    debugger
     generated_password = Devise.friendly_token.first(8)
-    @usuario = Usuario.create!(email: params[:usuario][:email], password: generated_password)
-    @usuario.grupos_usuarios.create!(grupo_id: params[:usuario][:grupo_id])
-
-    #ConvidarUsuarioByEmailJob.perform_later(@usuario)
-
-    save_and_respond @usuario, notice: "Um e-mail para confirmação da conta será enviado em alguns instantes para #{@usuario.email}", redirect: usuarios_url
+    @usuario = Usuario.create(email: params[:usuario][:email], password: generated_password)
+    if @usuario.valid?
+      @usuario.save
+      save_and_respond @usuario, notice: "Um e-mail para confirmação da conta será enviado em alguns instantes para #{@usuario.email}", redirect: usuarios_url
+    end
   end
 
   def destroy

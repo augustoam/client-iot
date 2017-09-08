@@ -6,7 +6,6 @@ class Usuarios::Devise::PasswordsController < Devise::ConfirmationsController
 
   # GET /resource/password/new
   def new
-    debugger
     self.resource = resource_class.new
   end
 

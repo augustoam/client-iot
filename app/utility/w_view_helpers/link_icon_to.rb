@@ -8,8 +8,7 @@ class WViewHelpers::LinkIconTo
     method     = options[:method]
     remote     = options[:remote]
     data       = options[:data]
-
-    link_to content_tag(:i, "", :class => "fa fa-"+icon.to_s)+" "+text, path,
+    link_to content_tag(:i, "", :class => icon.to_s)+" "+text, path,
        class: link_class, method: method, remote: remote, data: data
   end
 
@@ -19,7 +18,7 @@ class WViewHelpers::LinkIconTo
 
   def link_icon_to_destroy(path, options = {})
     link_class = options.fetch(:class, 'waves-effect waves-light btn red lighten-1')
-    link_icon_to(path, "Excluir", "minus-circle", {link_class: link_class,
+    link_icon_to(path, "Excluir", "clear", {link_class: link_class,
        method: :delete, data: {confirm: 'Você tem certeza?'}})
   end
 

@@ -87,3 +87,13 @@ pt-BR:
       data_hora: "%d/%b/%Y %H:%M"
       data: "%d/%b/%Y"
       filename: "%Y-%b-%d_%H-%M"
+  contas:
+    new:
+      sign_up: Adicionar
+  usuarios:
+    devise:
+      confirmations:
+        show:
+          change_my_password: Atualizar senha
+          new_password: Nova senha
+          confirm_new_password: Confirme sua senha

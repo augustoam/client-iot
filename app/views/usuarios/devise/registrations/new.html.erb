@@ -3,7 +3,6 @@
 </div>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <% debugger %>
   <%= f.hidden_field :grupo_id, value: params[:grupo_id] %>
   <div class='row'>
     <%= f.input :email, wrapper_html: { class: 'm12 s12' } %>
