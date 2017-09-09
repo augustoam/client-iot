@@ -1,0 +1,33 @@
+<ul class="collection with-header">
+  <li class="collection-header grey lighten-4">
+    <h5>
+      <b>Usuários do grupo</b> 
+    </h5>
+  </li>
+
+  <% @usuarios.each do |usuario| %>
+    <li class="collection-item">
+      <b><%= usuario.email %> <% if usuario.admin? %> - Admin <% end %></b>
+      <% if usuario.email != current_usuario.email %>
+        <b class="secondary-content">
+          <%= link_to usuario_path(usuario, grupo_id: @grupo), method: :delete, data: {confirm: 'Você tem certeza?'}, class: "red-text" do %>
+            <i class="material-icons">clear</i>
+          <% end %>
+        </b>
+      <% end %>
+      <% if usuario.email != current_usuario.email %>
+        <b class="secondary-content">
+          <%= link_to edit_grupo_usuario_path(@grupo, usuario), class: "blue-text" do %>
+            <i class="material-icons">edit</i>
+          <% end %>
+        </b>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<div class="fixed-action-btn">   
+  <%= link_to new_grupo_usuario_path, class: "btn-floating btn-large red" do %>
+    <i class="large material-icons" style="margin-top: 5px;">add</i>
+  <% end %>
+</div>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :grupos do
-    resources :grupos_usuarios
+    resources :usuarios
   end
 
   resources :usuarios

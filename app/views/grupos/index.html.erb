@@ -6,7 +6,7 @@
   </li>
 
   <% @grupos.each do |grupo| %>
-    <%= link_to grupo_grupos_usuarios_path(grupo.grupo), class: "collection-item" do %>
+    <%= link_to grupo_usuarios_path(grupo.grupo), class: "collection-item" do %>
       <b><%= grupo.grupo.nome %></b>
     <% end %>
   <% end %>

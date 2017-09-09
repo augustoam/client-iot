@@ -2,7 +2,7 @@ class GruposUsuariosController < ApplicationController
   before_action :set_grupo, only: [:index]
   
   def index
-    @grupos_usuarios = @grupo.grupos_usuarios.all 
+    @grupos_usuarios = @grupo.usuarios.all 
   end
 
   private

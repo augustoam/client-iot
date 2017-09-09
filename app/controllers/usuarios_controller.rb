@@ -1,9 +1,10 @@
 class UsuariosController < ApplicationController
-  before_action :set_grupo, only: [:create]
+  include ControllerResponder  
+  before_action :set_grupo, only: [:index, :destroy, :edit, :update]
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
   def index
-    @usuarios = Usuario.all
+    @usuarios = @grupo.usuarios.all
   end
 
   def show
@@ -17,9 +18,9 @@ class UsuariosController < ApplicationController
   end
 
   def create
-    debugger
     if params[:usuario]
-      @grupo_usuario = @grupo.grupos_usuarios.new(grupo_id: @grupo)
+      @grupo = Grupo.find(params[:usuario][:grupo_id])
+      @grupo_usuario = @grupo.grupos_usuarios.new
 
       @usuario = Usuario.find_by(email: params[:usuario][:email])
       if @usuario
@@ -34,7 +35,7 @@ class UsuariosController < ApplicationController
 
         ConvidarUsuarioByEmailJob.perform_later(@usuario)
 
-        redirect_to grupo_grupos_usuarios_path(@grupo), notice: "Usuário criado com sucesso"
+        redirect_to grupo_usuarios_path(@grupo), notice: "Usuário criado com sucesso"
       end
     else
       authorize @grupo, :show?
@@ -48,22 +49,23 @@ class UsuariosController < ApplicationController
       @usuario.password = usuario_params[:password]
       @usuario.password_confirmation = usuario_params[:password_confirmation]
     end
-
-    save_and_respond @usuario, notice: "Usuário alterado com sucesso"
+    @usuario.save
+    redirect_to grupo_usuarios_path(@grupo), notice: "Usuário alterado com sucesso"
   end
 
   def destroy
-    destroy_and_respond @usuario, usuarios_url, "Usuário removido com sucesso"
+    @usuario.destroy
+    redirect_to grupo_usuarios_path(@grupo), notice: "Usuário removido com sucesso"
   end
 
 
   private
     def set_grupo
-      @grupo = Grupo.find(params[:usuario][:grupo_id])
+      @grupo = Grupo.find(params[:grupo_id])
     end
 
     def set_usuario
-      @usuario = Usuario.with_deleted.find(params[:id])
+      @usuario = Usuario.find(params[:id])
     end
 
     def usuario_params

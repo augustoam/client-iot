@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'devise-i18n'
 gem 'jquery-rails'
 gem 'bcrypt', platforms: :ruby
 gem 'simple_form'
