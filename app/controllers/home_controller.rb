@@ -3,6 +3,13 @@ class HomeController < ApplicationController
   require 'mqtt'
 
   def index
+    if admin_signed_in?
+      redirect_to admin_home_admin_index_path
+    else
+      if usuario_signed_in?
+        redirect_to grupos_path
+      end
+    end
   end
 
   def publish

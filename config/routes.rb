@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-  get '/usuarios' => redirect('/devise/sign_in')
 
   devise_for :usuarios, controllers: { 
    confirmations: 'confirmations'
@@ -12,6 +11,13 @@ Rails.application.routes.draw do
     patch "/confirm" => "confirmations#confirm"
   end
 
+  devise_for :admin, controllers: {
+    sessions: 'admin/devise/sessions'
+  }
+
+  get '/usuarios' => redirect('/devise/sign_in')
+  get '/admin' => redirect('/admin/sign_in')
+
   resources :grupos do
     resources :usuarios
   end
@@ -20,8 +26,13 @@ Rails.application.routes.draw do
   
   resources :ambientes
 
+  namespace :admin do
+    resources :home_admin
+  end
+
   resources :home do
     get :publish, on: :collection
     get :subscribe, on: :collection
   end
+
 end

@@ -1,0 +1,21 @@
+ <div class="middle">
+  <div class="row login">
+    <h3>Bem vindo Administrador</h3>
+    <p>Efetue o login para continuar</p>
+
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "m-t", role: "form"}) do |f| %>
+        <%= f.hidden_field :token, value: params[:token] %>
+        <div class="row">
+          <%= f.text_field :email, placeholder: 'Email', class: 'form-control set-focus', required:"" %>
+        </div>
+
+        <div class="row">
+          <%= f.password_field :password, placeholder: 'Senha', class: 'form-control', required:"" %>
+        </div>
+
+        <div class="row">
+          <%= f.submit 'Login', class: 'waves-effect waves-light btn cyan' %>
+        </div>
+      <% end %>
+  </div>
+</div>
