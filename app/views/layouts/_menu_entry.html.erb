@@ -4,9 +4,19 @@
     <span class="grey-text text-darken-1">Início</span>
   <% end %>
 </li>
-<li>
-  <%= link_to home_index_path do %>
-    <i class="material-icons">dashboard</i>
-    <span class="grey-text text-darken-1">Quartos</span>
-  <% end %>
-</li>
+<% grupos_por_usuario.each do |grupo| %> 
+  <li class="no-padding">
+    <ul class="collapsible collapsible-accordion">
+      <li>
+        <a class="collapsible-header grey-text text-darken-1"><%= grupo.grupo.nome %><i class="material-icons"></i></a>
+        <% grupo.grupo.ambientes.each do |ambiente| %>
+        <div class="collapsible-body">
+          <ul> 
+              <li><a href="#!"><%= ambiente.nome %></a></li>
+          </ul>
+        </div>
+        <% end %>
+      </li>
+    </ul>
+  </li>
+<% end %>

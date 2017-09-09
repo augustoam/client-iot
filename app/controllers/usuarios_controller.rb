@@ -5,8 +5,7 @@ class UsuariosController < ApplicationController
 
   def index
     @usuarios = @grupo.usuarios.all
-    debugger
-    #authorize @usuario
+    #authorize @usuarios
   end
 
   def show

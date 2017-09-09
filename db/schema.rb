@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170907183917) do
+ActiveRecord::Schema.define(version: 20170909132755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ambientes", force: :cascade do |t|
+    t.string "nome"
+    t.integer "grupo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "grupos", force: :cascade do |t|
     t.string "nome"
@@ -51,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170907183917) do
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "ambientes", "grupos"
   add_foreign_key "grupos_usuarios", "grupos"
   add_foreign_key "grupos_usuarios", "usuarios"
 end

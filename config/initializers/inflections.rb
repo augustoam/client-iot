@@ -15,4 +15,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'usuario', 'usuarios'
   inflect.irregular 'grupo', 'grupos'
   inflect.irregular 'grupo_usuario', 'grupos_usuarios'
+  inflect.irregular 'ambiente', 'ambientes'
 end

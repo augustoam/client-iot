@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
 
   resources :usuarios
+  
+  resources :ambientes
 
   resources :home do
     get :publish, on: :collection

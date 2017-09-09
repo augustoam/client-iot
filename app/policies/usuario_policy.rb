@@ -1,5 +1,5 @@
 module UsuarioPolicy
-  def index
+  def index?
     user.admin?
   end
 end

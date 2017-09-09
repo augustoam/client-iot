@@ -1,5 +1,9 @@
 module ApplicationHelper 
 
+  def grupos_por_usuario
+    return GrupoUsuario.where(usuario_id: current_usuario)
+  end
+
   def link_icon_to(path, text, icon, options = {})
     WViewHelpers::LinkIconTo.new.link_icon_to(path, text, icon, options)
   end

@@ -7,7 +7,6 @@ class ApplicationPolicy
   end
 
   def index?
-    current_usuario.admin
   end
 
   def show?
