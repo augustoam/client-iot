@@ -7,7 +7,7 @@ class HomeController < ApplicationController
       redirect_to admin_home_admin_index_path
     else
       if usuario_signed_in?
-        redirect_to grupos_path
+        redirect_to console_home_index_path
       end
     end
   end

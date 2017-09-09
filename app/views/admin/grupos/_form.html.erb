@@ -1,0 +1,18 @@
+<%= simple_form_for([:admin, @grupo]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <div class="row">
+      <%= f.input :nome, wrapper_html: { class: 'm12 s12' } %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <% if @grupo.persisted? %>
+      <%= link_icon_to_back admin_grupo_path(@grupo) %>
+    <% else %>
+      <%= link_icon_to_back admin_grupos_path %>
+    <% end %>
+    <%= save_button %>
+  </div>
+<% end %>

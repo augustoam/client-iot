@@ -1,3 +1,7 @@
+[data-href] {
+  cursor: pointer;
+}
+
 body {
   display: flex;
   min-height: 100vh;

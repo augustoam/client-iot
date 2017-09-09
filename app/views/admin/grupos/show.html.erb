@@ -1,0 +1,21 @@
+<div class="row">
+  <h3><%= singular_model_name_for(Grupo) %></h3>
+</div>
+
+<div class="row">
+  <b><%= Grupo.human_attribute_name(:id) %></b>
+  <%= @grupo.id %>
+</div>
+<div class="row">
+  <b><%= Grupo.human_attribute_name(:nome) %></b>
+  <%= @grupo.nome %>
+</div>
+<div class="row">
+  <b><%= Grupo.human_attribute_name(:created_at) %></b>
+  <%= ltime @grupo.created_at %>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_grupos_path %>
+  <%= link_icon_to_edit(edit_admin_grupo_path(@grupo))%>
+</div>

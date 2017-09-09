@@ -1,0 +1,25 @@
+<div class="row">
+  <h3><%= singular_model_name_for(Usuario) %></h3>
+</div>
+
+<div class="row">
+  <b><%= Usuario.human_attribute_name(:id) %></b>
+  <%= @usuario.id %>
+</div>
+<div class="row">
+  <b><%= Usuario.human_attribute_name(:email) %></b>
+  <%= @usuario.email %>
+</div>
+<div class="row">
+  <b><%= Usuario.human_attribute_name(:admin) %></b>
+  <%= @usuario.admin %>
+</div>
+<div class="row">
+  <b><%= Usuario.human_attribute_name(:created_at) %></b>
+  <%= ltime @usuario.created_at %>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_grupo_usuarios_path(@grupo) %>
+  <%= link_icon_to_edit(edit_admin_grupo_usuario_path(@grupo, @usuario))%>
+</div>

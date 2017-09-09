@@ -3,78 +3,19 @@ pt-BR:
   "no": 'Não'
   activerecord:
     models:
-      instancia:
-        one: 'Instância'
-        other: 'Instâncias'
-      tarefa:
-        one: 'Tarefa'
-        other: 'Tarefas'
-      tarefa_usuario_instancia:
-        one: 'Tarefa Usuário Instância'
-        other: 'Tarefas Usuário Instância'
-      tipo_tarefa:
-        one: 'Tipo Tarefa'
-        other: 'Tipos Tarefas'
-      token_notificacao_mobile:
-        one: 'Token Notificação Mobile'
-        other: 'Tokens Notificação Mobile'
+      grupo:
+        one: 'Grupo'
+        other: 'Grupos'
+      grupo_usuario:
+        one: 'Grupo Usuário'
+        other: 'Grupos Usuários'
       usuario:
         one: 'Usuário'
         other: 'Usuários'
-      usuario_instancia:
-        one: 'Usuário Instância'
-        other: 'Usuários Instância'
-      wsi_pessoa:
-        one: 'Wsi Pessoa'
-        other: 'Wsi Pessoas'
+      ambiente:
+        one: 'ambiente'
+        other: 'Ambientes'
     attributes:
-      instancia:
-        id_cliente: 'ID Cliente'
-        api_key: 'API Key'
-        id_database: 'ID Database'
-        dt_criacao: 'Data Criação'  
-      tarefa:
-        instancia_cliente: 'Instância/Cliente'
-        tipo_tarefa: 'Tipo de Tarefa'
-        concluida: 'Conluída'
-        dt_criacao: 'Data Criação'
-        instancia: 'Instância'
-        usuarios: 'Usuários'
-        titulo: 'Título'
-        operador_conclusao: 'Operador Conclusão'
-        identificador_agrupamento: 'Identificador Agrupamento'
-        identificador_tarefa: 'Identificador Tarefa'
-        conteudo_html: 'Conteúdo HTML'
-        acoes: 'Ações'
-      tarefa_usuario_instancia:
-        tarefa_titulo: 'Tarefa Título'
-        conteudo_resposta: 'Conteúdo Resposta'
-        respondido: 'Respondido'
-        data_resposta: 'Data Resposta'
-        dt_criacao: 'Data Criação'
-      tipo_tarefa:
-        id_cliente: 'ID Cliente'
-        id_tipo_tarefa: 'ID Tipo Tarefa'
-        descricao: 'Descrição'
-        instancia_id: 'Instância'
-        dt_criacao: 'Data Criação'
-      token_notificacao_mobile:
-        token: 'Token'
-        dt_criacao: 'Data Criação'
-      usuario:
-        email: 'Email'
-        dt_criacao: 'Data Criação'
-      usuario_instancia:
-        id_cliente: 'ID Cliente'
-        instancia_cliente: 'Instância/Cliente'
-        email: 'Email'
-        cod_usuario: 'Código Usuário'
-        dt_criacao: 'Data Criação' 
-      wsi_pessoa:
-        id_cliente: 'ID Cliente'
-        acesso_tarefa: 'Acesso Tarefas'
-        acesso_sms: 'Acesso SMS'
-        dt_criacao: 'Data Criação'   
   views:
     actions:
       new: 'Novo'
@@ -87,10 +28,6 @@ pt-BR:
       data_hora: "%d/%b/%Y %H:%M"
       data: "%d/%b/%Y"
       filename: "%Y-%b-%d_%H-%M"
-  contas:
-    new:
-      sign_up: Adicionar
-  
   devise:
     confirmations:
       show:

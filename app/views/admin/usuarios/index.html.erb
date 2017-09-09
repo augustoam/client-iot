@@ -1,0 +1,53 @@
+<div class="row">
+  <h3><%= plural_model_name_for(Usuario) %></h3>
+</div> 
+
+<div class="row">  
+  <%= search_form_for @q, url: admin_grupo_usuarios_path do |f| %>
+
+    <div class="col s11">
+      <%= f.search_field :email_cont, class: "form-control", placeholder: "Pesquisar Usuários" %>
+    </div>
+    <div class="col s1">  
+      <button class="waves-effect waves-light btn grey lighten-4" type="submit">
+        <i class="large material-icons black-text">search</i>
+      </button>
+    </div>
+    
+  <% end %>
+</div>
+
+<div class="row"> 
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= Usuario.human_attribute_name(:id) %></th>
+        <th><%= Usuario.human_attribute_name(:email) %></th>
+        <th><%= Usuario.human_attribute_name(:admin) %></th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @usuarios.each do |usuario| %>
+        <tr data-href="<%= admin_grupo_usuario_path(@grupo,usuario) %>">
+          <td><%= usuario.id %></td>
+          <td><%= usuario.email %></td>
+          <td><%= usuario.admin %></td>
+          <td><%= ltime usuario.created_at %></td>
+          <td><%= link_icon_to_edit(edit_admin_grupo_usuario_path(@grupo, usuario))%></td>
+          <td><%= link_icon_to_destroy(admin_grupo_usuario_path(@grupo, usuario)) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_grupo_path(@grupo) %>
+  <%= link_icon_to_new(new_admin_grupo_usuario_path(@grupo), action_new_fem(@usuarios)) %>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @usuarios, renderer: MaterializePagination::Rails %>
+</div>

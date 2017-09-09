@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     sessions: 'admin/devise/sessions'
   }
 
-  get '/usuarios' => redirect('/devise/sign_in')
+  get '/usuarios' => redirect('/usuarios/sign_in')
   get '/admin' => redirect('/admin/sign_in')
 
   resources :grupos do
@@ -28,9 +28,13 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :home_admin
+    resources :grupos do
+      resources :usuarios
+    end
   end
 
   resources :home do
+    get :console, on: :collection
     get :publish, on: :collection
     get :subscribe, on: :collection
   end
