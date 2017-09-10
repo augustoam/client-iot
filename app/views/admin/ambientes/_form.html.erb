@@ -1,0 +1,18 @@
+<%= simple_form_for([:admin, @ambiente], url: admin_ambiente_form_path(@grupo, @ambiente)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <div class="row">
+      <%= f.input :nome, wrapper_html: { class: 'm12 s12' } %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <% if @ambiente.persisted? %>
+      <%= link_icon_to_back admin_grupo_ambiente_path(@grupo, @ambiente) %>
+    <% else %>
+      <%= link_icon_to_back admin_grupo_ambientes_path(@grupo) %>
+    <% end %>
+    <%= save_button %>
+  </div>
+<% end %>

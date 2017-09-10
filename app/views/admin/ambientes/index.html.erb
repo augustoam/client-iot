@@ -1,0 +1,52 @@
+<div class="row">
+  <h3><%= plural_model_name_for(Ambiente) %> <%= singular_model_name_for(Grupo) %></h3>
+</div> 
+
+<div class="row">  
+  <%= search_form_for @q, url: admin_grupo_ambientes_path do |f| %>
+
+    <div class="col s11">
+      <%= f.search_field :nome_cont, class: "form-control", placeholder: "Pesquisar Ambientes" %>
+    </div>
+    <div class="col s1">  
+      <button class="waves-effect waves-light btn grey lighten-4" type="submit">
+        <i class="large material-icons black-text">search</i>
+      </button>
+    </div>
+    
+  <% end %>
+</div>
+
+<div class="row"> 
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= Ambiente.human_attribute_name(:id) %></th>
+        <th><%= Ambiente.human_attribute_name(:nome) %></th>
+        <th><%= Ambiente.human_attribute_name(:created_at) %></th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @ambientes.each do |ambiente| %>
+        <tr data-href="<%= admin_grupo_ambiente_path(@grupo,ambiente) %>">
+          <td><%= ambiente.id %></td>
+          <td><%= ambiente.nome %></td>
+          <td><%= ltime ambiente.created_at %></td>
+          <td><%= link_icon_to_edit(edit_admin_grupo_ambiente_path(@grupo, ambiente))%></td>
+          <td><%= link_icon_to_destroy(admin_grupo_ambiente_path(@grupo, ambiente)) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_grupos_path %>
+  <%= link_icon_to_new(new_admin_grupo_ambiente_path(@grupo), action_new(@ambientes)) %>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @Ambientes, renderer: MaterializePagination::Rails %>
+</div>

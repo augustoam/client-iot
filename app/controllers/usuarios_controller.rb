@@ -39,7 +39,6 @@ class UsuariosController < ApplicationController
         redirect_to grupo_usuarios_path(@grupo), notice: "Usuário criado com sucesso"
       end
     else
-      authorize @grupo, :show?
       redirect_to grupo_path(@grupo), alert: "Informe um e-mail válido"
     end
   end

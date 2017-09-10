@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin, admin_usuario_form_path(@usuario)]) do |f| %>
+<%= simple_form_for([:admin, @usuario], url: admin_usuario_form_path(@grupo, @usuario)) do |f| %>
   <%= f.error_notification %>
 
   <div class="row">
@@ -6,7 +6,7 @@
       <%= f.input :email, wrapper_html: { class: 'm12 s12' } %>
     </div>
     <div class="row">
-      <%= f.input :admin, wrapper_html: { class: 'm12 s12' } %>
+      <%= f.input :admin, as: :boolean, boolean_style: :inline %>
     </div>
   </div>
   
@@ -14,7 +14,7 @@
     <% if @usuario.persisted? %>
       <%= link_icon_to_back admin_grupo_usuario_path(@grupo, @usuario) %>
     <% else %>
-      <%= link_icon_to_back admin_grupo_usuario_path(@grupo) %>
+      <%= link_icon_to_back admin_grupo_usuarios_path(@grupo) %>
     <% end %>
     <%= save_button %>
   </div>

@@ -29,7 +29,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :home_admin
     resources :grupos do
-      resources :usuarios
+      resources :usuarios do
+        get :remover, on: :member
+      end
+      resources :ambientes
     end
   end
 

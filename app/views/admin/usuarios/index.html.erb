@@ -1,5 +1,5 @@
 <div class="row">
-  <h3><%= plural_model_name_for(Usuario) %></h3>
+  <h3><%= plural_model_name_for(Usuario) %> <%= singular_model_name_for(Grupo) %></h3>
 </div> 
 
 <div class="row">  
@@ -37,6 +37,7 @@
           <td><%= ltime usuario.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_grupo_usuario_path(@grupo, usuario))%></td>
           <td><%= link_icon_to_destroy(admin_grupo_usuario_path(@grupo, usuario)) %></td>
+          <td><%= link_to 'Remover do grupo', remover_admin_grupo_usuario_path(@grupo, usuario), class: "waves-effect waves-light btn" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -44,8 +45,8 @@
 </div>
 
 <div class="row">
-  <%= link_icon_to_back admin_grupo_path(@grupo) %>
-  <%= link_icon_to_new(new_admin_grupo_usuario_path(@grupo), action_new_fem(@usuarios)) %>
+  <%= link_icon_to_back admin_grupos_path %>
+  <%= link_icon_to_new(new_admin_grupo_usuario_path(@grupo), action_new(@usuarios)) %>
 </div>
 
 <div class="center-align">

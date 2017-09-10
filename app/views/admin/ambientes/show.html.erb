@@ -1,0 +1,21 @@
+<div class="row">
+  <h3><%= singular_model_name_for(Ambiente) %></h3>
+</div>
+
+<div class="row">
+  <b><%= Ambiente.human_attribute_name(:id) %></b>
+  <%= @ambiente.id %>
+</div>
+<div class="row">
+  <b><%= Ambiente.human_attribute_name(:nome) %></b>
+  <%= @ambiente.nome %>
+</div>
+<div class="row">
+  <b><%= Ambiente.human_attribute_name(:created_at) %></b>
+  <%= ltime @ambiente.created_at %>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_grupo_ambientes_path(@grupo) %>
+  <%= link_icon_to_edit(edit_admin_grupo_ambiente_path(@grupo, @ambiente))%>
+</div>
