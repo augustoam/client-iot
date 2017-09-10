@@ -40,10 +40,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :home do
-    get :console, on: :collection
-    get :publish, on: :collection
-    get :subscribe, on: :collection
+  namespace :home do
+    get :console
+    post :mode_on
+    post :mode_off
   end
 
 end

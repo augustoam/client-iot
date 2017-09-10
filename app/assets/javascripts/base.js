@@ -23,6 +23,10 @@ $(document).on('turbolinks:load', function() {
 
   $('.notice').each(notice);
 
+  $('#switch-mode').change(function(){
+    atualizaMode();
+  });
+
 }).on("click", "tr[data-href] td", function(e) {
   var $td = $(this);
   if ($td.find("a.btn").length === 0) // Apenas se a célula não possuir um botão
@@ -35,4 +39,23 @@ function notice(){
   var msg = $(this).data().msg;
   console.log(msg);
   Materialize.toast(msg, 4000)
+}
+
+function atualizaMode(){
+  var mode = document.getElementById('switch-mode').checked
+  console.log(mode);
+
+  if(mode){
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: "http://localhost:3000/home/mode_on"
+    });
+  } else {
+    $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: "http://localhost:3000/home/mode_off"
+    }); 
+  }
 }
