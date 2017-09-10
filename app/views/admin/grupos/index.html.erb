@@ -36,8 +36,8 @@
           <td><%= ltime grupo.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_grupo_path(grupo))%></td>
           <td><%= link_icon_to_destroy(admin_grupo_path(grupo)) %></td>
-          <td><%= link_to plural_model_name_for(Usuario), admin_grupo_usuarios_path(grupo), class: "waves-effect waves-light btn grey lighten-4 black-text"   %>
-          <td><%= link_to plural_model_name_for(Ambiente), admin_grupo_ambientes_path(grupo), class: "waves-effect waves-light btn grey lighten-4 black-text"   %>
+          <td><%= link_to plural_model_name_for(Usuario), admin_grupo_usuarios_path(grupo), class: "waves-effect waves-light btn grey lighten-4 black-text"%>
+          <td><%= link_to plural_model_name_for(Ambiente), admin_grupo_ambientes_path(grupo), class: "waves-effect waves-light btn grey lighten-4 black-text" %>
         </tr>
       <% end %>
     </tbody>

@@ -1,0 +1,21 @@
+<ul class="collection with-header">
+  <li class="collection-header grey lighten-4">
+    <h5>
+      <b>Componentes</b> 
+    </h5>
+  </li>
+
+  <% @componentes.each do |componente| %>
+    <li class="collection-item">
+      <b><%= componente.descricao %></b>
+      <div class="switch secondary-content">
+        <label>
+          Off
+          <input type="checkbox" >
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
+    </li>
+  <% end %>
+</ul>

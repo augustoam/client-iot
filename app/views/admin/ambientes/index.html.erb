@@ -36,6 +36,7 @@
           <td><%= ltime ambiente.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_grupo_ambiente_path(@grupo, ambiente))%></td>
           <td><%= link_icon_to_destroy(admin_grupo_ambiente_path(@grupo, ambiente)) %></td>
+          <td><%= link_to 'Componentes', admin_grupo_ambiente_componentes_path(@grupo, ambiente), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
         </tr>
       <% end %>
     </tbody>

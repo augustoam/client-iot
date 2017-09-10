@@ -1,0 +1,25 @@
+<div class="row">
+  <h3><%= singular_model_name_for(Componente) %></h3>
+</div>
+
+<div class="row">
+  <b><%= Componente.human_attribute_name(:id) %></b>
+  <%= @componente.id %>
+</div>
+<div class="row">
+  <b><%= Componente.human_attribute_name(:descricao) %></b>
+  <%= @componente.descricao %>
+</div>
+<div class="row">
+  <b><%= Componente.human_attribute_name(:topico) %></b>
+  <%= @componente.topico %>
+</div>
+<div class="row">
+  <b><%= Componente.human_attribute_name(:created_at) %></b>
+  <%= ltime @componente.created_at %>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_grupo_ambiente_componentes_path(@ambiente.grupo, @ambiente) %>
+  <%= link_icon_to_edit(edit_admin_grupo_ambiente_componente_path(@ambiente.grupo, @ambiente, @componente))%>
+</div>

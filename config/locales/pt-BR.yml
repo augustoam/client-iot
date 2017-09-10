@@ -13,8 +13,11 @@ pt-BR:
         one: 'Usuário'
         other: 'Usuários'
       ambiente:
-        one: 'ambiente'
+        one: 'Ambiente'
         other: 'Ambientes'
+      componente:
+        one: 'Componente'
+        other: 'Componentes'
     attributes:
   views:
     actions:

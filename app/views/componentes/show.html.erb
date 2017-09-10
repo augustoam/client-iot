@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @componente.descricao %>
+</p>
+
+<p>
+  <strong>Topico:</strong>
+  <%= @componente.topico %>
+</p>
+
+<p>
+  <strong>Ambiente:</strong>
+  <%= @componente.ambiente_id %>
+</p>
+
+<%= link_to 'Edit', edit_componente_path(@componente) %> |
+<%= link_to 'Back', componentes_path %>

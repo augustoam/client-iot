@@ -2,12 +2,10 @@
   <%= f.error_notification %>
 
   <div class="row">
-    <div class="row">
-      <%= f.input :email, wrapper_html: { class: 'm12 s12' } %>
-    </div>
-    <div class="row">
-      <%= f.input :admin, as: :boolean, boolean_style: :inline %>
-    </div>
+    <%= f.input :email, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+  <div class="row">
+    <%= f.input :admin, as: :boolean, boolean_style: :inline %>
   </div>
   
   <div class="row">

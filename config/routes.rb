@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :componentes
   root 'home#index'
 
   devise_for :usuarios, controllers: { 
@@ -20,11 +21,12 @@ Rails.application.routes.draw do
 
   resources :grupos do
     resources :usuarios
+    resources :ambientes do
+      resources :componentes
+    end
   end
 
   resources :usuarios
-  
-  resources :ambientes
 
   namespace :admin do
     resources :home_admin
@@ -32,7 +34,9 @@ Rails.application.routes.draw do
       resources :usuarios do
         get :remover, on: :member
       end
-      resources :ambientes
+      resources :ambientes do
+        resources :componentes
+      end
     end
   end
 
