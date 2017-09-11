@@ -1,8 +1,9 @@
 class ComponentesController < ApplicationController
+  before_action :set_ambiente, only: [:index, :new, :create]
   before_action :set_componente, only: [:show, :edit, :update, :destroy]
 
   def index
-    @componentes = Componente.all
+    @componentes = @ambiente.componentes.all
   end
 
   def show
@@ -52,6 +53,10 @@ class ComponentesController < ApplicationController
   private
     def set_componente
       @componente = Componente.find(params[:id])
+    end
+
+    def set_ambiente
+      @ambiente = Ambiente.find(params[:ambiente_id])
     end
 
     def componente_params

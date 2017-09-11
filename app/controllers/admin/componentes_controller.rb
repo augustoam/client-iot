@@ -4,7 +4,7 @@ class Admin::ComponentesController < ApplicationController
   before_action :set_componente, only: [:show, :edit, :update, :destroy]
 
   def index
-    @q = Componente.ransack(params[:q])
+    @q = @ambiente.componentes.ransack(params[:q])
     @componentes = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
   end
 
