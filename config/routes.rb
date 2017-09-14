@@ -26,6 +26,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :request do
+      post :google_api_request
+    end
+  end
+
   resources :usuarios
 
   namespace :admin do

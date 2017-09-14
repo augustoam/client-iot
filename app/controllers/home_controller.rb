@@ -14,14 +14,14 @@ class HomeController < ApplicationController
 
   def mode_on
     MQTT::Client.connect('iot.eclipse.org', 1883) do |c|
-      c.publish('augustoalbertoni/teste', 'L')
+      c.publish('augusto.albertoni@gmail.com/room/lights', 'on')
     end
     redirect_to root_url
   end
 
   def mode_off
     MQTT::Client.connect('iot.eclipse.org', 1883) do |c|
-      c.publish('augustoalbertoni/teste', 'D')
+      c.publish('augusto.albertoni@gmail.com/room/lights', 'off')
     end
     redirect_to root_url
   end
