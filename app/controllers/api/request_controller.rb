@@ -9,7 +9,7 @@ class Api::RequestController < ActionController::API
     state    = params[:result][:parameters][:state]
     user     = params[:result][:parameters][:user]
     topic   = 'augusto.albertoni@gmail.com/' + location + '/' + device
-    MqttBrokerJob.perform_now(topic, state)
+    publish_mqtt(topic, state)
     render json: 'okey'
   end
 end
