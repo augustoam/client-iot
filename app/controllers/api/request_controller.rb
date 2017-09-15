@@ -10,5 +10,6 @@ class Api::RequestController < ActionController::API
     user     = params[:result][:parameters][:user]
     topic   = 'augusto.albertoni@gmail.com/' + location + '/' + device
     publish_mqtt(topic, state)
+    head :ok
   end
 end
