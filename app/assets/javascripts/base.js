@@ -17,9 +17,9 @@ $(document).on('turbolinks:load', function() {
 
   $('.dropdown-button').dropdown({
       constrainWidth: false, // Does not change width of dropdown to that of the activator
-      belowOrigin: true 
+      belowOrigin: true
     }
-  ); 
+  );
 
   $('.notice').each(notice);
 
@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', function() {
 }).on("click", "li[data-href], div[data-href]", function(e) {
   Turbolinks.visit($(this).data("href"));
 });
-   
+
 function notice(){
   var msg = $(this).data().msg;
   console.log(msg);
@@ -42,20 +42,14 @@ function notice(){
 }
 
 function atualizaMode(){
-  var mode = document.getElementById('switch-mode').checked
-  console.log(mode);
+  var switch_mode = document.getElementById('switch-mode');
+  var mode = switch_mode.checked;
+  var topico = switch_mode.getAttribute("data-topico");
+  var componente = switch_mode.getAttribute("data-comp");
 
-  if(mode){
-    $.ajax({
-      type: "POST",
-      dataType: "json",
-      url: "http://localhost:3000/home/mode_on"
-    });
-  } else {
-    $.ajax({
-      type: "POST",
-      dataType: "json",
-      url: "http://localhost:3000/home/mode_off"
-    }); 
-  }
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: "http://localhost:3000/api/componentes/publish?topico=" +topico+"&mode="+mode+"&componente="+componente
+  });
 }

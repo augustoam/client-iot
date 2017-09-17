@@ -1,7 +1,7 @@
 <ul class="collection with-header">
   <li class="collection-header grey lighten-4">
     <h5>
-      <b>Componentes</b> 
+      <b>Componentes</b>
     </h5>
   </li>
 
@@ -11,7 +11,11 @@
       <div class="switch secondary-content">
         <label>
           Off
-          <input type="checkbox" id="switch-mode">
+          <% if componente.estado %>
+            <input type="checkbox" id="switch-mode" data-comp="<%=componente.id%>" data-topico="<%=componente.topico%>" checked>
+          <% else %>
+            <input type="checkbox" id="switch-mode" data-comp="<%=componente.id%>" data-topico="<%=componente.topico%>" unchecked>
+          <% end %>
           <span class="lever"></span>
           On
         </label>

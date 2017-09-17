@@ -6,5 +6,6 @@
   <div class="row">
     <%= f.input :admin, as: :boolean, boolean_style: :inline, input_html: {class:"i-checks"} %>
   </div>
+  <%= link_icon_to_back grupo_usuarios_path(grupo_id: params[:grupo_id]) %>
   <%= save_button %>
 <% end %>

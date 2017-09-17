@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :componentes
   root 'home#index'
 
-  devise_for :usuarios, controllers: { 
+  devise_for :usuarios, controllers: {
    confirmations: 'confirmations'
   }
   as :usuario do
@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :request do
       post :google_api_request
+    end
+    namespace :componentes do
+      post :publish
     end
   end
 
