@@ -2,7 +2,7 @@ class Admin::UsuariosController < ApplicationController
   layout 'admin'
   before_action :set_grupo, only: [:index, :new, :create, :edit, :show, :update, :destroy, :remover]
   before_action :set_usuario, only: [:show, :edit, :update, :destroy, :remover]
-  
+
   def index
     @q = @grupo.usuarios.ransack(params[:q])
     @usuarios = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
@@ -32,7 +32,7 @@ class Admin::UsuariosController < ApplicationController
         end
       else
         password = Devise.friendly_token.first(8)
-        @usuario = Usuario.create!(email: params[:usuario][:email], password: password)
+        @usuario = Usuario.create!(email: params[:usuario][:email], password: password, admin: params[:usuario][:admin])
         @grupo_usuario.usuario = @usuario
         @grupo_usuario.save
 
@@ -63,7 +63,7 @@ class Admin::UsuariosController < ApplicationController
     @usuario.destroy
     redirect_to admin_grupo_usuarios_path(@grupo), notice: "#{Usuario.model_name.human} excluído com sucesso."
   end
-  
+
   private
     def set_usuario
       @usuario = Usuario.find(params[:id])
@@ -74,6 +74,6 @@ class Admin::UsuariosController < ApplicationController
     end
 
     def usuario_params
-      params.require(:usuario).permit(:email)
+      params.require(:usuario).permit(:email, :admin)
     end
 end
