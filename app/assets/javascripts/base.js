@@ -50,6 +50,6 @@ function atualizaMode(){
   $.ajax({
     type: "POST",
     dataType: "json",
-    url: "http://localhost:3000/api/componentes/publish?topico=" +topico+"&mode="+mode+"&componente="+componente
+    url: "http://client-iot.herokuapp.com/api/componentes/publish?topico=" +topico+"&mode="+mode+"&componente="+componente
   });
 }
