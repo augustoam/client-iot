@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <title>IoT Admin</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+<head>
+  <title>IoT Admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <main>
-      <%= render 'layouts/topnavbar_admin' %>
-        
-      <div class="container">     
-        <% if current_admin && !current_page?(admin_home_admin_index_path) %>
-          <div class="row" style="margin-top: 10px;">
-            <nav class="grey lighten-1">
-              <div class="nav-wrapper">
-                <div class="col s12" style="margin-left: 10px;">
-                  
-                </div>
-              </div>
-            </nav>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <main>
+    <%= render 'layouts/topnavbar_admin' %>
+
+    <% unless current_page?(admin_session_path) %>
+      <div class="container">
+    <% end %>
+
+    <% if current_admin && !current_page?(admin_home_admin_index_path) %>
+      <div class="row" style="margin-top: 10px;">
+        <nav class="grey lighten-1">
+          <div class="nav-wrapper">
+            <div class="col s12" style="margin-left: 10px;">
+
+            </div>
           </div>
-        <% end %>
-
-        <% if notice.present? %>
-          <div class="notice" data-msg="<%= notice %>"></div>  
-        <% end %>
-
-        <% if alert.present? %>
-          <div class="notice" data-msg="<%= alert %>"></div>
-        <% end %>
-
-        <%= yield %>
+        </nav>
       </div>
-    </main>
-  </body>
+    <% end %>
+
+    <% if notice.present? %>
+      <div class="notice" data-msg="<%= notice %>"></div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div class="notice" data-msg="<%= alert %>"></div>
+    <% end %>
+
+    <%= yield %>
+
+    <% unless current_page?(admin_session_path) %>
+      </div>
+    <% end %>
+  </main>
+</body>
 </html>

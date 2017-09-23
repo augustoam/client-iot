@@ -20,9 +20,9 @@
         <div class="container">
           <div class="middle">
             <div class="row login">
-            
+
               <% if notice.present? %>
-                <div class="notice" data-msg="<%= notice %>"></div>  
+                <div class="notice" data-msg="<%= notice %>"></div>
               <% end %>
 
               <% if alert.present? %>
@@ -30,12 +30,10 @@
               <% end %>
 
               <%= yield %>
-              <small>
-                <%= link_to "Wonder", "http://www.wonder.com.br", target: "_blank" %> &copy; <%= Date.today.year %>
-              </small>
+
             </div>
-          </div> 
-        </div>     
+          </div>
+        </div>
       </center>
     </main>
   </body>
