@@ -35,3 +35,37 @@ crumb :usuario_new do |grupo|
   link t('views.actions.new')
   parent :usuarios, grupo
 end
+
+crumb :ambientes do |grupo|
+  link Ambiente.model_name.human(count: 2), admin_grupo_ambientes_path(grupo)
+  parent :grupos, grupo
+end
+crumb :ambiente do |ambiente|
+  link ambiente.to_s
+  parent :ambientes, ambiente.grupo
+end
+crumb :ambiente_new do |grupo|
+  link t('views.actions.new')
+  parent :ambientes, grupo
+end
+crumb :ambiente_edit do |ambiente|
+  link t('views.actions.do_edit'), edit_admin_grupo_ambiente_path(ambiente)
+  parent :ambiente, ambiente
+end
+
+crumb :componentes do |ambiente|
+  link Componente.model_name.human(count: 2), admin_grupo_ambiente_componentes_path(ambiente.grupo, ambiente)
+  parent :ambientes, ambiente.grupo
+end
+crumb :componente do |componente|
+  link componente.to_s
+  parent :componentes, componente.ambiente
+end
+crumb :componente_new do |ambiente|
+  link t('views.actions.new')
+  parent :componentes, ambiente
+end
+crumb :componente_edit do |componente|
+  link t('views.actions.do_edit'), edit_admin_grupo_ambiente_componente_path(componente.ambiente.grupo, componente.ambiente)
+  parent :componente, componente
+end

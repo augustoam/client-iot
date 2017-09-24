@@ -1,23 +1,24 @@
+<% breadcrumb :componentes, @ambiente %>
 <div class="row">
   <h3><%= plural_model_name_for(Componente) %> <%= singular_model_name_for(Ambiente) %></h3>
-</div> 
+</div>
 
-<div class="row">  
+<div class="row">
   <%= search_form_for @q, url: admin_grupo_ambiente_componentes_path do |f| %>
 
     <div class="col s11">
       <%= f.search_field :topico_or_descricao_cont, class: "form-control", placeholder: "Pesquisar Componentes" %>
     </div>
-    <div class="col s1">  
+    <div class="col s1">
       <button class="waves-effect waves-light btn grey lighten-4" type="submit">
         <i class="large material-icons black-text">search</i>
       </button>
     </div>
-    
+
   <% end %>
 </div>
 
-<div class="row"> 
+<div class="row">
   <table class="table">
     <thead>
       <tr>
