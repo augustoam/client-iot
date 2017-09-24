@@ -2,7 +2,10 @@ pt-BR:
   devise:
     registrations:
       usuario:
-        signed_up_invalid: Este email não é válido para cadastro. Verifique antes de continuar. 
+        signed_up_invalid: Este email não é válido para cadastro. Verifique antes de continuar.
+    sessions:
+      new:
+        forgot_your_password: Esqueceu Sua Senha?
   activerecord:
     errors:
       models:
@@ -103,7 +106,7 @@ pt-BR:
           update: Atualizar
           we_need_your_current_password_to_confirm_your_changes: precisamos da sua senha atual para confirmar suas mudanças
         new:
-          sign_up: Inscrever-se  
+          sign_up: Inscrever-se
         signed_up: Bem vindo! Você realizou seu registro com sucesso.
         signed_up_but_inactive: Você se inscreveu com sucesso, porém nós não podemos autenticá-lo porque sua conta ainda não foi ativada.
         signed_up_but_locked: Você se inscreveu com sucesso. Porém nós não podemos autenticá-lo porque sua conta está bloqueada.
@@ -116,7 +119,7 @@ pt-BR:
           login: Efetue o login para continuar
           sign_in: Login
           sign_up: Inscrever-se
-          forgot_your_password: Esqueceu sua senha?  
+          forgot_your_password: Esqueceu sua senha?
         signed_in: Login efetuado com sucesso.
         signed_out: Logout efetuado com sucesso.
       shared:
