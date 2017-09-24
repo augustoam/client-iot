@@ -1,32 +1,23 @@
-<div class="middle">
+ <div class="middle">
   <div class="row login">
-    <div class="logo-name" >
-      Administrador
-    </div>
-
+    <h3>Bem vindo Administrador</h3>
     <p>Efetue o login para continuar</p>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "m-t", role: "form"}) do |f| %>
-    <%= f.hidden_field :token, value: params[:token] %>
+        <%= f.hidden_field :token, value: params[:token] %>
+        <div class="row">
+          <%= f.text_field :email, placeholder: 'Email', class: 'form-control set-focus', required:"" %>
+        </div>
 
-    <div class="row ">
-      <%= f.text_field :email, placeholder: 'Email', class: 'form-control set-focus', required:"" %>
-    </div>
+        <div class="row">
+          <%= f.password_field :password, placeholder: 'Senha', class: 'form-control', required:"" %>
+        </div>
 
-
-    <div class="row">
-      <div class='col s12'>
-        <%= f.password_field :password, placeholder: 'Senha', class: 'form-control', required:"" %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class='col s12'>
-        <button class="col s12 waves-effect waves-light btn cyan">
-          <%= f.submit 'Login'%>
-        </button>
-      </div>
-    </div>
-    <% end %>
+        <div class="row">
+          <%= button_tag(type: 'submit', class: "waves-effect waves-light btn cyan") do %>
+            <%= t('views.actions.login') %>
+          <% end %>
+        </div>
+      <% end %>
   </div>
 </div>
