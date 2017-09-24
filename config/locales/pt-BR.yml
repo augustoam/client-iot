@@ -26,7 +26,6 @@ pt-BR:
       edit: 'Editar'
       do_edit: 'Edição'
       save: 'Salvar'
-      login: 'Login'
   time:
     formats:
       data_hora: "%d/%b/%Y %H:%M"
