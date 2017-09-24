@@ -1,23 +1,25 @@
+<% breadcrumb :usuarios, @grupo %>
+
 <div class="row">
   <h3><%= plural_model_name_for(Usuario) %> <%= singular_model_name_for(Grupo) %></h3>
-</div> 
+</div>
 
-<div class="row">  
+<div class="row">
   <%= search_form_for @q, url: admin_grupo_usuarios_path do |f| %>
 
     <div class="col s11">
       <%= f.search_field :email_cont, class: "form-control", placeholder: "Pesquisar Usuários" %>
     </div>
-    <div class="col s1">  
+    <div class="col s1">
       <button class="waves-effect waves-light btn grey lighten-4" type="submit">
         <i class="large material-icons black-text">search</i>
       </button>
     </div>
-    
+
   <% end %>
 </div>
 
-<div class="row"> 
+<div class="row">
   <table class="table">
     <thead>
       <tr>
