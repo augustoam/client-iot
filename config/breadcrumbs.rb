@@ -18,3 +18,20 @@ crumb :grupo_new do
   link t('views.actions.new')
   parent :grupos
 end
+
+crumb :usuarios do |grupo|
+  link grupo.to_s, admin_grupo_usuarios_path(grupo)
+  parent :grupos
+end
+crumb :usuario do |grupo_usuario|
+  link grupo_usuario.usuario.to_s
+  parent :usuarios, grupo_usuario.grupo
+end
+crumb :usuario_edit do |grupo_usuario|
+  link t('views.actions.edit'), edit_admin_grupo_usuario_path(grupo_usuario.grupo, grupo_usuario.usuario)
+  parent :usuario, grupo_usuario
+end
+crumb :usuario_new do |grupo|
+  link t('views.actions.new')
+  parent :usuarios, grupo
+end
