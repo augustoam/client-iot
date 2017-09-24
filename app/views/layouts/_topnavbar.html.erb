@@ -1,18 +1,18 @@
 <ul id="dropdown-nav" class="dropdown-content" style="width: 220px;">
   <% if current_usuario.admin? %>
     <li>
-      <%= link_to grupos_path, class: "black-text" do %> 
+      <%= link_to grupos_path, class: "black-text" do %>
         <i class="material-icons">person</i>Grupos
       <% end %>
     </li>
-  <% end %>  
+  <% end %>
   <li>
-    <%= link_to usuario_path(current_usuario), class: "black-text" do %> 
+    <%= link_to usuario_path(current_usuario), class: "black-text" do %>
       <i class="material-icons">vpn_key</i>Perfil
     <% end %>
   </li>
   <li>
-    <%= link_to destroy_usuario_session_path, :method => :delete, class: "black-text" do %> 
+    <%= link_to destroy_usuario_session_path, :method => :delete, class: "black-text" do %>
       <i class="material-icons">exit_to_app</i>Sair
     <% end %>
   </li>
@@ -37,7 +37,7 @@
           </a>
         </li>
       </ul>
-      <a class="titulo-app">CLIENT IoT</a>
+        <%= link_to 'CLIENT IoT', home_console_path %>
       <ul id="nav-mobile" class="right">
         <li>
           <a class="dropdown-button" data-activates="dropdown-nav">
@@ -48,4 +48,3 @@
     </div>
   </nav>
 </div>
-
