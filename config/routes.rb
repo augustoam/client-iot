@@ -50,6 +50,7 @@ Rails.application.routes.draw do
         resources :componentes
       end
     end
+    resources :controles_componentes
   end
 
   namespace :home do

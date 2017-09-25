@@ -1,7 +1,7 @@
 class Admin::GruposController < ApplicationController
   layout 'admin'
   before_action :set_grupo, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @q = Grupo.ransack(params[:q])
     @grupos = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
@@ -39,7 +39,7 @@ class Admin::GruposController < ApplicationController
     @grupo.destroy
     redirect_to admin_grupos_url, notice: "#{Grupo.model_name.human} excluído com sucesso."
   end
-  
+
   private
     def set_grupo
       @grupo = Grupo.find(params[:id])

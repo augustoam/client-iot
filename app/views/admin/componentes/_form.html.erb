@@ -4,10 +4,14 @@
   <div class="row">
     <%= f.input :descricao, wrapper_html: { class: 'm12 s12' } %>
   </div>
+
   <div class="row">
-    <%= f.input :topico, wrapper_html: { class: 'm12 s12' } %>
+      <%= f.input :topico, wrapper_html: { class: 'm12 s12' } %>
   </div>
-  
+  <div class="row">
+    <%= f.association :controle_componente%>
+  </div>
+
   <div class="row">
     <% if @componente.persisted? %>
       <%= link_icon_to_back admin_grupo_ambiente_componente_path(@ambiente.grupo, @ambiente, componente) %>

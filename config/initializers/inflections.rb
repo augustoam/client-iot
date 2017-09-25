@@ -18,4 +18,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'ambiente', 'ambientes'
   inflect.irregular 'componente', 'componentes'
   inflect.irregular 'admin', 'admins'
+  inflect.irregular 'controle_componente', 'controles_componentes'
 end
