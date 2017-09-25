@@ -1,5 +1,5 @@
 class UsuariosController < ApplicationController
-  include ControllerResponder  
+  include ControllerResponder
   before_action :set_grupo, only: [:index, :destroy, :edit, :update]
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
 
@@ -39,7 +39,7 @@ class UsuariosController < ApplicationController
       @usuario = Usuario.find_by(email: params[:usuario][:email])
       if @usuario
         if @grupo.usuarios.include?(@usuario)
-          redirect_to grupo_grupos_usuarios_path(@grupo), alert: "Usuário #{@administrador_grupo.email} já é administrador deste grupo"
+          redirect_to grupo_usuarios_path(@grupo), alert: "Usuário #{@usuario.email} já é administrador deste grupo"
         end
       else
         password = Devise.friendly_token.first(8)
