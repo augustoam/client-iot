@@ -35,7 +35,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :usuarios
+  resources :usuarios do
+    get :password_change
+    patch :password_update
+  end
 
   namespace :admin do
     resources :home_admin

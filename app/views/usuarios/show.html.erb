@@ -1,8 +1,12 @@
-<div class="row">
-  <h3>Perfil</h3>
-</div>
+<div class="container">
+  <div class="row">
+    <h3>Perfil</h3>
+  </div>
 
-<div class="row">
-  <b>Email</b>
-  <%= @usuario.email %>
+  <div class="row">
+    <b>Email</b>
+    <%= @usuario.email %>
+  </div>
+
+  <%= link_to 'Alterar Senha', usuario_password_change_path(@usuario), class: "waves-effect waves-light btn cyan" %>
 </div>

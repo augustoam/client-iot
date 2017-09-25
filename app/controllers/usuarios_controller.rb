@@ -5,7 +5,6 @@ class UsuariosController < ApplicationController
 
   def index
     @usuarios = @grupo.usuarios.all
-    #authorize @usuarios
   end
 
   def show
@@ -16,6 +15,20 @@ class UsuariosController < ApplicationController
   end
 
   def edit
+  end
+
+  def password_change
+    @usuario = Usuario.find(params[:usuario_id])
+  end
+
+  def password_update
+    @usuario = Usuario.find(params[:usuario_id])
+    @usuario.attempt_set_password(params[:usuario])
+    if @usuario.valid? && @usuario.password_match?
+      redirect_to usuario_path(@usuario), notice: "Senha alterada com sucesso"
+    else
+      redirect_to usuario_password_change_path(@usuario), notice: "Senha inválida."
+    end
   end
 
   def create
