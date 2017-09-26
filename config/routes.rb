@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :home_admin
+    resources :administrador
     resources :usuarios do
       get :index_all, on: :collection
     end
