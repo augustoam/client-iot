@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format.json? }
   before_action :authenticate_any!
-  include Pundit
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
 
   def authenticate_any!
     if admin_signed_in?
@@ -18,6 +21,11 @@ class ApplicationController < ActionController::Base
   private
     def pundit_user
       current_usuario
+    end
+
+    def user_not_authorized
+      flash[:alert] = 'Você não tem autorização'
+      redirect_to(request.referrer || root_path)
     end
 
 end

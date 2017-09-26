@@ -28,6 +28,8 @@ gem 'will_paginate'
 gem 'will_paginate-materialize'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'htmlbeautifier'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
