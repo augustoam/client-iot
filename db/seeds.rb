@@ -3,7 +3,7 @@ unless Rails.env.test?
     Admin.create(email:'admin@admin.com', password:'administrador')
   end
   if Usuario.count.zero?
-    usuario = Usuario.create(email:'usuario@usuario.com', password:'usuario')
+    usuario = Usuario.create(email:'usuario@usuario.com', password:'usuario', admin: 'true')
     usuario.confirm
   end
   if Grupo.count.zero?

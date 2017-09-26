@@ -1,3 +1,5 @@
+<% breadcrumb :controles_componentes %>
+
 <div class="row">
   <h3><%= plural_model_name_for(ControleComponente) %> </h3>
 </div>
@@ -31,7 +33,7 @@
 
     <tbody>
       <% @controles_componentes.each do |controle_componente| %>
-    
+
         <tr data-href="<%= admin_controle_componente_path(controle_componente) %>">
           <td><%= controle_componente.id %></td>
           <td><%= controle_componente.descricao %></td>

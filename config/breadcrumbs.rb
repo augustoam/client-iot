@@ -69,3 +69,23 @@ crumb :componente_edit do |componente|
   link t('views.actions.do_edit'), edit_admin_grupo_ambiente_componente_path(componente.ambiente.grupo, componente.ambiente)
   parent :componente, componente
 end
+
+crumb :controles_componentes do
+  link ControleComponente.model_name.human(count: 2), admin_controles_componentes_path
+  parent :root
+end
+
+crumb :controle_componente_edit do |controle_componente|
+  link t('views.actions.do_edit'), edit_admin_controle_componente_path(controle_componente)
+  parent :controles_componentes
+end
+
+crumb :controle_componente_new do |controle_componente|
+  link t('views.actions.new')
+  parent :controles_componentes
+end
+
+crumb :controle_componente do |controle_componente|
+    link controle_componente.to_s, admin_controles_componentes_path(controle_componente)
+    parent :controles_componentes
+end
