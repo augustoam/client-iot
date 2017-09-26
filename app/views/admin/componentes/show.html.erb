@@ -16,6 +16,10 @@
   <%= @componente.topico %>
 </div>
 <div class="row">
+  <b><%= Componente.human_attribute_name(:controle_componente) %></b>
+  <%= @componente.controle_componente.descricao %>
+</div>
+<div class="row">
   <b><%= Componente.human_attribute_name(:created_at) %></b>
   <%= ltime @componente.created_at %>
 </div>

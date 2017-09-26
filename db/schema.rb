@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170925190458) do
+ActiveRecord::Schema.define(version: 20170926004002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,15 +47,13 @@ ActiveRecord::Schema.define(version: 20170925190458) do
     t.datetime "updated_at", null: false
     t.boolean "estado"
     t.integer "controle_componente_id"
-    t.bigint "controles_componentes_id"
-    t.index ["controles_componentes_id"], name: "index_componentes_on_controles_componentes_id"
   end
 
   create_table "controles_componentes", force: :cascade do |t|
     t.string "descricao"
+    t.text "obs"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "obs"
   end
 
   create_table "grupos", force: :cascade do |t|
@@ -95,7 +93,8 @@ ActiveRecord::Schema.define(version: 20170925190458) do
   end
 
   add_foreign_key "ambientes", "grupos"
-  add_foreign_key "componentes", "controles_componentes", column: "controles_componentes_id"
+  add_foreign_key "componentes", "ambientes"
+  add_foreign_key "componentes", "controles_componentes"
   add_foreign_key "grupos_usuarios", "grupos"
   add_foreign_key "grupos_usuarios", "usuarios"
 end

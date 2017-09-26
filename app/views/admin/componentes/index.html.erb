@@ -25,6 +25,7 @@
         <th><%= Componente.human_attribute_name(:id) %></th>
         <th><%= Componente.human_attribute_name(:descricao) %></th>
         <th><%= Componente.human_attribute_name(:topico) %></th>
+        <th><%= Componente.human_attribute_name(:controle_componente) %></th>
         <th><%= Componente.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>
       </tr>
@@ -36,6 +37,7 @@
           <td><%= componente.id %></td>
           <td><%= componente.descricao %></td>
           <td><%= componente.topico %></td>
+          <td><%= componente.controle_componente.descricao %></td>
           <td><%= ltime componente.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_grupo_ambiente_componente_path(@ambiente.grupo,@ambiente,componente))%></td>
           <td><%= link_icon_to_destroy(admin_grupo_ambiente_componente_path(@ambiente.grupo,@ambiente,componente)) %></td>

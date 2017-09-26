@@ -4,6 +4,6 @@ class ControleComponente < ApplicationRecord
   validates :descricao, presence: true
 
   def to_s
-    "#{descricao}"    
+    "#{descricao}"
   end
 end

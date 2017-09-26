@@ -4,6 +4,8 @@ class CreateComponentes < ActiveRecord::Migration[5.1]
       t.string :descricao
       t.string :topico
       t.integer :ambiente_id
+      t.boolean :estado
+      t.integer :controle_componente_id
 
       t.timestamps
     end

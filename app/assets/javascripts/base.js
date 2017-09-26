@@ -21,6 +21,10 @@ $(document).on('turbolinks:load', function() {
     }
   );
 
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+
   $('.notice').each(notice);
 
   $('#switch-mode').change(function(){

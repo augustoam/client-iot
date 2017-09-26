@@ -1,5 +1,5 @@
 class AddControleComponenteToComponentes < ActiveRecord::Migration[5.1]
   def change
-    add_reference :componentes, :controles_componentes, foreign_key: true
+    add_foreign_key :componentes, :controles_componentes
   end
 end
