@@ -64,3 +64,5 @@ pt-BR:
     administrador:
       edit:
         change_my_password: 'Atualizar senha'
+        new_password: 'Nova senha'
+        confirm_new_password: 'Confirme sua senha'
