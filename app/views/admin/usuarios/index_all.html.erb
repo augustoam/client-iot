@@ -1,0 +1,52 @@
+<% breadcrumb :usuarios_all %>
+
+<div class="row">
+  <h3><%= plural_model_name_for(Usuario) %></h3>
+</div>
+
+<div class="row">
+  <%= search_form_for @q, url: index_all_admin_usuarios_path do |f| %>
+
+    <div class="col s11">
+      <%= f.search_field :email_cont, class: "form-control", placeholder: "Pesquisar Usuários" %>
+    </div>
+    <div class="col s1">
+      <button class="waves-effect waves-light btn grey lighten-4" type="submit">
+        <i class="large material-icons black-text">search</i>
+      </button>
+    </div>
+
+  <% end %>
+</div>
+
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= Usuario.human_attribute_name(:id) %></th>
+        <th><%= Usuario.human_attribute_name(:email) %></th>
+        <th><%= Usuario.human_attribute_name(:admin) %></th>
+        <th><%= Usuario.human_attribute_name(:created_at) %></th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @usuarios.each do |usuario| %>
+          <td><%= usuario.id %></td>
+          <td><%= usuario.email %></td>
+          <td><%= usuario.admin %></td>
+          <td><%= ltime usuario.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_home_admin_index_path %>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @usuarios, renderer: MaterializePagination::Rails %>
+</div>

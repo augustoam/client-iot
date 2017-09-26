@@ -18,7 +18,24 @@ pt-BR:
       componente:
         one: 'Componente'
         other: 'Componentes'
+      controle_componente:
+        one: 'Controle Componente'
+        other: 'Controles Componentes'
     attributes:
+      usuario:
+        id: ID
+        email: Email
+        admin: Administrador
+        created_at: Data Criação
+      grupo:
+        id: ID
+        nome: Nome
+        created_at: Data Criação
+      controle_componente:
+        id: ID
+        descricao: Descrição
+        obs: Observação
+        created_at: Data Criação
   views:
     actions:
       new: 'Novo'

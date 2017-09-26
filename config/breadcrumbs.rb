@@ -89,3 +89,8 @@ crumb :controle_componente do |controle_componente|
     link controle_componente.to_s, admin_controles_componentes_path(controle_componente)
     parent :controles_componentes
 end
+
+crumb :usuarios_all do
+  link Usuario.model_name.human(count: 2), index_all_admin_usuarios_path
+  parent :root
+end

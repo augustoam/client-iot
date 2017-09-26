@@ -3,6 +3,11 @@ class Admin::UsuariosController < ApplicationController
   before_action :set_grupo, only: [:index, :new, :create, :edit, :show, :update, :destroy, :remover]
   before_action :set_usuario, only: [:show, :edit, :update, :destroy, :remover]
 
+  def index_all
+    @q = Usuario.ransack(params[:q])
+    @usuarios = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
+  end
+
   def index
     @q = @grupo.usuarios.ransack(params[:q])
     @usuarios = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
