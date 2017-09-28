@@ -49,12 +49,12 @@ crumb :ambiente_new do |grupo|
   parent :ambientes, grupo
 end
 crumb :ambiente_edit do |ambiente|
-  link t('views.actions.do_edit'), edit_admin_grupo_ambiente_path(ambiente)
+  link t('views.actions.do_edit'), edit_admin_ambiente_path(ambiente)
   parent :ambiente, ambiente
 end
 
 crumb :componentes do |ambiente|
-  link Componente.model_name.human(count: 2), admin_grupo_ambiente_componentes_path(ambiente.grupo, ambiente)
+  link Componente.model_name.human(count: 2), admin_ambiente_componentes_path(ambiente)
   parent :ambientes, ambiente.grupo
 end
 crumb :componente do |componente|
@@ -66,25 +66,39 @@ crumb :componente_new do |ambiente|
   parent :componentes, ambiente
 end
 crumb :componente_edit do |componente|
-  link t('views.actions.do_edit'), edit_admin_grupo_ambiente_componente_path(componente.ambiente.grupo, componente.ambiente)
+  link t('views.actions.do_edit'), edit_admin_componente_path(componente.ambiente)
   parent :componente, componente
+end
+
+crumb :comandos_infra_vermelhos do |componente|
+  link ComandoInfraVermelho.model_name.human(count: 2), admin_componente_comandos_infra_vermelhos_path(componente)
+  parent :componentes, componente.ambiente
+end
+crumb :comando_infra_vermelho do |comando_infra_vermelho|
+  link comando_infra_vermelho.to_s
+  parent :comandos_infra_vermelhos, comando_infra_vermelho.componente
+end
+crumb :comando_infra_vermelho_new do |componente|
+  link t('views.actions.new')
+  parent :comandos_infra_vermelhos, componente
+end
+crumb :comando_infra_vermelho_edit do |comando_infra_vermelho|
+  link t('views.actions.do_edit'), edit_admin_comando_infra_vermelho_path(comando_infra_vermelho)
+  parent :comando_infra_vermelho, comando_infra_vermelho
 end
 
 crumb :controles_componentes do
   link ControleComponente.model_name.human(count: 2), admin_controles_componentes_path
   parent :root
 end
-
 crumb :controle_componente_edit do |controle_componente|
   link t('views.actions.do_edit'), edit_admin_controle_componente_path(controle_componente)
   parent :controles_componentes
 end
-
 crumb :controle_componente_new do |controle_componente|
   link t('views.actions.new')
   parent :controles_componentes
 end
-
 crumb :controle_componente do |controle_componente|
     link controle_componente.to_s, admin_controles_componentes_path(controle_componente)
     parent :controles_componentes

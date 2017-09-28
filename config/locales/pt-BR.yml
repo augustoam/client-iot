@@ -18,6 +18,9 @@ pt-BR:
       componente:
         one: 'Componente'
         other: 'Componentes'
+      comando_infra_vermelho:
+        one: 'Comando Infravermelho'
+        other: 'Comandos Infravermelhos'
       controle_componente:
         one: 'Controle Componente'
         other: 'Controles Componentes'

@@ -19,4 +19,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'componente', 'componentes'
   inflect.irregular 'admin', 'admins'
   inflect.irregular 'controle_componente', 'controles_componentes'
+  inflect.irregular 'comando_infra_vermelho', 'comandos_infra_vermelhos'
 end

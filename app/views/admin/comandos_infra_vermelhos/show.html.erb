@@ -1,0 +1,26 @@
+<% breadcrumb :comando_infra_vermelho, @comando_infra_vermelho %>
+<div class="row">
+  <h3><%= singular_model_name_for(ComandoInfraVermelho) %></h3>
+</div>
+
+<div class="row">
+  <b><%= ComandoInfraVermelho.human_attribute_name(:id) %></b>
+  <%= @comando_infra_vermelho.id %>
+</div>
+<div class="row">
+  <b><%= ComandoInfraVermelho.human_attribute_name(:comando) %></b>
+  <%= @comando_infra_vermelho.comando %>
+</div>
+<div class="row">
+  <b><%= ComandoInfraVermelho.human_attribute_name(:topico) %></b>
+  <%= @comando_infra_vermelho.topico %>
+</div>
+<div class="row">
+  <b><%= ComandoInfraVermelho.human_attribute_name(:html) %></b>
+  <%= @comando_infra_vermelho.html %>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_componente_comandos_infra_vermelhos_path(@componente) %>
+  <%= link_icon_to_edit(edit_admin_comando_infra_vermelho_path(@comando_infra_vermelho))%>
+</div>

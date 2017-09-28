@@ -4,7 +4,7 @@
 </div>
 
 <div class="row">
-  <%= search_form_for @q, url: admin_grupo_ambiente_componentes_path do |f| %>
+  <%= search_form_for @q, url: admin_ambiente_componentes_path do |f| %>
 
     <div class="col s11">
       <%= f.search_field :topico_or_descricao_cont, class: "form-control", placeholder: "Pesquisar Componentes" %>
@@ -33,14 +33,15 @@
 
     <tbody>
       <% @componentes.each do |componente| %>
-        <tr data-href="<%= admin_grupo_ambiente_componente_path(@ambiente.grupo,@ambiente,componente) %>">
+        <tr data-href="<%= admin_componente_path(componente) %>">
           <td><%= componente.id %></td>
           <td><%= componente.descricao %></td>
           <td><%= componente.topico %></td>
           <td><%= componente.controle_componente.descricao %></td>
           <td><%= ltime componente.created_at %></td>
-          <td><%= link_icon_to_edit(edit_admin_grupo_ambiente_componente_path(@ambiente.grupo,@ambiente,componente))%></td>
-          <td><%= link_icon_to_destroy(admin_grupo_ambiente_componente_path(@ambiente.grupo,@ambiente,componente)) %></td>
+          <td><%= link_icon_to_edit(edit_admin_componente_path(componente))%></td>
+          <td><%= link_icon_to_destroy(admin_componente_path(componente)) %></td>
+          <td><%= link_to 'Comandos', admin_componente_comandos_infra_vermelhos_path(componente), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -49,7 +50,7 @@
 
 <div class="row">
   <%= link_icon_to_back admin_grupo_ambientes_path(@ambiente.grupo) %>
-  <%= link_icon_to_new(new_admin_grupo_ambiente_componente_path(@ambiente.grupo,@ambiente), action_new(@componentes)) %>
+  <%= link_icon_to_new(new_admin_ambiente_componente_path(@ambiente), action_new(@componentes)) %>
 </div>
 
 <div class="center-align">

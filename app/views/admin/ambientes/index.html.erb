@@ -31,13 +31,13 @@
 
     <tbody>
       <% @ambientes.each do |ambiente| %>
-        <tr data-href="<%= admin_grupo_ambiente_path(@grupo,ambiente) %>">
+        <tr data-href="<%= admin_ambiente_path(ambiente) %>">
           <td><%= ambiente.id %></td>
           <td><%= ambiente.nome %></td>
           <td><%= ltime ambiente.created_at %></td>
-          <td><%= link_icon_to_edit(edit_admin_grupo_ambiente_path(@grupo, ambiente))%></td>
-          <td><%= link_icon_to_destroy(admin_grupo_ambiente_path(@grupo, ambiente)) %></td>
-          <td><%= link_to 'Componentes', admin_grupo_ambiente_componentes_path(@grupo, ambiente), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
+          <td><%= link_icon_to_edit(edit_admin_ambiente_path(ambiente))%></td>
+          <td><%= link_icon_to_destroy(admin_ambiente_path(ambiente)) %></td>
+          <td><%= link_to 'Componentes', admin_ambiente_componentes_path(ambiente), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
         </tr>
       <% end %>
     </tbody>

@@ -50,8 +50,10 @@ Rails.application.routes.draw do
       resources :usuarios do
         get :remover, on: :member
       end
-      resources :ambientes do
-        resources :componentes
+      resources :ambientes, shallow: true do
+        resources :componentes, shallow: true do
+          resources :comandos_infra_vermelhos, shallow: true
+        end
       end
     end
     resources :controles_componentes

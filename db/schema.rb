@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170926004002) do
+ActiveRecord::Schema.define(version: 20170927222921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20170926004002) do
   create_table "ambientes", force: :cascade do |t|
     t.string "nome"
     t.integer "grupo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comandos_infra_vermelhos", force: :cascade do |t|
+    t.integer "componente_id"
+    t.string "topico"
+    t.string "comando"
+    t.string "html"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -93,6 +102,7 @@ ActiveRecord::Schema.define(version: 20170926004002) do
   end
 
   add_foreign_key "ambientes", "grupos"
+  add_foreign_key "comandos_infra_vermelhos", "componentes"
   add_foreign_key "componentes", "ambientes"
   add_foreign_key "componentes", "controles_componentes"
   add_foreign_key "grupos_usuarios", "grupos"

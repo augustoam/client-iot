@@ -21,7 +21,7 @@ class Admin::ComponentesController < ApplicationController
   def create
     @componente = @ambiente.componentes.new(componente_params)
     if @componente.save
-      redirect_to admin_grupo_ambiente_componentes_path(@ambiente.grupo, @ambiente), notice: "#{Componente.model_name.human} criado com sucesso"
+      redirect_to admin_ambiente_componentes_path(@ambiente), notice: "#{Componente.model_name.human} criado com sucesso"
     else
       render :new
     end
@@ -29,7 +29,7 @@ class Admin::ComponentesController < ApplicationController
 
   def update
     if @componente.update(componente_params)
-      redirect_to admin_grupo_ambiente_componente_path(@ambiente.grupo, @ambiente, @componente), notice: "#{Componente.model_name.human} alterado com sucesso."
+      redirect_to admin_componente_path(@componente), notice: "#{Componente.model_name.human} alterado com sucesso."
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class Admin::ComponentesController < ApplicationController
 
   def destroy
     @componente.destroy
-    redirect_to admin_grupo_ambiente_componentes_path(@ambiente.grupo, @ambiente), notice: "#{Componente.model_name.human} excluído com sucesso."
+    redirect_to admin_ambiente_componentes_path(@ambiente), notice: "#{Componente.model_name.human} excluído com sucesso."
   end
 
   private

@@ -5,7 +5,7 @@ class Admin::AmbientesController < ApplicationController
 
   def index
     @q = @grupo.ambientes.ransack(params[:q])
-    @ambientes = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)  
+    @ambientes = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
   end
 
   def show
@@ -29,7 +29,7 @@ class Admin::AmbientesController < ApplicationController
 
   def update
     if @ambiente.update(ambiente_params)
-      redirect_to admin_grupo_ambiente_path(@grupo, @ambiente), notice: "#{Ambiente.model_name.human} alterado com sucesso."
+      redirect_to admin_ambiente_path(@ambiente), notice: "#{Ambiente.model_name.human} alterado com sucesso."
     else
       render :edit
     end

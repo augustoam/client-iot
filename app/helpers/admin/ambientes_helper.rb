@@ -3,7 +3,7 @@ module Admin::AmbientesHelper
     if ambiente.new_record?
       admin_grupo_ambientes_path(grupo)
     else
-      admin_grupo_ambiente_path(grupo, ambiente)
+      admin_ambiente_path(ambiente)
     end
   end
 end
