@@ -6,7 +6,7 @@
   </li>
 
   <% @componentes.each do |componente| %>
-    <li class="collection-item">
+    <li class="collection-item" data-href="<%= componente_comandos_infra_vermelhos_path(componente) %>">
       <b><%= componente.descricao %></b>
       <div class="switch secondary-content">
         <label>

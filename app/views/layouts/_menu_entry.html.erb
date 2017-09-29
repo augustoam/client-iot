@@ -4,14 +4,14 @@
     <span class="grey-text text-darken-1">Início</span>
   <% end %>
 </li>
-<% grupos_por_usuario.each do |grupo| %> 
+<% grupos_por_usuario.each do |grupo| %>
   <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
       <li>
         <a class="collapsible-header grey-text text-darken-1"><%= grupo.grupo.nome %><i class="material-icons"></i></a>
         <% grupo.grupo.ambientes.each do |ambiente| %>
         <div class="collapsible-body">
-          <ul> 
+          <ul>
               <li><%= link_to ambiente.nome, grupo_ambiente_componentes_path(grupo, ambiente) %></li>
           </ul>
         </div>

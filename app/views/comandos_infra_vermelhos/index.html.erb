@@ -1,0 +1,7 @@
+<div class="center-align">
+  <h5>
+    <b>Controle <%= @componente.controle_componente %></b>
+  </h5>
+  <br>
+
+<%= render partial: "comandos_infra_vermelhos/#{@componente.controle_componente.descricao.downcase}", locals: {componente: @componente} %> 

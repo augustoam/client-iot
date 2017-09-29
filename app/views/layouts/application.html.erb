@@ -11,13 +11,13 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body class="grey lighten-1">
     <main>
       <%= render 'layouts/topnavbar' %>
       <div class="container">
         <!-- Notifications -->
         <% if notice.present? %>
-          <div class="notice" data-msg="<%= notice %>"></div>  
+          <div class="notice" data-msg="<%= notice %>"></div>
         <% end %>
 
         <% if alert.present? %>
@@ -28,6 +28,6 @@
       </div>
     </main>
     <!-- Footer -->
-    <%= render 'layouts/footer' %>  
+    <%= render 'layouts/footer' %>
   </body>
 </html>

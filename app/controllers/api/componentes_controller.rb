@@ -4,7 +4,7 @@ class Api::ComponentesController < ActionController::API
   def publish
     componente = Componente.find(params[:componente])
     componente.update(estado: params[:mode])
-    
+
     if params[:mode] == 'true'
       mode = 'on'
     else

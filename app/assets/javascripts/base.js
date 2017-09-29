@@ -31,6 +31,10 @@ $(document).on('turbolinks:load', function() {
     atualizaMode();
   });
 
+  $('.botao').click(function(){
+    comandoInfraVermelho();
+  });
+
 }).on("click", "tr[data-href] td", function(e) {
   var $td = $(this);
   if ($td.find("a.btn").length === 0) // Apenas se a célula não possuir um botão
@@ -56,4 +60,18 @@ function atualizaMode(){
     dataType: "json",
     url: "http://localhost:3000/api/componentes/publish?topico=" +topico+"&mode="+mode+"&componente="+componente
   });
+}
+
+function comandoInfraVermelho(){
+  var botaoDesliga = document.getElementById('botao-power');
+  var topico = botaoDesliga.getAttribute("data-topico");
+  var componente = botaoDesliga.getAttribute("data-componente");
+  var acao = botaoDesliga.getAttribute("data-acao");
+
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: "http://localhost:3000/api/componentes/publish?topico=" +topico+"&mode="+acao+"&componente="+componente
+  });
+  window.location.reload();
 }

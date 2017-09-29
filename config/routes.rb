@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   resources :grupos do
     resources :usuarios
     resources :ambientes do
-      resources :componentes
+      resources :componentes, shallow: true do
+        resources :comandos_infra_vermelhos, shallow: true
+      end
     end
   end
 

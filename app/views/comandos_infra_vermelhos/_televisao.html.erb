@@ -1,0 +1,46 @@
+<div class="row" >
+  <div class="col s12">
+    <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 botao',
+                    id: "botao-power",
+                    data: {
+                           componente: componente.id,
+                           topico: topico_comando('desligar', componente),
+                           acao: estado_componente(componente)
+                          } do %>
+      <% if componente.estado %>
+        <i class="large material-icons green-text" style="margin-top: 4px;">power_settings_new</i>
+      <% else %>
+         <i class="large material-icons red-text" style="margin-top: 4px;">power_settings_new</i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s6">
+    <%= link_to root_path, class: 'z-depth-5 btn-floating btn-large grey lighten-3' do %>
+       <i class="large material-icons black-text" style="margin-top: 4px;">add</i>
+    <% end %>
+  </div>
+
+  <div class="col s6">
+    <%= link_to root_path, class: 'z-depth-5 btn-floating btn-large grey lighten-3' do %>
+    <i class="large material-icons black-text" style="margin-top: 4px;">add</i>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s6">
+    <%= link_to root_path, class: 'z-depth-5 btn-floating btn-large grey lighten-3' do %>
+       <i class="large material-icons black-text" style="margin-top: 4px;">remove</i>
+    <% end %>
+  </div>
+
+
+  <div class="col s6">
+    <%= link_to root_path, class: 'z-depth-5 btn-floating btn-large grey lighten-3' do %>
+       <i class="large material-icons black-text" style="margin-top: 4px;">remove</i>
+    <% end %>
+  </div>
+</div>
