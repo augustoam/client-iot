@@ -4,7 +4,6 @@ class Api::RequestController < ActionController::API
   http_basic_authenticate_with name: "augusto.albertoni@gmail.com", password: "amendoim"
   before_action :user_name_and_password
   def google_api_request
-    debugger
     device   = params[:result][:parameters][:device]
     location = params[:result][:parameters][:location]
     state    = params[:result][:parameters][:state]

@@ -1,11 +1,12 @@
+<!-- Botão de Desligar -->
 <div class="row" >
   <div class="col s12">
-    <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 botao',
-                    id: "botao-power",
+    <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 botao-infra-vermelho',
+                    id: "comando-infra-vermelho-power",
                     data: {
                            componente: componente.id,
                            topico: topico_comando('desligar', componente),
-                           acao: estado_componente(componente)
+                           acao: "power-" + estado_componente(componente)
                           } do %>
       <% if componente.estado %>
         <i class="large material-icons green-text" style="margin-top: 4px;">power_settings_new</i>
@@ -17,30 +18,185 @@
 </div>
 
 <div class="row">
+  <!-- Botão de aumentar volume -->
   <div class="col s6">
-    <%= link_to root_path, class: 'z-depth-5 btn-floating btn-large grey lighten-3' do %>
+    <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 botao-infra-vermelho',
+                    id: "comando-infra-vermelho-volume-up",
+                    data: {
+                           componente: componente.id,
+                           topico: topico_comando('volume-up', componente),
+                           acao: "volume-up"
+                          } do %>
        <i class="large material-icons black-text" style="margin-top: 4px;">add</i>
     <% end %>
   </div>
 
+  <!-- Botão de aumentar canal -->
   <div class="col s6">
-    <%= link_to root_path, class: 'z-depth-5 btn-floating btn-large grey lighten-3' do %>
-    <i class="large material-icons black-text" style="margin-top: 4px;">add</i>
+    <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 botao-infra-vermelho',
+                    id: "comando-infra-vermelho-canal-up",
+                    data: {
+                           componente: componente.id,
+                           topico: topico_comando('canal-up', componente),
+                           acao: "canal-up"
+                          } do %>
+    <i class="large material-icons black-text" style="margin-top: 4px;">arrow_drop_up</i>
     <% end %>
   </div>
 </div>
 
 <div class="row">
+  <!-- Botão de diminuir volume -->
   <div class="col s6">
-    <%= link_to root_path, class: 'z-depth-5 btn-floating btn-large grey lighten-3' do %>
+    <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 botao-infra-vermelho',
+                    id: "comando-infra-vermelho-volume-down",
+                    data: {
+                           componente: componente.id,
+                           topico: topico_comando('volume-down', componente),
+                           acao: "volume-down"
+                          } do %>
        <i class="large material-icons black-text" style="margin-top: 4px;">remove</i>
     <% end %>
   </div>
 
-
+  <!-- Botão de diminuit canal -->
   <div class="col s6">
-    <%= link_to root_path, class: 'z-depth-5 btn-floating btn-large grey lighten-3' do %>
-       <i class="large material-icons black-text" style="margin-top: 4px;">remove</i>
+    <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 botao-infra-vermelho',
+                    id: "comando-infra-vermelho-canal-down",
+                    data: {
+                           componente: componente.id,
+                           topico: topico_comando('canal-down', componente),
+                           acao: "canal-down"
+                          } do %>
+       <i class="large material-icons black-text" style="margin-top: 4px;">arrow_drop_down</i>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Botão de info -->
+  <div class="col s3">
+    <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
+                    id: "comando-infra-vermelho-volume-down",
+                    data: {
+                           componente: componente.id,
+                           topico: topico_comando('volume-down', componente),
+                           acao: "volume-down"
+                          } do %>
+       <i class="material-icons">announcement</i>
+    <% end %>
+  </div>
+
+  <!-- Botão de apps -->
+  <div class="col s3 offset-s6">
+    <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
+                    id: "comando-infra-vermelho-canal-down",
+                    data: {
+                           componente: componente.id,
+                           topico: topico_comando('canal-down', componente),
+                           acao: "canal-down"
+                          } do %>
+       <i class="material-icons">apps</i>
+    <% end %>
+  </div>
+</div>
+
+<!-- Botão de flecha up -->
+<div class="row">
+  <div class="col s12">
+    <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
+                    id: "comando-infra-vermelho-volume-down",
+                    data: {
+                           componente: componente.id,
+                           topico: topico_comando('volume-down', componente),
+                           acao: "volume-down"
+                          } do %>
+       <i class="large material-icons">arrow_upward</i>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col s12 offset-s3">
+    <!-- Botão de flecha left -->
+    <div class="col s2">
+      <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
+                      id: "comando-infra-vermelho-canal-down",
+                      data: {
+                             componente: componente.id,
+                             topico: topico_comando('canal-down', componente),
+                             acao: "canal-down"
+                            } do %>
+         <i class="large material-icons">arrow_back</i>
+      <% end %>
+    </div>
+
+    <!-- Botão de okey -->
+    <div class="col s2">
+      <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
+                      id: "comando-infra-vermelho-canal-down",
+                      data: {
+                             componente: componente.id,
+                             topico: topico_comando('canal-down', componente),
+                             acao: "canal-down"
+                            } do %>
+         <i class="large material-icons">check</i>
+      <% end %>
+    </div>
+
+    <!-- Botão de flecha right -->
+    <div class="col s2">
+      <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
+                      id: "comando-infra-vermelho-canal-down",
+                      data: {
+                             componente: componente.id,
+                             topico: topico_comando('canal-down', componente),
+                             acao: "canal-down"
+                            } do %>
+         <i class="large material-icons">arrow_forward</i>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Botão de -->
+  <div class="col s4">
+    <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
+                    id: "comando-infra-vermelho-volume-down",
+                    data: {
+                           componente: componente.id,
+                           topico: topico_comando('volume-down', componente),
+                           acao: "volume-down"
+                          } do %>
+       <i class="large material-icons">exit_to_app</i>
+    <% end %>
+  </div>
+
+  <!-- Botão de flecha down -->
+  <div class="col s4">
+    <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
+                    id: "comando-infra-vermelho-volume-down",
+                    data: {
+                           componente: componente.id,
+                           topico: topico_comando('volume-down', componente),
+                           acao: "volume-down"
+                          } do %>
+       <i class="large material-icons">arrow_downward</i>
+    <% end %>
+  </div>
+
+  <!-- Botão de flecha teclado -->
+  <div class="col s4">
+    <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
+                    id: "comando-infra-vermelho-volume-down",
+                    data: {
+                           componente: componente.id,
+                           topico: topico_comando('volume-down', componente),
+                           acao: "volume-down"
+                          } do %>
+       <i class="large material-icons">keyboard</i>
     <% end %>
   </div>
 </div>

@@ -31,8 +31,8 @@ $(document).on('turbolinks:load', function() {
     atualizaMode();
   });
 
-  $('.botao').click(function(){
-    comandoInfraVermelho();
+  $('.botao-infra-vermelho').click(function(){
+    comandoInfraVermelho($(this));
   });
 
 }).on("click", "tr[data-href] td", function(e) {
@@ -62,16 +62,17 @@ function atualizaMode(){
   });
 }
 
-function comandoInfraVermelho(){
-  var botaoDesliga = document.getElementById('botao-power');
-  var topico = botaoDesliga.getAttribute("data-topico");
-  var componente = botaoDesliga.getAttribute("data-componente");
-  var acao = botaoDesliga.getAttribute("data-acao");
-
+function comandoInfraVermelho(element){
+  console.log(element[0].id);
+  var botaoComandoInfraVermelho = document.getElementById(element[0].id);
+  var topico       = botaoComandoInfraVermelho.getAttribute("data-topico");
+  var componente   = botaoComandoInfraVermelho.getAttribute("data-componente");
+  var acao         = botaoComandoInfraVermelho.getAttribute("data-acao");
+  console.log("http://localhost:3000/api/componentes/publish?topico=" +topico+"&acao="+acao+"&componente="+componente);
   $.ajax({
     type: "POST",
     dataType: "json",
-    url: "http://localhost:3000/api/componentes/publish?topico=" +topico+"&mode="+acao+"&componente="+componente
+    url: "http://localhost:3000/api/componentes/publish?topico=" +topico+"&acao="+acao+"&componente="+componente
   });
   window.location.reload();
 }
