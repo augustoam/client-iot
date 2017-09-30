@@ -20,6 +20,10 @@
   <%= @componente.controle_componente.descricao %>
 </div>
 <div class="row">
+  <b><%= Componente.human_attribute_name(:comando_unico) %></b>
+  <%= @componente.comando_unico %>
+</div>
+<div class="row">
   <b><%= Componente.human_attribute_name(:created_at) %></b>
   <%= ltime @componente.created_at %>
 </div>

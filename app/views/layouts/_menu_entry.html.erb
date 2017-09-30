@@ -8,11 +8,11 @@
   <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
       <li>
-        <a class="collapsible-header grey-text text-darken-1"><%= grupo.grupo.nome %><i class="material-icons"></i></a>
+        <a class="collapsible-header white-text "><%= grupo.grupo.nome %><i class="material-icons"></i></a>
         <% grupo.grupo.ambientes.each do |ambiente| %>
-        <div class="collapsible-body">
+        <div class="collapsible-body grey darken-3">
           <ul>
-              <li><%= link_to ambiente.nome, grupo_ambiente_componentes_path(grupo, ambiente) %></li>
+            <li><%= link_to ambiente.nome, grupo_ambiente_componentes_path(grupo, ambiente), class: "white-text" %></li>
           </ul>
         </div>
         <% end %>
