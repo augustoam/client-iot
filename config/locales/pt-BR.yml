@@ -47,6 +47,9 @@ pt-BR:
       do_edit: 'Edição'
       save: 'Salvar'
       login: 'Login'
+      send_instruction: 'Enviar instruções para redefinição da senha'
+      change_password: 'Atualizar senha'
+      resend_confirmation_instructions: 'Reenviar instruções'
   time:
     formats:
       data_hora: "%d/%b/%Y %H:%M"
