@@ -15,10 +15,6 @@
   <main>
     <%= render 'layouts/topnavbar_admin' %>
 
-    <% unless current_page?(admin_session_path) %>
-      <div class="container">
-    <% end %>
-
     <% if current_admin && !current_page?(admin_home_admin_index_path) %>
       <div class="row" style="margin-top: 10px;">
         <nav class="grey lighten-1">
@@ -40,10 +36,6 @@
     <% end %>
 
     <%= yield %>
-
-    <% unless current_page?(admin_session_path) %>
-      </div>
-    <% end %>
   </main>
 </body>
 </html>
