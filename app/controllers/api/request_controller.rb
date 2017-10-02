@@ -1,8 +1,8 @@
 class Api::RequestController < ActionController::API
-  include ActionController::HttpAuthentication::Basic::ControllerMethods
+  #include ActionController::HttpAuthentication::Basic::ControllerMethods
   include MqttBroker
-  http_basic_authenticate_with name: "augusto.albertoni@gmail.com", password: "amendoim"
-  before_action :user_name_and_password
+  #http_basic_authenticate_with name: "augusto.albertoni@gmail.com", password: "amendoim"
+  #before_action :user_name_and_password
   def google_api_request
     device   = params[:result][:parameters][:device]
     location = params[:result][:parameters][:location]
