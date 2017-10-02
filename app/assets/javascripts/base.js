@@ -4,6 +4,11 @@ $(document).on('turbolinks:load', function() {
     this.progressBarTimeout = setTimeout(this.showProgressBar, 100);
   };
 
+  $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+
   $('#msg-close').on('click', function(){
     document.getElementById("msg-hide").style.display = "none";
   });
@@ -63,12 +68,11 @@ function atualizaMode(){
 }
 
 function comandoInfraVermelho(element){
-  console.log(element[0].id);
   var botaoComandoInfraVermelho = document.getElementById(element[0].id);
   var topico       = botaoComandoInfraVermelho.getAttribute("data-topico");
   var componente   = botaoComandoInfraVermelho.getAttribute("data-componente");
   var acao         = botaoComandoInfraVermelho.getAttribute("data-acao");
-  console.log("http://localhost:3000/api/componentes/publish?topico=" +topico+"&acao="+acao+"&componente="+componente);
+
   $.ajax({
     type: "POST",
     dataType: "json",

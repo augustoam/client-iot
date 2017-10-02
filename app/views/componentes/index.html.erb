@@ -9,7 +9,7 @@
         <div class="col s12 center-align" style="margin-top:2px;">
           <b><%= componente.descricao %></b>
           <% if componente.comando_unico %>
-            <i class="small material-icons yellow-text secondary-content">color_lens</i>
+            <a class="modal-trigger" href="#modal1"><i class="small material-icons yellow-text secondary-content">color_lens</i></a>
           <% end %>
         </div>
         <% if componente.comando_unico %>
@@ -38,4 +38,14 @@
       </div>
     </div>
   <% end %>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h4>Selecione a cor</h4>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
 </div>
