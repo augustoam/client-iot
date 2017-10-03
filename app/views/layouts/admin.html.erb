@@ -15,27 +15,29 @@
   <main>
     <%= render 'layouts/topnavbar_admin' %>
 
-    <% if current_admin && !current_page?(admin_home_admin_index_path) %>
-      <div class="row" style="margin-top: 10px;">
-        <nav class="grey lighten-1">
-          <div class="nav-wrapper">
-            <div class="col s12" style="margin-left: 10px;">
-              <%= breadcrumbs class: "breadcrumb cyan-text text-darken-2" %>
+    <div class="container">
+      <% if current_admin && !current_page?(admin_home_admin_index_path) %>
+        <div class="row" style="margin-top: 10px;">
+          <nav class="grey lighten-1">
+            <div class="nav-wrapper">
+              <div class="col s12" style="margin-left: 10px;">
+                <%= breadcrumbs class: "breadcrumb cyan-text text-darken-2" %>
+              </div>
             </div>
-          </div>
-        </nav>
-      </div>
-    <% end %>
+          </nav>
+        </div>
+      <% end %>
 
-    <% if notice.present? %>
-      <div class="notice" data-msg="<%= notice %>"></div>
-    <% end %>
+      <% if notice.present? %>
+        <div class="notice" data-msg="<%= notice %>"></div>
+      <% end %>
 
-    <% if alert.present? %>
-      <div class="notice" data-msg="<%= alert %>"></div>
-    <% end %>
+      <% if alert.present? %>
+        <div class="notice" data-msg="<%= alert %>"></div>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </main>
 </body>
 </html>

@@ -3,7 +3,7 @@ class ComponentesController < ApplicationController
   before_action :set_componente, only: [:show, :edit, :update, :destroy]
 
   def index
-    @componentes = @ambiente.componentes.all
+    @componentes = @ambiente.componentes.all.order(:id)
   end
 
   def show
