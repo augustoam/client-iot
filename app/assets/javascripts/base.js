@@ -32,10 +32,6 @@ $(document).on('turbolinks:load', function() {
 
   $('.notice').each(notice);
 
-  $('#switch-mode').change(function(){
-    atualizaMode();
-  });
-
   $('.botao-infra-vermelho').click(function(){
     comandoInfraVermelho($(this));
   });
@@ -68,15 +64,25 @@ function atualizaMode(){
 }
 
 function comandoInfraVermelho(element){
+
   var botaoComandoInfraVermelho = document.getElementById(element[0].id);
   var topico       = botaoComandoInfraVermelho.getAttribute("data-topico");
   var componente   = botaoComandoInfraVermelho.getAttribute("data-componente");
   var acao         = botaoComandoInfraVermelho.getAttribute("data-acao");
+
+
+  if ((element[0].id).indexOf('switch') !== -1) {
+    if (botaoComandoInfraVermelho.checked) {
+      acao = 'power-on';
+    } else {
+      acao = 'power-off';
+    }
+  }
 
   $.ajax({
     type: "POST",
     dataType: "json",
     url: "http://localhost:3000/api/componentes/publish?topico=" +topico+"&acao="+acao+"&componente="+componente
   });
-  window.location.reload();
+  //window.location.reload();
 }

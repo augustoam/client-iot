@@ -1,0 +1,19 @@
+<div class="z-depth-5 white-text card-componente grey darken-4">
+  <div class="col s12 center-align" style="margin-top:2px;">
+    <b><%= componente.descricao %></b>
+  </div>
+  <div class="center-align">
+    <div class="switch">
+      <label>
+        Off
+        <% if componente.estado %>
+          <input type="checkbox" id="switch-mode" data-comp="<%=componente.id%>" data-topico="<%=componente.topico%>" checked>
+        <% else %>
+          <input type="checkbox" id="switch-mode" data-comp="<%=componente.id%>" data-topico="<%=componente.topico%>" unchecked>
+        <% end %>
+        <span class="lever"></span>
+        On
+      </label>
+    </div>
+  </div>
+</div>
