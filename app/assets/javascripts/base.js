@@ -4,6 +4,10 @@ $(document).on('turbolinks:load', function() {
     this.progressBarTimeout = setTimeout(this.showProgressBar, 100);
   };
 
+  $('.teste').minicolors({
+
+  });
+
   $(document).ready(function(){
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
@@ -70,7 +74,6 @@ function comandoInfraVermelho(element){
   var componente   = botaoComandoInfraVermelho.getAttribute("data-componente");
   var acao         = botaoComandoInfraVermelho.getAttribute("data-acao");
 
-
   if ((element[0].id).indexOf('switch') !== -1) {
     if (botaoComandoInfraVermelho.checked) {
       acao = 'power-on';
@@ -83,6 +86,7 @@ function comandoInfraVermelho(element){
     type: "POST",
     dataType: "json",
     url: "http://localhost:3000/api/componentes/publish?topico=" +topico+"&acao="+acao+"&componente="+componente
+  }).done(function() {
+    window.location.reload();
   });
-  //window.location.reload();
 }

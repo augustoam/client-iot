@@ -9,9 +9,9 @@
       <label>
         Off
         <% if componente.estado %>
-          <input type="checkbox" id="switch" class="botao-infra-vermelho" data-componente="<%=componente.id%>" data-topico="<%=componente.topico%>" checked>
+          <input type="checkbox" id="switch-<%= componente.descricao %><%= componente.id %>" class="botao-infra-vermelho" data-componente="<%=componente.id%>" data-topico="<%=componente.topico%>" checked>
         <% else %>
-          <input type="checkbox" id="switch" class="botao-infra-vermelho" data-componente="<%=componente.id%>" data-topico="<%=componente.topico%>" unchecked>
+          <input type="checkbox" id="switch-<%= componente.descricao %><%= componente.id %>" class="botao-infra-vermelho" data-componente="<%=componente.id%>" data-topico="<%=componente.topico%>" unchecked>
         <% end %>
         <span class="lever"></span>
         On
@@ -24,9 +24,10 @@
 </div>
 
 <!-- Modal Structure -->
-<div id="modal1" class="modal">
+<div id="modal1" class="modal" style="height: 600px;">
   <div class="modal-content">
     <h4>Selecione a cor</h4>
+    <input type="text" class="teste" data-control="wheel"></input>
   </div>
   <div class="modal-footer">
     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>

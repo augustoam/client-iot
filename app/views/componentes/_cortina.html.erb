@@ -5,14 +5,14 @@
   <div class="center-align">
     <div class="switch">
       <label>
-        Off
+        Fechar
         <% if componente.estado %>
-          <input type="checkbox" id="switch-mode" data-comp="<%=componente.id%>" data-topico="<%=componente.topico%>" checked>
+          <input type="checkbox" id="switch-<%= componente.descricao %><%= componente.id %>" class="botao-infra-vermelho" data-componente="<%=componente.id%>" data-topico="<%=componente.topico%>" checked>
         <% else %>
-          <input type="checkbox" id="switch-mode" data-comp="<%=componente.id%>" data-topico="<%=componente.topico%>" unchecked>
+          <input type="checkbox" id="switch-<%= componente.descricao %><%= componente.id %>" class="botao-infra-vermelho" data-componente="<%=componente.id%>" data-topico="<%=componente.topico%>" unchecked>
         <% end %>
         <span class="lever"></span>
-        On
+        Abrir
       </label>
     </div>
   </div>
