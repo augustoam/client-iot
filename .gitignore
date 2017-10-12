@@ -12,7 +12,7 @@
 !/tmp/.keep
 /.vagrant
 /coverage
-
+/config/datasource.yml
 # Assets
 /public/assets
 /public/helpdesk/assets
