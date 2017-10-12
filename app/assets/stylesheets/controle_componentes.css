@@ -10,17 +10,27 @@
 .card-color {
   text-transform: uppercase;
   width: 100%;
-  height: 100px;
 }
+
+.card-color:hover {
+  opacity: 0.8;
+}
+
 @media(max-width: 600px){
   .card-componente{
     height: 100px;
+  }
+  .card-color {
+    height: 45px;
   }
 }
 
 @media(min-width: 600px){
   .card-componente{
     height: 80px;
+  }
+  .card-color {
+    height: 85px;
   }
 }
 
