@@ -4,9 +4,6 @@ $(document).on('turbolinks:load', function() {
     this.progressBarTimeout = setTimeout(this.showProgressBar, 100);
   };
 
-  $('.teste').minicolors({
-
-  });
 
   $(document).ready(function(){
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered

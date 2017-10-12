@@ -11,8 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require jquery.minicolors
 //= require turbolinks
 //= require materialize-sprockets
 //= require materialize-form
