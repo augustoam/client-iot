@@ -4,9 +4,9 @@
     <a class="modal-trigger" href="#modal1"><i class="small material-icons yellow-text secondary-content">color_lens</i></a>
   </div>
 
-  <div class="col s4  offset-s1">
+  <div class="col m4 s12 center-align">
     <div class="switch">
-      <label>
+      <label style="font-size:9px;">
         Off
         <% if componente.estado %>
           <input type="checkbox" id="switch-<%= componente.descricao %><%= componente.id %>" class="botao-infra-vermelho" data-componente="<%=componente.id%>" data-topico="<%=componente.topico%>" checked>
@@ -18,7 +18,7 @@
       </label>
     </div>
   </div>
-  <div class="col s6">
+  <div class="col m7 s10 offset-s1 center-align">
     <input type="range" id="test5" min="0" max="100" />
   </div>
 </div>
