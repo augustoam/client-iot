@@ -190,7 +190,11 @@
 
     <!-- Botão de flecha teclado -->
     <div class="col s4">
-      <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
+      <label class="z-depth-5 btn-floating btn waves-effect waves-light grey" for="numeric-keyboard">
+        <i class="large material-icons">keyboard</i>
+      </label>
+      <input type="tel" id="numeric-keyboard" name="numeric-keyboard" class="grey botao-infra-vermelho" maxlength="3" autocomplete="off">
+      <!--<%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
                       id: "comando-infra-vermelho-volume-down",
                       data: {
                              componente: componente.id,
@@ -198,7 +202,7 @@
                              acao: "volume-down"
                             } do %>
          <i class="large material-icons">keyboard</i>
-      <% end %>
+      <% end %>-->
     </div>
   </div>
 </div>
