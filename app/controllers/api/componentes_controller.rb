@@ -3,6 +3,8 @@ class Api::ComponentesController < ActionController::API
 
   def publish
     componente = Componente.find(params[:componente])
+    LogComponente.create!(comando: params[:acao], componente: componente, grupo: componente.ambiente.grupo, usuario: current_usuario)
+
     if params[:acao].include? "off" or params[:acao].include? "on"
       if params[:acao].include? 'off'
         estado = false

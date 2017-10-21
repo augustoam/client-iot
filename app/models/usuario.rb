@@ -2,6 +2,7 @@ class Usuario < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :grupos_usuarios, dependent: :destroy
   has_many :grupos, through: :grupos_usuarios
+  has_many :log_componentes
 
   validates :email, presence: true, format: { with: Devise::email_regexp }
 
