@@ -7,8 +7,6 @@ Rails.application.routes.draw do
    confirmations: 'confirmations'
   }
   as :usuario do
-    #get 'usuarios/edit' => 'devise/registrations#edit', :as => 'edit_usuario_registration'
-   # put 'usuarios' => 'devise/registrations#update', :as => 'usuario_registration'
     patch "/confirm" => "confirmations#confirm"
   end
 

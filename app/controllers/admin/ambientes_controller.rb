@@ -51,6 +51,6 @@ class Admin::AmbientesController < ApplicationController
     end
 
     def ambiente_params
-      params.require(:ambiente).permit(:nome, :grupo_id)
+      params.require(:ambiente).permit(:nome, :icone, :grupo_id)
     end
 end

@@ -26,4 +26,8 @@ class HomeController < ApplicationController
     redirect_to root_url
   end
 
+  def console
+    @grupos_usuario = GrupoUsuario.where(usuario_id: current_usuario)
+  end
+
 end

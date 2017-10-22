@@ -22,6 +22,18 @@ h4 {
   font-weight: bold !important;
 }
 
+@media(max-width: 800px){
+  .container {
+    width: 100% !important;
+  }
+}
+
+@media(min-width: 800px){
+  .container {
+    width: 85% !important;
+  }
+}
+
 .thumb {
   visibility: hidden;
 }

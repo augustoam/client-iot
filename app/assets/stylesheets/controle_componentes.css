@@ -5,6 +5,7 @@
   transition: 0.3s;
   width: 100%;
   height: 100px;
+  border-radius: 5px;
 }
 
 .card-color {
@@ -21,7 +22,7 @@
     height: 100px;
   }
   .card-color {
-    height: 70px;  
+    height: 70px;
   }
 }
 

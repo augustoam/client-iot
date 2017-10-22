@@ -12,6 +12,10 @@
   <%= @ambiente.nome %>
 </div>
 <div class="row">
+  <b><%= Ambiente.human_attribute_name(:icone) %></b>
+  <%= @ambiente.icone %>
+</div>
+<div class="row">
   <b><%= Ambiente.human_attribute_name(:created_at) %></b>
   <%= ltime @ambiente.created_at %>
 </div>
