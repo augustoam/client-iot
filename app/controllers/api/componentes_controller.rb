@@ -2,6 +2,7 @@ class Api::ComponentesController < ActionController::API
   include MqttBroker
 
   def publish
+    puts params
     componente = Componente.find(params[:componente])
     LogComponente.create!(comando: params[:acao], componente: componente, grupo: componente.ambiente.grupo, usuario: current_usuario)
 

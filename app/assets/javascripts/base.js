@@ -82,10 +82,12 @@ function comandoInfraVermelho(element){
     }
   }
 
+
   var vData = {topico:topico, acao:acao, componente:componente};
+  console.log('publish: ' + vData);
   $.post({
     data: vData,
-    url: "/api/componentes/publish" //+topico+"&acao="+acao+"&componente="+componente
+    url: "/api/componentes/publish"
   }).done(function() {
     window.location.reload();
   });
