@@ -85,7 +85,7 @@ function comandoInfraVermelho(element){
   $.ajax({
     type: "POST",
     dataType: "json",
-    url: "http://client-iot.herokuapp.com/api/componentes/publish?topico=" +topico+"&acao="+acao+"&componente="+componente
+    url: "https://client-iot.herokuapp.com/api/componentes/publish?topico=" +topico+"&acao="+acao+"&componente="+componente
   }).done(function() {
     window.location.reload();
   });
