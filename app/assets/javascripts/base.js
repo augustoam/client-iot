@@ -82,11 +82,18 @@ function comandoInfraVermelho(element){
     }
   }
 
-  $.ajax({
-    type: "POST",
-    dataType: "json",
-    url: "https://client-iot.herokuapp.com/api/componentes/publish?topico=" +topico+"&acao="+acao+"&componente="+componente
+  var vData = {topico:topico, acao:acao, componente:componente};
+  $.post({
+    data: vData,
+    url: "/api/componentes/publish" //+topico+"&acao="+acao+"&componente="+componente
   }).done(function() {
     window.location.reload();
   });
+  // $.post({
+  //   type: "POST",
+  //   dataType: "json",
+  //   url: "https://client-iot.herokuapp.com/api/componentes/publish?topico=" +topico+"&acao="+acao+"&componente="+componente
+  // }).done(function() {
+  //   window.location.reload();
+  // });
 }
