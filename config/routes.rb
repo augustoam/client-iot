@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :componentes
   root 'home#index'
 
+  mount ActionCable.server => '/cable'
+
   devise_for :usuarios, controllers: {
    confirmations: 'confirmations'
   }
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
     end
     namespace :componentes do
       post :publish
+      post :recebe_estado
     end
   end
 

@@ -1,95 +1,38 @@
-<div class="z-depth-5 white-text card-componente grey darken-4">
-  <div class="col s12 center-align" style="margin-top:2px;">
-    <b><%= componente.descricao %></b>
+<div class="componente luz">
+  <div class="z-depth-5 white-text card-componente grey darken-4">
+    <div class="col s12 center-align" style="margin-top:2px;">
+      <b><%= componente.descricao %></b>
+    </div>
+
+    <div class="col m1 s3 center-align">
+      <a class="modal-trigger" href="#modal1"><i class="small material-icons yellow-text secondary-content">color_lens</i></a>
+    </div>
+
+    <div class="col m4 s8 offset-s1 center-align">
+      <div class="switch">
+        <label style="font-size:9px;">
+          Off
+          <% if componente.estado %>
+            <input type="checkbox" id="switch-<%= componente.descricao %><%= componente.id %>" class="botao-infra-vermelho" data-componente="<%=componente.id%>" data-topico="<%=componente.topico%>" checked>
+          <% else %>
+            <input type="checkbox" id="switch-<%= componente.descricao %><%= componente.id %>" class="botao-infra-vermelho" data-componente="<%=componente.id%>" data-topico="<%=componente.topico%>" unchecked>
+          <% end %>
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
+    </div>
+
+    <div class="col m6 s10 offset-s1 center-align">
+      <input type="range" id="test5" min="0" max="100" />
+    </div>
+
   </div>
 
-  <div class="col m1 s3 center-align">
-    <a class="modal-trigger" href="#modal1"><i class="small material-icons yellow-text secondary-content">color_lens</i></a>
-  </div>
-
-  <div class="col m4 s8 offset-s1 center-align">
-    <div class="switch">
-      <label style="font-size:9px;">
-        Off
-        <% if componente.estado %>
-          <input type="checkbox" id="switch-<%= componente.descricao %><%= componente.id %>" class="botao-infra-vermelho" data-componente="<%=componente.id%>" data-topico="<%=componente.topico%>" checked>
-        <% else %>
-          <input type="checkbox" id="switch-<%= componente.descricao %><%= componente.id %>" class="botao-infra-vermelho" data-componente="<%=componente.id%>" data-topico="<%=componente.topico%>" unchecked>
-        <% end %>
-        <span class="lever"></span>
-        On
-      </label>
-    </div>
-  </div>
-
-  <div class="col m6 s10 offset-s1 center-align">
-    <input type="range" id="test5" min="0" max="100" />
-  </div>
-
-</div>
-
-<!-- Modal Structure -->
-<div id="modal1" class="modal grey" style="height: 600px;">
-  <div class="modal-content">
-    <div class="col s3">
-      <div class="turquoise card-color"></div>
-    </div>
-    <div class="col s3 card-color">
-      <div class="emerland card-color"></div>
-    </div>
-    <div class="col s3 card-color">
-      <div class="peterriver card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="amethyst card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="wetasphalt card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="greensea card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="nephritis card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="belizehole card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="wisteria card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="midnightblue card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="sunflower card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="carrot card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="alizarin card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="clouds card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="concrete card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="orange card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="pumpkin card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="pomegranate card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="silver card-color"></div>
-    </div>
-    <div class="col s3">
-      <div class="asbestos card-color"></div>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet" style="height: 600px;">
+    <div class="modal-content" style="width: 100%">
+      <canvas id='colorspace'></canvas>
     </div>
   </div>
 </div>

@@ -27,6 +27,7 @@
         <th><%= Componente.human_attribute_name(:topico) %></th>
         <th><%= Componente.human_attribute_name(:comando_unico) %></th>
         <th><%= Componente.human_attribute_name(:controle_componente) %></th>
+        <th><%= Componente.human_attribute_name(:identificador_componente) %></th>
         <th><%= Componente.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>
       </tr>
@@ -40,6 +41,7 @@
           <td><%= componente.topico %></td>
           <td><%= componente.comando_unico %></td>
           <td><%= componente.controle_componente.descricao %></td>
+          <td><%= componente.identificador_componente %></td>
           <td><%= ltime componente.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_componente_path(componente))%></td>
           <td><%= link_icon_to_destroy(admin_componente_path(componente)) %></td>

@@ -4,6 +4,8 @@ class Componente < ApplicationRecord
   has_many :comandos_infra_vermelhos
   has_many :log_componentes
 
+  after_save { ComponenteBroadcastJob.perform_later self }
+
   def to_s
     "#{descricao}"
   end

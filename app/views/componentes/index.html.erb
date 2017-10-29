@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row"  id="componente">
   <% @componentes.each do |componente| %>
     <div class="container">
       <%= render partial: "componentes/#{componente.controle_componente.descricao.downcase}", locals: {componente: componente} %>

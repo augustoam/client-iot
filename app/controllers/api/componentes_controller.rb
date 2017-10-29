@@ -2,7 +2,6 @@ class Api::ComponentesController < ActionController::API
   include MqttBroker
 
   def publish
-    puts params
     componente = Componente.find(params[:componente])
     LogComponente.create!(comando: params[:acao], componente: componente, grupo: componente.ambiente.grupo, usuario: current_usuario)
 
@@ -12,9 +11,17 @@ class Api::ComponentesController < ActionController::API
       else
         estado = true
       end
-      componente.update(estado: estado)
+      componente.update!(estado: estado)
     end
 
     publish_mqtt(params[:topico], params[:acao])
+  end
+
+  def recebe_estado
+    estado = false
+    estado = true  if params[:estado] == 'ligar'
+
+    componente = Componente.find_by(identificador_componente: params[:identificador_componente])
+    componente.update!(estado: estado)
   end
 end
