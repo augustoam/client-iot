@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function() {
   };
 
 
-  $(document).ready(function(){
+  $(document).ready(function() {
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
 
@@ -13,30 +13,32 @@ $(document).on('turbolinks:load', function() {
     $('select').material_select();
   });
 
-  $('#msg-close').on('click', function(){
+  $('#msg-close').on('click', function() {
     document.getElementById("msg-hide").style.display = "none";
   });
 
-  $('#numeric-keyboard').on('focus', function(){
+  $('#numeric-keyboard').on('focus', function() {
     document.getElementById("numeric-keyboard").value = "";
   });
 
   $(".button-collapse").sideNav({
-      menuWidth: 300, // Default is 300
-      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      draggable: true
-    }
-  );
+    menuWidth: 300, // Default is 300
+    closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: true
+  });
 
   $('.dropdown-button').dropdown({
-      constrainWidth: false, // Does not change width of dropdown to that of the activator
-      belowOrigin: true
-    }
-  );
+    constrainWidth: false, // Does not change width of dropdown to that of the activator
+    belowOrigin: true
+  });
 
   $('.notice').each(notice);
 
-  $('.botao-infra-vermelho').click(function(){
+  $('.botao-infra-vermelho').click(function() {
+    comandoInfraVermelho($(this));
+  });
+
+  $('.card-color').click(function() {
     comandoInfraVermelho($(this));
   });
 
@@ -48,13 +50,13 @@ $(document).on('turbolinks:load', function() {
   Turbolinks.visit($(this).data("href"));
 });
 
-function notice(){
+function notice() {
   var msg = $(this).data().msg;
   console.log(msg);
   Materialize.toast(msg, 4000)
 }
 
-function atualizaMode(){
+function atualizaMode() {
   var switch_mode = document.getElementById('switch-mode');
   var mode = switch_mode.checked;
   var topico = switch_mode.getAttribute("data-topico");
@@ -63,16 +65,15 @@ function atualizaMode(){
   $.ajax({
     type: "POST",
     dataType: "json",
-    url: "http://client-iot.herokuapp.com/api/componentes/publish?topico=" +topico+"&mode="+mode+"&componente="+componente
+    url: "http://client-iot.herokuapp.com/api/componentes/publish?topico=" + topico + "&mode=" + mode + "&componente=" + componente
   });
 }
 
-function comandoInfraVermelho(element){
-
+function comandoInfraVermelho(element) {
   var botaoComandoInfraVermelho = document.getElementById(element[0].id);
-  var topico       = botaoComandoInfraVermelho.getAttribute("data-topico");
-  var componente   = botaoComandoInfraVermelho.getAttribute("data-componente");
-  var acao         = botaoComandoInfraVermelho.getAttribute("data-acao");
+  var topico = botaoComandoInfraVermelho.getAttribute("data-topico");
+  var componente = botaoComandoInfraVermelho.getAttribute("data-componente");
+  var acao = botaoComandoInfraVermelho.getAttribute("data-acao");
 
   if ((element[0].id).indexOf('switch') !== -1) {
     if (botaoComandoInfraVermelho.checked) {
@@ -82,8 +83,12 @@ function comandoInfraVermelho(element){
     }
   }
 
-  var vData = {topico:topico, acao:acao, componente:componente};
-  console.log('publish topico:' + topico + ' componente:' + componente);
+  var vData = {
+    topico: topico,
+    acao: acao,
+    componente: componente
+  };
+  console.log('publish topico:' + topico + ' componente:' + componente + ' acao:' + acao);
   $.post({
     data: vData,
     url: "/api/componentes/publish"
