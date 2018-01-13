@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
-
   resources :componentes
   root 'home#index'
 
   mount ActionCable.server => '/cable'
 
   devise_for :usuarios, controllers: {
-   confirmations: 'confirmations'
+    confirmations: 'confirmations'
   }
   as :usuario do
-    patch "/confirm" => "confirmations#confirm"
+    patch '/confirm' => 'confirmations#confirm'
   end
 
   devise_for :admin, controllers: {
@@ -68,4 +67,13 @@ Rails.application.routes.draw do
     post :mode_off
   end
 
+  require 'sidekiq/web'
+  require 'sidekiq-scheduler/web'
+  if Rails.env.production?
+    Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+      ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_USERNAME'])) &
+        ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_PASSWORD']))
+    end
+  end
+  mount Sidekiq::Web, at: '/filas'
 end

@@ -1,20 +1,19 @@
 class ComponentesController < ApplicationController
-  before_action :set_ambiente, only: [:index, :new, :create]
-  before_action :set_componente, only: [:show, :edit, :update, :destroy]
+  include MqttBroker
+  before_action :set_ambiente, only: %i[index new create]
+  before_action :set_componente, only: %i[show edit update destroy]
 
   def index
     @componentes = @ambiente.componentes.all.order(:id)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @componente = Componente.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @componente = Componente.new(componente_params)
@@ -51,15 +50,16 @@ class ComponentesController < ApplicationController
   end
 
   private
-    def set_componente
-      @componente = Componente.find(params[:id])
-    end
 
-    def set_ambiente
-      @ambiente = Ambiente.find(params[:ambiente_id])
-    end
+  def set_componente
+    @componente = Componente.find(params[:id])
+  end
 
-    def componente_params
-      params.require(:componente).permit(:descricao, :topico, :ambiente_id)
-    end
+  def set_ambiente
+    @ambiente = Ambiente.find(params[:ambiente_id])
+  end
+
+  def componente_params
+    params.require(:componente).permit(:descricao, :topico, :ambiente_id)
+  end
 end

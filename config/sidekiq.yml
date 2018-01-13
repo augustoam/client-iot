@@ -1,0 +1,9 @@
+---
+:concurrency: 4
+:verbose:     true
+:queues:
+  - [critical, 4]
+  - [important, 3]
+  - [other, 2]
+  - [default, 1]
+  - [mailers, 0]
