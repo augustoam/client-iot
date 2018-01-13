@@ -1,11 +1,10 @@
 development:
-  adapter:        redis
-  url:            redis://localhost:6379/1
+  adapter:   redis
+  url:       redis://localhost:6379/1
 
 test:
-  adapter:        async
+  adapter:   async
 
 production:
-  adapter:        redis
-  url:            redis://localhost:6379/1
-  channel_prefix: augusto-client-web_production
+  adapter:   redis
+  url:       redis://redistogo:0213bb6565ae97bb8f77e34624efef83@grouper.redistogo.com:11908/
