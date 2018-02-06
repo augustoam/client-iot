@@ -1,10 +1,13 @@
 class Componente < ApplicationRecord
-  belongs_to :ambiente
-  belongs_to :controle_componente
-  has_many :comandos_infra_vermelhos
+  belongs_to :fabricante
+  belongs_to :controle
+  belongs_to :layout_controle
   has_many :log_componentes
 
-  after_save { ComponenteBroadcastJob.perform_later self }
+  validates :controle, presence: :true
+  validates :fabricante, presence: :true
+  validates :layout_controle, presence: :true
+  validates :descricao, presence: :true
 
   def to_s
     descricao.to_s

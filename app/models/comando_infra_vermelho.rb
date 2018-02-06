@@ -1,7 +1,7 @@
 class ComandoInfraVermelho < ApplicationRecord
-  belongs_to :componente
+  belongs_to :controle
 
   def to_s
-    "#{comando}"
+    comando.to_s
   end
 end

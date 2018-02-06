@@ -1,38 +1,38 @@
 <% breadcrumb :componente, @componente %>
-<div class="row">
-  <h3><%= singular_model_name_for(Componente) %></h3>
-</div>
+  <div class="row">
+    <h3><%= singular_model_name_for(Componente) %></h3>
+  </div>
 
-<div class="row">
-  <b><%= Componente.human_attribute_name(:id) %></b>
-  <%= @componente.id %>
-</div>
-<div class="row">
-  <b><%= Componente.human_attribute_name(:descricao) %></b>
-  <%= @componente.descricao %>
-</div>
-<div class="row">
-  <b><%= Componente.human_attribute_name(:topico) %></b>
-  <%= @componente.topico %>
-</div>
-<div class="row">
-  <b><%= Componente.human_attribute_name(:controle_componente) %></b>
-  <%= @componente.controle_componente.descricao %>
-</div>
-<div class="row">
-  <b><%= Componente.human_attribute_name(:identificador_componente) %></b>
-  <%= @componente.identificador_componente %>
-</div>
-<div class="row">
-  <b><%= Componente.human_attribute_name(:comando_unico) %></b>
-  <%= @componente.comando_unico %>
-</div>
-<div class="row">
-  <b><%= Componente.human_attribute_name(:created_at) %></b>
-  <%= ltime @componente.created_at %>
-</div>
+  <div class="row">
+    <b><%= Componente.human_attribute_name(:id) %></b>
+    <%= @componente.id %>
+  </div>
+  <div class="row">
+    <b><%= Componente.human_attribute_name(:descricao) %></b>
+    <%= @componente.descricao %>
+  </div>
+  <div class="row">
+    <b><%= Componente.human_attribute_name(:fabricante) %></b>
+    <%= @componente.fabricante %>
+  </div>
+  <div class="row">
+    <b><%= Componente.human_attribute_name(:modelo) %></b>
+    <%= @componente.modelo %>
+  </div>
+  <div class="row">
+    <b><%= Componente.human_attribute_name(:controle) %></b>
+    <%= @componente.controle.descricao %>
+  </div>
+  <div class="row">
+    <b><%= Componente.human_attribute_name(:layout_controle) %></b>
+    <%= @componente.layout_controle.descricao %>
+  </div>
+  <div class="row">
+    <b><%= Componente.human_attribute_name(:created_at) %></b>
+    <%= ltime @componente.created_at %>
+  </div>
 
-<div class="row">
-  <%= link_icon_to_back admin_ambiente_componentes_path(@ambiente) %>
-  <%= link_icon_to_edit(edit_admin_componente_path(@componente))%>
-</div>
+  <div class="row">
+    <%= link_icon_to_back admin_componentes_path %>
+    <%= link_icon_to_edit(edit_admin_componente_path(@componente))%>
+  </div>

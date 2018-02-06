@@ -1,6 +1,7 @@
 <% breadcrumb :componente_edit, @componente %>
-<div class="row">
-	<h3><%= action_edit(@componente) %> <%= singular_model_name_for(Componente) %></h3>
-</div>
+	<div class="row">
+		<h3><%= action_edit(@componente) %>
+			<%= singular_model_name_for(Componente) %></h3>
+	</div>
 
-<%= render 'form', componente: @componente %>
+	<%= render 'form', componente: @componente %>

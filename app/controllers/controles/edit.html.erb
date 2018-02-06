@@ -1,0 +1,7 @@
+<% breadcrumb :controle_edit, @controle %>
+	<div class="row">
+		<h3><%= action_edit(@controle) %>
+			<%= singular_model_name_for(Controle) %></h3>
+	</div>
+
+	<%= render 'form', controle: @controle %>

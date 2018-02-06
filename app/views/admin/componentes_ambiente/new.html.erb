@@ -1,0 +1,7 @@
+<% breadcrumb :componente_ambiente_new, @ambiente %>
+	<div class="row">
+		<h3><%= action_new(@componente_ambiente) %>
+			<%= singular_model_name_for(ComponenteAmbiente) %></h3>
+	</div>
+
+	<%= render 'form', componente_ambiente: @componente_ambiente %>

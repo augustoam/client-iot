@@ -1,10 +1,11 @@
 <% breadcrumb :ambientes, @grupo %>
-<div class="row">
-  <h3><%= plural_model_name_for(Ambiente) %> <%= singular_model_name_for(Grupo) %></h3>
-</div>
+  <div class="row">
+    <h3><%= plural_model_name_for(Ambiente) %>
+      <%= singular_model_name_for(Grupo) %></h3>
+  </div>
 
-<div class="row">
-  <%= search_form_for @q, url: admin_grupo_ambientes_path do |f| %>
+  <div class="row">
+    <%= search_form_for @q, url: admin_grupo_ambientes_path do |f| %>
 
     <div class="col s11">
       <%= f.search_field :nome_cont, class: "form-control", placeholder: "Pesquisar Ambientes" %>
@@ -37,7 +38,7 @@
           <td><%= ltime ambiente.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_ambiente_path(ambiente))%></td>
           <td><%= link_icon_to_destroy(admin_ambiente_path(ambiente)) %></td>
-          <td><%= link_to 'Componentes', admin_ambiente_componentes_path(ambiente), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
+          <td><%= link_to 'Componentes', admin_ambiente_componentes_ambiente_path(ambiente), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
         </tr>
       <% end %>
     </tbody>

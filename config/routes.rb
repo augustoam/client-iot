@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   resources :grupos do
     resources :usuarios
     resources :ambientes do
-      resources :componentes, shallow: true do
-        resources :comandos_infra_vermelhos, shallow: true
+      resources :componentes_ambiente, shallow: true do
+        resources :layout_controles, shallow: true
       end
     end
   end
@@ -45,6 +45,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :home_admin
     resources :administrador
+    resources :fabricantes
+    resources :componentes
+    resources :layout_controles
     resources :usuarios do
       get :index_all, on: :collection
     end
@@ -53,12 +56,12 @@ Rails.application.routes.draw do
         get :remover, on: :member
       end
       resources :ambientes, shallow: true do
-        resources :componentes, shallow: true do
-          resources :comandos_infra_vermelhos, shallow: true
-        end
+        resources :componentes_ambiente
       end
     end
-    resources :controles_componentes
+    resources :controles do
+      resources :comandos_infra_vermelhos, shallow: true
+    end
   end
 
   namespace :home do

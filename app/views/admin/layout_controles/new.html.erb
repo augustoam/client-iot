@@ -1,0 +1,8 @@
+<% breadcrumb :layout_controle_new %>
+
+	<div class="row">
+		<h3><%= action_new(@layout_controle) %>
+			<%= singular_model_name_for(LayoutControle) %></h3>
+	</div>
+
+	<%= render 'form', layout_controle: @layout_controle %>

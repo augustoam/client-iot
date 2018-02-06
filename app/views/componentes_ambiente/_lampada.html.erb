@@ -1,0 +1,23 @@
+<div class="componente_ambiente luz">
+  <div class="z-depth-5 white-text card-componente grey darken-4">
+    <div class="col s12 center-align" style="margin-top:2px;">
+      <b><%= componente.descricao %></b>
+    </div>
+
+
+    <div class="col s12 center-align">
+      <div class="switch">
+        <label style="font-size:9px;">
+          Off
+          <% if componente.estado %>
+            <input type="checkbox" id="switch-<%= componente.descricao %><%= componente.id %>" class="botao-infra-vermelho" data-componente-ambiente="<%=componente.id%>" data-topico="<%=componente.topico%>" checked="checked">
+          <% else %>
+            <input type="checkbox" id="switch-<%= componente.descricao %><%= componente.id %>" class="botao-infra-vermelho" data-componente-ambiente="<%=componente.id%>" data-topico="<%=componente.topico%>" unchecked="unchecked">
+          <% end %>
+          <span class="lever"></span>
+          On
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

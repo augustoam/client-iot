@@ -4,7 +4,6 @@ $(document).on('turbolinks:load', function() {
     this.progressBarTimeout = setTimeout(this.showProgressBar, 100);
   };
 
-
   $(document).ready(function() {
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
@@ -56,39 +55,26 @@ function notice() {
   Materialize.toast(msg, 4000)
 }
 
-function atualizaMode() {
-  var switch_mode = document.getElementById('switch-mode');
-  var mode = switch_mode.checked;
-  var topico = switch_mode.getAttribute("data-topico");
-  var componente = switch_mode.getAttribute("data-comp");
-
-  $.ajax({
-    type: "POST",
-    dataType: "json",
-    url: "http://client-iot.herokuapp.com/api/componentes/publish?topico=" + topico + "&mode=" + mode + "&componente=" + componente
-  });
-}
-
 function comandoInfraVermelho(element) {
   var botaoComandoInfraVermelho = document.getElementById(element[0].id);
   var topico = botaoComandoInfraVermelho.getAttribute("data-topico");
-  var componente = botaoComandoInfraVermelho.getAttribute("data-componente");
+  var componente_ambiente = botaoComandoInfraVermelho.getAttribute("data-componente-ambiente");
   var acao = botaoComandoInfraVermelho.getAttribute("data-acao");
 
   if ((element[0].id).indexOf('switch') !== -1) {
     if (botaoComandoInfraVermelho.checked) {
-      acao = 'power-on';
+      acao = 'ligar';
     } else {
-      acao = 'power-off';
+      acao = 'desligar';
     }
   }
 
   var vData = {
     topico: topico,
     acao: acao,
-    componente: componente
+    componente_ambiente: componente_ambiente
   };
-  console.log('publish topico:' + topico + ' componente:' + componente + ' acao:' + acao);
+  console.log('publish topico:' + topico + ' componente:' + componente_ambiente + ' acao:' + acao);
   $.post({
     data: vData,
     url: "/api/componentes/publish"

@@ -1,10 +1,15 @@
 <div class="row">
   <ul class="collection with-header">
     <li class="collection-header grey lighten-4 ">
-      <h5><b>Admin IoT - Painel de Administração</b></h5>
+      <h5>
+        <b>Painel de Administração</b>
+      </h5>
     </li>
     <%= link_to plural_model_name_for(Grupo), admin_grupos_path, class: "collection-item black-text" %>
     <%= link_to plural_model_name_for(Usuario), index_all_admin_usuarios_path, class: "collection-item black-text" %>
-    <%= link_to plural_model_name_for(ControleComponente), admin_controles_componentes_path		, class: "collection-item black-text" %>
+    <%= link_to plural_model_name_for(Controle), admin_controles_path , class: "collection-item black-text" %>
+    <%= link_to plural_model_name_for(LayoutControle), admin_layout_controles_path , class: "collection-item black-text" %>
+    <%= link_to plural_model_name_for(Fabricante), admin_fabricantes_path , class: "collection-item black-text" %>
+    <%= link_to plural_model_name_for(Componente), admin_componentes_path , class: "collection-item black-text" %>
   </ul>
 </div>

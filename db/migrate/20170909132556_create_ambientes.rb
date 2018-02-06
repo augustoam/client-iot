@@ -3,6 +3,7 @@ class CreateAmbientes < ActiveRecord::Migration[5.1]
     create_table :ambientes do |t|
       t.string :nome
       t.integer :grupo_id
+      t.string :icone
 
       t.timestamps
     end

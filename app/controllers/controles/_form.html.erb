@@ -1,0 +1,24 @@
+<%= simple_form_for([:admin, @controle]) do |f| %>
+<%= f.error_notification %>
+
+<div class="row">
+  <%= f.input :descricao, wrapper_html: { class: 'm12 s12' } %>
+</div>
+
+<div class="row">
+  <%= f.input :obs, wrapper_html: { class: 'm12 s12' } %>
+</div>
+
+<div class="row">
+  <%= f.association :fabricante, wrapper_html: { class: 'm12 s12' } %>
+</div>
+
+<div class="row">
+  <% if @controle.persisted? %>
+    <%= link_icon_to_back admin_controles_path(@controle) %>
+  <% else %>
+    <%= link_icon_to_back admin_controles_path %>
+  <% end %>
+  <%= save_button %>
+</div>
+<% end %>

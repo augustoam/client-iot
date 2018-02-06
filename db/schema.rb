@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029202416) do
+ActiveRecord::Schema.define(version: 20180204131914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,73 +35,74 @@ ActiveRecord::Schema.define(version: 20171029202416) do
   create_table "ambientes", force: :cascade do |t|
     t.string "nome"
     t.integer "grupo_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "icone"
-  end
-
-  create_table "candidatos", force: :cascade do |t|
-    t.string "nome"
-    t.string "email"
-    t.string "foco"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comandos_infra_vermelhos", force: :cascade do |t|
-    t.integer "componente_id"
-    t.string "topico"
+    t.integer "controle_id"
     t.string "comando"
-    t.string "html"
+    t.string "codigo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "componentes", force: :cascade do |t|
     t.string "descricao"
-    t.string "topico"
-    t.integer "ambiente_id"
+    t.string "modelo"
+    t.integer "controle_id"
+    t.integer "fabricante_id"
+    t.integer "layout_controle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "estado"
-    t.integer "controle_componente_id"
-    t.boolean "comando_unico", default: false
-    t.string "identificador_componente"
   end
 
-  create_table "controles_componentes", force: :cascade do |t|
+  create_table "componentes_ambiente", force: :cascade do |t|
+    t.integer "ambiente_id"
+    t.integer "componente_id"
+    t.string "topico"
+    t.boolean "estado", default: false
+    t.text "descricao"
+    t.text "identificador_componente"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "controles", force: :cascade do |t|
     t.string "descricao"
     t.text "obs"
+    t.integer "fabricante_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "empresas", force: :cascade do |t|
-    t.string "nome_emp"
-    t.string "nome"
-    t.string "email"
-    t.string "area_atuacao"
-    t.string "telefone"
-    t.string "cidade"
-    t.string "site"
-    t.integer "porte"
+  create_table "fabricantes", force: :cascade do |t|
+    t.string "descricao"
+    t.string "obs"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "quer"
   end
 
   create_table "grupos", force: :cascade do |t|
     t.string "nome"
-    t.boolean "ativo"
+    t.boolean "ativo", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "grupos_usuarios", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "grupo_id"
     t.integer "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "layout_controles", force: :cascade do |t|
+    t.string "descricao"
+    t.string "obs"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "log_componentes", force: :cascade do |t|
@@ -109,7 +110,7 @@ ActiveRecord::Schema.define(version: 20171029202416) do
     t.integer "usuario_id"
     t.integer "componente_id"
     t.string "comando"
-    t.datetime "dt_criacao", default: "2017-10-12 23:45:48"
+    t.datetime "dt_criacao", default: "2018-02-04 13:56:54"
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -123,21 +124,24 @@ ActiveRecord::Schema.define(version: 20171029202416) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.boolean "admin", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
   add_foreign_key "ambientes", "grupos"
-  add_foreign_key "comandos_infra_vermelhos", "componentes"
-  add_foreign_key "componentes", "ambientes"
-  add_foreign_key "componentes", "controles_componentes"
+  add_foreign_key "comandos_infra_vermelhos", "controles"
+  add_foreign_key "componentes", "controles"
+  add_foreign_key "componentes", "layout_controles"
+  add_foreign_key "componentes_ambiente", "ambientes"
+  add_foreign_key "componentes_ambiente", "componentes"
+  add_foreign_key "controles", "fabricantes"
   add_foreign_key "grupos_usuarios", "grupos"
   add_foreign_key "grupos_usuarios", "usuarios"
 end

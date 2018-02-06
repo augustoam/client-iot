@@ -17,7 +17,10 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'grupo_usuario', 'grupos_usuarios'
   inflect.irregular 'ambiente', 'ambientes'
   inflect.irregular 'componente', 'componentes'
+  inflect.irregular 'componente_ambiente', 'componentes_ambiente'
   inflect.irregular 'admin', 'admins'
-  inflect.irregular 'controle_componente', 'controles_componentes'
+  inflect.irregular 'layout_controle', 'layout_controles'
+  inflect.irregular 'controle', 'controles'
   inflect.irregular 'comando_infra_vermelho', 'comandos_infra_vermelhos'
+  inflect.irregular 'fabricante', 'fabricantes'
 end

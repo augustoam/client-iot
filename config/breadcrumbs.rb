@@ -1,5 +1,5 @@
 crumb :root do
-  link "Home", root_path
+  link 'Home', root_path
 end
 
 crumb :grupos do
@@ -53,55 +53,89 @@ crumb :ambiente_edit do |ambiente|
   parent :ambiente, ambiente
 end
 
-crumb :componentes do |ambiente|
-  link Componente.model_name.human(count: 2), admin_ambiente_componentes_path(ambiente)
+crumb :componentes_ambiente do |ambiente|
+  link Componente.model_name.human(count: 2), admin_ambiente_componentes_ambiente_path(ambiente)
   parent :ambientes, ambiente.grupo
 end
-crumb :componente do |componente|
-  link componente.to_s
-  parent :componentes, componente.ambiente
+crumb :componente_ambiente do |componente_ambiente|
+  link componente_ambiente.to_s
+  parent :componentes_ambiente, componente_ambiente.ambiente
 end
-crumb :componente_new do |ambiente|
+crumb :componente_ambiente_new do |ambiente|
   link t('views.actions.new')
-  parent :componentes, ambiente
+  parent :componentes_ambiente, ambiente
 end
-crumb :componente_edit do |componente|
-  link t('views.actions.do_edit'), edit_admin_componente_path(componente.ambiente)
-  parent :componente, componente
+crumb :componente_ambiente_edit do |componente_ambiente|
+  link t('views.actions.do_edit'), edit_admin_componente_ambiente_path(componente_ambiente.ambiente)
+  parent :componente_ambiente, componente_ambiente
 end
 
-crumb :comandos_infra_vermelhos do |componente|
-  link ComandoInfraVermelho.model_name.human(count: 2), admin_componente_comandos_infra_vermelhos_path(componente)
-  parent :componentes, componente.ambiente
+crumb :comandos_infra_vermelhos do |controle|
+  link ComandoInfraVermelho.model_name.human(count: 2), admin_controle_comandos_infra_vermelhos_path(controle)
+  parent :controles, controle.descricao
 end
 crumb :comando_infra_vermelho do |comando_infra_vermelho|
   link comando_infra_vermelho.to_s
-  parent :comandos_infra_vermelhos, comando_infra_vermelho.componente
+  parent :comandos_infra_vermelhos, comando_infra_vermelho.controle
 end
-crumb :comando_infra_vermelho_new do |componente|
+crumb :comando_infra_vermelho_new do |controle|
   link t('views.actions.new')
-  parent :comandos_infra_vermelhos, componente
+  parent :comandos_infra_vermelhos, controle
 end
 crumb :comando_infra_vermelho_edit do |comando_infra_vermelho|
   link t('views.actions.do_edit'), edit_admin_comando_infra_vermelho_path(comando_infra_vermelho)
   parent :comando_infra_vermelho, comando_infra_vermelho
 end
 
-crumb :controles_componentes do
-  link ControleComponente.model_name.human(count: 2), admin_controles_componentes_path
+crumb :componentes do
+  link Componente.model_name.human(count: 2), admin_componentes_path
   parent :root
 end
-crumb :controle_componente_edit do |controle_componente|
-  link t('views.actions.do_edit'), edit_admin_controle_componente_path(controle_componente)
-  parent :controles_componentes
+crumb :componente_edit do |componente|
+  link t('views.actions.do_edit'), edit_admin_componente_path(componente)
+  parent :componente, componente
 end
-crumb :controle_componente_new do |controle_componente|
+crumb :componente_new do |_componente|
   link t('views.actions.new')
-  parent :controles_componentes
+  parent :componentes
 end
-crumb :controle_componente do |controle_componente|
-    link controle_componente.to_s, admin_controles_componentes_path(controle_componente)
-    parent :controles_componentes
+crumb :componente do |componente|
+  link componente.to_s
+  parent :componentes
+end
+
+crumb :layout_controles do
+  link LayoutControle.model_name.human(count: 2), admin_layout_controles_path
+  parent :root
+end
+crumb :layout_controle_edit do |layout_controle|
+  link t('views.actions.do_edit'), edit_admin_layout_controle_path(layout_controle)
+  parent :layout_controle, layout_controle
+end
+crumb :layout_controle_new do |_layout_controle|
+  link t('views.actions.new')
+  parent :layout_controles
+end
+crumb :layout_controle do |layout_controle|
+  link layout_controle.to_s
+  parent :layout_controles
+end
+
+crumb :controles do
+  link Controle.model_name.human(count: 2), admin_controles_path
+  parent :root
+end
+crumb :controle_edit do |controle|
+  link t('views.actions.do_edit'), edit_admin_controle_path(controle)
+  parent :controle, controle
+end
+crumb :controle_new do |_controle|
+  link t('views.actions.new')
+  parent :controles
+end
+crumb :controle do |controle|
+  link controle.to_s
+  parent :controles
 end
 
 crumb :usuarios_all do

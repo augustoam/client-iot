@@ -1,13 +1,13 @@
-<% breadcrumb :componentes, @ambiente %>
-<div class="row">
-  <h3><%= plural_model_name_for(Componente) %> <%= singular_model_name_for(Ambiente) %></h3>
-</div>
+<% breadcrumb :componentes %>
+  <div class="row">
+    <h3><%= plural_model_name_for(Componente) %></h3>
+  </div>
 
-<div class="row">
-  <%= search_form_for @q, url: admin_ambiente_componentes_path do |f| %>
+  <div class="row">
+    <%= search_form_for @q, url: admin_componentes_path do |f| %>
 
     <div class="col s11">
-      <%= f.search_field :topico_or_descricao_cont, class: "form-control", placeholder: "Pesquisar Componentes" %>
+      <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Pesquisar Componentes" %>
     </div>
     <div class="col s1">
       <button class="waves-effect waves-light btn grey lighten-4" type="submit">
@@ -24,10 +24,8 @@
       <tr>
         <th><%= Componente.human_attribute_name(:id) %></th>
         <th><%= Componente.human_attribute_name(:descricao) %></th>
-        <th><%= Componente.human_attribute_name(:topico) %></th>
-        <th><%= Componente.human_attribute_name(:comando_unico) %></th>
-        <th><%= Componente.human_attribute_name(:controle_componente) %></th>
-        <th><%= Componente.human_attribute_name(:identificador_componente) %></th>
+        <th><%= Componente.human_attribute_name(:controle) %></th>
+        <th><%= Componente.human_attribute_name(:layout_controle) %></th>
         <th><%= Componente.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>
       </tr>
@@ -38,14 +36,11 @@
         <tr data-href="<%= admin_componente_path(componente) %>">
           <td><%= componente.id %></td>
           <td><%= componente.descricao %></td>
-          <td><%= componente.topico %></td>
-          <td><%= componente.comando_unico %></td>
-          <td><%= componente.controle_componente.descricao %></td>
-          <td><%= componente.identificador_componente %></td>
+          <td><%= componente.controle.descricao %></td>
+          <td><%= componente.layout_controle.descricao %></td>
           <td><%= ltime componente.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_componente_path(componente))%></td>
           <td><%= link_icon_to_destroy(admin_componente_path(componente)) %></td>
-          <td><%= link_to 'Comandos', admin_componente_comandos_infra_vermelhos_path(componente), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -53,10 +48,10 @@
 </div>
 
 <div class="row">
-  <%= link_icon_to_back admin_grupo_ambientes_path(@ambiente.grupo) %>
-  <%= link_icon_to_new(new_admin_ambiente_componente_path(@ambiente), action_new(@componentes)) %>
+  <%= link_icon_to_back root_path %>
+  <%= link_icon_to_new(new_admin_componente_path, action_new(@componentes)) %>
 </div>
 
 <div class="center-align">
-  <%= will_paginate @Ambientes, renderer: MaterializePagination::Rails %>
+  <%= will_paginate @componentes, renderer: MaterializePagination::Rails %>
 </div>

@@ -1,10 +1,9 @@
 class CreateComandoInfraVermelhos < ActiveRecord::Migration[5.1]
   def change
     create_table :comandos_infra_vermelhos do |t|
-      t.integer :componente_id
-      t.string :topico
+      t.integer :controle_id
       t.string :comando
-      t.string :html
+      t.string :codigo
 
       t.timestamps
     end

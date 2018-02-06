@@ -2,30 +2,30 @@
   <li>
     <% if current_admin %>
       <%= link_to edit_admin_administrador_path(current_admin), class: "black-text" do %>
-        <i class="material-icons">vpn_key</i>Mudar Senha
-      <% end %>
+      <i class="material-icons">vpn_key</i>Mudar Senha
     <% end %>
-  </li>
-  <li>
-    <%= link_to destroy_admin_session_path, :method => :delete, class: "black-text"  do %>
-      <i class="material-icons">exit_to_app</i>Sair
-    <% end %>
-  </li>
+  <% end %>
+</li>
+<li>
+  <%= link_to destroy_admin_session_path, :method => :delete, class: "black-text" do %>
+  <i class="material-icons">exit_to_app</i>Sair
+<% end %>
+</li>
 </ul>
 
 <nav>
-  <div class="nav-wrapper black">
-    <div class="container">
-      <%= link_to "IoT Admin", admin_home_admin_index_path %>
-      <% if current_admin %>
-        <ul class="right">
-          <li>
-            <a class="dropdown-button" data-activates="dropdown-nav">
-              <i class="large material-icons">more_vert</i>
-            </a>
-          </li>
-        </ul>
-      <% end %>
-    </div>
-  </div>
+<div class="nav-wrapper black">
+<div class="container">
+  <%= link_to "Sync House Admin", admin_home_admin_index_path %>
+  <% if current_admin %>
+    <ul class="right">
+      <li>
+        <a class="dropdown-button" data-activates="dropdown-nav">
+          <i class="large material-icons">more_vert</i>
+        </a>
+      </li>
+    </ul>
+  <% end %>
+</div>
+</div>
 </nav>

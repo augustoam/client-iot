@@ -1,0 +1,50 @@
+<div class="row">
+  <h3><%= plural_model_name_for(Fabricante) %></h3>
+</div>
+
+<div class="row">
+  <%= search_form_for @q, url: admin_fabricantes_path do |f| %>
+
+  <div class="col s11">
+    <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Pesquisar Fabricantes" %>
+  </div>
+  <div class="col s1">
+    <button class="waves-effect waves-light btn grey lighten-4" type="submit">
+      <i class="large material-icons black-text">search</i>
+    </button>
+  </div>
+
+<% end %>
+</div>
+
+<div class="row">
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= Fabricante.human_attribute_name(:id) %></th>
+      <th><%= Fabricante.human_attribute_name(:descricao) %></th>
+      <th><%= Fabricante.human_attribute_name(:created_at) %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fabricantes.each do |fabricante| %>
+      <tr data-href="<%= admin_fabricante_path(fabricante) %>">
+        <td><%= fabricante.id %></td>
+        <td><%= fabricante.descricao %></td>
+        <td><%= ltime fabricante.created_at %></td>
+        <td><%= link_icon_to_edit(edit_admin_fabricante_path(fabricante))%></td>
+        <td><%= link_icon_to_destroy(admin_fabricante_path(fabricante)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<div class="row">
+<%= link_icon_to_back admin_home_admin_index_path %>
+<%= link_icon_to_new(new_admin_fabricante_path, action_new(@fabricantes)) %>
+</div>

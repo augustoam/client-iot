@@ -1,55 +1,54 @@
-<% breadcrumb :comandos_infra_vermelhos, @componente %>
+<% breadcrumb :comandos_infra_vermelhos, @controle %>
 <div class="row">
-  <h3><%= plural_model_name_for(ComandoInfraVermelho) %> <%= singular_model_name_for(Componente) %></h3>
+  <h3><%= plural_model_name_for(ComandoInfraVermelho) %></h3>
 </div>
 
 <div class="row">
-  <%= search_form_for @q, url: admin_componente_comandos_infra_vermelhos_path do |f| %>
+  <%= search_form_for @q, url: admin_controle_comandos_infra_vermelhos_path do |f| %>
 
-    <div class="col s11">
-      <%= f.search_field :topico_or_comando_cont, class: "form-control", placeholder: "Pesquisar Comando" %>
-    </div>
-    <div class="col s1">
-      <button class="waves-effect waves-light btn grey lighten-4" type="submit">
-        <i class="large material-icons black-text">search</i>
-      </button>
-    </div>
+  <div class="col s11">
+    <%= f.search_field :comando_cont, class: "form-control", placeholder: "Pesquisar Comando" %>
+  </div>
+  <div class="col s1">
+    <button class="waves-effect waves-light btn grey lighten-4" type="submit">
+      <i class="large material-icons black-text">search</i>
+    </button>
+  </div>
 
-  <% end %>
+<% end %>
 </div>
 
 <div class="row">
-  <table class="table">
-    <thead>
-      <tr>
-        <th><%= Componente.human_attribute_name(:id) %></th>
-        <th><%= Componente.human_attribute_name(:comando) %></th>
-        <th><%= Componente.human_attribute_name(:topico) %></th>
-        <th><%= Componente.human_attribute_name(:created_at) %></th>
-        <th colspan="3"></th>
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= ComandoInfraVermelho.human_attribute_name(:id) %></th>
+      <th><%= ComandoInfraVermelho.human_attribute_name(:comando) %></th>
+      <th><%= ComandoInfraVermelho.human_attribute_name(:codigo) %></th>
+      <th><%= ComandoInfraVermelho.human_attribute_name(:created_at) %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comandos_infra_vermelhos.each do |comando_infra_vermelho| %>
+      <tr data-href="<%= admin_comando_infra_vermelho_path(comando_infra_vermelho) %>">
+        <td><%= comando_infra_vermelho.id %></td>
+        <td><%= comando_infra_vermelho.comando %></td>
+        <td><%= comando_infra_vermelho.codigo %></td>
+        <td><%= link_icon_to_edit(edit_admin_comando_infra_vermelho_path(comando_infra_vermelho)) %></td>
+        <td><%= link_icon_to_destroy(admin_comando_infra_vermelho_path(comando_infra_vermelho)) %></td>
       </tr>
-    </thead>
-
-    <tbody>
-      <% @comandos_infra_vermelhos.each do |comando_infra_vermelho| %>
-        <tr data-href="<%= admin_comando_infra_vermelho_path(comando_infra_vermelho) %>">
-          <td><%= comando_infra_vermelho.id %></td>
-          <td><%= comando_infra_vermelho.comando %></td>
-          <td><%= comando_infra_vermelho.topico %></td>
-          <td><%= comando_infra_vermelho.html %></td>
-          <td><%= link_icon_to_edit(edit_admin_comando_infra_vermelho_path(comando_infra_vermelho)) %></td>
-          <td><%= link_icon_to_destroy(admin_comando_infra_vermelho_path(comando_infra_vermelho)) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </tbody>
+</table>
 </div>
 
 <div class="row">
-  <%= link_icon_to_back admin_ambiente_componentes_path(@componente.ambiente) %>
-  <%= link_icon_to_new(new_admin_componente_comando_infra_vermelho_path(@componente), action_new(@comandos_infra_vermelhos)) %>
+<%= link_icon_to_back admin_controles_path %>
+<%= link_icon_to_new(new_admin_controle_comando_infra_vermelho_path(@controle), action_new(@comandos_infra_vermelhos)) %>
 </div>
 
 <div class="center-align">
-  <%= will_paginate @comandos_infra_vermelhos, renderer: MaterializePagination::Rails %>
+<%= will_paginate @comandos_infra_vermelhos, renderer: MaterializePagination::Rails %>
 </div>

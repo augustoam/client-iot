@@ -2,49 +2,50 @@
   <% if current_usuario.admin? %>
     <li>
       <%= link_to grupos_path, class: "black-text" do %>
-        <i class="material-icons">person</i>Grupos
-      <% end %>
-    </li>
-  <% end %>
-  <li>
-    <%= link_to usuario_path(current_usuario), class: "black-text" do %>
-      <i class="material-icons">vpn_key</i>Perfil
+      <i class="material-icons">person</i>Grupos
     <% end %>
   </li>
-  <li>
-    <%= link_to destroy_usuario_session_path, method: :delete, class: "black-text" do %>
-      <i class="material-icons">exit_to_app</i>Sair
-    <% end %>
-  </li>
+<% end %>
+<li>
+  <%= link_to usuario_path(current_usuario), class: "black-text" do %>
+  <i class="material-icons">vpn_key</i>Perfil
+<% end %>
+</li>
+<li>
+<%= link_to destroy_usuario_session_path, method: :delete, class: "black-text" do %>
+<i class="material-icons">exit_to_app</i>Sair
+<% end %>
+</li>
 </ul>
 
 <ul id="slide-out" class="side-nav grey darken-3">
-  <li>
-    <div class="user-view black">
-      <a><span class="white-text email"><%= current_usuario.email %></span></a>
-    </div>
-  </li>
-  <%= render 'layouts/menu_entry' %>
+<li>
+<div class="user-view black">
+<a>
+  <span class="white-text email"><%= current_usuario.email %></span></a>
+</div>
+</li>
+<%= render 'layouts/menu_entry' %>
 </ul>
 
 <div class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper black">
-      <ul id="nav-mobile" class="left">
-        <li>
-          <a data-activates="slide-out" class="button-collapse show-on-large">
-            <i class="material-icons">menu</i>
-          </a>
-        </li>
-      </ul>
-        <%= link_to 'CLIENT IoT', home_console_path %>
-      <ul id="nav-mobile" class="right">
-        <li>
-          <a class="dropdown-button" data-activates="dropdown-nav">
-            <i class="large material-icons">more_vert</i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<nav>
+<div class="nav-wrapper black">
+<ul id="nav-mobile" class="left">
+  <li>
+    <a data-activates="slide-out" class="button-collapse show-on-large">
+      <i class="material-icons">menu</i>
+    </a>
+  </li>
+</ul>
+<%= link_to 'Sync House', home_console_path %>
+<ul id="nav-mobile" class="right">
+  <li>
+    <a class="dropdown-button" data-activates="dropdown-nav">
+      <i class="large material-icons">more_vert</i>
+    </a>
+  </li>
+</ul>
+</div>
+</nav>
 </div>

@@ -5,18 +5,27 @@ class MqttSubscribeJob < ApplicationJob
   queue_as :critical
 
   def perform(*_args)
+    topicos = []
+    ComponenteAmbiente.all.each do |_componente_ambiente|
+      topicos.push(_componente_ambiente.topico).split(',') unless topicos.include? _componente_ambiente.topico
+    end
+
     MQTT::Client.connect('iot.eclipse.org', 1883) do |_client|
       # If you pass a block to the get method, then it will loop
-      _client.get('augusto.albertoni@gmail.com/estados') do |topic, message|
-        puts "#{topic}: #{message}"
-        m = message.split
+      _client.subscribe(topicos)
+      _client.get do |topic, message|
+        puts 'chegou'
         estado = false
-        estado = true if m[0] == 'power-on'
+        estado = true if message == 'ligar'
 
-        componente = Componente.find_by(identificador_componente: m[1])
-        componente.update!(estado: estado)
+        componente_ambiente = ComponenteAmbiente.find_by(topico: topic)
+        if componente_ambiente.present?
+          componente_ambiente.update!(estado: estado)
 
-        ComponenteBroadcastJob.perform_later
+          ComponenteAmbienteBroadcastJob.perform_later(componente_ambiente)
+        else
+          Rails.logger.error('Erro no atualizar estado do componente ambiente')
+        end
       end
     end
   end

@@ -1,28 +1,27 @@
-<%= simple_form_for([:admin, @componente], url: admin_componente_form_path(@ambiente, @componente)) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for([:admin, @componente]) do |f| %>
+<%= f.error_notification %>
 
-  <div class="row">
-    <%= f.input :descricao, wrapper_html: { class: 'm12 s12' } %>
-  </div>
-  <div class="row">
-    <%= f.association :controle_componente, wrapper_html: { class: 'm12 s12' }  %>
-  </div>
-  <div class="row">
-    <%= f.input :topico, wrapper_html: { class: 'm12 s12' } %>
-  </div>
-  <div class="row">
-    <%= f.input :identificador_componente, wrapper_html: { class: 'm12 s12' } %>
-  </div>
-  <div class="row">
-    <%= f.input :comando_unico, wrapper_html: { class: 'm12 s12' } %>
-  </div>
-
-  <div class="row">
-    <% if @componente.persisted? %>
-      <%= link_icon_to_back admin_componente_path(componente) %>
-    <% else %>
-      <%= link_icon_to_back admin_ambiente_componentes_path(@ambiente) %>
-    <% end %>
-    <%= save_button %>
-  </div>
+<div class="row">
+  <%= f.input :descricao, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.association :fabricante, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.input :modelo, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.association :controle, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.association :layout_controle, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <% if @componente.persisted? %>
+    <%= link_icon_to_back admin_componente_path(componente) %>
+  <% else %>
+    <%= link_icon_to_back admin_componentes_path %>
+  <% end %>
+  <%= save_button %>
+</div>
 <% end %>

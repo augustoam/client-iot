@@ -1,0 +1,19 @@
+<%= simple_form_for([:admin, @fabricante]) do |f| %>
+<%= f.error_notification %>
+
+<div class="row">
+  <%= f.input :descricao, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.input :obs, wrapper_html: { class: 'm12 s12' } %>
+</div>
+
+<div class="row">
+  <% if @fabricante.persisted? %>
+    <%= link_icon_to_back admin_fabricante_path(@fabricante) %>
+  <% else %>
+    <%= link_icon_to_back admin_fabricantes_path %>
+  <% end %>
+  <%= save_button %>
+</div>
+<% end %>

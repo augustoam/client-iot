@@ -1,0 +1,25 @@
+<%= simple_form_for([:admin, @componente_ambiente], url: admin_componente_ambiente_form_path(@ambiente, @componente_ambiente)) do |f| %>
+<%= f.error_notification %>
+
+<div class="row">
+  <%= f.input :descricao, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.input :topico, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.input :identificador_componente, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.association :componente, wrapper_html: { class: 'm12 s12' } %>
+</div>
+
+<div class="row">
+  <% if @componente_ambiente.persisted? %>
+    <%= link_icon_to_back admin_componente_ambiente_path(componente_ambiente) %>
+  <% else %>
+    <%= link_icon_to_back admin_ambiente_componentes_ambiente_path(@ambiente) %>
+  <% end %>
+  <%= save_button %>
+</div>
+<% end %>

@@ -1,74 +1,80 @@
 pt-BR:
-  "yes": 'Sim'
-  "no": 'Não'
+  "yes":                                'Sim'
+  "no":                                 'Não'
   activerecord:
     models:
       grupo:
-        one: 'Grupo'
-        other: 'Grupos'
+        one:                            'Grupo'
+        other:                          'Grupos'
       grupo_usuario:
-        one: 'Grupo Usuário'
-        other: 'Grupos Usuários'
+        one:                            'Grupo Usuário'
+        other:                          'Grupos Usuários'
       usuario:
-        one: 'Usuário'
-        other: 'Usuários'
+        one:                            'Usuário'
+        other:                          'Usuários'
       ambiente:
-        one: 'Ambiente'
-        other: 'Ambientes'
+        one:                            'Ambiente'
+        other:                          'Ambientes'
       componente:
-        one: 'Componente'
-        other: 'Componentes'
+        one:                            'Componente'
+        other:                          'Componentes'
       comando_infra_vermelho:
-        one: 'Comando Infravermelho'
-        other: 'Comandos Infravermelhos'
-      controle_componente:
-        one: 'Controle Componente'
-        other: 'Controles Componentes'
+        one:                            'Comando Infravermelho'
+        other:                          'Comandos Infravermelhos'
+      controle:
+        one:                            'Controle'
+        other:                          'Controles'
+      componente_ambiente:
+        one:                            'Componente Ambiente'
+        other:                          'Componentes Ambiente'
     attributes:
       usuario:
-        id: ID
-        email: Email
-        admin: Administrador
-        created_at: Data Criação
+        id:                             ID
+        email:                          Email
+        admin:                          Administrador
+        created_at:                     Data Criação
       grupo:
-        id: ID
-        nome: Nome
-        created_at: Data Criação
-      controle_componente:
-        id: ID
-        descricao: Descrição
-        obs: Observação
-        created_at: Data Criação
+        id:                             ID
+        nome:                           Nome
+        created_at:                     Data Criação
+      controle:
+        id:                             ID
+        descricao:                      Descrição
+        obs:                            Observação
+        created_at:                     Data Criação
+      componente_ambiente:
+        id:                             ID
+        descricao:                      Descrição
   views:
     actions:
-      new: 'Novo'
-      new-fem: 'Nova'
-      edit: 'Editar'
-      do_edit: 'Edição'
-      save: 'Salvar'
-      login: 'Login'
-      send_instruction: 'Enviar instruções para redefinição da senha'
-      change_password: 'Atualizar senha'
+      new:                              'Novo'
+      new-fem:                          'Nova'
+      edit:                             'Editar'
+      do_edit:                          'Edição'
+      save:                             'Salvar'
+      login:                            'Login'
+      send_instruction:                 'Enviar instruções para redefinição da senha'
+      change_password:                  'Atualizar senha'
       resend_confirmation_instructions: 'Reenviar instruções'
   time:
     formats:
-      data_hora: "%d/%b/%Y %H:%M"
-      data: "%d/%b/%Y"
-      filename: "%Y-%b-%d_%H-%M"
+      data_hora:                        "%d/%b/%Y %H:%M"
+      data:                             "%d/%b/%Y"
+      filename:                         "%Y-%b-%d_%H-%M"
   devise:
     confirmations:
       show:
-        change_my_password: Atualizar senha
-        new_password: Nova senha
-        confirm_new_password: Confirme sua senha
+        change_my_password:             Atualizar senha
+        new_password:                   Nova senha
+        confirm_new_password:           Confirme sua senha
   usuarios:
     password_change:
-      change_my_password: 'Atualizar senha'
-      new_password: 'Nova senha'
-      confirm_new_password: 'Confirme sua senha'
+      change_my_password:               'Atualizar senha'
+      new_password:                     'Nova senha'
+      confirm_new_password:             'Confirme sua senha'
   admin:
     administrador:
       edit:
-        change_my_password: 'Atualizar senha'
-        new_password: 'Nova senha'
-        confirm_new_password: 'Confirme sua senha'
+        change_my_password:             'Atualizar senha'
+        new_password:                   'Nova senha'
+        confirm_new_password:           'Confirme sua senha'
