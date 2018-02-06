@@ -21,7 +21,6 @@
 *.bowerrc
 bower.json
 .env
-Procfile
 # Ignore IDE files
 /.idea
 .byebug_history
