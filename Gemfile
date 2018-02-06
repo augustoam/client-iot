@@ -7,6 +7,7 @@ end
 
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'coffee-rails', '~> 4.2'
+gem 'delayed_job_active_record'
 gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails'
@@ -24,7 +25,7 @@ gem 'rack-cors'
 gem 'rails', '~> 5.1.2'
 gem 'ransack'
 gem 'rubocop', require: false
-gem 'redis', "~> 3.3" 
+gem 'redis', "~> 3.3"
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
