@@ -1,7 +1,7 @@
 <div class="row" id="componente_ambiente">
   <% @componentes_ambiente.each do |componente_ambiente| %>
     <div class="container">
-      <%= render partial: "componentes_ambiente/#{componente_ambiente.componente.layout_controle.descricao.downcase}", locals: {componente: componente_ambiente} %>
+      <%= render partial: "componentes_ambiente/#{componente_ambiente.componente.layout_controle.descricao.downcase}", locals: {componente_ambiente: componente_ambiente} %>
     </div>
   <% end %>
 </div>
