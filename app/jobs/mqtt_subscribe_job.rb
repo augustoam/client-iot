@@ -14,7 +14,7 @@ class MqttSubscribeJob < ApplicationJob
       # If you pass a block to the get method, then it will loop
       _client.subscribe(topicos)
       _client.get do |topic, message|
-        puts 'chegou'
+        puts 'topico: ' + topic + ' message: ' + message
         estado = false
         estado = true if message == 'ligar'
 

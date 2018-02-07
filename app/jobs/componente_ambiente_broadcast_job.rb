@@ -9,7 +9,7 @@ class ComponenteAmbienteBroadcastJob < ApplicationJob
   private
 
   def render_componente_ambiente(componente_ambiente)
-    ApplicationController.renderer.render(partial: "componentes_ambiente/#{componente_ambiente.componente.controle.descricao.downcase}",
+    ApplicationController.renderer.render(partial: "componentes_ambiente/#{componente_ambiente.componente.layout_controle.descricao.downcase}",
                                           locals: { componente_ambiente: componente_ambiente })
   end
 end
