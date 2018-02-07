@@ -7,7 +7,6 @@ end
 
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'coffee-rails', '~> 4.2'
-gem 'delayed_job_active_record'
 gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails'
