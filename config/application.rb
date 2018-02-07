@@ -29,8 +29,6 @@ module AugustoClientWeb
       end
     end
 
-    config.active_job.queue_adapter = :delayed_job
-
     # config.active_job.queue_adapter = :sidekiq
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
