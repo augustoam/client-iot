@@ -6,8 +6,8 @@ App.componente_ambiente = App.cable.subscriptions.create "ComponenteAmbienteChan
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    window.location.reload();
-    #$('#componente').append data['componente']
+    $("#componente_ambiente").html  "";
+    $("#componente_ambiente").append data['componente_ambiente']
 
   estado: (componente_ambiente) ->
     @perform 'estado', componente_ambiente: componente_ambiente
