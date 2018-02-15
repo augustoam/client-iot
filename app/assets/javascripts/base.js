@@ -33,6 +33,10 @@ $(document).on('turbolinks:load', function() {
 
   $('.notice').each(notice);
 
+  $('.botao-infra-vermelho').each(function() {
+    atualizaEstadoComponente($(this));
+  })
+
   $('.botao-infra-vermelho').click(function() {
     comandoInfraVermelho($(this));
   });
@@ -48,6 +52,21 @@ $(document).on('turbolinks:load', function() {
 }).on("click", "li[data-href], div[data-href]", function(e) {
   Turbolinks.visit($(this).data("href"));
 });
+
+function atualizaEstadoComponente(element) {
+  var botaoComandoInfraVermelho = document.getElementById(element[0].id);
+  var estado = botaoComandoInfraVermelho.getAttribute("data-estado");
+
+  if (estado == "true") {
+    botaoComandoInfraVermelho.removeAttribute("unchecked")
+    botaoComandoInfraVermelho.setAttribute("checked", "checked")
+    botaoComandoInfraVermelho.setAttribute("data-estado", "true")
+  } else {
+    botaoComandoInfraVermelho.removeAttribute("checked")
+    botaoComandoInfraVermelho.setAttribute("unchecked", "unchecked")
+    botaoComandoInfraVermelho.setAttribute("data-estado", "false")
+  }
+}
 
 function notice() {
   var msg = $(this).data().msg;
