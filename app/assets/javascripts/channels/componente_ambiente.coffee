@@ -7,6 +7,8 @@ App.componente_ambiente = App.cable.subscriptions.create "ComponenteAmbienteChan
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
+    console.log 'chegou data'
+    console.log data
     if data.componente_ambiente.componente_ambiente_id isnt undefined
       if data.componente_ambiente.estado is "false"
         $("#{data.componente_ambiente.componente_ambiente_id}")[0].removeAttribute("unchecked")
