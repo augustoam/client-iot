@@ -7,23 +7,11 @@ App.componente_ambiente = App.cable.subscriptions.create "ComponenteAmbienteChan
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    console.log 'chegou data'
+    a = data.componente_ambiente.split(' ')[1].replace('"', '')
+    d = a.replace(/.$/, '')
     console.log data
-    if data.componente_ambiente.componente_ambiente_id isnt undefined
-      if data.componente_ambiente.estado is "false"
-        $("#{data.componente_ambiente.componente_ambiente_id}")[0].removeAttribute("unchecked")
-        $("#{data.componente_ambiente.componente_ambiente_id}")[0].setAttribute("checked", "checked")
-        $("#{data.componente_ambiente.componente_ambiente_id}")[0].setAttribute("data-estado", "true")
-      else
-        $("#{data.componente_ambiente.componente_ambiente_id}")[0].removeAttribute("checked")
-        $("#{data.componente_ambiente.componente_ambiente_id}")[0].setAttribute("unchecked", "unchecked")
-        $("#{data.componente_ambiente.componente_ambiente_id}")[0].setAttribute("data-estado", "false")
+    $("##{d}").html ""
+    $("##{d}").append data.componente_ambiente
 
   estado: (componente_ambiente) ->
     @perform 'estado', componente_ambiente: componente_ambiente
-
-$ ->
-  $(".botao-infra-vermelho").on "change", (event) ->
-    App.componente_ambiente.estado {estado: event.target.getAttribute("data-estado"), componente_ambiente_id: '#'+event.target.id}
-    event.target.value = ""
-    event.preventDefault()

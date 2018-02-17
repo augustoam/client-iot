@@ -14,7 +14,7 @@ class Api::ComponentesController < ActionController::API
       componente_ambiente.update!(estado: estado)
     end
 
-    publish_mqtt(params[:topico], params[:acao])
+    publish_mqtt(componente_ambiente.topico, params[:acao])
   end
 
   def recebe_estado

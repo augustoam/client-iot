@@ -33,13 +33,9 @@ $(document).on('turbolinks:load', function() {
 
   $('.notice').each(notice);
 
-  $('.botao-infra-vermelho').each(function() {
-    atualizaEstadoComponente($(this));
+  $('.publish-mqtt').change(function() {
+    publishMqtt($(this));
   })
-
-  $('.botao-infra-vermelho').click(function() {
-    comandoInfraVermelho($(this));
-  });
 
   $('.card-color').click(function() {
     comandoInfraVermelho($(this));
@@ -53,35 +49,19 @@ $(document).on('turbolinks:load', function() {
   Turbolinks.visit($(this).data("href"));
 });
 
-function atualizaEstadoComponente(element) {
-  var botaoComandoInfraVermelho = document.getElementById(element[0].id);
-  var estado = botaoComandoInfraVermelho.getAttribute("data-estado");
-
-  if (estado == "true") {
-    botaoComandoInfraVermelho.removeAttribute("unchecked")
-    botaoComandoInfraVermelho.setAttribute("checked", "checked")
-    botaoComandoInfraVermelho.setAttribute("data-estado", "true")
-  } else {
-    botaoComandoInfraVermelho.removeAttribute("checked")
-    botaoComandoInfraVermelho.setAttribute("unchecked", "unchecked")
-    botaoComandoInfraVermelho.setAttribute("data-estado", "false")
-  }
-}
-
 function notice() {
   var msg = $(this).data().msg;
   console.log(msg);
   Materialize.toast(msg, 4000)
 }
 
-function comandoInfraVermelho(element) {
-  var botaoComandoInfraVermelho = document.getElementById(element[0].id);
-  var topico = botaoComandoInfraVermelho.getAttribute("data-topico");
-  var componente_ambiente = botaoComandoInfraVermelho.getAttribute("data-componente-ambiente");
-  var acao = botaoComandoInfraVermelho.getAttribute("data-acao");
+function publishMqtt(element) {
+  var elemento = element[0].getElementsByClassName('componente-ambiente-publish');
+  var componente_ambiente = elemento[0].getAttribute("data-componente-ambiente");
+  var acao = '';
 
-  if ((element[0].id).indexOf('switch') !== -1) {
-    if (botaoComandoInfraVermelho.checked) {
+  if ((elemento[0].id).indexOf('switch') !== -1) {
+    if (elemento[0].checked) {
       acao = 'ligar';
     } else {
       acao = 'desligar';
@@ -89,11 +69,10 @@ function comandoInfraVermelho(element) {
   }
 
   var vData = {
-    topico: topico,
     acao: acao,
     componente_ambiente: componente_ambiente
   };
-  console.log('publish topico:' + topico + ' componente:' + componente_ambiente + ' acao:' + acao);
+  console.log('publish componente:' + componente_ambiente + ' acao:' + acao);
   $.post({
     data: vData,
     url: "/api/componentes/publish"
