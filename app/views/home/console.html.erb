@@ -1,6 +1,6 @@
 <% @grupos_usuario.each do |grupo_usuario| %>
   <div class="row">
-    <div class="center-align white-text" style="margin-top:10px"><%= grupo_usuario.grupo.nome %></div>
+    <div class="center-align white-text descricao-grupo" ><b><%= grupo_usuario.grupo.nome %></b></div>
     <% grupo_usuario.grupo.ambientes.each do |ambiente| %>
       <div class="col s6 m4">
         <div class="card-ambiente" data-href="<%= grupo_ambiente_componentes_ambiente_path(grupo_usuario, ambiente) %>">

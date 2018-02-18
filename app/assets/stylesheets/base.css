@@ -22,6 +22,18 @@ h4 {
   font-weight: bold !important;
 }
 
+.img-responsive {
+  display: inline;
+  width: 90px;
+  height: 25px;
+  margin-top: 20px;
+}
+
+input[type=range] {
+  border: 3px solid #c1afaf !important;
+  border-radius: 5px;
+}
+
 @media(max-width: 800px){
   .container {
     width: 100% !important;

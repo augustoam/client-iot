@@ -11,7 +11,9 @@
     <div class="row">
       <%= f.input :admin, as: :boolean, boolean_style: :inline, wrapper_html: {class:"i-checks m12 s12"} %>
     </div>
-    <%= link_icon_to_back grupo_usuarios_path(grupo_id: params[:grupo_id]) %>
-    <%= save_button %>
+    <div class="row">
+      <%= link_icon_to_back grupo_usuarios_path(grupo_id: params[:grupo_id]) %>
+      <%= save_button %>
+    </div>
   <% end %>
 </div>

@@ -1,6 +1,6 @@
 <div class="componente_ambiente luz">
   <div class="z-depth-5 white-text card-componente grey darken-4">
-    <div class="col s12 center-align" style="margin-top:2px;">
+    <div class="col s12 center-align" style="margin-top:6px;">
       <b><%= componente_ambiente.descricao %></b>
     </div>
 
@@ -13,14 +13,14 @@
     <div class="col m4 s8 offset-s1 center-align">
       <div class="switch">
         <label style="font-size:9px;">
-          Off
+          off
           <% if componente_ambiente.estado %>
             <input type="checkbox" id="switch-<%= componente_ambiente.descricao %><%= componente_ambiente.id %>" class="botao-infra-vermelho" data-componente-ambiente="<%=componente_ambiente.id%>" data-topico="<%=componente_ambiente.topico%>" checked="checked">
           <% else %>
             <input type="checkbox" id="switch-<%= componente_ambiente.descricao %><%= componente_ambiente.id %>" class="botao-infra-vermelho" data-componente-ambiente="<%=componente_ambiente.id%>" data-topico="<%=componente_ambiente.topico%>" unchecked="unchecked">
           <% end %>
           <span class="lever"></span>
-          On
+          on
         </label>
       </div>
     </div>
