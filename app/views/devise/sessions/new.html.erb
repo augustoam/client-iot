@@ -1,7 +1,8 @@
 <br>
 <div class="logo-name" >
-  CLIENT IOT
+  SYNC HOUSE
 </div>
+<br>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= f.hidden_field :token, value: params[:token] %>
@@ -20,7 +21,7 @@
 
   <div class='row'>
     <div class='col s12'>
-      <%= button_tag(type: 'submit', class: "col s12 waves-effect waves-light btn cyan") do %>
+      <%= button_tag(type: 'submit', class: "col s12 waves-effect waves-light btn grey") do %>
         <%= t('views.actions.login') %>
       <% end %>
     </div>
