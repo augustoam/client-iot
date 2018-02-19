@@ -10,6 +10,10 @@
   </div>
 
   <div class="row">
+    <%= f.input :visivel, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
     <% if @ambiente.persisted? %>
       <%= link_icon_to_back admin_ambiente_path(@ambiente) %>
     <% else %>

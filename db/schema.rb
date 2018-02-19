@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206005710) do
+ActiveRecord::Schema.define(version: 20180219015825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20180206005710) do
     t.string "icone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "visivel", default: true
   end
 
   create_table "comandos_infra_vermelhos", force: :cascade do |t|
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 20180206005710) do
     t.integer "layout_controle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "comando_unico", default: false
   end
 
   create_table "componentes_ambiente", force: :cascade do |t|
@@ -67,6 +69,7 @@ ActiveRecord::Schema.define(version: 20180206005710) do
     t.text "identificador_componente"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "valor"
   end
 
   create_table "controles", force: :cascade do |t|
@@ -75,21 +78,6 @@ ActiveRecord::Schema.define(version: 20180206005710) do
     t.integer "fabricante_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "delayed_jobs", force: :cascade do |t|
-    t.integer "priority", default: 0, null: false
-    t.integer "attempts", default: 0, null: false
-    t.text "handler", null: false
-    t.text "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string "locked_by"
-    t.string "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "fabricantes", force: :cascade do |t|
@@ -125,7 +113,7 @@ ActiveRecord::Schema.define(version: 20180206005710) do
     t.integer "usuario_id"
     t.integer "componente_id"
     t.string "comando"
-    t.datetime "dt_criacao", default: "2018-02-04 13:56:54"
+    t.datetime "dt_criacao", default: "2018-02-07 22:50:26"
   end
 
   create_table "usuarios", force: :cascade do |t|

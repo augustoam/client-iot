@@ -15,12 +15,13 @@ class MqttSubscribeJob < ApplicationJob
       _client.subscribe(topicos)
       _client.get do |topic, message|
         puts 'topico: ' + topic + ' message: ' + message
+
         estado = false
         estado = true if message == 'ligar'
 
         componente_ambiente = ComponenteAmbiente.find_by(topico: topic)
         if componente_ambiente.present?
-          componente_ambiente.update!(estado: estado)
+          componente_ambiente.update!(estado: estado, valor: message)
 
           ComponenteAmbienteBroadcastJob.perform_later(componente_ambiente)
         else

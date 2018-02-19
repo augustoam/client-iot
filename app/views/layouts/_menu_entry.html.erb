@@ -1,7 +1,7 @@
 <li>
   <%= link_to home_console_path do %>
   <i class="material-icons">dashboard</i>
-  <span class="grey-text text-darken-1">Início</span>
+  <span class="grey-text text-darken-4">Início</span>
 <% end %>
 </li>
 <% grupos_por_usuario.each do |grupo| %>
@@ -12,11 +12,13 @@
         <i class="material-icons"></i>
       </a>
       <% grupo.grupo.ambientes.each do |ambiente| %>
-        <div class="collapsible-body grey darken-3">
-          <ul>
-            <li><%= link_to ambiente.nome, grupo_ambiente_componentes_ambiente_path(grupo, ambiente), class: "white-text" %></li>
-          </ul>
-        </div>
+        <% if ambiente.visivel %>
+          <div class="collapsible-body grey darken-3">
+            <ul>
+              <li><%= link_to ambiente.nome, grupo_ambiente_componentes_ambiente_path(grupo, ambiente), class: "white-text" %></li>
+            </ul>
+          </div>
+        <% end %>
       <% end %>
     </li>
   </ul>

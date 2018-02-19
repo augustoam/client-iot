@@ -1,22 +1,20 @@
 class Admin::AmbientesController < ApplicationController
   layout 'admin'
-  before_action :set_grupo, only: [:index, :new, :create]
-  before_action :set_ambiente, only: [:show, :edit, :update, :destroy]
+  before_action :set_grupo, only: %i[index new create]
+  before_action :set_ambiente, only: %i[show edit update destroy]
 
   def index
     @q = @grupo.ambientes.ransack(params[:q])
     @ambientes = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @ambiente = Ambiente.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @ambiente = @grupo.ambientes.new(ambiente_params)
@@ -41,16 +39,17 @@ class Admin::AmbientesController < ApplicationController
   end
 
   private
-    def set_ambiente
-      @ambiente = Ambiente.find(params[:id])
-      @grupo = @ambiente.grupo
-    end
 
-    def set_grupo
-      @grupo = Grupo.find(params[:grupo_id])
-    end
+  def set_ambiente
+    @ambiente = Ambiente.find(params[:id])
+    @grupo = @ambiente.grupo
+  end
 
-    def ambiente_params
-      params.require(:ambiente).permit(:nome, :icone, :grupo_id)
-    end
+  def set_grupo
+    @grupo = Grupo.find(params[:grupo_id])
+  end
+
+  def ambiente_params
+    params.require(:ambiente).permit(:nome, :icone, :visivel, :grupo_id)
+  end
 end

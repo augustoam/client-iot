@@ -25,6 +25,7 @@
       <tr>
         <th><%= Ambiente.human_attribute_name(:id) %></th>
         <th><%= Ambiente.human_attribute_name(:nome) %></th>
+        <th><%= Ambiente.human_attribute_name(:visivel) %></th>
         <th><%= Ambiente.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>
       </tr>
@@ -35,6 +36,7 @@
         <tr data-href="<%= admin_ambiente_path(ambiente) %>">
           <td><%= ambiente.id %></td>
           <td><%= ambiente.nome %></td>
+          <td><%= ambiente.visivel %></td>
           <td><%= ltime ambiente.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_ambiente_path(ambiente))%></td>
           <td><%= link_icon_to_destroy(admin_ambiente_path(ambiente)) %></td>
