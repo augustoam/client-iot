@@ -18,6 +18,15 @@ Rails.application.routes.draw do
   get '/usuarios' => redirect('/usuarios/sign_in')
   get '/admin' => redirect('/admin/sign_in')
 
+
+  scope  module: 'api/v1/sessions' do
+    post :session_new
+  end
+
+  scope  module: 'api/v1/registrations' do
+    post :registration_new
+  end
+
   resources :grupos do
     resources :usuarios
     resources :ambientes do
@@ -28,6 +37,11 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
+    namespace :v1 do
+      namespace :grupos do
+        get :get_grupos
+      end
+    end
     namespace :request do
       post :google_api_request
     end
@@ -64,8 +78,13 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :root do
+    get :index
+  end
+
   namespace :home do
     get :console
+    get :portfolio
     post :mode_on
     post :mode_off
   end

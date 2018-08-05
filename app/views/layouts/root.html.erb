@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>AugustoClientWeb</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <%= stylesheet_link_tag    'root', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'root', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="grey blue-grey darken-3">
+    <main>
+      <%= render 'layouts/topnavbar_root' %>
+      <%= yield %>
+      <%= render 'layouts/footer_root' %>
+    </main>
+
+  </body>
+</html>

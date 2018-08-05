@@ -15,4 +15,4 @@
 //= require turbolinks
 //= require materialize-sprockets
 //= require materialize-form
-//= require_tree .
+//= require_tree ./default

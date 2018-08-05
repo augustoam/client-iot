@@ -8,6 +8,8 @@ class HomeController < ApplicationController
     else
       if usuario_signed_in?
         redirect_to home_console_path
+      else
+        redirect_to root_index_path
       end
     end
   end

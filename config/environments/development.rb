@@ -6,6 +6,8 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.assets.precompile += %w( template.css )
+
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -37,7 +39,7 @@ Rails.application.configure do
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: "augusto.albertoni.teste@gmail.com",
-    password: "firewsifirewsi" 
+    password: "firewsifirewsi"
   }
 
   # Print deprecation notices to the Rails logger.

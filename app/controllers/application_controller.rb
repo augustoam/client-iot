@@ -8,11 +8,12 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def authenticate_any!
-    if admin_signed_in?
-      true
-    else
-      authenticate_usuario!
-    end
+    true
+    # if admin_signed_in?
+    #   true
+    # else
+    #   authenticate_usuario!
+    # end
   end
 
   def current_user

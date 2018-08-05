@@ -5,12 +5,10 @@ $(document).on('turbolinks:load', function() {
   })
 
   $('.publish-mqtt-infravermelho').click(function() {
-    debugger
     publishMqttInfravermelho($(this));
   })
 
 });
-
 
 function publishMqttInfravermelho(element) {
   var elemento = document.getElementById(element[0].id);

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180219015825) do
+ActiveRecord::Schema.define(version: 20180429141729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,13 @@ ActiveRecord::Schema.define(version: 20180219015825) do
     t.datetime "dt_criacao", default: "2018-02-07 22:50:26"
   end
 
+  create_table "tokens_notificacao_mobile", force: :cascade do |t|
+    t.string "token"
+    t.integer "usuario_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "usuarios", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -133,6 +140,7 @@ ActiveRecord::Schema.define(version: 20180219015825) do
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token"
     t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
@@ -147,4 +155,5 @@ ActiveRecord::Schema.define(version: 20180219015825) do
   add_foreign_key "controles", "fabricantes"
   add_foreign_key "grupos_usuarios", "grupos"
   add_foreign_key "grupos_usuarios", "usuarios"
+  add_foreign_key "tokens_notificacao_mobile", "usuarios"
 end
