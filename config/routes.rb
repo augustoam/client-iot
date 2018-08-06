@@ -41,6 +41,9 @@ Rails.application.routes.draw do
       namespace :grupos do
         get :get_grupos
       end
+      namespace :componentes_ambiente do
+        get :get_componentes_ambiente
+      end
     end
     namespace :request do
       post :google_api_request

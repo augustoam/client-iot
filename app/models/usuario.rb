@@ -4,11 +4,12 @@ class Usuario < ApplicationRecord
   has_many :grupos, through: :grupos_usuarios
   has_many :log_componentes
   has_many :tokens_notificacao_mobile, dependent: :destroy
+  has_many :componentes_ambiente, through: :ambientes
 
   validates :email, presence: true, format: { with: Devise::email_regexp }
 
   before_save :set_token
-  
+
   # A callback method used to deliver confirmation
   # instructions on creation. This can be overridden
   # in models to map to a nice sign up e-mail.

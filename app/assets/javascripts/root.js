@@ -10,13 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
+//= require root/jquery-2.2.4.js
 //= require root/appear.js
 //= require root/charts.js
 //= require root/contact.js
-//= require root/custom.js
 //= require root/gmap3.js
 //= require root/imagesloaded.pkgd.js
 //= require root/isotope.pkgd.js
@@ -24,7 +21,6 @@
 //= require root/jarallax-video.js
 //= require root/jarallax.js
 //= require root/jqBootstrapValidation.js
-//= require root/jquery-2.2.4.js
 //= require root/jquery.easypiechart.js
 //= require root/jquery.fitvids.js
 //= require root/jquery.flexslider.js
@@ -41,5 +37,5 @@
 //= require root/submenu-fix.js
 //= require root/twitterFetcher.js
 //= require root/wow.js
-
+//= require root/custom.js
 //= require_tree ./root

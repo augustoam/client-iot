@@ -4,24 +4,18 @@
     <!-- Logos-->
     <div class="inner-header">
       <a class="inner-brand" href="index.html">
-        <img class="brand-dark" src="" width="77px" alt="">
-        <img class="brand-light" src="" width="77px" alt="">
+        <%= link_to image_tag('logo.png', class: 'img-responsive', size: '150x150'),home_console_path %>
         <!-- Or simple text-->
         <!-- Core--></a></div>
     <!-- Navigation-->
     <div class="inner-navigation collapse">
       <div class="inner-navigation-inline">
-        <div class="inner-nav">
-          <ul>
-
-            <li class="menu-item-has-children menu-item-has-mega-menu"><a href="#">Home</a>
-            </li>
-
-            <li class="menu-item-has-children"><a href="#">Institucional</a>
-            </li>
-
-            <li class="menu-item-has-children"><a href="#">Produtos</a>
-            </li>
+        <div class="inner-nav" >
+          <ul style="height:35%">
+            <li class="menu-item-has-children menu-item-has-mega-menu"><a href="#">Home</a></li>
+            <li class="menu-item-has-children"><a href="#">Institucional</a></li>
+            <li class="menu-item-has-children"><a href="#">Produtos</a></li>
+            <li class="menu-item-has-children"><a href="#">Contato</a></li>
             <li class="menu-item-has-children"><a href="<%= usuario_session_path %>">Login</a></li>
           </ul>
         </div>
