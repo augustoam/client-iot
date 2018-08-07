@@ -26,7 +26,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   Rails.application.routes.default_url_options[:host] = 'client-iot.herokuapp.com'
   config.action_mailer.delivery_method = :smtp
