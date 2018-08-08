@@ -27,12 +27,12 @@ class ApplicationController < ActionController::Base
 
   def temperatura
     @temperatura = ''
-    ComponenteAmbiente
-      .joins(ambiente: { grupo: :usuarios })
-      .where(Usuario.table_name => { id: current_usuario }, descricao: 'Temperatura')
-      .each do |componente_ambiente|
-      @temperatura += componente_ambiente.ambiente.grupo.nome + ' ' + componente_ambiente.valor.to_s + ' C°'
-    end
+    # ComponenteAmbiente
+    #   .joins(ambiente: { grupo: :usuarios })
+    #   .where(Usuario.table_name => { id: current_usuario }, descricao: 'Temperatura')
+    #   .each do |componente_ambiente|
+    #   @temperatura += componente_ambiente.ambiente.grupo.nome + ' ' + componente_ambiente.valor.to_s + ' C°'
+    # end
   end
 
   private
