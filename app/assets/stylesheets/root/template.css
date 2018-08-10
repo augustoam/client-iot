@@ -79,7 +79,7 @@ body .layout {
 }
 
 .scroll-top {
-    background: #4a90e2;
+    background: #ffae00;
     border-radius: 20px;
     position: fixed;
     bottom: 14px;
@@ -253,6 +253,7 @@ h6,
 h1,
 .h1 {
     font-size: 40px;
+    color: white; text-shadow: black 0.1em 0.1em 0.2em;
 }
 
 h2,
