@@ -1,8 +1,7 @@
 class Ambiente < ApplicationRecord
-  belongs_to :grupo
-  has_many :componentes_ambiente
+  has_many :ambientes_grupo
 
   def to_s
-    nome.to_s
+    descricao.to_s
   end
 end

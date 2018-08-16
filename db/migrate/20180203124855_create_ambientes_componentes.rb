@@ -1,9 +1,10 @@
 class CreateAmbientesComponentes < ActiveRecord::Migration[5.1]
   def change
     create_table :componentes_ambiente do |t|
-      t.integer :ambiente_id
+      t.integer :ambiente_grupo_id
       t.integer :componente_id
       t.string :topico
+      t.string :valor
       t.boolean :estado, default: false
       t.text :descricao
       t.text :identificador_componente

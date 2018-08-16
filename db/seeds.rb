@@ -3,7 +3,7 @@ unless Rails.env.test?
     Admin.create(email: 'admin@admin.com', password: 'amendoim')
   end
   if Usuario.count.zero?
-    usuario = Usuario.create(email: 'usuario@usuario.com', password: 'usuario', admin: 'true')
+    usuario = Usuario.create(email: 'usuario@usuario.com', password: 'amendoim', admin: 'true')
     usuario.confirm
   end
   fabricante = Fabricante.create(descricao: 'Samsung') if Fabricante.count.zero?
@@ -28,8 +28,11 @@ unless Rails.env.test?
     # GrupoUsuario.create(usuario: usuario, grupo: grupo2)
   end
   if Ambiente.count.zero?
-    ambiente1 = Ambiente.create(nome: 'Sala', grupo: grupo1)
-    ambiente2 = Ambiente.create(nome: 'Cozinha', grupo: grupo1)
+    ambiente1 = Ambiente.create(descricao: 'Sala', icone: 'week')
+  end
+  if AmbienteGrupo.count.zero?
+    ambiente_grupo1 = AmbienteGrupo.create(nome: 'Sala', grupo: grupo1, ambiente: ambiente1)
+    ambiente_grupo1 = AmbienteGrupo.create(nome: 'Cozinha', grupo: grupo1)
     # ambiente3 = Ambiente.create(nome: 'Banheiro', grupo: grupo2)
     # ambiente4 = Ambiente.create(nome: 'Sala Principal', grupo: grupo2)
   end

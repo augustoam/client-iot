@@ -1,0 +1,28 @@
+<%= simple_form_for([:admin, @ambiente_grupo], url: admin_ambiente_grupo_form_path(@grupo, @ambiente_grupo)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <%= f.input :nome, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :icone, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.association :ambiente, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :visivel, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <% if @ambiente_grupo.persisted? %>
+      <%= link_icon_to_back admin_ambiente_grupo_path(@ambiente_grupo) %>
+    <% else %>
+      <%= link_icon_to_back admin_grupo_ambientes_grupo_path(@grupo) %>
+    <% end %>
+    <%= save_button %>
+  </div>
+<% end %>

@@ -1,14 +1,13 @@
-<% breadcrumb :ambientes, @grupo %>
+<% breadcrumb :ambientes %>
   <div class="row">
-    <h3><%= plural_model_name_for(Ambiente) %>
-      <%= singular_model_name_for(Grupo) %></h3>
+    <h3><%= plural_model_name_for(Ambiente) %></h3>
   </div>
 
   <div class="row">
-    <%= search_form_for @q, url: admin_grupo_ambientes_path do |f| %>
+    <%= search_form_for @q, url: admin_ambientes_path do |f| %>
 
     <div class="col s11">
-      <%= f.search_field :nome_cont, class: "form-control", placeholder: "Pesquisar Ambientes" %>
+      <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Pesquisar Ambientes" %>
     </div>
     <div class="col s1">
       <button class="waves-effect waves-light btn grey lighten-4" type="submit">
@@ -24,8 +23,7 @@
     <thead>
       <tr>
         <th><%= Ambiente.human_attribute_name(:id) %></th>
-        <th><%= Ambiente.human_attribute_name(:nome) %></th>
-        <th><%= Ambiente.human_attribute_name(:visivel) %></th>
+        <th><%= Ambiente.human_attribute_name(:descricao) %></th>
         <th><%= Ambiente.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>
       </tr>
@@ -35,12 +33,10 @@
       <% @ambientes.each do |ambiente| %>
         <tr data-href="<%= admin_ambiente_path(ambiente) %>">
           <td><%= ambiente.id %></td>
-          <td><%= ambiente.nome %></td>
-          <td><%= ambiente.visivel %></td>
+          <td><%= ambiente.descricao %></td>
           <td><%= ltime ambiente.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_ambiente_path(ambiente))%></td>
           <td><%= link_icon_to_destroy(admin_ambiente_path(ambiente)) %></td>
-          <td><%= link_to 'Componentes', admin_ambiente_componentes_ambiente_path(ambiente), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -48,10 +44,10 @@
 </div>
 
 <div class="row">
-  <%= link_icon_to_back admin_grupos_path %>
-  <%= link_icon_to_new(new_admin_grupo_ambiente_path(@grupo), action_new(@ambientes)) %>
+  <%= link_icon_to_back admin_home_admin_index_path %>
+  <%= link_icon_to_new(new_admin_ambiente_path, action_new(@ambientes)) %>
 </div>
 
 <div class="center-align">
-  <%= will_paginate @Ambientes, renderer: MaterializePagination::Rails %>
+  <%= will_paginate @ambientes, renderer: MaterializePagination::Rails %>
 </div>

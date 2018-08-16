@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180429141729) do
+ActiveRecord::Schema.define(version: 20180816002934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,21 @@ ActiveRecord::Schema.define(version: 20180429141729) do
   end
 
   create_table "ambientes", force: :cascade do |t|
-    t.string "nome"
-    t.integer "grupo_id"
+    t.string "descricao"
     t.string "icone"
+    t.string "obs"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ambientes_grupo", force: :cascade do |t|
+    t.string "nome"
+    t.integer "grupo_id"
+    t.integer "ambiente_id"
+    t.string "icone"
     t.boolean "visivel", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comandos_infra_vermelhos", force: :cascade do |t|
@@ -61,15 +70,15 @@ ActiveRecord::Schema.define(version: 20180429141729) do
   end
 
   create_table "componentes_ambiente", force: :cascade do |t|
-    t.integer "ambiente_id"
+    t.integer "ambiente_grupo_id"
     t.integer "componente_id"
     t.string "topico"
+    t.string "valor"
     t.boolean "estado", default: false
     t.text "descricao"
     t.text "identificador_componente"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "valor"
   end
 
   create_table "controles", force: :cascade do |t|
@@ -104,6 +113,7 @@ ActiveRecord::Schema.define(version: 20180429141729) do
   create_table "layout_controles", force: :cascade do |t|
     t.string "descricao"
     t.string "obs"
+    t.string "tipo_layout"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -113,7 +123,7 @@ ActiveRecord::Schema.define(version: 20180429141729) do
     t.integer "usuario_id"
     t.integer "componente_id"
     t.string "comando"
-    t.datetime "dt_criacao", default: "2018-02-07 22:50:26"
+    t.datetime "dt_criacao", default: "2018-08-16 00:29:14"
   end
 
   create_table "tokens_notificacao_mobile", force: :cascade do |t|
@@ -146,11 +156,12 @@ ActiveRecord::Schema.define(version: 20180429141729) do
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "ambientes", "grupos"
+  add_foreign_key "ambientes_grupo", "ambientes"
+  add_foreign_key "ambientes_grupo", "grupos"
   add_foreign_key "comandos_infra_vermelhos", "controles"
   add_foreign_key "componentes", "controles"
   add_foreign_key "componentes", "layout_controles"
-  add_foreign_key "componentes_ambiente", "ambientes"
+  add_foreign_key "componentes_ambiente", "ambientes_grupo"
   add_foreign_key "componentes_ambiente", "componentes"
   add_foreign_key "controles", "fabricantes"
   add_foreign_key "grupos_usuarios", "grupos"

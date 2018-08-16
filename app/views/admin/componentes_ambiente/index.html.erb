@@ -1,10 +1,10 @@
-<% breadcrumb :componentes_ambiente, @ambiente %>
+<% breadcrumb :componentes_ambiente, @ambiente_grupo %>
   <div class="row">
     <h3><%= plural_model_name_for(ComponenteAmbiente) %></h3>
   </div>
 
   <div class="row">
-    <%= search_form_for @q, url: admin_ambiente_componentes_ambiente_path do |f| %>
+    <%= search_form_for @q, url: admin_ambiente_grupo_componentes_ambiente_path do |f| %>
 
     <div class="col s11">
       <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Pesquisar Componentes" %>
@@ -52,10 +52,10 @@
 </div>
 
 <div class="row">
-  <%= link_icon_to_back admin_grupo_ambientes_path(@ambiente.grupo) %>
-  <%= link_icon_to_new(new_admin_ambiente_componente_ambiente_path(@ambiente), action_new(@componentes_ambiente)) %>
+  <%= link_icon_to_back admin_grupo_ambientes_grupo_path(@ambiente_grupo.grupo) %>
+  <%= link_icon_to_new(new_admin_ambiente_grupo_componente_ambiente_path(@ambiente_grupo), action_new(@componentes_ambiente)) %>
 </div>
 
 <div class="center-align">
-  <%= will_paginate @Ambientes, renderer: MaterializePagination::Rails %>
+  <%= will_paginate @componentes_ambiente, renderer: MaterializePagination::Rails %>
 </div>

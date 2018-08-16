@@ -66,6 +66,7 @@ Rails.application.routes.draw do
     resources :home_admin
     resources :administrador
     resources :fabricantes
+    resources :ambientes
     resources :componentes
     resources :layout_controles
     resources :usuarios do
@@ -75,7 +76,7 @@ Rails.application.routes.draw do
       resources :usuarios do
         get :remover, on: :member
       end
-      resources :ambientes, shallow: true do
+      resources :ambientes_grupo, shallow: true do
         resources :componentes_ambiente
       end
     end

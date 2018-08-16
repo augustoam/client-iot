@@ -4,12 +4,13 @@ class Api::V1::GruposController < Api::V1::BaseController
     tokens = JSON.parse(params['tokens'])
     usuarios = Usuario.where(token: tokens)
     if usuarios.any?
+      @ambientes = []
       usuarios.each do |usuario|
 
-        @ambientes = usuario.grupos_usuarios.collect do |grupo_usuario|
+        @ambientes += usuario.grupos_usuarios.collect do |grupo_usuario|
           result = grupo_usuario.as_json
           result[:grupo] = grupo_usuario.grupo
-          result[:ambientes] = grupo_usuario.grupo.ambientes.where(visivel: true)
+          result[:ambientes_grupo] = grupo_usuario.grupo.ambientes_grupo
           result
         end
       end

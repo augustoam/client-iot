@@ -12,6 +12,10 @@
     <%= @layout_controle.descricao %>
   </div>
   <div class="row">
+    <b><%= LayoutControle.human_attribute_name(:tipo_layout) %></b>
+    <%= @layout_controle.tipo_layout %>
+  </div>
+  <div class="row">
     <b><%= LayoutControle.human_attribute_name(:obs) %></b>
     <%= @layout_controle.obs %>
   </div>

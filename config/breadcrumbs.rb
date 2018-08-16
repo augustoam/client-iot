@@ -36,37 +36,54 @@ crumb :usuario_new do |grupo|
   parent :usuarios, grupo
 end
 
-crumb :ambientes do |grupo|
-  link Ambiente.model_name.human(count: 2), admin_grupo_ambientes_path(grupo)
-  parent :grupos, grupo
+crumb :ambientes do
+  link Ambiente.model_name.human(count: 2), admin_ambientes_path
+  parent :root
 end
 crumb :ambiente do |ambiente|
-  link ambiente.to_s
-  parent :ambientes, ambiente.grupo
-end
-crumb :ambiente_new do |grupo|
-  link t('views.actions.new')
-  parent :ambientes, grupo
+  link ambiente.to_s, admin_ambiente_path(ambiente)
+  parent :ambientes
 end
 crumb :ambiente_edit do |ambiente|
   link t('views.actions.do_edit'), edit_admin_ambiente_path(ambiente)
   parent :ambiente, ambiente
 end
+crumb :ambiente_new do
+  link t('views.actions.new')
+  parent :ambientes
+end
 
-crumb :componentes_ambiente do |ambiente|
-  link Componente.model_name.human(count: 2), admin_ambiente_componentes_ambiente_path(ambiente)
-  parent :ambientes, ambiente.grupo
+crumb :ambientes_grupo do |grupo|
+  link AmbienteGrupo.model_name.human(count: 2), admin_grupo_ambientes_grupo_path(grupo)
+  parent :grupos, grupo
+end
+crumb :ambiente_grupo do |ambiente_grupo|
+  link ambiente_grupo.to_s
+  parent :ambientes_grupo, ambiente_grupo.grupo
+end
+crumb :ambiente_grupo_new do |grupo|
+  link t('views.actions.new')
+  parent :ambientes_grupo, grupo
+end
+crumb :ambiente_grupo_edit do |ambiente_grupo|
+  link t('views.actions.do_edit'), edit_admin_ambiente_grupo_path(ambiente_grupo)
+  parent :ambiente_grupo, ambiente_grupo
+end
+
+crumb :componentes_ambiente do |ambiente_grupo|
+  link Componente.model_name.human(count: 2), admin_ambiente_grupo_componentes_ambiente_path(ambiente_grupo)
+  parent :ambientes_grupo, ambiente_grupo.grupo
 end
 crumb :componente_ambiente do |componente_ambiente|
   link componente_ambiente.to_s
-  parent :componentes_ambiente, componente_ambiente.ambiente
+  parent :componentes_ambiente, componente_ambiente.ambiente_grupo
 end
-crumb :componente_ambiente_new do |ambiente|
+crumb :componente_ambiente_new do |ambiente_grupo|
   link t('views.actions.new')
-  parent :componentes_ambiente, ambiente
+  parent :componentes_ambiente, ambiente_grupo
 end
 crumb :componente_ambiente_edit do |componente_ambiente|
-  link t('views.actions.do_edit'), edit_admin_componente_ambiente_path(componente_ambiente.ambiente)
+  link t('views.actions.do_edit'), edit_admin_componente_ambiente_path(componente_ambiente.ambiente_grupo)
   parent :componente_ambiente, componente_ambiente
 end
 

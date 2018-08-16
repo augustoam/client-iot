@@ -8,12 +8,16 @@
   <%= @ambiente.id %>
 </div>
 <div class="row">
-  <b><%= Ambiente.human_attribute_name(:nome) %></b>
-  <%= @ambiente.nome %>
+  <b><%= Ambiente.human_attribute_name(:descricao) %></b>
+  <%= @ambiente.descricao %>
 </div>
 <div class="row">
   <b><%= Ambiente.human_attribute_name(:icone) %></b>
   <%= @ambiente.icone %>
+</div>
+<div class="row">
+  <b><%= Ambiente.human_attribute_name(:obs) %></b>
+  <%= @ambiente.obs %>
 </div>
 <div class="row">
   <b><%= Ambiente.human_attribute_name(:created_at) %></b>
@@ -21,6 +25,6 @@
 </div>
 
 <div class="row">
-  <%= link_icon_to_back admin_grupo_ambientes_path(@grupo) %>
+  <%= link_icon_to_back admin_ambientes_path %>
   <%= link_icon_to_edit(edit_admin_ambiente_path(@ambiente))%>
 </div>

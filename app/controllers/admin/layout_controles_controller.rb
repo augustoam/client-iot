@@ -45,6 +45,6 @@ class Admin::LayoutControlesController < ApplicationController
   end
 
   def layout_controle_params
-    params.require(:layout_controle).permit(:descricao, :obsm, :fabricante_id)
+    params.require(:layout_controle).permit(:descricao, :tipo_layout, :obs, :fabricante_id)
   end
 end

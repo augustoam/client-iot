@@ -5,9 +5,9 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
     usuarios = Usuario.where(token: tokens)
     if usuarios.any?
       usuarios.each do |usuario|
-        ambiente = Ambiente.find(params['ambiente_id'])
+        ambiente_grupo = AmbienteGrupo.find(params['ambiente_grupo_id'])
 
-        @componente_ambiente = ambiente.componentes_ambiente.collect do |componente_ambiente|
+        @componente_ambiente = ambiente_grupo.componentes_ambiente.collect do |componente_ambiente|
           result = componente_ambiente.as_json
           result[:layout_controle] = componente_ambiente.componente.layout_controle.as_json
           result
