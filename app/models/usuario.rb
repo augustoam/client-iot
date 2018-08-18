@@ -4,7 +4,7 @@ class Usuario < ApplicationRecord
   has_many :grupos, through: :grupos_usuarios
   has_many :log_componentes
   has_many :tokens_notificacao_mobile, dependent: :destroy
-  has_many :componentes_ambiente, through: :ambientes
+  has_many :componentes_ambiente, through: :ambientes_grupo
 
   validates :email, presence: true, format: { with: Devise::email_regexp }
 
