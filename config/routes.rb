@@ -47,8 +47,16 @@ Rails.application.routes.draw do
         post :edit_grupo
         post :destroy_grupo
       end
+      namespace :ambientes do
+        post :new_ambiente
+        post :edit_ambiente
+        post :destroy_ambiente
+      end
       namespace :componentes_ambiente do
         get :get_componentes_ambiente
+        post :new_componente_ambiente
+        post :edit_componente_ambiente
+        post :destroy_componente_ambiente
       end
     end
     namespace :request do
