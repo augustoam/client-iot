@@ -9,6 +9,7 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
         @componente_ambiente = ambiente_grupo.componentes_ambiente.collect do |componente_ambiente|
           result = componente_ambiente.as_json
           result[:layout_controle] = componente_ambiente.componente.layout_controle.as_json
+          result[:comandos] = componente_ambiente.componente.controle.comandos_infra_vermelhos.as_json
           result
         end
 
