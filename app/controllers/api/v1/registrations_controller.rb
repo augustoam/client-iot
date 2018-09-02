@@ -14,7 +14,6 @@ class Api::V1::RegistrationsController < Api::V1::BaseController
           usuario.tokens_notificacao_mobile.create!(token: token_notificacao)
         end
       end
-      debugger
       render json: { usuario: usuario.email, token: usuario.token }, status: :ok
     else
       render json: { msg: 'Este email já esta cadastrado!' }, status: :unauthorized

@@ -10,6 +10,7 @@ class Api::V1::GruposController < Api::V1::BaseController
           result[:ambientes_grupo] = grupo_usuario.grupo.ambientes_grupo
           result[:ambientes] = Ambiente.all
           result[:componentes] = Componente.all
+          result[:usuarios_grupo] = grupo_usuario.grupo.usuarios
           result
         end
         render json: @response.to_json, status: :ok
@@ -24,6 +25,7 @@ class Api::V1::GruposController < Api::V1::BaseController
   def new_grupo
     if @usuario.present?
       begin
+        debugger
         grupo = @usuario.grupos.create!(nome: JSON.parse(params[:nome]))
         render json: grupo.to_json, status: :ok
       rescue => exception

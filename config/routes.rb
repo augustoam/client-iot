@@ -38,6 +38,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      namespace :usuarios_grupo do
+        post :add_usuario_grupo
+        post :destroy_usuario_grupo
+      end
       namespace :mqtt do
         post :publish
       end

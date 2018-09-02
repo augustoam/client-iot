@@ -9,7 +9,7 @@ class Usuario < ApplicationRecord
 
   validates :email, presence: true, format: { with: Devise::email_regexp }
 
-  before_save :set_token
+  before_create :set_token
 
   # A callback method used to deliver confirmation
   # instructions on creation. This can be overridden
