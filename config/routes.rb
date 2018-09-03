@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   resources :grupos do
     resources :usuarios
-    resources :ambientes do
+    resources :ambientes_grupo do
       resources :componentes_ambiente, shallow: true do
         resources :layout_controles, shallow: true
       end

@@ -3,7 +3,7 @@ class ComponentesAmbienteController < ApplicationController
   before_action :set_ambiente
 
   def index
-    @componentes_ambiente = @ambiente.componentes_ambiente.all.order(:id)
+    @componentes_ambiente = @ambiente_grupo.componentes_ambiente.all.order(:id)
   end
 
   def show; end
@@ -11,6 +11,6 @@ class ComponentesAmbienteController < ApplicationController
   private
 
   def set_ambiente
-    @ambiente = Ambiente.find(params[:ambiente_id])
+    @ambiente_grupo = AmbienteGrupo.find(params[:ambiente_grupo_id])
   end
 end

@@ -11,11 +11,11 @@
       <a class="collapsible-header white-text "><%= grupo.grupo.nome %>
         <i class="material-icons"></i>
       </a>
-      <% grupo.grupo.ambientes.each do |ambiente| %>
-        <% if ambiente.visivel %>
+      <% grupo.grupo.ambientes_grupo.each do |ambiente_grupo| %>
+        <% if ambiente_grupo.visivel %>
           <div class="collapsible-body grey darken-3">
             <ul>
-              <li><%= link_to ambiente.nome, grupo_ambiente_componentes_ambiente_path(grupo, ambiente), class: "white-text" %></li>
+              <li><%= link_to ambiente_grupo.nome, grupo_ambiente_grupo_componentes_ambiente_path(grupo, ambiente_grupo), class: "white-text" %></li>
             </ul>
           </div>
         <% end %>
