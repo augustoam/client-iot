@@ -1,8 +1,5 @@
-<br>
-<div class="logo-name" >
-  SYNC HOUSE
-</div>
-<br>
+<%= link_to image_tag('logo.png', class: 'brand-light', size: '150x150'), root_path %>
+
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= f.hidden_field :token, value: params[:token] %>
