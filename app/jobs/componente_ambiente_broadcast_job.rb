@@ -2,7 +2,6 @@ class ComponenteAmbienteBroadcastJob < ApplicationJob
   queue_as :critical
 
   def perform(componente_ambiente)
-    # debugger
     ActionCable.server.broadcast 'componente_ambiente_channel', componente_ambiente: render_componente_ambiente(componente_ambiente)
   end
 

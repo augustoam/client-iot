@@ -17,7 +17,6 @@ class Admin::ComponentesAmbienteController < ApplicationController
   def edit; end
 
   def create
-    debugger
     @componente_ambiente = @ambiente_grupo.componentes_ambiente.new(componente_ambiente_params)
     if @componente_ambiente.save
       redirect_to admin_ambiente_grupo_componentes_ambiente_path(@ambiente_grupo), notice: "#{ComponenteAmbiente.model_name.human} criado com sucesso"
