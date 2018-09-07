@@ -24,12 +24,18 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
 
   def new_componente_ambiente
     if @usuario.present?
-      begin
-        componente = Componente.find(JSON.parse(params[:componente_id]))
-        componente_ambiente = ComponenteAmbiente.create!(componente: componente, descricao: componente.descricao, topico: '123', ambiente_grupo_id: JSON.parse(params[:ambiente_grupo_id]))
-        render json: componente_ambiente.to_json, status: :ok
-      rescue => exception
-        render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
+
+      topico = JSON.parse(params[:topico])
+      if topico.include? 'synchouse'
+        begin
+          componente = Componente.find(JSON.parse(params[:componente_id]))
+          componente_ambiente = ComponenteAmbiente.create!(componente: componente, descricao: componente.descricao, topico: topico, ambiente_grupo_id: JSON.parse(params[:ambiente_grupo_id]))
+          render json: componente_ambiente.to_json, status: :ok
+        rescue => exception
+          render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
+        end
+      else
+        render json: { msg: 'QRCode inválido. Tente novamente!' }, status: :unprocessable_entity
       end
     else
       render json: { msg: 'Usuário não autorizado!' }, status: :unprocessable_entity

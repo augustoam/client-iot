@@ -25,7 +25,6 @@ class Api::V1::GruposController < Api::V1::BaseController
   def new_grupo
     if @usuario.present?
       begin
-        debugger
         grupo = @usuario.grupos.create!(nome: JSON.parse(params[:nome]))
         render json: grupo.to_json, status: :ok
       rescue => exception

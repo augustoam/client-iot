@@ -1,6 +1,5 @@
 class Api::V1::RegistrationsController < Api::V1::BaseController
   def registration_new
-    debugger
     usuario = Usuario.new(
       email: JSON.parse(params[:email]),
       password: JSON.parse(params[:password]),
