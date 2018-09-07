@@ -1,6 +1,6 @@
 class Api::V1::SessionsController < Api::V1::BaseController
   def session_new
-    usuario = Usuario.find_by_email(JSON.parse(params['email']))
+    usuario = Usuario.find_by_email(params['email'])
     if usuario.present?
       token_notificacao = JSON.parse(params[:token_notificacao])
       # Cria o token para notificação para o dispositivo do cliente
