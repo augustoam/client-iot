@@ -10,7 +10,7 @@ class Api::V1::RegistrationsController < Api::V1::BaseController
     if usuario.valid?
       usuario.save
       usuario.confirm
-      token_notificacao = JSON.parse(params[:token_notificacao])
+      token_notificacao = params[:token_notificacao]
       unless usuario.tokens_notificacao_mobile.find_by(token: token_notificacao)
         if token_notificacao != 'undefined'
           usuario.tokens_notificacao_mobile.create!(token: token_notificacao)
