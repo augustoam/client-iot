@@ -25,7 +25,7 @@ class Api::V1::GruposController < Api::V1::BaseController
   def new_grupo
     if @usuario.present?
       begin
-        grupo = @usuario.grupos.create!(nome: JSON.parse(params[:nome]))
+        grupo = @usuario.grupos.create!(nome: params[:nome])
         render json: grupo.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
@@ -38,7 +38,7 @@ class Api::V1::GruposController < Api::V1::BaseController
   def edit_grupo
     if @usuario.present?
       begin
-        grupo = @usuario.grupos.find(JSON.parse(params[:id])).update(nome: JSON.parse(params[:nome]))
+        grupo = @usuario.grupos.find(params[:id]).update(nome: params[:nome])
         render json: grupo.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
@@ -51,7 +51,7 @@ class Api::V1::GruposController < Api::V1::BaseController
   def destroy_grupo
     if @usuario.present?
       begin
-        @usuario.grupos.find(JSON.parse(params[:id])).destroy
+        @usuario.grupos.find(params[:id]).destroy
         render json: {}, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
@@ -62,7 +62,7 @@ class Api::V1::GruposController < Api::V1::BaseController
   end
 
   def authenticate_user
-    tokens = JSON.parse(params[:tokens])
+    tokens = params[:tokens]
     @usuario = Usuario.find_by(token: tokens)
   end
 end

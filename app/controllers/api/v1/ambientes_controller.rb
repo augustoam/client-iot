@@ -4,8 +4,8 @@ class Api::V1::AmbientesController < Api::V1::BaseController
   def new_ambiente
     if @usuario.present?
       begin
-        ambiente = Ambiente.find(JSON.parse(params[:ambiente_id]))
-        grupo = @usuario.grupos.find(JSON.parse(params[:grupo_id]))
+        ambiente = Ambiente.find(params[:ambiente_id])
+        grupo = @usuario.grupos.find(params[:grupo_id])
         ambiente_grupo = grupo.ambientes_grupo.create!(nome: ambiente.descricao, icone: ambiente.icone, ambiente: ambiente)
         render json: ambiente_grupo.to_json, status: :ok
       rescue => exception
@@ -19,7 +19,7 @@ class Api::V1::AmbientesController < Api::V1::BaseController
   def edit_ambiente
     if @usuario.present?
       begin
-        ambiente_grupo = AmbienteGrupo.find(JSON.parse(params[:id])).update(nome: JSON.parse(params[:nome]))
+        ambiente_grupo = AmbienteGrupo.find(params[:id]).update(nome: params[:nome])
         render json: ambiente_grupo.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
@@ -32,7 +32,7 @@ class Api::V1::AmbientesController < Api::V1::BaseController
   def destroy_ambiente
     if @usuario.present?
       begin
-        AmbienteGrupo.find(JSON.parse(params[:id])).destroy
+        AmbienteGrupo.find(params[:id]).destroy
         render json: {}, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
@@ -43,7 +43,7 @@ class Api::V1::AmbientesController < Api::V1::BaseController
   end
 
   def authenticate_user
-    tokens = JSON.parse(params[:tokens])
+    tokens = params[:tokens]
     @usuario = Usuario.find_by(token: tokens)
   end
 end

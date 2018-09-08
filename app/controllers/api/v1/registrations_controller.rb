@@ -1,10 +1,11 @@
 class Api::V1::RegistrationsController < Api::V1::BaseController
   def registration_new
     usuario = Usuario.new(
-      email: JSON.parse(params['email']),
-      password: JSON.parse(params['password']),
-      password_confirmation: JSON.parse(params['password'])
+      email: params[:email],
+      password: params[:password],
+      password_confirmation: params[:password]
     )
+
     if usuario.valid?
       usuario.save
       usuario.confirm

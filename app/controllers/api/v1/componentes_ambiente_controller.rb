@@ -25,11 +25,11 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
   def new_componente_ambiente
     if @usuario.present?
 
-      topico = JSON.parse(params[:topico])
+      topico = params[:topico]
       if topico.include? 'synchouse'
         begin
-          componente = Componente.find(JSON.parse(params[:componente_id]))
-          componente_ambiente = ComponenteAmbiente.create!(componente: componente, descricao: componente.descricao, topico: topico, ambiente_grupo_id: JSON.parse(params[:ambiente_grupo_id]))
+          componente = Componente.find(params[:componente_id])
+          componente_ambiente = ComponenteAmbiente.create!(componente: componente, descricao: componente.descricao, topico: topico, ambiente_grupo_id: params[:ambiente_grupo_id])
           render json: componente_ambiente.to_json, status: :ok
         rescue => exception
           render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
@@ -45,7 +45,7 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
   def edit_componente_ambiente
     if @usuario.present?
       begin
-        componente_ambiente = ComponenteAmbiente.find(JSON.parse(params[:componente_ambiente_id])).update(descricao: JSON.parse(params[:descricao]))
+        componente_ambiente = ComponenteAmbiente.find(params[:componente_ambiente_id]).update(descricao: params[:descricao])
         render json: componente_ambiente.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
@@ -58,7 +58,7 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
   def destroy_componente_ambiente
     if @usuario.present?
       begin
-        ComponenteAmbiente.find(JSON.parse(params[:componente_ambiente_id])).destroy
+        ComponenteAmbiente.find(params[:componente_ambiente_id]).destroy
         render json: {}, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
@@ -69,7 +69,7 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
   end
 
   def authenticate_user
-    tokens = JSON.parse(params[:tokens])
+    tokens = params[:tokens]
     @usuario = Usuario.find_by(token: tokens)
   end
 end
