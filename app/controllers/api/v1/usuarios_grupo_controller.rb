@@ -7,8 +7,8 @@ class Api::V1::UsuariosGrupoController < Api::V1::BaseController
       if usuario_grupo.present?
         if !GrupoUsuario.find_by(grupo_id: params[:grupo_id], usuario: usuario_grupo)
           begin
-            GrupoUsuario.create(grupo_id: params[:grupo_id], usuario: usuario_grupo)
-            render json: usuario_grupo.to_json, status: :ok
+            grupo_usuario = GrupoUsuario.create(grupo_id: params[:grupo_id], usuario: usuario_grupo)
+            render json: grupo_usuario.to_json, status: :ok
           rescue => exception
             render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
           end
@@ -26,8 +26,20 @@ class Api::V1::UsuariosGrupoController < Api::V1::BaseController
   def destroy_usuario_grupo
     if @usuario.present?
       begin
-        GrupoUsuario.find_by(usuario_id: params[:usuario_id], grupo_id: params[:grupo_id]).destroy
+        GrupoUsuario.find(params[:id]).destroy
         render json: {}, status: :ok
+      rescue => exception
+        render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
+      end
+    else
+      render json: { msg: 'Usuário não autorizado!' }, status: :unprocessable_entity
+    end
+  end
+
+  def set_admin_usuario_grupo
+    if @usuario.present?
+      begin
+        GrupoUsuario.find(params[:id]).update(admin: params[:admin])
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
       end

@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       namespace :usuarios_grupo do
         post :add_usuario_grupo
         post :destroy_usuario_grupo
+        post :set_admin_usuario_grupo
       end
       namespace :mqtt do
         post :publish
