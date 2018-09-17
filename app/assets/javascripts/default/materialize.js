@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function() {
     $('.modal').modal();
 
     // Start material select box
-    $('select').material_select();
+    $('select').formSelect();
   });
 
   $('#msg-close').on('click', function() {
@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function() {
     document.getElementById("numeric-keyboard").value = "";
   });
 
-  $(".button-collapse").sideNav({
+  $(".button-collapse").sidenav({
     menuWidth: 300, // Default is 300
     closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
     draggable: true

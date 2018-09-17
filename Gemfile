@@ -1,9 +1,12 @@
 source 'https://rubygems.org'
 
+ruby '2.4.1'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+
 
 gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'coffee-rails', '~> 4.2'
@@ -15,7 +18,6 @@ gem 'gretel'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'materialize-sass'
-gem 'materialize-form'
 gem 'mqtt', :git => 'https://github.com/njh/ruby-mqtt.git'
 gem 'mobylette'
 gem 'pg', '~> 0.18'
