@@ -1,5 +1,5 @@
 class LayoutControle < ApplicationRecord
-  has_many :componentes
+  has_many :controles
   validates :descricao, presence: true
 
   def to_s

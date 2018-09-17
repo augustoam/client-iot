@@ -20,6 +20,14 @@
     <%= @controle.fabricante %>
   </div>
   <div class="row">
+    <b><%= Componente.human_attribute_name(:componente) %></b>
+    <%= @controle.componente.descricao %>
+  </div>
+  <div class="row">
+    <b><%= Componente.human_attribute_name(:layout_controle) %></b>
+    <%= @controle.layout_controle.descricao %>
+  </div>
+  <div class="row">
     <b><%= Controle.human_attribute_name(:created_at) %></b>
     <%= ltime @controle.created_at %>
   </div>

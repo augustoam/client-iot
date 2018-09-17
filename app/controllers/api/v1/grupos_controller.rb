@@ -4,13 +4,15 @@ class Api::V1::GruposController < Api::V1::BaseController
   def get_grupos
     if @usuario.present?
       begin
+        syncinfra = Componente.find_by(descricao: 'SyncInfra')
         @response = @usuario.grupos_usuarios.collect do |grupo_usuario|
           result = grupo_usuario.as_json
-          result[:grupo] = grupo_usuario.grupo
+          result[:grupo]           = grupo_usuario.grupo
           result[:ambientes_grupo] = grupo_usuario.grupo.ambientes_grupo.order(created_at: :asc)
-          result[:ambientes] = Ambiente.all.order(created_at: :asc)
-          result[:componentes] = Componente.all.order(created_at: :asc)
-          result[:usuarios_grupo] = grupo_usuario.grupo.usuarios.select('grupos_usuarios.*', 'usuarios.email').order(created_at: :asc)
+          result[:ambientes]       = Ambiente.all.order(created_at: :asc)
+          result[:componentes]     = Componente.all.order(created_at: :asc)
+          result[:controles]       = Controle.where(componente: syncinfra)
+          result[:usuarios_grupo]  = grupo_usuario.grupo.usuarios.select('grupos_usuarios.*', 'usuarios.email').order(created_at: :asc)
           result
         end
         render json: @response.to_json, status: :ok

@@ -1,6 +1,6 @@
 class ComponenteAmbiente < ApplicationRecord
   belongs_to :ambiente_grupo
-  belongs_to :componente
+  belongs_to :controle
 
   validates :topico, :descricao, presence: true
   # after_save { ComponenteAmbienteBroadcastJob.perform_later self }

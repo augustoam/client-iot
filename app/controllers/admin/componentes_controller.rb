@@ -44,6 +44,6 @@ class Admin::ComponentesController < ApplicationController
   end
 
   def componente_params
-    params.require(:componente).permit(:descricao, :modelo, :comando_unico, :identificador_componente, :fabricante_id, :controle_id, :layout_controle_id)
+    params.require(:componente).permit(:descricao, :modelo, :comando_unico, :identificador_componente)
   end
 end

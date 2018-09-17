@@ -26,8 +26,8 @@
         <th><%= ComponenteAmbiente.human_attribute_name(:descricao) %></th>
         <th><%= ComponenteAmbiente.human_attribute_name(:topico) %></th>
         <th><%= ComponenteAmbiente.human_attribute_name(:identificador_componente) %></th>
-        <th><%= ComponenteAmbiente.human_attribute_name(:componente) %></th>
         <th><%= ComponenteAmbiente.human_attribute_name(:controle) %></th>
+        <th><%= ComponenteAmbiente.human_attribute_name(:componente) %></th>
         <th><%= ComponenteAmbiente.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>
       </tr>
@@ -40,8 +40,8 @@
           <td><%= componente_ambiente.descricao %></td>
           <td><%= componente_ambiente.topico %></td>
           <td><%= componente_ambiente.identificador_componente %></td>
-          <td><%= componente_ambiente.componente.descricao %></td>
-          <td><%= componente_ambiente.componente.controle.descricao %></td>
+          <td><%= componente_ambiente.controle.descricao %></td>
+          <td><%= componente_ambiente.controle.componente.descricao %></td>
           <td><%= ltime componente_ambiente.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_componente_ambiente_path(componente_ambiente))%></td>
           <td><%= link_icon_to_destroy(admin_componente_ambiente_path(componente_ambiente)) %></td>

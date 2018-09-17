@@ -8,8 +8,8 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
 
         @componente_ambiente = ambiente_grupo.componentes_ambiente.collect do |componente_ambiente|
           result = componente_ambiente.as_json
-          result[:layout_controle] = componente_ambiente.componente.layout_controle.as_json
-          result[:comandos] = componente_ambiente.componente.controle.comandos_infra_vermelhos.as_json
+          result[:componente] = componente_ambiente.controle.componente.as_json
+          result[:comandos] = componente_ambiente.controle.comandos_infra_vermelhos.as_json
           result
         end
 
@@ -28,8 +28,18 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
       topico = params[:topico]
       if topico.include? 'synchouse'
         begin
-          componente = Componente.find(params[:componente_id])
-          componente_ambiente = ComponenteAmbiente.create!(componente: componente, descricao: componente.descricao, topico: topico, ambiente_grupo_id: params[:ambiente_grupo_id])
+          componente = Componente.find_by_descricao(params[:componente_descricao])
+          if params[:controle_id].present?
+            controle = Controle.find(params[:controle_id])
+          else
+            controle = Controle.find_by(componente: componente)
+          end
+
+          componente_ambiente = ComponenteAmbiente.create!(
+            descricao: componente.descricao,
+            topico: topico,
+            controle: controle,
+            ambiente_grupo_id: params[:ambiente_grupo_id])
           render json: componente_ambiente.to_json, status: :ok
         rescue => exception
           render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found

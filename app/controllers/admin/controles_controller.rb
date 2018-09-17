@@ -45,6 +45,6 @@ class Admin::ControlesController < ApplicationController
   end
 
   def controle_params
-    params.require(:controle).permit(:descricao, :obsm, :fabricante_id)
+    params.require(:controle).permit(:descricao, :obs, :fabricante_id, :layout_controle_id, :componente_id)
   end
 end

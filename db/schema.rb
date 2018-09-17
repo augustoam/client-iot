@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180908230440) do
+ActiveRecord::Schema.define(version: 20180916132031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,9 +61,6 @@ ActiveRecord::Schema.define(version: 20180908230440) do
   create_table "componentes", force: :cascade do |t|
     t.string "descricao"
     t.string "modelo"
-    t.integer "controle_id"
-    t.integer "fabricante_id"
-    t.integer "layout_controle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "comando_unico", default: false
@@ -71,7 +68,6 @@ ActiveRecord::Schema.define(version: 20180908230440) do
 
   create_table "componentes_ambiente", force: :cascade do |t|
     t.integer "ambiente_grupo_id"
-    t.integer "componente_id"
     t.string "topico"
     t.string "valor"
     t.boolean "estado", default: false
@@ -79,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180908230440) do
     t.text "identificador_componente"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "controle_id"
   end
 
   create_table "controles", force: :cascade do |t|
@@ -87,6 +84,8 @@ ActiveRecord::Schema.define(version: 20180908230440) do
     t.integer "fabricante_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "layout_controle_id"
+    t.integer "componente_id"
   end
 
   create_table "fabricantes", force: :cascade do |t|
@@ -160,11 +159,11 @@ ActiveRecord::Schema.define(version: 20180908230440) do
   add_foreign_key "ambientes_grupo", "ambientes"
   add_foreign_key "ambientes_grupo", "grupos"
   add_foreign_key "comandos_infra_vermelhos", "controles"
-  add_foreign_key "componentes", "controles"
-  add_foreign_key "componentes", "layout_controles"
   add_foreign_key "componentes_ambiente", "ambientes_grupo"
-  add_foreign_key "componentes_ambiente", "componentes"
+  add_foreign_key "componentes_ambiente", "controles"
+  add_foreign_key "controles", "componentes"
   add_foreign_key "controles", "fabricantes"
+  add_foreign_key "controles", "layout_controles"
   add_foreign_key "grupos_usuarios", "grupos"
   add_foreign_key "grupos_usuarios", "usuarios"
   add_foreign_key "tokens_notificacao_mobile", "usuarios"

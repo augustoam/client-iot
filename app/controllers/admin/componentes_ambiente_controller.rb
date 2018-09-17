@@ -50,6 +50,6 @@ class Admin::ComponentesAmbienteController < ApplicationController
   end
 
   def componente_ambiente_params
-    params.require(:componente_ambiente).permit(:descricao, :topico, :identificador_componente, :componente_id, :ambiente_grupo_id)
+    params.require(:componente_ambiente).permit(:descricao, :topico, :identificador_componente, :controle_id, :ambiente_grupo_id)
   end
 end

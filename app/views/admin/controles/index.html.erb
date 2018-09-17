@@ -26,6 +26,8 @@
       <tr>
         <th><%= Controle.human_attribute_name(:id) %></th>
         <th><%= Controle.human_attribute_name(:descricao) %></th>
+        <th><%= Componente.human_attribute_name(:layout_controle) %></th>
+        <th><%= Componente.human_attribute_name(:componente) %></th>
         <th><%= Controle.human_attribute_name(:fabricante) %></th>
         <th><%= Controle.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>
@@ -38,6 +40,8 @@
         <tr data-href="<%= admin_controle_path(controle) %>">
           <td><%= controle.id %></td>
           <td><%= controle.descricao %></td>
+          <td><%= controle.layout_controle.descricao %></td>
+          <td><%= controle.componente.descricao %></td>
           <td><%= controle.fabricante %></td>
           <td><%= ltime controle.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_controle_path(controle))%></td>

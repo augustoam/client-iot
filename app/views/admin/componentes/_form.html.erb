@@ -5,17 +5,9 @@
   <%= f.input :descricao, wrapper_html: { class: 'm12 s12' } %>
 </div>
 <div class="row">
-  <%= f.association :fabricante, wrapper_html: { class: 'm12 s12' } %>
-</div>
-<div class="row">
   <%= f.input :modelo, wrapper_html: { class: 'm12 s12' } %>
 </div>
-<div class="row">
-  <%= f.association :controle, wrapper_html: { class: 'm12 s12' } %>
-</div>
-<div class="row">
-  <%= f.association :layout_controle, wrapper_html: { class: 'm12 s12' } %>
-</div>
+
 <div class="row">
   <% if @componente.persisted? %>
     <%= link_icon_to_back admin_componente_path(componente) %>
