@@ -2,7 +2,7 @@ class LayoutControlesController < ApplicationController
   before_action :set_componente, only: [:index]
 
   def index
-    @layout_controle = @componente_ambiente.componente.layout_controle
+    @layout_controle = @componente_ambiente.controle.layout_controle
   end
 
   private

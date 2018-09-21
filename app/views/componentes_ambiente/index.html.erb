@@ -2,7 +2,7 @@
   <% @componentes_ambiente.each do |componente_ambiente| %>
     <div class="container">
       <div id="componente-<%= componente_ambiente.id %>" class="publish-mqtt">
-        <%= render partial: "componentes_ambiente/#{componente_ambiente.componente.layout_controle.descricao.downcase}", locals: {componente_ambiente: componente_ambiente} %>
+        <%= render partial: "componentes_ambiente/#{componente_ambiente.controle.componente.descricao.downcase}", locals: {componente_ambiente: componente_ambiente} %>
       </div>
     </div>
   <% end %>

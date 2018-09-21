@@ -18,33 +18,35 @@
 </li>
 </ul>
 
-<ul id="slide-out" class="side-nav grey darken-3">
-<li>
-<div class="user-view black">
-<a>
-  <span class="white-text email"><%= current_usuario.email %></span></a>
-</div>
-</li>
-<%= render 'layouts/menu_entry' %>
+<ul id="slide-out" class="sidenav grey darken-3">
+  <li>
+    <div class="user-view black">
+      <a>
+        <span class="white-text email"><%= current_usuario.email %></span>
+      </a>
+    </div>
+  </li>
+  <%= render 'layouts/menu_entry' %>
 </ul>
 
 <div class="navbar-fixed">
-<nav>
-<div class="nav-wrapper black">
-<ul id="nav-mobile" class="left">
-  <li>
-    <a data-activates="slide-out" class="button-collapse show-on-large">
-      <i class="material-icons">menu</i>
-    </a>
-  </li>
-</ul>
-<ul id="nav-mobile" class="right">
-  <li>
-    <a class="dropdown-button" data-activates="dropdown-nav">
-      <i class="large material-icons">more_vert</i>
-    </a>
-  </li>
-</ul>
-</div>
-</nav>
+  <nav>
+    <div class="nav-wrapper black">
+      <ul id="nav-mobile" class="left">
+        <li>
+
+          <a data-target="slide-out" class="sidenav-trigger button-collapse show-on-large">
+            <i class="material-icons">menu</i>
+          </a>
+        </li>
+      </ul>
+      <ul id="nav-mobile" class="right">
+        <li>
+          <a class="dropdown-button" data-target="dropdown-nav">
+            <i class="large material-icons">more_vert</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </div>
