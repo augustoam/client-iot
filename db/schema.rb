@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 20180916132031) do
     t.integer "usuario_id"
     t.integer "componente_id"
     t.string "comando"
-    t.datetime "dt_criacao", default: "2018-08-16 00:29:14"
+    t.datetime "dt_criacao", default: "2018-10-02 03:57:25"
   end
 
   create_table "tokens_notificacao_mobile", force: :cascade do |t|

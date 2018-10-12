@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   username: postgres
-  password: amendoim
+  password: postgres
   pool: 8
   host: localhost
 
