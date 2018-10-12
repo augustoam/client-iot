@@ -1,11 +1,14 @@
 unless Rails.env.test?
+
   if Admin.count.zero?
     Admin.create(email: 'admin@admin.com', password: 'amendoim')
   end
+
   if Usuario.count.zero?
     usuario = Usuario.create(email: 'usuario@usuario.com', password: 'amendoim', admin: 'true')
     usuario.confirm
   end
+
   fabricante = Fabricante.create(descricao: 'Samsung') if Fabricante.count.zero?
 
   if Componente.count.zero?
@@ -23,25 +26,21 @@ unless Rails.env.test?
   end
 
   if Controle.count.zero?
-    controle1 = Controle.create(descricao: 'Nenhum', fabricante: fabricante, componente: componente1)
-    controle2 = Controle.create(descricao: 'Televisao', fabricante: fabricante, componente: componente2)
-    controle3 = Controle.create(descricao: 'Ar Condicionado', fabricante: fabricante, componente: componente3)
+    controle1 = Controle.create(descricao: 'Nenhum',          fabricante: fabricante, componente: componente1, layout: layout1)
+    controle2 = Controle.create(descricao: 'Televisao',       fabricante: fabricante, componente: componente2, layout: layout2)
+    controle3 = Controle.create(descricao: 'Ar Condicionado', fabricante: fabricante, componente: componente2, layout: layout3)
+    controle3 = Controle.create(descricao: 'Home Teather',    fabricante: fabricante, componente: componente2, layout: layout4)
   end
-  if LayoutControle.count.zero?
-    layout_controle = LayoutControle.create(descricao: 'Lampada')
-  end
-  if Componente.count.zero?
-    Componente.create(descricao: 'Luz de centro', fabricante_id: fabricante.id, controle_id: controle1.id, layout_controle_id: layout_controle)
 
-  end
   if Grupo.count.zero?
     grupo1 = Grupo.create(nome: 'Casa do Usuário')
-    # grupo2 = Grupo.create(nome: 'Escritório do Usuário')
   end
+
   if GrupoUsuario.count.zero?
     GrupoUsuario.create(usuario: usuario, grupo: grupo1)
     # GrupoUsuario.create(usuario: usuario, grupo: grupo2)
   end
+
   if Ambiente.count.zero?
     ambiente1 = Ambiente.create(descricao: 'Sala', icone: 'week')
   end
