@@ -1,0 +1,32 @@
+version:          '2'
+services:
+  app:
+    image: wondersistemas/probus-server:v$VERSAO_BANCO
+    command:      bundle exec puma
+    ports:
+      - "$PROBUS_SERVER_PORT:3000"
+    depends_on:
+      - queue
+    env_file:     .env
+    environment:
+      RAILS_ENV:  production
+      REDIS_URL:  redis://redis:6379/0/cache
+    restart:      unless-stopped
+  queue:
+    image: wondersistemas/probus-server:v$VERSAO_BANCO
+    depends_on:
+      - redis
+    environment:
+      REDIS_URL:  redis://redis:6379/0/cache
+      RAILS_ENV:  production
+    command:      bundle exec sidekiq -C config/sidekiq.yml
+    env_file:
+      - .env
+    restart:      unless-stopped
+  redis:
+    image:        redis:4-alpine
+    ports:
+      - 6379
+    volumes:
+      - ./redis:/var/lib/redis/data
+restart: unless-stopped

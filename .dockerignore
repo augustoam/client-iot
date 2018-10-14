@@ -1,0 +1,14 @@
+tmp/*
+log/*
+spec/
+redis/
+coverage/
+.git/
+doc/
+docs/
+.ruby-gemset
+.rubocop.yml
+.codeclimate.yml
+.csslintrc
+.eslintignore
+.eslintrc
