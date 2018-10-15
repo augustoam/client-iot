@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+. ./bin/set_env > /dev/null 2>&1
+
+container_name="augustoam/synchouse"
+
+docker build \
+  -t $container_name \
+  --build-arg GITHUB_CREDENTIALS=$GITHUB_TOKEN \
+--build-arg RAILS_MASTER_KEY=$(env | grep "RAILS_MASTER_KEY" | sed 's/RAILS_MASTER_KEY=//')
