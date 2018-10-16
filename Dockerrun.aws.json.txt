@@ -1,0 +1,56 @@
+{
+  "AWSEBDockerrunVersion": "2",
+  "volumes": [{
+    "name": "nginx-cache",
+    "host": {
+      "sourcePath": "/var/app/current/public/"
+    }
+  }, {
+    "name": "nginx-conf",
+    "host": {
+      "sourcePath": "/var/app/current/lib/docker/volumes/nginx/nginx.conf"
+    }
+  }],
+  "Image": {
+    "Name": "augustoam/synchouse",
+    "Update": "true"
+  },
+  "containerDefinitions": [{
+      "name": "app",
+      "image": "augustoam/synchouse",
+      "essential": true,
+      "memory": 512,
+      "environment": [],
+      "portMappings": [{
+        "hostPort": 3000,
+        "containerPort": 3000
+      }]
+    },
+    {
+      "name": "nginx",
+      "image": "nginx:1.13.5-alpine",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [{
+        "hostPort": 80,
+        "containerPort": 80
+      }],
+      "links": [
+        "app",
+	"mqtt"
+      ],
+      "volumesFrom": [{
+        "sourceContainer": "app"
+      }],
+      "mountPoints": [{
+        "sourceVolume": "nginx-cache",
+        "containerPath": "/var/app/current/public",
+        "readOnly": true
+      }, {
+        "sourceVolume": "nginx-conf",
+        "containerPath": "/etc/nginx/nginx.conf",
+        "readOnly": true
+      }]
+    }
+  ]
+}
