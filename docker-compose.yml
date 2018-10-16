@@ -63,7 +63,7 @@ services:
       - app
       - mqtt
     ports:
-      - "9000:80"
+      - "80:80"
     restart:        unless-stopped
     logging:
         options:
