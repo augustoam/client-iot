@@ -7,15 +7,12 @@ ENV BABEL_ENV production
 ENV BUNDLE_RETRY 15
 ENV BUNDLE_TIMEOUT 30
 ENV BUNDLE_WITHOUT "test development"
-ARG GITHUB_CREDENTIALS
 
 ENV PROJECT_PATH /usr/src/synchouse/src/
 RUN mkdir -p $PROJECT_PATH
 WORKDIR $PROJECT_PATH
 COPY Gemfile Gemfile.lock $PROJECT_PATH
-RUN bundle config github.com $GITHUB_CREDENTIALS \
-    && bundle install -V \
-    && bundle config --delete github.com
+RUN bundle install -V
 COPY . $PROJECT_PATH/
 RUN rails assets:precompile --trace
 

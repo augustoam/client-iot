@@ -26,3 +26,6 @@ bower.json
 .byebug_history
 # redis history
 dump.rdb
+lib/dockerfiles/mqtt/config/password
+lib/dockerfiles/mqtt/ca_certificates/*
+!lib/dockerfiles/mqtt/ca_certificates/*.gitkeep
