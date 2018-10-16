@@ -29,3 +29,8 @@ dump.rdb
 lib/dockerfiles/mqtt/config/password
 lib/dockerfiles/mqtt/ca_certificates/*
 !lib/dockerfiles/mqtt/ca_certificates/*.gitkeep
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
