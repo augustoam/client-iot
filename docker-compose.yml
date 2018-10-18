@@ -86,9 +86,8 @@ services:
     image:           postgres:9.6-alpine
     ports:
       - 5432
-    volumes:
-      - '~/db-synchouse:/var/lib/postgresql/data'
-      - '/db-synchouse-backups:/var/pgbackups'
+    environment:
+      POSTGRES_PASSWORD: postgres
     env_file:        .env
     logging:
         options:
