@@ -16,6 +16,7 @@ services:
       - .env
     environment:
       RAILS_ENV:    production
+      DATABASE_HOST: database
       REDIS_URL:    redis://redis:6379/0/cache
     restart:        unless-stopped
     logging:
