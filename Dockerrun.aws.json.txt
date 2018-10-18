@@ -36,8 +36,7 @@
         "containerPort": 80
       }],
       "links": [
-        "app",
-	"mqtt"
+        "app"
       ],
       "volumesFrom": [{
         "sourceContainer": "app"
