@@ -25,6 +25,7 @@ services:
   queue:
     build:          *build-rails
     depends_on:
+      - database
       - redis
     environment:
       REDIS_URL:    redis://redis:6379/0/cache
