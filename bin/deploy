@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+bin/docker_build
+bin/docker_push
+eb deploy --verbose
