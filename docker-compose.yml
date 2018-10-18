@@ -9,13 +9,14 @@ services:
     command:        bundle exec puma
     ports:
       - 3000
-      - 5432
     depends_on:
+      - database
       - queue
     env_file:
       - .env
     environment:
       RAILS_ENV:    production
+      DATABASE_HOST: database
       REDIS_URL:    redis://redis:6379/0/cache
     restart:        unless-stopped
     logging:
@@ -25,6 +26,7 @@ services:
   queue:
     build:          *build-rails
     depends_on:
+      - database
       - redis
     environment:
       REDIS_URL:    redis://redis:6379/0/cache
@@ -80,3 +82,16 @@ services:
         options:
           max-size: "10m"
           max-file: "10"
+  database:
+    restart:         unless-stopped
+    image:           postgres:9.6-alpine
+    ports:
+      - 5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      HOST:              database
+    env_file:        .env
+    logging:
+        options:
+          max-size:  "10m"
+          max-file:  "10"
