@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+AMAZON_DOCKER_REGISTRY_PREFIX="483664555724.dkr.ecr.sa-east-1.amazonaws.com";
+CONTAINER_BASE_NAME="synchouse:latest"
+
+docker tag "augusto/$CONTAINER_BASE_NAME" "$AMAZON_DOCKER_REGISTRY_PREFIX/$CONTAINER_BASE_NAME"
+
+$(aws ecr get-login --no-include-email)
+
+docker push "$AMAZON_DOCKER_REGISTRY_PREFIX/$CONTAINER_BASE_NAME"
