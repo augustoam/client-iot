@@ -9,8 +9,8 @@ services:
     command:        bundle exec puma
     ports:
       - 3000
-      - 5432
     depends_on:
+      - database
       - queue
     env_file:
       - .env
@@ -80,3 +80,16 @@ services:
         options:
           max-size: "10m"
           max-file: "10"
+  database:
+    restart:         unless-stopped
+    image:           postgres:9.6-alpine
+    ports:
+      - 5432
+    volumes:
+      - '~/db-synchouse:/var/lib/postgresql/data'
+      - '/db-synchouse-backups:/var/pgbackups'
+    env_file:        .env
+    logging:
+        options:
+          max-size:  "10m"
+          max-file:  "10"
