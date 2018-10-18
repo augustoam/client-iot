@@ -89,7 +89,7 @@ services:
       - 5432
     environment:
       POSTGRES_PASSWORD: postgres
-      HOST:              localhost
+      HOST:              database
     env_file:        .env
     logging:
         options:
