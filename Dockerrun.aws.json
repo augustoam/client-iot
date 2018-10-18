@@ -8,7 +8,7 @@
   }, {
     "name": "nginx-conf",
     "host": {
-      "sourcePath": "/var/app/current/lib/docker/volumes/nginx/nginx.conf"
+      "sourcePath": "/var/app/current/lib/dockerfiles/nginx/nginx.conf"
     }
   }],
   "Image": {

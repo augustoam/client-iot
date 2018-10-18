@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export $(grep -v '^#' .env | xargs)
+
+if [ ! "$@" == "" ]; then
+  for var in "$@"; do
+    export $(grep -v '^#' "$var" | xargs)
+  done
+fi

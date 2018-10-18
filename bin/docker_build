@@ -2,7 +2,10 @@
 
 set -e
 
+. ./bin/set_env > /dev/null 2>&1
+
 container_name="augustoam/synchouse"
 
 docker build \
-  -t $container_name .
+  -t $container_name \
+  --build-arg SECRET_KEY_BASE=$(env | grep "SECRET_KEY_BASE" | sed 's/SECRET_KEY_BASE=//') .
