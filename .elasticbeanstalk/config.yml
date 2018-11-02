@@ -1,0 +1,20 @@
+branch-defaults:
+  master:
+    environment: production
+environment-defaults:
+  production:
+    branch: null
+    repository: null
+global:
+  application_name: synchouse
+  default_ec2_keyname: synchouse
+  default_platform: arn:aws:elasticbeanstalk:sa-east-1::platform/Multi-container Docker
+    running on 64bit Amazon Linux/2.11.3
+  default_region: sa-east-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  sc: git
+  workspace_type: Application

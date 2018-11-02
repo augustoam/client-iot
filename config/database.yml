@@ -1,19 +1,23 @@
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  username: postgres
-  password: postgres
-  pool: 8
-  host: localhost
+default:      &default
+  adapter:    postgresql
+  encoding:   unicode
+  username:   postgres
+  password:   postgres
+  pool:       8
+  host:       localhost
 
 development:
-  <<: *default
-  database: synchouse
+  <<:         *default
+  database:   synchouse
 
 test:
-  <<: *default
-  database: synchouse_test
+  <<:         *default
+  database:   synchouse_test
 
 production:
-  <<: *default
-  database: synchouse_production
+  <<:         *default
+  database:   <%= ENV['RDS_DB_NAME'] %>
+  username:   <%= ENV['RDS_USERNAME'] %>
+  password:   <%= ENV['RDS_PASSWORD'] %>
+  host:       <%= ENV['RDS_HOSTNAME'] %>
+  port:       <%= ENV['RDS_PORT'] %>

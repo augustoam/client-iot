@@ -10,20 +10,50 @@
     "host": {
       "sourcePath": "/var/app/current/lib/dockerfiles/nginx/nginx.conf"
     }
+  }, {
+    "name": "mqtt-conf",
+    "host": {
+      "sourcePath": "/var/app/current/lib/dockerfiles/mqtt/config/"
+    }
   }],
   "Image": {
-    "Name": "augustoam/synchouse",
+    "Name": "483664555724.dkr.ecr.sa-east-1.amazonaws.com/synchouse",
     "Update": "true"
   },
   "containerDefinitions": [{
       "name": "app",
-      "image": "augustoam/synchouse",
+      "image": "483664555724.dkr.ecr.sa-east-1.amazonaws.com/synchouse",
       "essential": true,
       "memory": 512,
-      "environment": [],
+      "environment": [{
+        "name": "ENVIRONMENT_TYPE",
+        "value": "SERVER"
+      }],
       "portMappings": [{
         "hostPort": 3000,
         "containerPort": 3000
+      }]
+    },
+    {
+      "name": "sidekiq",
+      "image": "483664555724.dkr.ecr.sa-east-1.amazonaws.com/synchouse",
+      "essential": true,
+      "memory": 512,
+      "environment": [{
+        "name": "ENVIRONMENT_TYPE",
+        "value": "WORKER"
+      }]
+    },
+    {
+      "name": "mqtt",
+      "image": "483664555724.dkr.ecr.sa-east-1.amazonaws.com/synchouse-mqtt",
+      "essential": true,
+      "memory": 512,
+      "environment": [],
+      "mountPoints": [{
+        "sourceVolume": "mqtt-conf",
+        "containerPath": "/mqtt/config/",
+        "readOnly": true
       }]
     },
     {
@@ -36,7 +66,8 @@
         "containerPort": 80
       }],
       "links": [
-        "app"
+        "app",
+        "mqtt"
       ],
       "volumesFrom": [{
         "sourceContainer": "app"

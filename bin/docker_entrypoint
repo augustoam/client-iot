@@ -6,4 +6,8 @@ fi
 
 bundle exec rake db:migrate
 
-exec "$@"
+if [ "$ENVIRONMENT_TYPE" = "WORKER" ]; then
+  bundle exec sidekiq -C config/sidekiq.yml;
+else
+  exec "$@"
+fi

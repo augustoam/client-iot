@@ -14,6 +14,6 @@ RUN chown -R mosquitto:mosquitto /mqtt
 VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
 
-EXPOSE 1883 8083
+EXPOSE 1883 1884 3033 8083
 
 CMD ["/usr/sbin/mosquitto", "-c", "/mqtt/config/mosquitto.conf"]
