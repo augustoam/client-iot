@@ -16,10 +16,13 @@
       "sourcePath": "/var/app/current/lib/dockerfiles/mqtt/config/"
     }
   }],
-  "Image": {
+  "Images": [{
     "Name": "483664555724.dkr.ecr.sa-east-1.amazonaws.com/synchouse",
     "Update": "true"
-  },
+  }, {
+    "Name": "483664555724.dkr.ecr.sa-east-1.amazonaws.com/synchouse-mqtt",
+    "Update": "true"
+  }],
   "containerDefinitions": [{
       "name": "app",
       "image": "483664555724.dkr.ecr.sa-east-1.amazonaws.com/synchouse",
