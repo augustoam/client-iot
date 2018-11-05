@@ -54,6 +54,16 @@
         "sourceVolume": "mqtt-conf",
         "containerPath": "/mqtt/config/",
         "readOnly": true
+      }],
+      "portMappings": [{
+        "hostPort": 1883,
+        "containerPort": 1883
+      }, {
+        "hostPort": 1884,
+        "containerPort": 1884
+      }, {
+        "hostPort": 3033,
+        "containerPort": 3033
       }]
     },
     {
