@@ -29,8 +29,8 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
       if topico.include? 'synchouse'
         begin
           componente = Componente.find_by_descricao(params[:componente_descricao])
-          if params[:controle_id].present?
-            controle = Controle.find(params[:controle_id])
+          if params[:componente_id].present?
+            controle = Controle.find(params[:componente_id])
           else
             controle = Controle.find_by(componente: componente)
           end
