@@ -16,10 +16,13 @@
       "sourcePath": "/var/app/current/lib/dockerfiles/mqtt/config/"
     }
   }],
-  "Image": {
+  "Images": [{
     "Name": "483664555724.dkr.ecr.sa-east-1.amazonaws.com/synchouse",
     "Update": "true"
-  },
+  }, {
+    "Name": "483664555724.dkr.ecr.sa-east-1.amazonaws.com/synchouse-mqtt",
+    "Update": "true"
+  }],
   "containerDefinitions": [{
       "name": "app",
       "image": "483664555724.dkr.ecr.sa-east-1.amazonaws.com/synchouse",
@@ -54,6 +57,16 @@
         "sourceVolume": "mqtt-conf",
         "containerPath": "/mqtt/config/",
         "readOnly": true
+      }],
+      "portMappings": [{
+        "hostPort": 1883,
+        "containerPort": 1883
+      }, {
+        "hostPort": 1884,
+        "containerPort": 1884
+      }, {
+        "hostPort": 3033,
+        "containerPort": 3033
       }]
     },
     {

@@ -27,6 +27,7 @@ COPY app/models/application_record.rb $PROJECT_PATH/app/models/application_recor
 COPY app/models/usuario.rb $PROJECT_PATH/app/models/usuario.rb
 COPY app/models/admin.rb $PROJECT_PATH/app/models/admin.rb
 ARG SECRET_KEY_BASE
+ENV SECRET_KEY_BASE $SECRET_KEY_BASE
 RUN rails assets:precompile --trace
 
 COPY app $PROJECT_PATH/app
