@@ -28,7 +28,7 @@ class Api::V1::GruposController < Api::V1::BaseController
     if @usuario.present?
       begin
         grupo = @usuario.grupos.create!(nome: params[:nome])
-        render json: grupo.grupo_usuario.to_json, status: :ok
+        render json: grupo.grupos_usuarios.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
       end
