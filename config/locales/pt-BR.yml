@@ -27,6 +27,12 @@ pt-BR:
       componente_ambiente:
         one:                            'Componente Ambiente'
         other:                          'Componentes Ambiente'
+      fabricante:
+        one:                            'Fabricante'
+        other:                          'Fabricantes'
+      layout_controle:
+        one:                            'Layout de Controle'
+        other:                          'Layouts de Controles'
     attributes:
       usuario:
         id:                             ID

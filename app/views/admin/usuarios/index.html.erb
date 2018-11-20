@@ -25,7 +25,6 @@
       <tr>
         <th><%= Usuario.human_attribute_name(:id) %></th>
         <th><%= Usuario.human_attribute_name(:email) %></th>
-        <th><%= Usuario.human_attribute_name(:admin) %></th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -35,7 +34,6 @@
         <tr data-href="<%= admin_grupo_usuario_path(@grupo,usuario) %>">
           <td><%= usuario.id %></td>
           <td><%= usuario.email %></td>
-          <td><%= usuario.admin %></td>
           <td><%= ltime usuario.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_grupo_usuario_path(@grupo, usuario))%></td>
           <td><%= link_icon_to_destroy(admin_grupo_usuario_path(@grupo, usuario)) %></td>
