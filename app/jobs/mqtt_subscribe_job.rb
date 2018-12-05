@@ -27,10 +27,11 @@ class MqttSubscribeJob < ApplicationJob
           estado = false
           estado = true if message == 'ligar'
 
-          componente_ambiente = ComponenteAmbiente.find_by(topico: topic)
-          if componente_ambiente.present?
-            componente_ambiente.update!(estado: estado, valor: message)
-
+          componentes_ambientes = ComponenteAmbiente.where(topico: topic)
+          if componentes_ambientes.present?
+            componentes_ambientes.each do |componente_ambiente|
+              componente_ambiente.update!(estado: estado, valor: message)
+            end
             #ComponenteAmbienteBroadcastJob.perform_later(componente_ambiente)
           else
             Rails.logger.error('Erro no atualizar estado do componente ambiente')
