@@ -39,6 +39,7 @@ gem 'will_paginate-materialize'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'htmlbeautifier'
+gem 'rails-erd'
 
 
 group :development, :test do
@@ -49,6 +50,7 @@ end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
