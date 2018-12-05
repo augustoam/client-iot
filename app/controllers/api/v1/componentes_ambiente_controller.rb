@@ -7,6 +7,7 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
         ambiente_grupo = AmbienteGrupo.find(params[:ambiente_grupo_id])
 
         @componente_ambiente = ambiente_grupo.componentes_ambiente.collect do |componente_ambiente|
+          puts 'ESTAAADOOO DA LAMPADA' + componente_ambiente.estado
           result = componente_ambiente.as_json
           result[:componente] = componente_ambiente.controle.componente.as_json
           result[:controle] = componente_ambiente.controle.layout_controle.as_json
