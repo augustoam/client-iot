@@ -31,7 +31,7 @@ class MqttSubscribeJob < ApplicationJob
           if componente_ambiente.present?
             componente_ambiente.update!(estado: estado, valor: message)
 
-            ComponenteAmbienteBroadcastJob.perform_later(componente_ambiente)
+            #ComponenteAmbienteBroadcastJob.perform_later(componente_ambiente)
           else
             Rails.logger.error('Erro no atualizar estado do componente ambiente')
           end
