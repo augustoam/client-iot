@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180916132031) do
+ActiveRecord::Schema.define(version: 20181221125951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,20 @@ ActiveRecord::Schema.define(version: 20180916132031) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "controle_id"
+    t.boolean "power"
+    t.string "result"
+    t.string "info1"
+    t.string "info2"
+    t.string "info3"
+    t.boolean "onlline"
+    t.string "state"
+    t.string "topico_power"
+    t.string "topico_result"
+    t.string "topico_info1"
+    t.string "topico_info2"
+    t.string "topico_info3"
+    t.string "topico_online"
+    t.string "topico_state"
   end
 
   create_table "controles", force: :cascade do |t|
