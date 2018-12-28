@@ -1,0 +1,55 @@
+
+  <div class="row">
+    <h3><%= plural_model_name_for(AutomacaoGrupo) %></h3>
+  </div>
+
+  <div class="row">
+    <%= search_form_for @q, url: admin_grupo_automacoes_grupo_path do |f| %>
+
+    <div class="col s11">
+      <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Pesquisar Automacaos" %>
+    </div>
+    <div class="col s1">
+      <button class="waves-effect waves-light btn grey lighten-4" type="submit">
+        <i class="large material-icons black-text">search</i>
+      </button>
+    </div>
+
+  <% end %>
+</div>
+
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= AutomacaoGrupo.human_attribute_name(:id) %></th>
+        <th><%= AutomacaoGrupo.human_attribute_name(:descricao) %></th>
+        <th><%= AutomacaoGrupo.human_attribute_name(:ativo) %></th>
+        <th><%= AutomacaoGrupo.human_attribute_name(:created_at) %></th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @automacoes_grupo.each do |automacao_grupo| %>
+        <tr data-href="<%= admin_automacao_grupo_path(automacao_grupo) %>">
+          <td><%= automacao_grupo.id %></td>
+          <td><%= automacao_grupo.descricao %></td>
+          <td><%= automacao_grupo.ativo %></td>
+          <td><%= ltime automacao_grupo.created_at %></td>
+          <td><%= link_icon_to_edit(edit_admin_automacao_grupo_path(automacao_grupo))%></td>
+          <td><%= link_icon_to_destroy(admin_automacao_grupo_path(automacao_grupo)) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_home_admin_index_path %>
+  <%= link_icon_to_new(new_admin_grupo_automacao_grupo_path(@grupo), action_new(@automacoes_grupo)) %>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @automacoes_grupo, renderer: MaterializePagination::Rails %>
+</div>

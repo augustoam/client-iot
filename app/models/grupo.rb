@@ -3,6 +3,7 @@ class Grupo < ApplicationRecord
   has_many :usuarios, through: :grupos_usuarios
   has_many :ambientes_grupo, dependent: :destroy
   has_many :log_componentes
+  has_many :automacoes_grupo
 
   validates :nome, presence: true
 

@@ -1,0 +1,6 @@
+<% breadcrumb :automacao_grupo_edit, @automacao_grupo %>
+<div class="row">
+	<h3><%= action_edit(@automacao_grupo) %> <%= singular_model_name_for(AutomacaoGrupo) %></h3>
+</div>
+
+<%= render 'form', automacao_grupo: @automacao_grupo %>

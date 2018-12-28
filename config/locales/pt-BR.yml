@@ -6,6 +6,9 @@ pt-BR:
       grupo:
         one:                            'Grupo'
         other:                          'Grupos'
+      automacao_grupo:
+        one:                            'Automação do Grupo'
+        other:                          'Automações dos Grupos'
       grupo_usuario:
         one:                            'Grupo Usuário'
         other:                          'Grupos Usuários'

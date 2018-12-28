@@ -1,0 +1,20 @@
+<%= simple_form_for([:admin, @automacao_grupo], url: admin_automacao_grupo_form_path(@grupo, @automacao_grupo)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <%= f.input :descricao, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :ativo, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <% if @automacao_grupo.persisted? %>
+      <%= link_icon_to_back admin_automacao_grupo_path(@automacao_grupo) %>
+    <% else %>
+      <%= link_icon_to_back admin_grupo_automacoes_grupo_path(@grupo) %>
+    <% end %>
+    <%= save_button %>
+  </div>
+<% end %>

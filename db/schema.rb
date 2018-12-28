@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181221125951) do
+ActiveRecord::Schema.define(version: 20181228175102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20181221125951) do
     t.integer "ambiente_id"
     t.string "icone"
     t.boolean "visivel", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "automacoes_grupo", force: :cascade do |t|
+    t.integer "grupo_id"
+    t.integer "tipo"
+    t.string "descricao", default: "", null: false
+    t.boolean "ativo", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

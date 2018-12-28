@@ -70,6 +70,23 @@ crumb :ambiente_grupo_edit do |ambiente_grupo|
   parent :ambiente_grupo, ambiente_grupo
 end
 
+crumb :automacoes_grupo do |grupo|
+  link AutomacaoGrupo.model_name.human(count: 2), admin_grupo_automacoes_grupo_path(grupo)
+  parent :grupos, grupo
+end
+crumb :automacao_grupo do |automacao_grupo|
+  link automacao_grupo.to_s
+  parent :automacoes_grupo, automacao_grupo.grupo
+end
+crumb :automacao_grupo_new do |grupo|
+  link t('views.actions.new')
+  parent :automacoes_grupo, grupo
+end
+crumb :automacao_grupo_edit do |automacao_grupo|
+  link t('views.actions.do_edit'), edit_admin_automacao_grupo_path(automacao_grupo)
+  parent :automacao_grupo, automacao_grupo
+end
+
 crumb :componentes_ambiente do |ambiente_grupo|
   link Componente.model_name.human(count: 2), admin_ambiente_grupo_componentes_ambiente_path(ambiente_grupo)
   parent :ambientes_grupo, ambiente_grupo.grupo
