@@ -1,0 +1,28 @@
+<%= simple_form_for([:admin, @automacao_grupo_condicao], url: admin_automacao_grupo_condicao_form_path(@automacao_grupo, @automacao_grupo_condicao)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <%= f.input :manual, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :timer, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :repeat, as: :float, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :turn_on, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <% if @automacao_grupo_condicao.persisted? %>
+      <%= link_icon_to_back admin_automacao_grupo_condicao_path(@automacao_grupo_condicao) %>
+    <% else %>
+      <%= link_icon_to_back admin_grupo_automacoes_grupo_path(@automacao_grupo) %>
+    <% end %>
+    <%= save_button %>
+  </div>
+<% end %>

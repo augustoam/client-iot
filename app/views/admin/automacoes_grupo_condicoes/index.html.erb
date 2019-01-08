@@ -1,0 +1,55 @@
+<% breadcrumb :automacoes_grupo_condicoes, @automacao_grupo %>
+  <div class="row">
+    <h3><%= plural_model_name_for(AutomacaoGrupoCondicao) %></h3>
+  </div>
+
+  <div class="row">
+    <%= search_form_for @q, url: admin_automacao_grupo_automacoes_grupo_condicoes_path do |f| %>
+
+    <div class="col s11">
+      <%= f.search_field :timer_cont, class: "form-control", placeholder: "Pesquisar Condições" %>
+    </div>
+    <div class="col s1">
+      <button class="waves-effect waves-light btn grey lighten-4" type="submit">
+        <i class="large material-icons black-text">search</i>
+      </button>
+    </div>
+
+  <% end %>
+</div>
+
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= AutomacaoGrupoCondicao.human_attribute_name(:id) %></th>
+        <th><%= AutomacaoGrupoCondicao.human_attribute_name(:descricao) %></th>
+        <th><%= AutomacaoGrupoCondicao.human_attribute_name(:ativo) %></th>
+        <th><%= AutomacaoGrupoCondicao.human_attribute_name(:created_at) %></th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @automacoes_grupo_condicoes.each do |automacao_grupo_condicao| %>
+        <tr data-href="<%= admin_automacao_grupo_condicao_path(automacao_grupo_condicao) %>">
+          <td><%= automacao_grupo_condicao.id %></td>
+          <td><%= automacao_grupo_condicao.descricao %></td>
+          <td><%= automacao_grupo_condicao.ativo %></td>
+          <td><%= ltime automacao_grupo_condicao.created_at %></td>
+          <td><%= link_icon_to_edit(edit_admin_automacao_grupo_condicao_path(automacao_grupo_condicao))%></td>
+          <td><%= link_icon_to_destroy(admin_automacao_grupo_condicao_path(automacao_grupo_condicao)) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_grupo_automacoes_grupo_path(@automacao_grupo) %>
+  <%= link_icon_to_new(new_admin_automacao_grupo_automacao_grupo_condicao_path(@automacao_grupo), action_new(@automacoes_grupo_condicoes)) %>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @automacoes_grupo, renderer: MaterializePagination::Rails %>
+</div>

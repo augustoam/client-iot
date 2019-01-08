@@ -1,4 +1,4 @@
-
+<% breadcrumb :automacoes_grupo, @grupo %>
   <div class="row">
     <h3><%= plural_model_name_for(AutomacaoGrupo) %></h3>
   </div>
@@ -39,6 +39,7 @@
           <td><%= ltime automacao_grupo.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_automacao_grupo_path(automacao_grupo))%></td>
           <td><%= link_icon_to_destroy(admin_automacao_grupo_path(automacao_grupo)) %></td>
+          <td><%= link_to 'Condições', admin_automacao_grupo_automacoes_grupo_condicoes_path(automacao_grupo), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -46,7 +47,7 @@
 </div>
 
 <div class="row">
-  <%= link_icon_to_back admin_home_admin_index_path %>
+  <%= link_icon_to_back admin_grupos_path %>
   <%= link_icon_to_new(new_admin_grupo_automacao_grupo_path(@grupo), action_new(@automacoes_grupo)) %>
 </div>
 

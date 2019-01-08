@@ -9,6 +9,9 @@ pt-BR:
       automacao_grupo:
         one:                            'Automação do Grupo'
         other:                          'Automações dos Grupos'
+      automacao_grupo_condicao:
+        one:                            'Condição'
+        other:                          'Condições'
       grupo_usuario:
         one:                            'Grupo Usuário'
         other:                          'Grupos Usuários'

@@ -87,6 +87,23 @@ crumb :automacao_grupo_edit do |automacao_grupo|
   parent :automacao_grupo, automacao_grupo
 end
 
+crumb :automacoes_grupo_condicoes do |automacao_grupo|
+  link AutomacaoGrupoCondicao.model_name.human(count: 2), admin_automacao_grupo_automacoes_grupo_condicoes_path(automacao_grupo)
+  parent :automacoes_grupo, automacao_grupo
+end
+crumb :automacao_grupo_condicao do |automacao_grupo_condicao|
+  link automacao_grupo_condicao.to_s
+  parent :automacoes_grupo_condicoes, automacao_grupo_condicao.automacao_grupo
+end
+crumb :automacao_grupo_condicao_new do |automacao_grupo|
+  link t('views.actions.new')
+  parent :automacoes_grupo_condicoes, automacao_grupo
+end
+crumb :automacao_grupo_edit do |automacao_grupo_condicao|
+  link t('views.actions.do_edit'), edit_admin_automacao_grupo_condicao_path(automacao_grupo_condicao)
+  parent :automacao_grupo_condicao, automacao_grupo_condicao
+end
+
 crumb :componentes_ambiente do |ambiente_grupo|
   link Componente.model_name.human(count: 2), admin_ambiente_grupo_componentes_ambiente_path(ambiente_grupo)
   parent :ambientes_grupo, ambiente_grupo.grupo

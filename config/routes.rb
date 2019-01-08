@@ -89,7 +89,9 @@ Rails.application.routes.draw do
       get :index_all, on: :collection
     end
     resources :grupos do
-      resources :automacoes_grupo, shallow: true
+      resources :automacoes_grupo, shallow: true do
+        resources :automacoes_grupo_condicoes, shallow: true
+      end
       resources :usuarios do
         get :remover, on: :member
       end
