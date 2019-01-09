@@ -39,7 +39,8 @@ Rails.application.configure do
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: "augusto.albertoni.teste@gmail.com",
-    password: "firewsifirewsi"
+    password: "firewsifirewsi",
+    openssl_verify_mode: 'none'
   }
 
   # Print deprecation notices to the Rails logger.

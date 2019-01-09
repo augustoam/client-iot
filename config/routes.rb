@@ -38,6 +38,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :sessions do
+        post :reset_password, on: :collection
+      end
+      resources :registrations
       namespace :usuarios_grupo do
         post :add_usuario_grupo
         post :destroy_usuario_grupo

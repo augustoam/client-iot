@@ -99,7 +99,7 @@ crumb :automacao_grupo_condicao_new do |automacao_grupo|
   link t('views.actions.new')
   parent :automacoes_grupo_condicoes, automacao_grupo
 end
-crumb :automacao_grupo_edit do |automacao_grupo_condicao|
+crumb :automacao_grupo_condicao_edit do |automacao_grupo_condicao|
   link t('views.actions.do_edit'), edit_admin_automacao_grupo_condicao_path(automacao_grupo_condicao)
   parent :automacao_grupo_condicao, automacao_grupo_condicao
 end

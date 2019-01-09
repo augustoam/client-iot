@@ -1,5 +1,5 @@
 class Api::V1::RegistrationsController < Api::V1::BaseController
-  def registration_new
+  def create
     usuario = Usuario.new(
       email: params[:email],
       password: params[:password],
