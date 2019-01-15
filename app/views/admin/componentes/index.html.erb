@@ -37,6 +37,7 @@
           <td><%= ltime componente.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_componente_path(componente))%></td>
           <td><%= link_icon_to_destroy(admin_componente_path(componente)) %></td>
+          <td><%= link_to 'Propriedades', admin_componente_componentes_propriedades_path(componente), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
         </tr>
       <% end %>
     </tbody>

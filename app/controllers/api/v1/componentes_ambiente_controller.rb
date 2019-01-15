@@ -40,7 +40,8 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
             descricao: componente.descricao,
             topico: topico,
             controle: controle,
-            ambiente_grupo_id: params[:ambiente_grupo_id])
+            ambiente_grupo_id: params[:ambiente_grupo_id],
+            identificador_componente: topico)
           render json: componente_ambiente.to_json, status: :ok
         rescue => exception
           render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found

@@ -2,6 +2,8 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
   layout 'admin'
   before_action :set_automacao_grupo, only: %i[index new create]
   before_action :set_automacao_grupo_condicao, only: [:show, :edit, :update, :destroy]
+  before_action :set_componentes_ambientes, only: %i[create new edit]
+  before_action :repeat_to_s, only: %i[update create]
 
   def index
     @q = AutomacaoGrupoCondicao.ransack(params[:q])
@@ -19,7 +21,6 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
   end
 
   def create
-    debugger
     @automacao_grupo_condicao = @automacao_grupo.automacoes_grupo_condicoes.new(automacao_grupo_condicao_params)
     if @automacao_grupo_condicao.save
       redirect_to admin_automacao_grupo_automacoes_grupo_condicoes_path(@automacao_grupo), notice: "#{AutomacaoGrupoCondicao.model_name.human} criado com sucesso."
@@ -51,7 +52,15 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
       @automacao_grupo = AutomacaoGrupo.find(params[:automacao_grupo_id])
     end
 
+    def set_componentes_ambientes
+      @componentes_ambientes = ComponenteAmbiente.all
+    end
+
+    def repeat_to_s
+      params[:automacao_grupo_condicao][:repeat] = params[:automacao_grupo_condicao][:repeat].to_json
+    end
+
     def automacao_grupo_condicao_params
-      params.require(:automacao_grupo_condicao).permit(:manual, :timer, :turn_on, :repeat, :automacao_grupo_id)
+      params.require(:automacao_grupo_condicao).permit(:manual, :timer, :turn_on, :repeat, :automacao_grupo_id, :componente_ambiente_id)
     end
 end

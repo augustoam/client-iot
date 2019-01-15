@@ -24,6 +24,9 @@ pt-BR:
       componente:
         one:                            'Componente'
         other:                          'Componentes'
+      componente_propriedade:
+        one:                            'Componente Propriedade'
+        other:                          'Componentes Propriedades'
       comando_infra_vermelho:
         one:                            'Comando Infravermelho'
         other:                          'Comandos Infravermelhos'
@@ -57,6 +60,11 @@ pt-BR:
       componente_ambiente:
         id:                             ID
         descricao:                      Descrição
+      componente_propriedade:
+        id:                             ID
+        descricao:                      Descrição
+        id_propriedade:                 ID Propriedade
+        created_at:                     Data Criação
   views:
     actions:
       new:                              'Novo'

@@ -10,12 +10,42 @@
   </div>
 
   <div class="row">
-    <%= f.input :repeat_view, wrapper_html: { class: 'm12 s12' } %>
+    <%= f.input :repeat,
+      wrapper_html: { class: 'm12 s12' },
+      input_html: { multiple: true },
+      collection: [['Once', 'once'],
+                    ['Every Day', 'every_day'],
+                    ['Weekdays', 'weekdays'],
+                    ['Weekends', 'weekends'],
+                    ['Sunday', 'sunday'],
+                    ['Monday', 'monday'],
+                    ['Tuesday', 'tuesday'],
+                    ['Wednesday', 'wednesday'],
+                    ['Thursday', 'thursday'],
+                    ['Friday', 'friday'],
+                    ['Saturday', 'saturday']] %>
   </div>
 
   <div class="row">
     <%= f.input :turn_on, wrapper_html: { class: 'm12 s12' } %>
   </div>
+
+  <ul class="collapsible">
+    <% @componentes_ambientes.each do |componente_ambiente| %>
+      <li>
+        <div class="collapsible-header"><%= componente_ambiente.descricao %></div>
+
+          <% componente_ambiente.controle.componente.componentes_propriedades.each do |componente_propriedade| %>
+            <div class="collapsible-body">
+              <span>
+                <%= componente_propriedade.descricao %>
+                <%= f.input :propriedade, as: :boolean, label: '' %>
+              </span>
+            </div>
+          <% end %>
+      </li>
+    <% end %>
+  </ul>
 
   <div class="row">
     <% if @automacao_grupo_condicao.persisted? %>

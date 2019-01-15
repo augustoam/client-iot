@@ -19,6 +19,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'ambiente', 'ambientes'
   inflect.irregular 'ambiente_grupo', 'ambientes_grupo'
   inflect.irregular 'componente', 'componentes'
+  inflect.irregular 'componente_propriedade', 'componentes_propriedades'
   inflect.irregular 'componente_ambiente', 'componentes_ambiente'
   inflect.irregular 'admin', 'admins'
   inflect.irregular 'layout_controle', 'layout_controles'
@@ -27,4 +28,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'fabricante', 'fabricantes'
   inflect.irregular 'automacao_grupo', 'automacoes_grupo'
   inflect.irregular 'automacao_grupo_condicao', 'automacoes_grupo_condicoes'
+  inflect.irregular 'automacao_grupo_acao', 'automacoes_grupo_acoes'
 end

@@ -6,6 +6,8 @@ $(document).on('turbolinks:load', function() {
     // Start material select box
     $('select').formSelect();
 
+    $('.collapsible').collapsible();
+
     $('.dropdown-button').dropdown({
       constrainWidth: false, // Does not change width of dropdown to that of the activator
       belowOrigin: true
@@ -19,7 +21,7 @@ $(document).on('turbolinks:load', function() {
     closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
     draggable: true
   });
-  
+
   $('#msg-close').on('click', function() {
     document.getElementById("msg-hide").style.display = "none";
   });

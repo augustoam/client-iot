@@ -1,0 +1,49 @@
+<%= simple_form_for([:admin, @automacao_grupo_acao], url: admin_automacao_grupo_acao_form_path(@automacao_grupo, @automacao_grupo_acao)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <%= f.input :run_automation, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :turn_on_off_automation, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :send_notification, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :delay, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :delay_time, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <ul class="collapsible">
+    <% @automacoes_grupos.each do |automacao_grupo| %>
+      <li>
+        <div class="collapsible-header"><%= automacao_grupo.descricao %></div>
+
+          <!-- <#% componente_ambiente.controle.componente.componentes_propriedades.each do |componente_propriedade| %>
+            <div class="collapsible-body">
+              <span>
+                <#%= componente_propriedade.descricao %>
+                <#%= f.association :run_automacao_id, as: :boolean, label: '' %>
+              </span>
+            </div>
+          <#% end %> -->
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="row">
+    <% if @automacao_grupo_acao.persisted? %>
+      <%= link_icon_to_back admin_automacao_grupo_acao_path(@automacao_grupo_acao) %>
+    <% else %>
+      <%= link_icon_to_back admin_automacao_grupo_automacoes_grupo_acoes_path(@automacao_grupo) %>
+    <% end %>
+    <%= save_button %>
+  </div>
+<% end %>

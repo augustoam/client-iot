@@ -1,0 +1,26 @@
+<% breadcrumb :componente_propriedade, @componente_propriedade %>
+  <div class="row">
+    <h3><%= singular_model_name_for(ComponentePropriedade) %></h3>
+  </div>
+
+  <div class="row">
+    <b><%= ComponentePropriedade.human_attribute_name(:id) %></b>
+    <%= @componente_propriedade.id %>
+  </div>
+  <div class="row">
+    <b><%= ComponentePropriedade.human_attribute_name(:descricao) %></b>
+    <%= @componente_propriedade.descricao %>
+  </div>
+  <div class="row">
+    <b><%= ComponentePropriedade.human_attribute_name(:id_propriedade) %></b>
+    <%= @componente_propriedade.id_propriedade %>
+  </div>
+  <div class="row">
+    <b><%= ComponentePropriedade.human_attribute_name(:created_at) %></b>
+    <%= ltime @componente_propriedade.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_componente_componentes_propriedades_path(@componente) %>
+    <%= link_icon_to_edit(edit_admin_componente_propriedade_path(@componente_propriedade))%>
+  </div>

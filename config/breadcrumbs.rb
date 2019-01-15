@@ -88,8 +88,8 @@ crumb :automacao_grupo_edit do |automacao_grupo|
 end
 
 crumb :automacoes_grupo_condicoes do |automacao_grupo|
-  link AutomacaoGrupoCondicao.model_name.human(count: 2), admin_automacao_grupo_automacoes_grupo_condicoes_path(automacao_grupo)
-  parent :automacoes_grupo, automacao_grupo
+  link AutomacaoGrupoAcao.model_name.human(count: 2), admin_automacao_grupo_automacoes_grupo_condicoes_path(automacao_grupo)
+  parent :automacoes_grupo, automacao_grupo.grupo
 end
 crumb :automacao_grupo_condicao do |automacao_grupo_condicao|
   link automacao_grupo_condicao.to_s
@@ -102,6 +102,23 @@ end
 crumb :automacao_grupo_condicao_edit do |automacao_grupo_condicao|
   link t('views.actions.do_edit'), edit_admin_automacao_grupo_condicao_path(automacao_grupo_condicao)
   parent :automacao_grupo_condicao, automacao_grupo_condicao
+end
+
+crumb :automacoes_grupo_acoes do |automacao_grupo|
+  link AutomacaoGrupoCondicao.model_name.human(count: 2), admin_automacao_grupo_automacoes_grupo_acoes_path(automacao_grupo)
+  parent :automacoes_grupo, automacao_grupo.grupo
+end
+crumb :automacao_grupo_condicao do |automacao_grupo_acao|
+  link automacao_grupo_acao.to_s
+  parent :automacoes_grupo_acoes, automacao_grupo_acao.automacao_grupo
+end
+crumb :automacao_grupo_acao_new do |automacao_grupo|
+  link t('views.actions.new')
+  parent :automacoes_grupo_acoes, automacao_grupo
+end
+crumb :automacao_grupo_acao_edit do |automacao_grupo_acao|
+  link t('views.actions.do_edit'), edit_admin_automacao_grupo_acao_path(automacao_grupo_acao)
+  parent :automacao_grupo_acao, automacao_grupo_acao
 end
 
 crumb :componentes_ambiente do |ambiente_grupo|
@@ -153,6 +170,23 @@ end
 crumb :componente do |componente|
   link componente.to_s
   parent :componentes
+end
+
+crumb :componentes_propriedades do |componente|
+  link componente.descricao.concat(' Propriedades'), admin_componente_componentes_propriedades_path(componente)
+  parent :componentes, componente
+end
+crumb :componente_propriedade do |componente_propriedade|
+  link componente_propriedade.to_s
+  parent :componentes_propriedades, componente_propriedade.componente
+end
+crumb :componente_propriedade_new do |componente|
+  link t('views.actions.new')
+  parent :componentes_propriedades, componente
+end
+crumb :componente_propriedade_edit do |componente_propriedade|
+  link t('views.actions.do_edit'), edit_admin_componente_propriedade_path(componente_propriedade)
+  parent :componente_propriedade, componente_propriedade
 end
 
 crumb :layout_controles do

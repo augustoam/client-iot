@@ -87,7 +87,9 @@ Rails.application.routes.draw do
     resources :administrador
     resources :fabricantes
     resources :ambientes
-    resources :componentes
+    resources :componentes do
+      resources :componentes_propriedades, shallow: true
+    end
     resources :layout_controles
     resources :usuarios do
       get :index_all, on: :collection
@@ -95,6 +97,7 @@ Rails.application.routes.draw do
     resources :grupos do
       resources :automacoes_grupo, shallow: true do
         resources :automacoes_grupo_condicoes, shallow: true
+        resources :automacoes_grupo_acoes, shallow: true
       end
       resources :usuarios do
         get :remover, on: :member

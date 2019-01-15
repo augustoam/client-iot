@@ -40,6 +40,7 @@
           <td><%= link_icon_to_edit(edit_admin_automacao_grupo_path(automacao_grupo))%></td>
           <td><%= link_icon_to_destroy(admin_automacao_grupo_path(automacao_grupo)) %></td>
           <td><%= link_to 'Condições', admin_automacao_grupo_automacoes_grupo_condicoes_path(automacao_grupo), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
+          <td><%= link_to 'Ações', admin_automacao_grupo_automacoes_grupo_acoes_path(automacao_grupo), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
         </tr>
       <% end %>
     </tbody>

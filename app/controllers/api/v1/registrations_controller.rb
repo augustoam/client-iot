@@ -1,23 +1,22 @@
 class Api::V1::RegistrationsController < Api::V1::BaseController
   def create
-    usuario = Usuario.new(
-      email: params[:email],
-      password: params[:password],
-      password_confirmation: params[:password]
-    )
+    unless Usuario.find_by(email: params[:email])
+      @usuario = Usuario.new(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+      if @usuario.password_match?
+        if @usuario.valid?
+          @usuario.save
 
-    if usuario.valid?
-      usuario.save
-      usuario.confirm
-      token_notificacao = params[:token_notificacao]
-      unless usuario.tokens_notificacao_mobile.find_by(token: token_notificacao)
-        if token_notificacao != 'undefined'
-          usuario.tokens_notificacao_mobile.create!(token: token_notificacao)
+          render json: { msg: 'Verifique seu email para prosseguir com a confirmação da sua conta!', usuario: @usuario.email }, status: :ok
+        else
+          render json: { msg: 'Este usuário não é válido!' }, status: :unauthorized
         end
+      else
+        render json: { msg: 'Senhas não são iguais!' }, status: :unauthorized
       end
-      render json: { usuario: usuario.email, token: usuario.token }, status: :ok
     else
       render json: { msg: 'Este email já esta cadastrado!' }, status: :unauthorized
     end
+    rescue StandardError => e
+      render json: {error: e.message}, status: :error
   end
 end

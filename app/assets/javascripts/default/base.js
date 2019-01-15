@@ -8,6 +8,8 @@ $(document).on('turbolinks:load', function() {
     comandoInfraVermelho($(this));
   });
 
-}).on("click", "li[data-href], div[data-href]", function(e) {
-  Turbolinks.visit($(this).data("href"));
-});
+}).on("click", "tr[data-href] td", function(e) {
+    var $td = $(this);
+    if($td.find("a.btn").length === 0) // Apenas se a célula não possuir um botão
+      Turbolinks.visit($td.parents("tr:first").data("href"));
+})

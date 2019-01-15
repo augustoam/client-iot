@@ -1,0 +1,55 @@
+<% breadcrumb :componentes_propriedades, @componente %>
+  <div class="row">
+    <h3><%= plural_model_name_for(ComponentePropriedade) %></h3>
+  </div>
+
+  <div class="row">
+    <%= search_form_for @q, url: admin_componente_componentes_propriedades_path do |f| %>
+
+    <div class="col s11">
+      <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Pesquisar Componentes" %>
+    </div>
+    <div class="col s1">
+      <button class="waves-effect waves-light btn grey lighten-4" type="submit">
+        <i class="large material-icons black-text">search</i>
+      </button>
+    </div>
+
+  <% end %>
+</div>
+
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= ComponentePropriedade.human_attribute_name(:id) %></th>
+        <th><%= ComponentePropriedade.human_attribute_name(:descricao) %></th>
+        <th><%= ComponentePropriedade.human_attribute_name(:id_propriedade) %></th>
+        <th><%= ComponentePropriedade.human_attribute_name(:created_at) %></th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @componentes_propriedades.each do |componente_propriedade| %>
+        <tr data-href="<%= admin_componente_propriedade_path(componente_propriedade) %>">
+          <td><%= componente_propriedade.id %></td>
+          <td><%= componente_propriedade.descricao %></td>
+          <td><%= componente_propriedade.id_propriedade %></td>
+          <td><%= ltime componente_propriedade.created_at %></td>
+          <td><%= link_icon_to_edit(edit_admin_componente_propriedade_path(componente_propriedade))%></td>
+          <td><%= link_icon_to_destroy(admin_componente_propriedade_path(componente_propriedade)) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_componentes_path %>
+  <%= link_icon_to_new(new_admin_componente_componente_propriedade_path(@componente), action_new(@componentes_propriedades)) %>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @componentes_propriedade, renderer: MaterializePagination::Rails %>
+</div>
