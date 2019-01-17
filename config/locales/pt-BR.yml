@@ -65,6 +65,13 @@ pt-BR:
         descricao:                      Descrição
         id_propriedade:                 ID Propriedade
         created_at:                     Data Criação
+      automacao_grupo_condicao:
+        tipo_condicao:
+          one: one
+          complete_manually:           Completado Manualmente
+          timer:                       Timer
+          componente:                  Componente
+
   views:
     actions:
       new:                              'Novo'

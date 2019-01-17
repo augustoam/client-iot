@@ -14,7 +14,6 @@
         <i class="large material-icons black-text">search</i>
       </button>
     </div>
-
   <% end %>
 </div>
 
@@ -23,9 +22,8 @@
     <thead>
       <tr>
         <th><%= AutomacaoGrupoAcao.human_attribute_name(:id) %></th>
-        <th><%= AutomacaoGrupoAcao.human_attribute_name(:manual) %></th>
-        <th><%= AutomacaoGrupoAcao.human_attribute_name(:timer) %></th>
-        <th><%= AutomacaoGrupoAcao.human_attribute_name(:turn_on) %></th>
+        <th><%= AutomacaoGrupoAcao.human_attribute_name(:type) %></th>
+        <th><%= AutomacaoGrupoAcao.human_attribute_name(:delay_time) %></th>
         <th><%= AutomacaoGrupoAcao.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>
       </tr>
@@ -35,9 +33,8 @@
       <% @automacoes_grupo_acoes.each do |automacao_grupo_acao| %>
         <tr data-href="<%= admin_automacao_grupo_acao_path(automacao_grupo_acao) %>">
           <td><%= automacao_grupo_acao.id %></td>
-          <td><%= automacao_grupo_acao.manual %></td>
-          <td><%= automacao_grupo_acao.timer %></td>
-          <td><%= automacao_grupo_acao.turn_on %></td>
+          <td><%= automacao_grupo_acao.type %></td>
+          <td><%= automacao_grupo_acao.delay_time %></td>
           <td><%= ltime automacao_grupo_acao.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_automacao_grupo_acao_path(automacao_grupo_acao))%></td>
           <td><%= link_icon_to_destroy(admin_automacao_grupo_acao_path(automacao_grupo_acao)) %></td>

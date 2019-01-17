@@ -6,4 +6,8 @@ module Admin::AutomacoesGrupoCondicoesHelper
       admin_automacao_grupo_condicao_path(automacao_grupo_condicao)
     end
   end
+
+  def tipo_condicao_keys
+     AutomacaoGrupoCondicao.tipo_condicaos.keys.collect{|t| [t_enum(AutomacaoGrupoCondicao, "tipo_condicao", t), t] }
+  end
 end

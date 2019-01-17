@@ -61,6 +61,6 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
     end
 
     def automacao_grupo_condicao_params
-      params.require(:automacao_grupo_condicao).permit(:manual, :timer, :turn_on, :repeat, :automacao_grupo_id, :componente_ambiente_id)
+      params.require(:automacao_grupo_condicao).permit(:tipo_condicao, :turn_on, :repeat, :automacao_grupo_id, :componente_ambiente_id, :componente_propriedade_id)
     end
 end

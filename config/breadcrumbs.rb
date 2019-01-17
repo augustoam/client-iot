@@ -88,7 +88,7 @@ crumb :automacao_grupo_edit do |automacao_grupo|
 end
 
 crumb :automacoes_grupo_condicoes do |automacao_grupo|
-  link AutomacaoGrupoAcao.model_name.human(count: 2), admin_automacao_grupo_automacoes_grupo_condicoes_path(automacao_grupo)
+  link AutomacaoGrupoCondicao.model_name.human(count: 2), admin_automacao_grupo_automacoes_grupo_condicoes_path(automacao_grupo)
   parent :automacoes_grupo, automacao_grupo.grupo
 end
 crumb :automacao_grupo_condicao do |automacao_grupo_condicao|
@@ -108,7 +108,7 @@ crumb :automacoes_grupo_acoes do |automacao_grupo|
   link AutomacaoGrupoCondicao.model_name.human(count: 2), admin_automacao_grupo_automacoes_grupo_acoes_path(automacao_grupo)
   parent :automacoes_grupo, automacao_grupo.grupo
 end
-crumb :automacao_grupo_condicao do |automacao_grupo_acao|
+crumb :automacao_grupo_acao do |automacao_grupo_acao|
   link automacao_grupo_acao.to_s
   parent :automacoes_grupo_acoes, automacao_grupo_acao.automacao_grupo
 end

@@ -1,17 +1,19 @@
 <%= simple_form_for([:admin, @automacao_grupo_condicao], url: admin_automacao_grupo_condicao_form_path(@automacao_grupo, @automacao_grupo_condicao)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="row">
-    <%= f.input :manual, wrapper_html: { class: 'm12 s12' } %>
+  <div class="repeat-data">
+    <%= @automacao_grupo_condicao.repeat %>
   </div>
 
   <div class="row">
-    <%= f.input :timer, wrapper_html: { class: 'm12 s12' } %>
+    <%= f.input :tipo_condicao,
+      wrapper_html: { class: 'm12 s12 tipo-condicao-select' },
+      collection: tipo_condicao_keys %>
   </div>
 
   <div class="row">
     <%= f.input :repeat,
-      wrapper_html: { class: 'm12 s12' },
+      wrapper_html: { class: 'm12 s12 repeat-select' },
       input_html: { multiple: true },
       collection: [['Once', 'once'],
                     ['Every Day', 'every_day'],
@@ -27,10 +29,10 @@
   </div>
 
   <div class="row">
-    <%= f.input :turn_on, wrapper_html: { class: 'm12 s12' } %>
+    <%= f.input :turn_on, wrapper_html: { class: 'm12 s12 turn-on-select' } %>
   </div>
 
-  <ul class="collapsible">
+  <ul class="collapsible componente-condicao-select">
     <% @componentes_ambientes.each do |componente_ambiente| %>
       <li>
         <div class="collapsible-header"><%= componente_ambiente.descricao %></div>

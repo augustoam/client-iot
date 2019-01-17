@@ -7,7 +7,7 @@
     <%= search_form_for @q, url: admin_automacao_grupo_automacoes_grupo_condicoes_path do |f| %>
 
     <div class="col s11">
-      <%= f.search_field :timer_cont, class: "form-control", placeholder: "Pesquisar Condições" %>
+      <%= f.search_field :tipo_condicao_cont, class: "form-control", placeholder: "Pesquisar Condições" %>
     </div>
     <div class="col s1">
       <button class="waves-effect waves-light btn grey lighten-4" type="submit">
@@ -23,9 +23,7 @@
     <thead>
       <tr>
         <th><%= AutomacaoGrupoCondicao.human_attribute_name(:id) %></th>
-        <th><%= AutomacaoGrupoCondicao.human_attribute_name(:manual) %></th>
-        <th><%= AutomacaoGrupoCondicao.human_attribute_name(:timer) %></th>
-        <th><%= AutomacaoGrupoCondicao.human_attribute_name(:turn_on) %></th>
+        <th><%= AutomacaoGrupoCondicao.human_attribute_name(:tipo_condicao) %></th>
         <th><%= AutomacaoGrupoCondicao.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>
       </tr>
@@ -35,9 +33,7 @@
       <% @automacoes_grupo_condicoes.each do |automacao_grupo_condicao| %>
         <tr data-href="<%= admin_automacao_grupo_condicao_path(automacao_grupo_condicao) %>">
           <td><%= automacao_grupo_condicao.id %></td>
-          <td><%= automacao_grupo_condicao.manual %></td>
-          <td><%= automacao_grupo_condicao.timer %></td>
-          <td><%= automacao_grupo_condicao.turn_on %></td>
+          <td><%= automacao_grupo_condicao.tipo_condicao %></td>
           <td><%= ltime automacao_grupo_condicao.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_automacao_grupo_condicao_path(automacao_grupo_condicao))%></td>
           <td><%= link_icon_to_destroy(admin_automacao_grupo_condicao_path(automacao_grupo_condicao)) %></td>

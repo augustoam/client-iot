@@ -1,4 +1,4 @@
-module ApplicationHelper 
+module ApplicationHelper
 
   def grupos_por_usuario
     return GrupoUsuario.where(usuario_id: current_usuario)
@@ -27,7 +27,7 @@ module ApplicationHelper
   def save_button
     render partial: 'shared/button_save'
   end
-  
+
   # Retorna o nome singular do model traduzido usando i18n.
   #
   # ==== Examples
@@ -107,6 +107,13 @@ module ApplicationHelper
   #   # => 07/04/2017 10:30
   def human_datetime(time, pattern = '%d/%m/%Y %H:%M')
     sanitize_datetime(time).strftime(pattern) if time
+  end
+
+  def t_enum(model, enum, valor)
+    if valor
+      scope_id = "activerecord.attributes.#{model.to_s.underscore}.#{enum}"
+      I18n.t(valor, scope: scope_id)
+    end
   end
 
   alias ltime human_datetime
