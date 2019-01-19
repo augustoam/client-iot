@@ -2,7 +2,6 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
   layout 'admin'
   before_action :set_automacao_grupo, only: %i[index new create]
   before_action :set_automacao_grupo_condicao, only: [:show, :edit, :update, :destroy]
-  before_action :set_componentes_ambientes, only: %i[create new edit]
   before_action :repeat_to_s, only: %i[update create]
 
   def index
@@ -30,6 +29,7 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
   end
 
   def update
+    debugger
     if @automacao_grupo_condicao.update(automacao_grupo_condicao_params)
       redirect_to admin_automacao_grupo_condicao_path(@automacao_grupo_condicao), notice: "#{AutomacaoGrupoCondicao.model_name.human} alterado com sucesso."
     else
@@ -50,10 +50,6 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
 
     def set_automacao_grupo
       @automacao_grupo = AutomacaoGrupo.find(params[:automacao_grupo_id])
-    end
-
-    def set_componentes_ambientes
-      @componentes_ambientes = ComponenteAmbiente.all
     end
 
     def repeat_to_s

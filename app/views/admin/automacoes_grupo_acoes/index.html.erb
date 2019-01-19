@@ -7,7 +7,7 @@
     <%= search_form_for @q, url: admin_automacao_grupo_automacoes_grupo_acoes_path do |f| %>
 
     <div class="col s11">
-      <%= f.search_field :run_automation_cont, class: "form-control", placeholder: "Pesquisar Condições" %>
+      <%= f.search_field :tipo_acao_cont, class: "form-control", placeholder: "Pesquisar Condições" %>
     </div>
     <div class="col s1">
       <button class="waves-effect waves-light btn grey lighten-4" type="submit">
@@ -22,7 +22,7 @@
     <thead>
       <tr>
         <th><%= AutomacaoGrupoAcao.human_attribute_name(:id) %></th>
-        <th><%= AutomacaoGrupoAcao.human_attribute_name(:type) %></th>
+        <th><%= AutomacaoGrupoAcao.human_attribute_name(:tipo_acao) %></th>
         <th><%= AutomacaoGrupoAcao.human_attribute_name(:delay_time) %></th>
         <th><%= AutomacaoGrupoAcao.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>

@@ -119,3 +119,7 @@ input[type=range] {
 .botao-infra-vermelho#numeric-keyboard {
   width: 30%;
 }
+
+.repeat-data {
+  visibility: hidden
+}

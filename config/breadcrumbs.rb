@@ -105,7 +105,7 @@ crumb :automacao_grupo_condicao_edit do |automacao_grupo_condicao|
 end
 
 crumb :automacoes_grupo_acoes do |automacao_grupo|
-  link AutomacaoGrupoCondicao.model_name.human(count: 2), admin_automacao_grupo_automacoes_grupo_acoes_path(automacao_grupo)
+  link AutomacaoGrupoAcao.model_name.human(count: 2), admin_automacao_grupo_automacoes_grupo_acoes_path(automacao_grupo)
   parent :automacoes_grupo, automacao_grupo.grupo
 end
 crumb :automacao_grupo_acao do |automacao_grupo_acao|

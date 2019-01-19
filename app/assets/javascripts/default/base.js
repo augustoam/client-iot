@@ -17,9 +17,6 @@ $(document).on('turbolinks:load', function() {
       updateValueRepeat(this);
     })
 
-    $('.tipo-condicao-select').change(function() {
-      updateFormCondicao(this);
-    })
   });
 
 }).on("click", "tr[data-href] td", function(e) {
@@ -38,24 +35,5 @@ function updateValueRepeat(element) {
         }
       }
     })
-  }
-}
-
-function updateFormCondicao(element) {
-
-  if ($('.tipo-condicao-select')[0].innerText.length > 0) {
-    if ($('.tipo-condicao-select').find('input').val() === 'Componente') {
-      $('.turn-on-select').hide();
-      $('.repeat-select').hide();
-      $('.componente-condicao-select').show();
-    } else if ($('.tipo-condicao-select').find('input').val() === 'Timer') {
-      $('.turn-on-select').show();
-      $('.repeat-select').show();
-      $('.componente-condicao-select').hide();
-    } else if ($('.tipo-condicao-select').find('input').val() === 'Completado Manualmente') {
-      $('.turn-on-select').hide();
-      $('.repeat-select').hide();
-      $('.componente-condicao-select').hide();
-    }
   }
 }

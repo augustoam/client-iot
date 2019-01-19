@@ -6,4 +6,8 @@ module Admin::AutomacoesGrupoAcoesHelper
       admin_automacao_grupo_acao_path(automacao_grupo_acao)
     end
   end
+
+  def tipo_acao_keys
+     AutomacaoGrupoAcao.tipo_acaos.keys.collect{|t| [t_enum(AutomacaoGrupoAcao, "tipo_acao", t), t] }
+  end
 end

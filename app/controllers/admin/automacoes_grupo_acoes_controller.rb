@@ -1,7 +1,6 @@
 class Admin::AutomacoesGrupoAcoesController < ApplicationController
   layout 'admin'
 
-  before_action :set_automacoes_grupo, only: %i[new edit update]
   before_action :set_automacao_grupo, only: %i[index new create]
   before_action :set_automacao_grupo_acao, only: [:show, :edit, :update, :destroy]
 
@@ -54,10 +53,6 @@ class Admin::AutomacoesGrupoAcoesController < ApplicationController
 
     def set_componentes_ambientes
       @componentes_ambientes = ComponenteAmbiente.all
-    end
-
-    def set_automacoes_grupo
-      @automacoes_grupos = AutomacaoGrupo.all
     end
 
     def automacao_grupo_acao_params

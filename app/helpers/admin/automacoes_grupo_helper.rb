@@ -6,4 +6,8 @@ module Admin::AutomacoesGrupoHelper
       admin_automacao_grupo_path(automacao_grupo)
     end
   end
+
+  def automacoes_grupo(grupo)
+    AutomacaoGrupo.where(grupo: grupo)
+  end
 end

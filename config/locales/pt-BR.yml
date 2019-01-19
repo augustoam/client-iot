@@ -67,9 +67,17 @@ pt-BR:
         created_at:                     Data Criação
       automacao_grupo_condicao:
         tipo_condicao:
-          one: one
+          one:                         Tipo de condição
           complete_manually:           Completado Manualmente
           timer:                       Timer
+          componente:                  Componente
+      automacao_grupo_acao:
+        tipo_acao:
+          one:                         Tipo de ação
+          run_automation:              Rodar Automação
+          turn_on_off_automation:      Desligar/Ligar Automação
+          send_notification:           Enviar Notificação
+          delay:                       Delay
           componente:                  Componente
 
   views:

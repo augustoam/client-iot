@@ -1,30 +1,32 @@
-<%= simple_form_for([:admin, @automacao_grupo_acao], url: admin_automacao_grupo_acao_form_path(@automacao_grupo, @automacao_grupo_acao)) do |f| %>
+<%= simple_form_for([:admin, @automacao_grupo_acao], url: admin_automacao_grupo_acao_form_path(@automacao_grupo, @automacao_grupo_acao), input_html: { class: 'form_automacao_grupo_acao' }) do |f| %>
   <%= f.error_notification %>
 
   <div class="row">
-    <%= f.input :type, wrapper_html: { class: 'm12 s12' } %>
+    <%= f.input :tipo_acao,
+      wrapper_html: { class: 'm12 s12', id: 'tipo-acao-select' },
+      collection: tipo_acao_keys %>
   </div>
 
   <div class="row">
-    <%= f.input :delay_time, wrapper_html: { class: 'm12 s12' } %>
+    <%= f.input :delay_time, wrapper_html: { class: 'm12 s12 delay-time-select' } %>
   </div>
 
-  <ul class="collapsible">
-    <% @automacoes_grupos.each do |automacao_grupo| %>
-      <li>
-        <div class="collapsible-header"><%= automacao_grupo.descricao %></div>
+  <div class="row">
+    <%= f.association :automacao_grupo, collection: automacoes_grupo(@automacao_grupo.grupo), wrapper_html: { class: 'm12 s12 run-automacao-select' } %>
+  </div>
 
-          <!-- <#% componente_ambiente.controle.componente.componentes_propriedades.each do |componente_propriedade| %>
-            <div class="collapsible-body">
-              <span>
-                <#%= componente_propriedade.descricao %>
-                <#%= f.association :run_automacao_id, as: :boolean, label: '' %>
-              </span>
-            </div>
-          <#% end %> -->
-      </li>
-    <% end %>
-  </ul>
+  <div class="row">
+    <%= f.association :automacao_grupo, collection: automacoes_grupo(@automacao_grupo.grupo), wrapper_html: { class: 'm12 s12 turn-on-off-select' } %>
+  </div>
+
+  <div class="row">
+    <%= f.association :componente_ambiente, collection: componentes_ambientes(@automacao_grupo.grupo.ambientes_grupo), wrapper_html: { class: 'm12 s12', id: "componente-ambiente-select" } %>
+  </div>
+
+  <div class="row">
+    <%= f.association :componente_propriedade, collection: componentes_propriedades, wrapper_html: { class: 'm12 s12 componente-propriedade-select' } %>
+  </div>
+
 
   <div class="row">
     <% if @automacao_grupo_acao.persisted? %>

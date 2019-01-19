@@ -6,4 +6,8 @@ module Admin::ComponentesPropriedadesHelper
       admin_componente_propriedade_path(componente_propriedade)
     end
   end
+
+  def componentes_propriedades
+    ComponentePropriedade.all
+  end
 end

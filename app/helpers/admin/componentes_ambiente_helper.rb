@@ -6,4 +6,8 @@ module Admin::ComponentesAmbienteHelper
       admin_componente_ambiente_path(componente)
     end
   end
+
+  def componentes_ambientes(ambientes_grupo)
+    ComponenteAmbiente.where(ambiente_grupo: ambientes_grupo)
+  end
 end
