@@ -50,6 +50,6 @@ class Admin::ComponentesPropriedadesController < ApplicationController
   end
 
   def componente_propriedade_params
-    params.require(:componente_propriedade).permit(:descricao, :id_propriedade, :componente_id)
+    params.require(:componente_propriedade).permit(:descricao, :value, :id_propriedade, :componente_id)
   end
 end

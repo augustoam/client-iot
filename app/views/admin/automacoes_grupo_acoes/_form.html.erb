@@ -12,7 +12,7 @@
   </div>
 
   <div class="row">
-    <%= f.association :automacao_grupo, collection: automacoes_grupo(@automacao_grupo.grupo), wrapper_html: { class: 'm12 s12 run-automacao-select' } %>
+    <%= f.association :automacao_grupo, label: "Run Automação", input_html: { id: :automacao_grupo_acao_run_automacao_id, name: "automacao_grupo_acao[run_automacao_id]" }, collection: automacoes_grupo(@automacao_grupo.grupo), wrapper_html: { class: 'm12 s12 run-automacao-select' } %>
   </div>
 
   <div class="row">
@@ -20,11 +20,11 @@
   </div>
 
   <div class="row">
-    <%= f.association :componente_ambiente, collection: componentes_ambientes(@automacao_grupo.grupo.ambientes_grupo), wrapper_html: { class: 'm12 s12', id: "componente-ambiente-select" } %>
+    <%= f.association :componente_ambiente, collection: componentes_ambientes(@automacao_grupo.grupo.ambientes_grupo), wrapper_html: { class: 'm12 s12 componente-acao-select' } %>
   </div>
 
   <div class="row">
-    <%= f.association :componente_propriedade, collection: componentes_propriedades, wrapper_html: { class: 'm12 s12 componente-propriedade-select' } %>
+    <%= f.association :componente_propriedade, collection: componentes_propriedades, wrapper_html: { class: 'm12 s12 componente-propriedade-acao-select' } %>
   </div>
 
 

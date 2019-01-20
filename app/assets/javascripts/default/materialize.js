@@ -11,6 +11,10 @@ $(document).on('turbolinks:load', function() {
       updateFormCondicao();
     })
 
+    $('#tipo-acao-select').find('input').ready(function() {
+      updateFormAcao();
+    })
+
     $('.collapsible').collapsible();
 
     $('.dropdown-button').dropdown({

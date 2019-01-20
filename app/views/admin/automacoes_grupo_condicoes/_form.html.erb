@@ -35,12 +35,12 @@
   </div>
 
 
-  <div class="row">
+  <div class="row input-componente-ambiente" data-grupo-id="<%= @automacao_grupo.grupo.id %>">
     <%= f.association :componente_ambiente, collection: componentes_ambientes(@automacao_grupo.grupo.ambientes_grupo), wrapper_html: { class: 'm12 s12 componente-condicao-select', id: "componente-ambiente-select" } %>
   </div>
 
-  <div class="row">
-    <%= f.association :componente_propriedade, collection: componentes_propriedades, wrapper_html: { class: 'm12 s12 componente-condicao-select' } %>
+  <div class="row componente-propriedade">
+    <%= f.association :componente_propriedade, collection: componentes_propriedades, wrapper_html: { class: 'm12 s12 componente-propriedade-select' } %>
   </div>
 
   <div class="row">

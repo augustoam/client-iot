@@ -4,6 +4,11 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
   before_action :set_automacao_grupo_condicao, only: [:show, :edit, :update, :destroy]
   before_action :repeat_to_s, only: %i[update create]
 
+  def update_componente_propriedades
+    componente_ambiente = ComponenteAmbiente.find(params[:componente])
+    @componente_proprieades = ComponentePropriedade.where(componente: componente_ambiente.controle.componente)
+  end
+
   def index
     @q = AutomacaoGrupoCondicao.ransack(params[:q])
     @automacoes_grupo_condicoes = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
@@ -29,7 +34,6 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
   end
 
   def update
-    debugger
     if @automacao_grupo_condicao.update(automacao_grupo_condicao_params)
       redirect_to admin_automacao_grupo_condicao_path(@automacao_grupo_condicao), notice: "#{AutomacaoGrupoCondicao.model_name.human} alterado com sucesso."
     else

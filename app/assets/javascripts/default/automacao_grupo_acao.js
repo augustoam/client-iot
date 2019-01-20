@@ -1,18 +1,18 @@
 $(document).on('turbolinks:load', function() {
 
   $('#tipo-acao-select').change(function() {
-    updateFormCondicao(false);
+    updateFormAcao(false);
   })
 
   $(".form_automacao_grupo_acao").submit(function() {
-    updateFormCondicao(true);
+    updateFormAcao(true);
   })
 
 });
 
-function updateFormCondicao(isSubmiting) {
-  var $tipoCondicaoSelect = $("#tipo-condicao-select").find('input');
-  var condicao = $tipoCondicaoSelect.val();
+function updateFormAcao(isSubmiting) {
+  var $tipoAcaoSelect = $("#tipo-acao-select").find('input');
+  var acao = $tipoAcaoSelect.val();
 
   function processaDiv($div, ativo) {
     if (isSubmiting) {
@@ -22,6 +22,8 @@ function updateFormCondicao(isSubmiting) {
       $div.toggle(ativo);
   }
 
-  processaDiv($(".turn-on-select, .repeat-select, .componente-condicao-select"), $.inArray(condicao, ["Timer"]) >= 0);
-  processaDiv($(".componente-condicao-select"), $.inArray(condicao, ["Componente"]) >= 0);
+  processaDiv($(".delay-time-select"), $.inArray(acao, ["Delay"]) >= 0);
+  processaDiv($(".componente-acao-select, .componente-propriedade-acao-select"), $.inArray(acao, ["Componente"]) >= 0);
+  processaDiv($(".run-automacao-select"), $.inArray(acao, ["Rodar Automação"]) >= 0);
+  processaDiv($(".turn-on-off-select"), $.inArray(acao, ["Desligar/Ligar Automação"]) >= 0);
 }

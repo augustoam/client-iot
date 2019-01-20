@@ -96,7 +96,9 @@ Rails.application.routes.draw do
     end
     resources :grupos do
       resources :automacoes_grupo, shallow: true do
-        resources :automacoes_grupo_condicoes, shallow: true
+        resources :automacoes_grupo_condicoes, shallow: true do
+          post :update_componente_propriedades, on: :collection
+        end
         resources :automacoes_grupo_acoes, shallow: true
       end
       resources :usuarios do

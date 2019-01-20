@@ -8,7 +8,10 @@ class AutomacaoGrupoCondicao < ApplicationRecord
   before_save :update_columns
 
   attr_accessor :propriedade
-  # attr_accessor :once, :every_day, :weekdays, :weekends, :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday
+
+  scope :do_grupo, -> (automacao_grupo) {
+      where(automacao_grupo_id: automacao_grupo)
+    }
 
   def to_s
     id

@@ -12,7 +12,7 @@ class MqttSubscribeJob < ApplicationJob
       topicos.push(_componente_ambiente.topico_info1).split(',')   unless topicos.include? _componente_ambiente.topico_info1
       topicos.push(_componente_ambiente.topico_info2).split(',')   unless topicos.include? _componente_ambiente.topico_info2
       topicos.push(_componente_ambiente.topico_info3).split(',')   unless topicos.include? _componente_ambiente.topico_info3
-      topicos.push(_componente_ambiente.topico_online).split(',') unless topicos.include? _componente_ambiente.topico_online
+      topicos.push(_componente_ambiente.topico_online).split(',')  unless topicos.include? _componente_ambiente.topico_online
       topicos.push(_componente_ambiente.topico_state).split(',')   unless topicos.include? _componente_ambiente.topico_state
       topicos.push(_componente_ambiente.topico_power).split(',')   unless topicos.include? _componente_ambiente.topico_power
     end
@@ -111,21 +111,6 @@ class MqttSubscribeJob < ApplicationJob
               Rails.logger.error('Erro no atualizar estado do componente ambiente')
             end
           end
-
-          # puts 'topico: ' + topic + ' message: ' + message
-          #
-          # estado = false
-          # estado = true if message == 'ligar'
-          #
-          # componentes_ambientes = ComponenteAmbiente.where(topico: topic)
-          # if componentes_ambientes.present?
-          #   componentes_ambientes.each do |componente_ambiente|
-          #     componente_ambiente.update!(estado: estado, valor: message)
-          #   end
-          #   #ComponenteAmbienteBroadcastJob.perform_later(componente_ambiente)
-          # else
-          #   Rails.logger.error('Erro no atualizar estado do componente ambiente')
-          # end
         end
       end
     end

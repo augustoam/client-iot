@@ -1,6 +1,7 @@
 class ComponenteAmbiente < ApplicationRecord
   belongs_to :ambiente_grupo
   belongs_to :controle
+
   has_many :automacoes_grupo_condicoes
 
   before_create :update_topicos
@@ -8,7 +9,7 @@ class ComponenteAmbiente < ApplicationRecord
   validates :descricao, presence: true
   # after_save { ComponenteAmbienteBroadcastJob.perform_later self }
   def to_s
-    descricao.to_s
+    [descricao,id]
   end
 
   def update_topicos

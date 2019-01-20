@@ -8,6 +8,6 @@ module Admin::ComponentesAmbienteHelper
   end
 
   def componentes_ambientes(ambientes_grupo)
-    ComponenteAmbiente.where(ambiente_grupo: ambientes_grupo)
+    ComponenteAmbiente.where(ambiente_grupo: ambientes_grupo).to_a
   end
 end

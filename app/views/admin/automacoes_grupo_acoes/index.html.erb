@@ -33,7 +33,7 @@
       <% @automacoes_grupo_acoes.each do |automacao_grupo_acao| %>
         <tr data-href="<%= admin_automacao_grupo_acao_path(automacao_grupo_acao) %>">
           <td><%= automacao_grupo_acao.id %></td>
-          <td><%= automacao_grupo_acao.type %></td>
+          <td><%= automacao_grupo_acao.tipo_acao %></td>
           <td><%= automacao_grupo_acao.delay_time %></td>
           <td><%= ltime automacao_grupo_acao.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_automacao_grupo_acao_path(automacao_grupo_acao))%></td>
