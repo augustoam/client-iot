@@ -10,7 +10,7 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
   end
 
   def index
-    @q = AutomacaoGrupoCondicao.ransack(params[:q])
+    @q = @automacao_grupo.automacoes_grupo_condicoes.ransack(params[:q])
     @automacoes_grupo_condicoes = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
   end
 
@@ -61,6 +61,6 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
     end
 
     def automacao_grupo_condicao_params
-      params.require(:automacao_grupo_condicao).permit(:tipo_condicao, :turn_on, :repeat, :automacao_grupo_id, :componente_ambiente_id, :componente_propriedade_id)
+      params.require(:automacao_grupo_condicao).permit(:tipo_condicao, :value_set, :turn_on, :repeat, :automacao_grupo_id, :componente_ambiente_id, :componente_propriedade_id)
     end
 end

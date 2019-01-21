@@ -4,6 +4,6 @@ class ComponentePropriedade < ApplicationRecord
   has_many :automacoes_grupo_condicoes
   
   def to_s
-    descricao
+    [descricao,componente.descricao]
   end
 end

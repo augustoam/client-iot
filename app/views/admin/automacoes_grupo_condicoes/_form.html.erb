@@ -1,4 +1,5 @@
-<%= simple_form_for([:admin, @automacao_grupo_condicao], url: admin_automacao_grupo_condicao_form_path(@automacao_grupo, @automacao_grupo_condicao), input_html: { class: 'form_automacao_grupo_condicao' }) do |f| %>
+<div id="automacoes_grupo_condicoes_form">
+<%= simple_form_for([:admin, @automacao_grupo_condicao], url: admin_automacao_grupo_condicao_form_path(@automacao_grupo, @automacao_grupo_condicao), input_html: { class: 'form_automacao_grupo_condicao',  multipart: true }) do |f| %>
 
   <%= f.error_notification %>
 
@@ -34,13 +35,16 @@
     <%= f.input :turn_on, wrapper_html: { class: 'm12 s12 turn-on-select' } %>
   </div>
 
-
   <div class="row input-componente-ambiente" data-grupo-id="<%= @automacao_grupo.grupo.id %>">
     <%= f.association :componente_ambiente, collection: componentes_ambientes(@automacao_grupo.grupo.ambientes_grupo), wrapper_html: { class: 'm12 s12 componente-condicao-select', id: "componente-ambiente-select" } %>
   </div>
 
   <div class="row componente-propriedade">
     <%= f.association :componente_propriedade, collection: componentes_propriedades, wrapper_html: { class: 'm12 s12 componente-propriedade-select' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :value_set, wrapper_html: { class: 'm12 s12 value-set-select' } %>
   </div>
 
   <div class="row">
@@ -52,3 +56,4 @@
     <%= save_button %>
   </div>
 <% end %>
+</div>

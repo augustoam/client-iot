@@ -9,7 +9,7 @@ class ComponenteAmbiente < ApplicationRecord
   validates :descricao, presence: true
   # after_save { ComponenteAmbienteBroadcastJob.perform_later self }
   def to_s
-    [descricao,id]
+    [descricao,id,controle.componente.descricao]
   end
 
   def update_topicos

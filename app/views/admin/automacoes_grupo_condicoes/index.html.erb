@@ -24,6 +24,9 @@
       <tr>
         <th><%= AutomacaoGrupoCondicao.human_attribute_name(:id) %></th>
         <th><%= AutomacaoGrupoCondicao.human_attribute_name(:tipo_condicao) %></th>
+        <th><%= AutomacaoGrupoCondicao.human_attribute_name(:componente) %></th>
+        <th><%= AutomacaoGrupoCondicao.human_attribute_name(:estado) %></th>
+        <th><%= AutomacaoGrupoCondicao.human_attribute_name(:value_set) %></th>
         <th><%= AutomacaoGrupoCondicao.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>
       </tr>
@@ -34,6 +37,9 @@
         <tr data-href="<%= admin_automacao_grupo_condicao_path(automacao_grupo_condicao) %>">
           <td><%= automacao_grupo_condicao.id %></td>
           <td><%= automacao_grupo_condicao.tipo_condicao %></td>
+          <td><%= automacao_grupo_condicao.componente_ambiente.descricao %></td>
+          <td><%= automacao_grupo_condicao.componente_propriedade.descricao %></td>
+          <td><%= automacao_grupo_condicao.value_set %></td>
           <td><%= ltime automacao_grupo_condicao.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_automacao_grupo_condicao_path(automacao_grupo_condicao))%></td>
           <td><%= link_icon_to_destroy(admin_automacao_grupo_condicao_path(automacao_grupo_condicao)) %></td>

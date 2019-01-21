@@ -26,7 +26,7 @@ function updateFormCondicao(isSubmiting) {
   }
 
   processaDiv($(".turn-on-select, .repeat-select, .componente-condicao-select"), $.inArray(condicao, ["Timer"]) >= 0);
-  processaDiv($(".componente-condicao-select"), $.inArray(condicao, ["Componente"]) >= 0);
+  processaDiv($(".componente-condicao-select, .componente-propriedade-select, .value-set-select"), $.inArray(condicao, ["Componente"]) >= 0);
 }
 
 function updateComponentePropriedade(element) {

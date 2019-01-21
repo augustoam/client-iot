@@ -4,8 +4,8 @@ class AutomacaoGrupoAcao < ApplicationRecord
 
   belongs_to :automacao_grupo, foreign_key: :automacao_grupo_id
   belongs_to :componente_ambiente, required: false, foreign_key: :componente_ambiente_id
-  belongs_to :automacao_grupo, required: false, foreign_key: :run_automacao_id
-  belongs_to :automacao_grupo, required: false, foreign_key: :turn_on_off_automation_id
+  belongs_to :run_automacao, class_name: 'AutomacaoGrupo', required: false, foreign_key: :run_automacao_id
+  belongs_to :turn_on_off_automation,  class_name: 'AutomacaoGrupo', required: false, foreign_key: :turn_on_off_automation_id
   belongs_to :componente_propriedade, required: false, foreign_key: :componente_propriedade_id
 
   def to_s
