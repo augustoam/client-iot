@@ -4,7 +4,9 @@ class MqttSubscribeJob < ApplicationJob
 
   queue_as :critical
 
-  def perform(*_args)
+  def perform(*args)
+    debugger
+    puts args
     topicos = []
 
     ComponenteAmbiente.all.each do |_componente_ambiente|

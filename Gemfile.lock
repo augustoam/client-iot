@@ -301,6 +301,7 @@ DEPENDENCIES
   devise-i18n
   dotenv-rails
   font-awesome-rails
+  fugit
   gretel
   htmlbeautifier
   jbuilder (~> 2.5)

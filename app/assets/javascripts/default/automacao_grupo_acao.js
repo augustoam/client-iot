@@ -34,11 +34,23 @@ function updateFormAcao(isSubmiting) {
 
 function updatePropriedadesSelect(element) {
   var componente = JSON.parse($('.componente-acao-select').find('input').val())[2];
+
+  $("select#automacao_grupo_acao_componente_propriedade_id option").empty();
+
+  $("select#automacao_grupo_acao_propriedades option").map(function() {
+    if ($(this).text().length > 0) {
+      
+      $("select#automacao_grupo_acao_componente_propriedade_id").append($(this)[0].outerHTML)
+    }
+  })
+
   $("select#automacao_grupo_acao_componente_propriedade_id option").map(function() {
     if ($(this).text().length > 0 ) {
       if (componente != JSON.parse($(this).text())[1]) {
         $(`select#automacao_grupo_acao_componente_propriedade_id option[value=${$(this).index()}]`).remove()
       }
+    } else {
+      $(`select#automacao_grupo_acao_componente_propriedade_id option[value=${$(this).index()}]`).remove()
     }
   })
   $('#automacao_grupo_acao_componente_propriedade_id').formSelect();

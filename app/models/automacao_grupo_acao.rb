@@ -8,6 +8,8 @@ class AutomacaoGrupoAcao < ApplicationRecord
   belongs_to :turn_on_off_automation,  class_name: 'AutomacaoGrupo', required: false, foreign_key: :turn_on_off_automation_id
   belongs_to :componente_propriedade, required: false, foreign_key: :componente_propriedade_id
 
+  attr_accessor :propriedades
+
   def to_s
     id
   end

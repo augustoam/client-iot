@@ -1,4 +1,5 @@
 ---
+:dynamic: true
 :concurrency: 4
 :verbose:     true
 :queues:

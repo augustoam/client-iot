@@ -10,6 +10,14 @@
   </div>
 
   <div class="row">
+    <%= f.input :topico_complete_manually, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :operador_condicao, wrapper_html: { class: 'm12 s12' }, collection: [['And', 'and'], ['Or', 'ou']] %>
+  </div>
+
+  <div class="row">
     <% if @automacao_grupo.persisted? %>
       <%= link_icon_to_back admin_automacao_grupo_path(@automacao_grupo) %>
     <% else %>

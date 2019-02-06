@@ -24,9 +24,12 @@
   </div>
 
   <div class="row">
-    <%= f.association :componente_propriedade, collection: componentes_propriedades, wrapper_html: { class: 'm12 s12 componente-propriedade-acao-select' } %>
+    <%= f.association :componente_propriedade, collection: [], wrapper_html: { class: 'm12 s12 componente-propriedade-acao-select' } %>
   </div>
 
+  <div class="row">
+    <%= f.input :propriedades, collection: componentes_propriedades, wrapper_html: { class: 'm12 s12 propriedades-all-select' } %>
+  </div>
 
   <div class="row">
     <% if @automacao_grupo_acao.persisted? %>

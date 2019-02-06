@@ -25,6 +25,8 @@
         <th><%= AutomacaoGrupo.human_attribute_name(:id) %></th>
         <th><%= AutomacaoGrupo.human_attribute_name(:descricao) %></th>
         <th><%= AutomacaoGrupo.human_attribute_name(:ativo) %></th>
+        <th><%= AutomacaoGrupo.human_attribute_name(:operador_condicao) %></th>
+        <th><%= AutomacaoGrupo.human_attribute_name(:topico_complete_manually) %></th>
         <th><%= AutomacaoGrupo.human_attribute_name(:created_at) %></th>
         <th colspan="2"></th>
       </tr>
@@ -36,6 +38,8 @@
           <td><%= automacao_grupo.id %></td>
           <td><%= automacao_grupo.descricao %></td>
           <td><%= automacao_grupo.ativo %></td>
+          <td><%= automacao_grupo.operador_condicao %></td>
+          <td><%= automacao_grupo.topico_complete_manually %></td>
           <td><%= ltime automacao_grupo.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_automacao_grupo_path(automacao_grupo))%></td>
           <td><%= link_icon_to_destroy(admin_automacao_grupo_path(automacao_grupo)) %></td>

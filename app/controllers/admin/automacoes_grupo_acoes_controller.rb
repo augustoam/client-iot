@@ -5,7 +5,7 @@ class Admin::AutomacoesGrupoAcoesController < ApplicationController
   before_action :set_automacao_grupo_acao, only: [:show, :edit, :update, :destroy]
 
   def index
-    @q = AutomacaoGrupoAcao.ransack(params[:q])
+    @q = @automacao_grupo.automacoes_grupo_acoes.ransack(params[:q])
     @automacoes_grupo_acoes = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
   end
 

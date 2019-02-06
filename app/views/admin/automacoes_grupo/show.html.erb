@@ -16,6 +16,14 @@
   <%= @automacao_grupo.ativo %>
 </div>
 <div class="row">
+  <b><%= AutomacaoGrupo.human_attribute_name(:topico_complete_manually) %></b>
+  <%= @automacao_grupo.topico_complete_manually %>
+</div>
+<div class="row">
+  <b><%= AutomacaoGrupo.human_attribute_name(:operador_condicao) %></b>
+  <%= @automacao_grupo.operador_condicao %>
+</div>
+<div class="row">
   <b><%= AutomacaoGrupo.human_attribute_name(:created_at) %></b>
   <%= ltime @automacao_grupo.created_at %>
 </div>

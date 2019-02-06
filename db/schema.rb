@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190120224654) do
+ActiveRecord::Schema.define(version: 20190205212411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "Fabricantes", id: :serial, force: :cascade do |t|
+    t.string "descricao", limit: 255
+    t.string "obs", limit: 255
+    t.datetime "createdAt", null: false
+    t.datetime "updatedAt", null: false
+  end
+
+  create_table "SequelizeMeta", primary_key: "name", id: :string, limit: 255, force: :cascade do |t|
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -57,6 +67,8 @@ ActiveRecord::Schema.define(version: 20190120224654) do
     t.boolean "ativo", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "operador_condicao"
+    t.string "topico_complete_manually"
   end
 
   create_table "automacoes_grupo_acoes", force: :cascade do |t|

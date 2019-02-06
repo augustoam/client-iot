@@ -1,3 +1,0 @@
-mqtt_subscribe_job:
-  in:                            5s
-  class: 'MqttSubscribeJob'
