@@ -56,7 +56,7 @@ class Admin::AutomacoesGrupoAcoesController < ApplicationController
     end
 
     def automacao_grupo_acao_params
-      params.require(:automacao_grupo_acao).permit(:tipo_acao, :delay_time, :run_automacao_id, :turn_on_off_automation_id,
+      params.require(:automacao_grupo_acao).permit(:tipo_acao, :delay_time, :run_automacao_id, :turn_on_off_automation_id, :turn_on_off,
                                                    :automacao_grupo_id, :componente_ambiente_id, :componente_propriedade_id)
     end
 end

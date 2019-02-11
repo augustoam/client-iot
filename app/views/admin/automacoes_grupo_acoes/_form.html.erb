@@ -16,7 +16,7 @@
   </div>
 
   <div class="row">
-    <%= f.association :turn_on_off_automation, collection: automacoes_grupo(@automacao_grupo.grupo), wrapper_html: { class: 'm12 s12 turn-on-off-select' } %>
+    <%= f.association :turn_on_off_automation, collection: automacoes_grupo(@automacao_grupo.grupo), wrapper_html: { class: 'm12 s12 turn-on-off-automation-select' } %>
   </div>
 
   <div class="row">
@@ -24,11 +24,11 @@
   </div>
 
   <div class="row">
-    <%= f.association :componente_propriedade, collection: [], wrapper_html: { class: 'm12 s12 componente-propriedade-acao-select' } %>
+    <%= f.association :componente_propriedade, collection: componentes_propriedades, wrapper_html: { class: 'm12 s12 componente-propriedade-acao-select' } %>
   </div>
 
   <div class="row">
-    <%= f.input :propriedades, collection: componentes_propriedades, wrapper_html: { class: 'm12 s12 propriedades-all-select' } %>
+    <%= f.input :turn_on_off, collection: [['On', 'on'],['Off', 'off']], wrapper_html: { class: 'm12 s12 turn-on-off-select' } %>
   </div>
 
   <div class="row">

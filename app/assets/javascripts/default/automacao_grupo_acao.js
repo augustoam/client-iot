@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function() {
   })
 
   $('.componente-acao-select').change(function() {
-    updatePropriedadesSelect($(this));
+    //updatePropriedadesSelect($(this));
   })
 
   $(".form_automacao_grupo_acao").submit(function() {
@@ -29,7 +29,7 @@ function updateFormAcao(isSubmiting) {
   processaDiv($(".delay-time-select"), $.inArray(acao, ["Delay"]) >= 0);
   processaDiv($(".componente-acao-select, .componente-propriedade-acao-select"), $.inArray(acao, ["Componente"]) >= 0);
   processaDiv($(".run-automacao-select"), $.inArray(acao, ["Rodar Automação"]) >= 0);
-  processaDiv($(".turn-on-off-select"), $.inArray(acao, ["Desligar/Ligar Automação"]) >= 0);
+  processaDiv($(".turn-on-off-select, .turn-on-off-automation-select"), $.inArray(acao, ["Desligar/Ligar Automação"]) >= 0);
 }
 
 function updatePropriedadesSelect(element) {
