@@ -227,3 +227,20 @@ crumb :usuarios_all do
   link Usuario.model_name.human(count: 2), index_all_admin_usuarios_path
   parent :root
 end
+
+crumb :tokens_notificacao_mobile do |usuario|
+  link usuario.to_s, admin_usuario_tokens_notificacao_mobile_path(usuario)
+  parent :usuarios_all
+end
+crumb :token_notificacao_mobile do |token_notificacao_mobile|
+  link token_notificacao_mobile.to_s
+  parent :tokens_notificacao_mobile, token_notificacao_mobile.usuario
+end
+crumb :token_notificacao_mobile_edit do |token_notificacao_mobile|
+  link t('views.actions.edit'), edit_admin_token_notificacao_mobile_path(token_notificacao_mobile)
+  parent :token_notificacao_mobile, token_notificacao_mobile
+end
+crumb :token_notificacao_mobile_new do |token_notificacao_mobile|
+  link t('views.actions.new')
+  parent :tokens_notificacao_mobile, token_notificacao_mobile.usuario
+end

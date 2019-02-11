@@ -93,6 +93,7 @@ Rails.application.routes.draw do
     resources :layout_controles
     resources :usuarios do
       get :index_all, on: :collection
+      resources :tokens_notificacao_mobile, shallow: true
     end
     resources :grupos do
       resources :automacoes_grupo, shallow: true do

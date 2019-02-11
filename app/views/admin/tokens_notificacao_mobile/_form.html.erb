@@ -1,0 +1,13 @@
+<%= simple_form_for([:admin, @token_notificacao_mobile], url: token_notificacao_mobile_form_path(@token_notificacao_mobile)) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <div class="row">
+      <%= f.input :token, label: TokenNotificacaoMobile.human_attribute_name(:token), wrapper_html: { class: 'm12 s12' } %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_usuario_tokens_notificacao_mobile_path(@token_notificacao_mobile.usuario) %>
+    <%= save_button %>
+  </div>
+<% end %>

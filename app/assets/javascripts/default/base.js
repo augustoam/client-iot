@@ -10,12 +10,17 @@ $(document).on('turbolinks:load', function() {
     });
 
     $('.repeat-select').each(function() {
-      updateValueRepeat(this);
+      updateValueRepeat($(this));
     })
 
-    $('.repeat-select').click(function() {
-      updateValueRepeat(this);
+    $('.repeat-select').change(function() {
+      // defaultValueRepeat($(this));
     })
+
+    $('select#automacao_grupo_condicao_repeat li').click(function(element, v) {
+      // console.log(element);
+        // defaultValueRepeat($(this));
+    });
 
   });
 
@@ -26,8 +31,8 @@ $(document).on('turbolinks:load', function() {
 })
 
 function updateValueRepeat(element) {
-  if ($('.repeat-data')[0].innerText.length > 0) {
-    json = JSON.parse($('.repeat-data')[0].innerText)
+  if ($('.repeat-data-content')[0].innerText.length > 0) {
+    json = JSON.parse($('.repeat-data-content')[0].innerText)
     json.forEach(function(data) {
       for (var i = 0; i < $('#automacao_grupo_condicao_repeat')[0].options.length; i++) {
         if (data === $('#automacao_grupo_condicao_repeat')[0].options[i].value) {
@@ -36,4 +41,34 @@ function updateValueRepeat(element) {
       }
     })
   }
+}
+
+defaultValueRepeat = (element) => {
+  // debugger
+  if (element[0].value == 'once') {
+    $("select#automacao_grupo_condicao_repeat option").map(function() {
+      if ($(this).index() != 0)
+        $(this)[0].selected = false;
+    });
+  }
+
+
+  if (element[0].value == 'every_day') {
+    $("select#automacao_grupo_condicao_repeat option").map(function() {
+      if ($(this).index() != 1)
+        $(this)[0].selected = false;
+    });
+  }
+
+  $('#automacao_grupo_condicao_repeat').formSelect();
+
+    // json = JSON.parse($('.repeat-data-content')[0].innerText)
+    // json.forEach(function(data) {
+    //   for (var i = 0; i < $('#automacao_grupo_condicao_repeat')[0].options.length; i++) {
+    //     if (data === $('#automacao_grupo_condicao_repeat')[0].options[i].value) {
+    //       $('#automacao_grupo_condicao_repeat')[0].options[i].selected = true;
+    //     }
+    //   }
+    // })
+
 }

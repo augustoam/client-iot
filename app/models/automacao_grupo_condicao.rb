@@ -37,38 +37,42 @@ class AutomacaoGrupoCondicao < ApplicationRecord
   end
 
   def set_schedule
-    debugger
-    turn_time = human_datetime(turn_on)
+    if tipo_condicao == 'timer'
+      if repeat.include?('once')
+        Sidekiq.set_schedule("#{id}_publish_mqtt", { 'at' => turn_on, 'class' => 'MqttPublishJob', 'args' => "#{self.automacao_grupo.id}" })
+      else
+        turn_time = human_datetime(turn_on)
+        every = 'every '
+        case
+        when repeat.include?('every_day')
+          time_cron = human_time(turn_on).concat(' * * 0-7')
+        when repeat.include?('weekends')
+          time_cron = human_time(turn_on).concat(' * * 0-6')
+        when repeat.include?('weekdays')
+          time_cron = human_time(turn_on).concat(' * * 1,2,3,4,5')
+        else
+          JSON.parse(repeat).each_with_index do |option, index|
 
-    cron = 'every '
+            every.concat(option)
+            if index != JSON.parse(repeat).count-1 && option != ""
+              every.concat(' and ')
+            end
+          end
+          every.concat(' ', turn_time)
+          time_cron = Fugit::Nat.parse(every).to_cron_s
+        end
 
-    case
-    when repeat.include?('every_day')
-      cron.concat('day')
-    when repeat.include?('weekdays')
-      cron.concat('weekday')
-    when repeat.include?('weekends')
-      cron.concat('sunday and saturday')
-    end
-    debugger
-
-    JSON.parse(repeat).each_with_index do |option, index|
-      cron.concat(option)
-      if index != JSON.parse(repeat).count-1 && option != ""
-        cron.concat(' and ')
+        self.schedule_cron = time_cron
+        Sidekiq.set_schedule("#{id}_publish_mqtt", { 'cron' => time_cron, 'class' => 'MqttPublishJob', 'args' => "#{self.automacao_grupo.id}" })
       end
     end
-    debugger
-
-    cron.concat(' ', turn_time)
-
-    time = Fugit::Nat.parse(cron).to_cron_s
-    Sidekiq.set_schedule("#{id}_publish_mqtt", { 'cron' => time, 'class' => 'MqttPublishJob', 'args' => "#{self.automacao_grupo.id}" })
   end
 
-  #   human_datetime(DateTime.now) # agora é 07/04/2017 10:30
-  #   # => 07/04/2017 10:30
-  def human_datetime(time, pattern = '%a, %d %b %Y %H:%M')
+  def human_datetime(time, pattern = '%d %Y %H:%M')
+    sanitize_datetime(time).strftime(pattern) if time
+  end
+
+  def human_time(time, pattern = '%M %H')
     sanitize_datetime(time).strftime(pattern) if time
   end
 

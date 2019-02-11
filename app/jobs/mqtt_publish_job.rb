@@ -3,8 +3,9 @@ class MqttPublishJob < ApplicationJob
 
   queue_as :critical
 
-  def perform(automacao_grupo_id)
-    p 'CHEGOU CARALHO -----------------------------------------------------'
+  def perform(automacao_grupo_id, topic = 'COMPLETE_SCHEDULE')
+    p "AUTOMACAO EXECUTADA -> AUTOMACAO_GRUPO_ID: #{automacao_grupo_id}"
+
     uri = URI.parse ENV['CLOUDMQTT_URL']
       conn_opts = {
         remote_host: uri.host,
@@ -18,7 +19,7 @@ class MqttPublishJob < ApplicationJob
     }.to_json
 
     MQTT::Client.connect(conn_opts) do |_client|
-      _client.publish('complete_timer', msg)
+      _client.publish(topic, msg)
     end
   end
 end
