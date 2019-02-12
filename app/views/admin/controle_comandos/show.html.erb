@@ -1,0 +1,22 @@
+<% breadcrumb :controle_comando, @controle_comando %>
+<div class="row">
+  <h3><%= singular_model_name_for(ControleComando) %></h3>
+</div>
+
+<div class="row">
+  <b><%= ControleComando.human_attribute_name(:id) %></b>
+  <%= @controle_comando.id %>
+</div>
+<div class="row">
+  <b><%= ControleComando.human_attribute_name(:comando) %></b>
+  <%= @controle_comando.comando %>
+</div>
+<div class="row">
+  <b><%= ControleComando.human_attribute_name(:codigo) %></b>
+  <%= @controle_comando.codigo %>
+</div>
+
+<div class="row">
+  <%= link_icon_to_back admin_controle_controle_comandos_path(@controle) %>
+  <%= link_icon_to_edit(edit_admin_controle_comando_path(@controle_comando))%>
+</div>

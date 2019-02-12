@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190211215353) do
+ActiveRecord::Schema.define(version: 20190212215047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20190211215353) do
     t.integer "turn_on_off_automation_id"
     t.integer "automacao_grupo_id"
     t.integer "componente_ambiente_id"
-    t.integer "componente_propriedade_id"
+    t.integer "controle_comando_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "turn_on_off"
@@ -90,19 +90,11 @@ ActiveRecord::Schema.define(version: 20190211215353) do
     t.datetime "turn_on"
     t.integer "automacao_grupo_id"
     t.integer "componente_ambiente_id"
-    t.integer "componente_propriedade_id"
+    t.integer "controle_comando_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "value_set"
     t.string "schedule_cron"
-  end
-
-  create_table "comandos_infra_vermelhos", force: :cascade do |t|
-    t.integer "controle_id"
-    t.string "comando"
-    t.string "codigo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "componentes", force: :cascade do |t|
@@ -139,10 +131,10 @@ ActiveRecord::Schema.define(version: 20190211215353) do
     t.string "topico_state"
   end
 
-  create_table "componentes_propriedades", force: :cascade do |t|
-    t.string "descricao"
-    t.string "id_propriedade"
-    t.integer "componente_id"
+  create_table "controle_comandos", force: :cascade do |t|
+    t.integer "controle_id"
+    t.string "comando"
+    t.string "codigo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -231,13 +223,13 @@ ActiveRecord::Schema.define(version: 20190211215353) do
   add_foreign_key "automacoes_grupo_acoes", "automacoes_grupo", column: "run_automacao_id"
   add_foreign_key "automacoes_grupo_acoes", "automacoes_grupo", column: "turn_on_off_automation_id"
   add_foreign_key "automacoes_grupo_acoes", "componentes_ambiente"
-  add_foreign_key "automacoes_grupo_acoes", "componentes_propriedades"
+  add_foreign_key "automacoes_grupo_acoes", "controle_comandos"
   add_foreign_key "automacoes_grupo_condicoes", "automacoes_grupo"
   add_foreign_key "automacoes_grupo_condicoes", "componentes_ambiente"
-  add_foreign_key "automacoes_grupo_condicoes", "componentes_propriedades"
-  add_foreign_key "comandos_infra_vermelhos", "controles"
+  add_foreign_key "automacoes_grupo_condicoes", "controle_comandos"
   add_foreign_key "componentes_ambiente", "ambientes_grupo"
   add_foreign_key "componentes_ambiente", "controles"
+  add_foreign_key "controle_comandos", "controles"
   add_foreign_key "controles", "componentes"
   add_foreign_key "controles", "fabricantes"
   add_foreign_key "controles", "layout_controles"

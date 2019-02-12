@@ -24,7 +24,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'admin', 'admins'
   inflect.irregular 'layout_controle', 'layout_controles'
   inflect.irregular 'controle', 'controles'
-  inflect.irregular 'comando_infra_vermelho', 'comandos_infra_vermelhos'
+  inflect.irregular 'controle_comando', 'controle_comandos'
   inflect.irregular 'fabricante', 'fabricantes'
   inflect.irregular 'automacao_grupo', 'automacoes_grupo'
   inflect.irregular 'automacao_grupo_condicao', 'automacoes_grupo_condicoes'

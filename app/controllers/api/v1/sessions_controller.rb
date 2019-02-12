@@ -1,6 +1,4 @@
 class Api::V1::SessionsController < Api::V1::BaseController
-  skip_before_action :authorize_access_request!
-
   def session_new
     usuario = Usuario.find_by_email(params[:email])
     if usuario.present?

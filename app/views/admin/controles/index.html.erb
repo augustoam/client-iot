@@ -46,7 +46,7 @@
           <td><%= ltime controle.created_at %></td>
           <td><%= link_icon_to_edit(edit_admin_controle_path(controle))%></td>
           <td><%= link_icon_to_destroy(admin_controle_path(controle)) %></td>
-          <td><%= link_to 'Comandos', admin_controle_comandos_infra_vermelhos_path(controle), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
+          <td><%= link_to 'Comandos', admin_controle_controle_comandos_path(controle), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
         </tr>
       <% end %>
     </tbody>

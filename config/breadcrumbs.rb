@@ -138,21 +138,21 @@ crumb :componente_ambiente_edit do |componente_ambiente|
   parent :componente_ambiente, componente_ambiente
 end
 
-crumb :comandos_infra_vermelhos do |controle|
-  link ComandoInfraVermelho.model_name.human(count: 2), admin_controle_comandos_infra_vermelhos_path(controle)
+crumb :controle_comandos do |controle|
+  link ControleComando.model_name.human(count: 2), admin_controle_controle_comandos_path(controle)
   parent :controles, controle.descricao
 end
-crumb :comando_infra_vermelho do |comando_infra_vermelho|
-  link comando_infra_vermelho.to_s
-  parent :comandos_infra_vermelhos, comando_infra_vermelho.controle
+crumb :controle_comando do |controle_comando|
+  link controle_comando.to_s
+  parent :controle_comandos, controle_comando.controle
 end
-crumb :comando_infra_vermelho_new do |controle|
+crumb :controle_comando_new do |controle|
   link t('views.actions.new')
-  parent :comandos_infra_vermelhos, controle
+  parent :controle_comandos, controle
 end
-crumb :comando_infra_vermelho_edit do |comando_infra_vermelho|
-  link t('views.actions.do_edit'), edit_admin_comando_infra_vermelho_path(comando_infra_vermelho)
-  parent :comando_infra_vermelho, comando_infra_vermelho
+crumb :controle_comando_edit do |controle_comando|
+  link t('views.actions.do_edit'), edit_admin_controle_comando_path(controle_comando)
+  parent :controle_comando, controle_comando
 end
 
 crumb :componentes do

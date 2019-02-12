@@ -7,7 +7,7 @@ class AutomacoesGrupoAcoes < ActiveRecord::Migration[5.1]
       t.integer :turn_on_off_automation_id
       t.integer :automacao_grupo_id
       t.integer :componente_ambiente_id
-      t.integer :componente_propriedade_id
+      t.integer :controle_comando_id
       t.timestamps
     end
   end

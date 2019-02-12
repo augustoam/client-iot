@@ -3,7 +3,7 @@ class AutomacaoGrupoCondicao < ApplicationRecord
   enum tipo_condicao: [:complete_manually, :timer, :componente]
   belongs_to :automacao_grupo, foreign_key: :automacao_grupo_id
   belongs_to :componente_ambiente, required: false, foreign_key: :componente_ambiente_id
-  belongs_to :componente_propriedade, required: false, foreign_key: :componente_propriedade_id
+  belongs_to :controle_comando, class_name: 'ControleComando', required: false, foreign_key: :controle_comando_id
 
   before_save :update_columns
 

@@ -4,11 +4,6 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
   before_action :set_automacao_grupo_condicao, only: [:show, :edit, :update, :destroy]
   before_action :repeat_to_s, only: %i[update create]
 
-  def update_componente_propriedades
-    componente_ambiente = ComponenteAmbiente.find(params[:componente])
-    @componente_proprieades = ComponentePropriedade.where(componente: componente_ambiente.controle.componente)
-  end
-
   def index
     @q = @automacao_grupo.automacoes_grupo_condicoes.ransack(params[:q])
     @automacoes_grupo_condicoes = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
@@ -61,6 +56,6 @@ class Admin::AutomacoesGrupoCondicoesController < ApplicationController
     end
 
     def automacao_grupo_condicao_params
-      params.require(:automacao_grupo_condicao).permit(:tipo_condicao, :value_set, :turn_on, :repeat, :automacao_grupo_id, :componente_ambiente_id, :componente_propriedade_id)
+      params.require(:automacao_grupo_condicao).permit(:tipo_condicao, :value_set, :turn_on, :repeat, :automacao_grupo_id, :componente_ambiente_id, :controle_comando_id)
     end
 end

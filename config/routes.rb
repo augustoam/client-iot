@@ -110,7 +110,7 @@ Rails.application.routes.draw do
       end
     end
     resources :controles do
-      resources :comandos_infra_vermelhos, shallow: true
+      resources :controle_comandos, shallow: true
     end
   end
 

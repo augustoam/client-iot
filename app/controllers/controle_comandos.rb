@@ -1,4 +1,4 @@
-class ComandosInfraVermelhosController < ApplicationController
+class ControleComandosController < ApplicationController
   before_action :set_componente, only: [:index]
 
   def index
