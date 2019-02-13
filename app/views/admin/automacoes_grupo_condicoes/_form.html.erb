@@ -38,8 +38,8 @@
     <%= f.association :componente_ambiente, collection: componentes_ambientes(@automacao_grupo.grupo.ambientes_grupo), wrapper_html: { class: 'm12 s12 componente-condicao-select', id: "componente-ambiente-select" } %>
   </div>
 
-  <div class="row componente-propriedade">
-    <%= f.association :controle_comando, collection: controle_comandos, wrapper_html: { class: 'm12 s12 componente-propriedade-select' } %>
+  <div class="row controle-comando">
+    <%= f.association :controle_comando, collection: controle_comandos, wrapper_html: { class: 'm12 s12 controle-comando-select' } %>
   </div>
 
   <div class="row">

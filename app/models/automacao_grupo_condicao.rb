@@ -6,9 +6,7 @@ class AutomacaoGrupoCondicao < ApplicationRecord
   belongs_to :controle_comando, class_name: 'ControleComando', required: false, foreign_key: :controle_comando_id
 
   before_save :update_columns
-
-  attr_accessor :propriedade
-
+  
   before_save :set_schedule
 
   scope :do_grupo, -> (automacao_grupo) {
@@ -24,11 +22,11 @@ class AutomacaoGrupoCondicao < ApplicationRecord
       repeat = nil
       turn_on = nil
       componente_ambiente_id = nil
-      componente_propriedade_id = nil
+      controle_comando_id = nil
     end
     if tipo_condicao == 'timer'
       componente_ambiente_id = nil
-      componente_propriedade_id = nil
+      controle_comando_id = nil
     end
     if tipo_condicao == 'componente'
       repeat = nil

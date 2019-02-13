@@ -7,9 +7,6 @@ $(document).on('turbolinks:load', function() {
   $(".form_automacao_grupo_condicao").submit(function() {
     updateFormCondicao(true);
   })
-  $(".componente-condicao-select").change(function() {
-    updateComponentePropriedade($(this));
-  })
 
 });
 
@@ -26,5 +23,5 @@ function updateFormCondicao(isSubmiting) {
   }
 
   processaDiv($(".turn-on-select, .repeat-select, .componente-condicao-select"), $.inArray(condicao, ["Timer"]) >= 0);
-  processaDiv($(".componente-condicao-select, .componente-propriedade-select, .value-set-select"), $.inArray(condicao, ["Componente"]) >= 0);
+  processaDiv($(".componente-condicao-select, .controle-comando-select, .value-set-select"), $.inArray(condicao, ["Componente"]) >= 0);
 }
