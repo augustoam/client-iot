@@ -77,6 +77,21 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v2 do
+      resources :sessions do
+        post :reset_password, on: :collection
+      end
+      resources :registrations
+      namespace :grupos do
+        get :get_grupos
+        post :new_grupo
+        post :edit_grupo
+        post :destroy_grupo
+      end
+    end
+  end
+
   resources :usuarios do
     get :password_change
     patch :password_update

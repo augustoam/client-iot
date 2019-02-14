@@ -1,4 +1,4 @@
-class Api::V2::SessionsController < Api::V1::BaseController
+class Api::V2::SessionsController < Api::V2::BaseController
   skip_before_action :authorize_access_request!
 
   def reset_password

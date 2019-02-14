@@ -1,4 +1,4 @@
-class Api::V2::RegistrationsController < Api::V1::BaseController
+class Api::V2::RegistrationsController < Api::V2::BaseController
   def create
     unless Usuario.find_by(email: params[:email])
       @usuario = Usuario.new(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
