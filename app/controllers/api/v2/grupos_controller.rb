@@ -6,7 +6,13 @@ class Api::V2::GruposController < Api::V2::BaseController
     usuario_sessao.grupos_usuarios.collect { |grupo_usuario|
       result = {}
       result[:grupo]           = grupo_usuario.grupo
-      result[:ambientes_grupo] = grupo_usuario.grupo.ambientes_grupo.order(created_at: :asc)
+      result[:ambientes_grupo] = grupo_usuario.grupo.ambientes_grupo.collect do |ambiente_grupo|
+        data = {}
+        data[:ambiente_grupo] = {
+          ambiente_grupo: ambiente_grupo,
+          componentes_ambiente:  ambiente_grupo.componentes_ambiente
+        }
+      end
       result[:ambientes]       = Ambiente.all.order(created_at: :asc)
       result[:componentes]     = Componente.all.order(created_at: :asc)
       result[:controles]       = Controle.where(componente: syncinfra)
