@@ -8,9 +8,16 @@ class Api::V2::GruposController < Api::V2::BaseController
       result[:grupo]           = grupo_usuario.grupo
       result[:ambientes_grupo] = grupo_usuario.grupo.ambientes_grupo.collect do |ambiente_grupo|
         data = {}
+        componentes = {}
         data[:ambiente_grupo] = {
           ambiente_grupo: ambiente_grupo,
-          componentes_ambiente:  ambiente_grupo.componentes_ambiente
+          componentes_ambiente:  ambiente_grupo.componentes_ambiente.collect do |componente_ambiente|
+            componentes[:componente_ambiente] = {
+              componente_ambiente: componente_ambiente,
+              controle: componente_ambiente.controle,
+              componente: componente_ambiente.controle.componente
+            }
+          end
         }
       end
       result[:ambientes]       = Ambiente.all.order(created_at: :asc)
