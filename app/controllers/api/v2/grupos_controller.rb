@@ -20,20 +20,24 @@ class Api::V2::GruposController < Api::V2::BaseController
           end
         }
       end
-      result[:ambientes]       = Ambiente.all.order(created_at: :asc)
-      result[:componentes]     = Componente.all.order(created_at: :asc)
-      result[:controles]       = Controle.where(componente: syncinfra)
-      result[:usuarios_grupo]  = grupo_usuario.grupo.usuarios.select('grupos_usuarios.*', 'usuarios.email').order(created_at: :asc)
+      result[:automacoes_grupo] = grupo_usuario.grupo.automacoes_grupo.collect do |automacao_grupo|
+        data = {}
+        automacao_grupo_condicao = {}
+        data[:automacao_grupo] = {
+          automacao_grupo: automacao_grupo,
+          automacao_grupo_condicoes: automacao_grupo.automacoes_grupo_condicoes do |automacao_grupo_condicao|
+            automacao_grupo_condicao[:automacao_grupo_condicao] = {
+              automacao_grupo_condicao: automacao_grupo_condicao
+            }
+          end
+        }
+      end
+      result[:ambientes]         = Ambiente.all.order(created_at: :asc)
+      result[:componentes]       = Componente.all.order(created_at: :asc)
+      result[:controles]         = Controle.where(componente: syncinfra)
+      result[:usuarios_grupo]    = grupo_usuario.grupo.usuarios.select('grupos_usuarios.*', 'usuarios.email').order(created_at: :asc)
       response << result
     }
-    # grupos = {
-    #   grupos: @response[0][:grupo],
-    #   ambientes_grupo: @response[0][:ambientes_grupo],
-    #   ambientes: @response[0][:ambientes],
-    #   componentes: @response[0][:componentes],
-    #   controles: @response[0][:controles],
-    #   usuarios_grupo: @response[0][:usuarios_grupo]
-    # }
     render json: response, status: :ok
   rescue => exception
     render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :unauthorized
