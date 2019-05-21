@@ -12,6 +12,10 @@
     <%= @componente.descricao %>
   </div>
   <div class="row">
+    <b><%= Componente.human_attribute_name(:url_icone) %></b>
+    <%= @componente.url_icone %>
+  </div>
+  <div class="row">
     <b><%= Componente.human_attribute_name(:modelo) %></b>
     <%= @componente.modelo %>
   </div>

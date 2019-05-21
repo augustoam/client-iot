@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190212215047) do
+ActiveRecord::Schema.define(version: 20190521084214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20190212215047) do
     t.string "obs"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url_icone"
   end
 
   create_table "ambientes_grupo", force: :cascade do |t|
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 20190212215047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "comando_unico", default: false
+    t.string "url_icone"
   end
 
   create_table "componentes_ambiente", force: :cascade do |t|
