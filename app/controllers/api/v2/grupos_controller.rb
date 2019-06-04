@@ -45,7 +45,7 @@ class Api::V2::GruposController < Api::V2::BaseController
 
   def new_grupo
     grupo = usuario_sessao.grupos.create!(nome: params[:nome])
-    render json: grupo.grupos_usuarios.to_json, status: :ok
+    render json: {grupo: grupo}, status: :ok
   rescue => exception
     render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
   end

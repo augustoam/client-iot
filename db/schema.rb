@@ -15,16 +15,6 @@ ActiveRecord::Schema.define(version: 20190521084214) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "Fabricantes", id: :serial, force: :cascade do |t|
-    t.string "descricao", limit: 255
-    t.string "obs", limit: 255
-    t.datetime "createdAt", null: false
-    t.datetime "updatedAt", null: false
-  end
-
-  create_table "SequelizeMeta", primary_key: "name", id: :string, limit: 255, force: :cascade do |t|
-  end
-
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -186,7 +176,7 @@ ActiveRecord::Schema.define(version: 20190521084214) do
     t.integer "usuario_id"
     t.integer "componente_id"
     t.string "comando"
-    t.datetime "dt_criacao", default: "2018-10-02 03:57:25"
+    t.datetime "dt_criacao", default: "2019-02-12 22:26:11"
   end
 
   create_table "tokens_notificacao_mobile", force: :cascade do |t|
