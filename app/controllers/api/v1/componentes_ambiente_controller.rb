@@ -27,26 +27,23 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
     if @usuario.present?
 
       topico = params[:topico]
-      if topico.include? 'synchouse'
-        begin
-          componente = Componente.find_by_descricao(params[:componente_descricao])
-          if params[:componente_id].present?
-            controle = Controle.find(params[:componente_id])
-          else
-            controle = Controle.find_by(componente: componente)
-          end
-
-          componente_ambiente = ComponenteAmbiente.create!(
-            descricao: componente.descricao,
-            topico: topico,
-            controle: controle,
-            ambiente_grupo_id: params[:ambiente_grupo_id])
-          render json: componente_ambiente.to_json, status: :ok
-        rescue => exception
-          render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
+      begin
+        componente = Componente.find_by_descricao(params[:componente_descricao])
+        if params[:componente_id].present?
+          controle = Controle.find(params[:componente_id])
+        else
+          controle = Controle.find_by(componente: componente)
         end
-      else
-        render json: { msg: 'QRCode inválido. Tente novamente!' }, status: :unprocessable_entity
+
+        componente_ambiente = ComponenteAmbiente.create!(
+          descricao: componente.descricao,
+          topico: topico,
+          controle: controle,
+          ambiente_grupo_id: params[:ambiente_grupo_id],
+          identificador_componente: topico)
+        render json: componente_ambiente.to_json, status: :ok
+      rescue => exception
+        render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
       end
     else
       render json: { msg: 'Usuário não autorizado!' }, status: :unprocessable_entity
