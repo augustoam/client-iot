@@ -4,6 +4,10 @@ module ApplicationHelper
     return GrupoUsuario.where(usuario_id: current_usuario)
   end
 
+  def link_no_icon_to_edit(path, options = {})
+    WViewHelpers::LinkIconTo.new.link_no_icon_to_edit(path, options)
+  end
+  
   def link_icon_to(path, text, icon, options = {})
     WViewHelpers::LinkIconTo.new.link_icon_to(path, text, icon, options)
   end

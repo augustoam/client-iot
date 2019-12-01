@@ -1,61 +1,57 @@
 <% breadcrumb :controles %>
 
-  <div class="row">
-    <h3><%= plural_model_name_for(Controle) %>
-    </h3>
-  </div>
-
-  <div class="row">
-    <%= search_form_for @q, url: admin_controles_path do |f| %>
-
-    <div class="col s11">
-      <%= f.search_field :descricao_or_obs_cont, class: "form-control", placeholder: "Pesquisar Controles de Compone" %>
+<div class="row">
+  <%= search_form_for @q, url: admin_controles_path do |f| %>
+    <div class="col s12">
+      <div class="input-search">
+        <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
+          <i class="material-icons icon-search icon-hover">search</i>
+        <% end %>
+        <%= f.search_field :descricao_or_obs_cont, class: "form-control", placeholder: "Search Devices" %>
+      </div>
     </div>
-    <div class="col s1">
-      <button class="waves-effect waves-light btn grey lighten-4" type="submit">
-        <i class="large material-icons black-text">search</i>
-      </button>
-    </div>
-
   <% end %>
 </div>
 
-<div class="row">
-  <table class="table">
-    <thead>
-      <tr>
-        <th><%= Controle.human_attribute_name(:id) %></th>
-        <th><%= Controle.human_attribute_name(:descricao) %></th>
-        <th><%= Componente.human_attribute_name(:layout_controle) %></th>
-        <th><%= Componente.human_attribute_name(:componente) %></th>
-        <th><%= Controle.human_attribute_name(:fabricante) %></th>
-        <th><%= Controle.human_attribute_name(:created_at) %></th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @controles.each do |controle| %>
-
-        <tr data-href="<%= admin_controle_path(controle) %>">
-          <td><%= controle.id %></td>
-          <td><%= controle.descricao %></td>
-          <td><%= controle.layout_controle.descricao %></td>
-          <td><%= controle.componente.descricao %></td>
-          <td><%= controle.fabricante %></td>
-          <td><%= ltime controle.created_at %></td>
-          <td><%= link_icon_to_edit(edit_admin_controle_path(controle))%></td>
-          <td><%= link_icon_to_destroy(admin_controle_path(controle)) %></td>
-          <td><%= link_to 'Comandos', admin_controle_controle_comandos_path(controle), class: "waves-effect waves-light btn grey lighten-4 black-text" %></td>
+<div class="container-row">
+  <b><%= plural_model_name_for(Controle) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= Controle.human_attribute_name(:id) %></th>
+          <th><%= Controle.human_attribute_name(:descricao) %></th>
+          <th><%= Componente.human_attribute_name(:layout_controle) %></th>
+          <th><%= Componente.human_attribute_name(:componente) %></th>
+          <th><%= Controle.human_attribute_name(:fabricante) %></th>
+          <th><%= Controle.human_attribute_name(:created_at) %></th>
+          <th colspan="4"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
 
-<div class="row">
-  <%= link_icon_to_back admin_home_admin_index_path %>
-  <%= link_icon_to_new(new_admin_controle_path, action_new(@controles)) %>
+      <tbody>
+        <% @controles.each do |controle| %>
+
+          <tr data-href="<%= admin_controle_path(controle) %>">
+            <td><%= controle.id %></td>
+            <td><%= controle.descricao %></td>
+            <td><%= controle.layout_controle.descricao %></td>
+            <td><%= controle.componente.descricao %></td>
+            <td><%= controle.fabricante %></td>
+            <td><%= ltime controle.created_at %></td>
+            <td><%= link_icon_to_edit(edit_admin_controle_path(controle))%></td>
+            <td><%= link_icon_to_destroy(admin_controle_path(controle)) %></td>
+            <td><%= link_to 'Comandos', admin_controle_controle_comandos_path(controle) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_home_admin_index_path %>
+    <%= link_icon_to_new(new_admin_controle_path, action_new(@controles)) %>
+  </div>
 </div>
 
 <div class="center-align">

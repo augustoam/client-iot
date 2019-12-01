@@ -1,51 +1,49 @@
 <% breadcrumb :componentes %>
-  <div class="row">
-    <h3><%= plural_model_name_for(Componente) %></h3>
-  </div>
 
-  <div class="row">
-    <%= search_form_for @q, url: admin_componentes_path do |f| %>
-
-    <div class="col s11">
-      <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Pesquisar Componentes" %>
+<div class="row">
+  <%= search_form_for @q, url: admin_componentes_path do |f| %>
+    <div class="col s12">
+      <div class="input-search">
+        <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
+          <i class="material-icons icon-search icon-hover">search</i>
+        <% end %>
+        <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Search Devices" %>
+      </div>
     </div>
-    <div class="col s1">
-      <button class="waves-effect waves-light btn grey lighten-4" type="submit">
-        <i class="large material-icons black-text">search</i>
-      </button>
-    </div>
-
   <% end %>
 </div>
 
-<div class="row">
-  <table class="table">
-    <thead>
-      <tr>
-        <th><%= Componente.human_attribute_name(:id) %></th>
-        <th><%= Componente.human_attribute_name(:descricao) %></th>
-        <th><%= Componente.human_attribute_name(:created_at) %></th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @componentes.each do |componente| %>
-        <tr data-href="<%= admin_componente_path(componente) %>">
-          <td><%= componente.id %></td>
-          <td><%= componente.descricao %></td>
-          <td><%= ltime componente.created_at %></td>
-          <td><%= link_icon_to_edit(edit_admin_componente_path(componente))%></td>
-          <td><%= link_icon_to_destroy(admin_componente_path(componente)) %></td>
+<div class="container-row">
+  <b><%= plural_model_name_for(Componente) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= Componente.human_attribute_name(:id) %></th>
+          <th><%= Componente.human_attribute_name(:descricao) %></th>
+          <th><%= Componente.human_attribute_name(:created_at) %></th>
+          <th colspan="2"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
 
-<div class="row">
-  <%= link_icon_to_back root_path %>
-  <%= link_icon_to_new(new_admin_componente_path, action_new(@componentes)) %>
+      <tbody>
+        <% @componentes.each do |componente| %>
+          <tr data-href="<%= admin_componente_path(componente) %>">
+            <td><%= componente.id %></td>
+            <td><%= componente.descricao %></td>
+            <td><%= ltime componente.created_at %></td>
+            <td><%= link_icon_to_edit(edit_admin_componente_path(componente))%></td>
+            <td><%= link_icon_to_destroy(admin_componente_path(componente)) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back root_path %>
+    <%= link_icon_to_new(new_admin_componente_path, action_new(@componentes)) %>
+  </div>
 </div>
 
 <div class="center-align">

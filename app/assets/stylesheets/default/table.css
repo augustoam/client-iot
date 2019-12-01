@@ -1,0 +1,53 @@
+thead {
+  font-size: 0.8em !important;
+  background-color: #f0f3f4;
+}
+
+tbody tr:hover {
+  background-color: #e8f0fe !important;
+}
+
+td,
+th {
+  padding: 5px !important;
+  font-size: 0.9em !important;
+  cursor: pointer;
+}
+
+.collapsible-header {
+  display: flex !important;
+  align-items: center;
+}
+
+li {
+  font-size: 0.95em !important;
+}
+
+table {
+  border: 1px solid #d9d9d9 !important;
+}
+
+.collection .collection-item {
+  padding: 8px !important;
+
+  font-size: 0.95em !important;
+  cursor: pointer;
+
+}
+
+.collection {
+  border-radius: 4px !important;
+}
+
+.collection-item {
+  padding-left: 0px !important;
+}
+
+.collection-header {
+  display: flex !important;
+  align-items: center;
+}
+
+.collapsible-header {
+  padding: 0.8rem !important;
+}

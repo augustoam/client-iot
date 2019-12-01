@@ -1,26 +1,24 @@
-<!-- <#% breadcrumb :fabricante, @fabricante %> -->
-<div class="row">
-  <h3><%= singular_model_name_for(Fabricante) %></h3>
-</div>
+<% breadcrumb :fabricante, @fabricante %>
+<div class="container-row">
+  <div class="row">
+    <b><%= Fabricante.human_attribute_name(:id) %></b>
+    <%= @fabricante.id %>
+  </div>
+  <div class="row">
+    <b><%= Fabricante.human_attribute_name(:descricao) %></b>
+    <%= @fabricante.descricao %>
+  </div>
+  <div class="row">
+    <b><%= Fabricante.human_attribute_name(:obs) %></b>
+    <%= @fabricante.obs %>
+  </div>
+  <div class="row">
+    <b><%= Fabricante.human_attribute_name(:created_at) %></b>
+    <%= ltime @fabricante.created_at %>
+  </div>
 
-<div class="row">
-  <b><%= Fabricante.human_attribute_name(:id) %></b>
-  <%= @fabricante.id %>
-</div>
-<div class="row">
-  <b><%= Fabricante.human_attribute_name(:descricao) %></b>
-  <%= @fabricante.descricao %>
-</div>
-<div class="row">
-  <b><%= Fabricante.human_attribute_name(:obs) %></b>
-  <%= @fabricante.obs %>
-</div>
-<div class="row">
-  <b><%= Fabricante.human_attribute_name(:created_at) %></b>
-  <%= ltime @fabricante.created_at %>
-</div>
-
-<div class="row">
-  <%= link_icon_to_back admin_fabricantes_path %>
-  <%= link_icon_to_edit(edit_admin_fabricante_path(@fabricante))%>
+  <div class="row">
+    <%= link_icon_to_back admin_fabricantes_path %>
+    <%= link_no_icon_to_edit(edit_admin_fabricante_path(@fabricante))%>
+  </div>
 </div>

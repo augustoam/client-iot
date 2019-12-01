@@ -1,6 +1,5 @@
 <% breadcrumb :grupo_edit, @grupo %>
-<div class="row">
-	<h3><%= action_edit(@grupo) %> <%= singular_model_name_for(Grupo) %></h3>
-</div>
 
-<%= render 'form', grupo: @grupo %>
+<div class="form-padding">
+	<%= render 'form', grupo: @grupo %>
+</div>

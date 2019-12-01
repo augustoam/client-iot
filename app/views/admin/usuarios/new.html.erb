@@ -1,6 +1,5 @@
 <% breadcrumb :usuario_new, @grupo %>
-<div class="row">
-	<h3><%= action_new(@usuario) %> <%= singular_model_name_for(Usuario) %></h3>
-</div>
 
-<%= render 'form', usuario: @usuario %>
+<div class="form-padding">
+  <%= render 'form', usuario: @usuario %>
+</div>

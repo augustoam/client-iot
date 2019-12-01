@@ -1,0 +1,22 @@
+.material-icons.icon-hover:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+  cursor: pointer;
+}
+
+.material-icons.icon-hover {
+  transition: box-shadow .3s;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 1.8em;
+  color: #1890ff !important;
+}
+
+.material-icons {
+  font-size: 10px;
+}
+
+.btn-save,
+.btn-new,
+.btn-edit {
+  background-color: #1890ff !important;
+}

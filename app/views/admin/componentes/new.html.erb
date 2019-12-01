@@ -1,7 +1,5 @@
 <% breadcrumb :componente_new %>
-	<div class="row">
-		<h3><%= action_new(@componente) %>
-			<%= singular_model_name_for(Componente) %></h3>
-	</div>
 
+<div class="form-padding">
 	<%= render 'form', componente: @componente %>
+</div>

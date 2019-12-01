@@ -1,8 +1,5 @@
 <% breadcrumb :controle_new %>
 
-	<div class="row">
-		<h3><%= action_new(@controle) %>
-			<%= singular_model_name_for(Controle) %></h3>
-	</div>
-
+<div class="form-padding">
 	<%= render 'form', controle: @controle %>
+</div>

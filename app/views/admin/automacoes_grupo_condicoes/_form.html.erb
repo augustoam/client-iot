@@ -50,7 +50,7 @@
     <% if @automacao_grupo_condicao.persisted? %>
       <%= link_icon_to_back admin_automacao_grupo_condicao_path(@automacao_grupo_condicao) %>
     <% else %>
-      <%= link_icon_to_back admin_grupo_automacoes_grupo_path(@automacao_grupo) %>
+      <%= link_icon_to_back admin_automacao_grupo_automacoes_grupo_condicoes_path(@automacao_grupo) %>
     <% end %>
     <%= save_button %>
   </div>

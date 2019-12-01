@@ -88,6 +88,7 @@ input[type=range] {
   font-size: 15px !important;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  margin-top: 20px;
 }
 
 .line {
@@ -122,4 +123,84 @@ input[type=range] {
 
 .repeat-data {
   visibility: hidden
+}
+
+
+.pagination a li.active {
+  color: #fff;
+  background-color: grey;
+}
+
+
+.collapsible.pull-right {
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+.collapsible.pull-left {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.ant-modal-header {
+  padding: 16px 24px;
+  border-radius: 4px 4px 0 0;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.65);
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.ant-modal-title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.container-row {
+  padding: 15px 0px 0px 8px;
+}
+
+.form-padding {
+  padding-top: 30px;
+}
+
+nav a.sidenav-trigger {
+  display: inline !important
+}
+
+#dropdown-nav {
+  width: 200px !important;
+}
+
+.audited {
+  background-color: #ffffb3;
+  border-radius: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .modal {
+    width: 90% !important;
+  }
+}
+
+.form-drawer {
+  padding: 50px 50px 150px 50px
+}
+
+.pagination li.active {
+  background-color: #1890ff !important;
+}
+
+.margin-right-title {
+  margin-right: 10px
+}
+
+.margin-left-title {
+  margin-left: 10px
 }

@@ -1,8 +1,6 @@
 <% breadcrumb :componente_ambiente, @componente_ambiente %>
-  <div class="row">
-    <h3><%= singular_model_name_for(ComponenteAmbiente) %></h3>
-  </div>
 
+<div class="container-row">
   <div class="row">
     <b><%= ComponenteAmbiente.human_attribute_name(:id) %></b>
     <%= @componente_ambiente.id %>
@@ -30,5 +28,6 @@
 
   <div class="row">
     <%= link_icon_to_back admin_ambiente_grupo_componentes_ambiente_path(@ambiente_grupo) %>
-    <%= link_icon_to_edit(edit_admin_componente_ambiente_path(@componente_ambiente))%>
+    <%= link_no_icon_to_edit(edit_admin_componente_ambiente_path(@componente_ambiente))%>
   </div>
+</div>

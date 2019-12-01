@@ -1,26 +1,25 @@
 <% breadcrumb :automacao_grupo_acao, @automacao_grupo_acao %>
-<div class="row">
-  <h3><%= singular_model_name_for(AutomacaoGrupoCondicao) %></h3>
-</div>
 
-<div class="row">
-  <b><%= AutomacaoGrupoCondicao.human_attribute_name(:id) %></b>
-  <%= @automacao_grupo_acao.id %>
-</div>
-<div class="row">
-  <b><%= AutomacaoGrupoCondicao.human_attribute_name(:tipo_acao) %></b>
-  <%= @automacao_grupo_acao.tipo_acao %>
-</div>
-<div class="row">
-  <b><%= AutomacaoGrupoCondicao.human_attribute_name(:delay_time) %></b>
-  <%= @automacao_grupo_acao.delay_time %>
-</div>
-<div class="row">
-  <b><%= AutomacaoGrupoCondicao.human_attribute_name(:created_at) %></b>
-  <%= ltime @automacao_grupo_acao.created_at %>
-</div>
+<div class="container-row">
+  <div class="row">
+    <b><%= AutomacaoGrupoCondicao.human_attribute_name(:id) %></b>
+    <%= @automacao_grupo_acao.id %>
+  </div>
+  <div class="row">
+    <b><%= AutomacaoGrupoCondicao.human_attribute_name(:tipo_acao) %></b>
+    <%= @automacao_grupo_acao.tipo_acao %>
+  </div>
+  <div class="row">
+    <b><%= AutomacaoGrupoCondicao.human_attribute_name(:delay_time) %></b>
+    <%= @automacao_grupo_acao.delay_time %>
+  </div>
+  <div class="row">
+    <b><%= AutomacaoGrupoCondicao.human_attribute_name(:created_at) %></b>
+    <%= ltime @automacao_grupo_acao.created_at %>
+  </div>
 
-<div class="row">
-  <%= link_icon_to_back admin_automacao_grupo_automacoes_grupo_condicoes_path(@automacao_grupo) %>
-  <%= link_icon_to_edit(edit_admin_automacao_grupo_acao_path(@automacao_grupo_acao))%>
+  <div class="row">
+    <%= link_icon_to_back admin_automacao_grupo_automacoes_grupo_acoes_path(@automacao_grupo) %>
+    <%= link_no_icon_to_edit(edit_admin_automacao_grupo_acao_path(@automacao_grupo_acao))%>
+  </div>
 </div>

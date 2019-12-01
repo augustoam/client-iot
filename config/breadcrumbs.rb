@@ -244,3 +244,21 @@ crumb :token_notificacao_mobile_new do |token_notificacao_mobile|
   link t('views.actions.new')
   parent :tokens_notificacao_mobile, token_notificacao_mobile.usuario
 end
+
+
+crumb :fabricantes do
+  link Fabricante.model_name.human(count: 2), admin_fabricantes_path
+  parent :root
+end
+crumb :fabricante do |fabricante|
+  link fabricante.to_s, admin_fabricante_path(fabricante)
+  parent :fabricantes
+end
+crumb :fabricante_edit do |fabricante|
+  link t('views.actions.do_edit'), edit_admin_fabricante_path(fabricante)
+  parent :fabricante, fabricante
+end
+crumb :fabricante_new do
+  link t('views.actions.new')
+  parent :fabricantes
+end

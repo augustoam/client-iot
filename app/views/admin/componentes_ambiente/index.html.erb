@@ -1,59 +1,57 @@
 <% breadcrumb :componentes_ambiente, @ambiente_grupo %>
-  <div class="row">
-    <h3><%= plural_model_name_for(ComponenteAmbiente) %></h3>
-  </div>
 
-  <div class="row">
-    <%= search_form_for @q, url: admin_ambiente_grupo_componentes_ambiente_path do |f| %>
-
-    <div class="col s11">
-      <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Pesquisar Componentes" %>
+<div class="row">
+  <%= search_form_for @q, url: admin_ambiente_grupo_componentes_ambiente_path do |f| %>
+    <div class="col s12">
+      <div class="input-search">
+        <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
+          <i class="material-icons icon-search icon-hover">search</i>
+        <% end %>
+        <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Search Devices" %>
+      </div>
     </div>
-    <div class="col s1">
-      <button class="waves-effect waves-light btn grey lighten-4" type="submit">
-        <i class="large material-icons black-text">search</i>
-      </button>
-    </div>
-
   <% end %>
 </div>
 
-<div class="row">
-  <table class="table">
-    <thead>
-      <tr>
-        <th><%= ComponenteAmbiente.human_attribute_name(:id) %></th>
-        <th><%= ComponenteAmbiente.human_attribute_name(:descricao) %></th>
-        <th><%= ComponenteAmbiente.human_attribute_name(:topico) %></th>
-        <th><%= ComponenteAmbiente.human_attribute_name(:identificador_componente) %></th>
-        <th><%= ComponenteAmbiente.human_attribute_name(:controle) %></th>
-        <th><%= ComponenteAmbiente.human_attribute_name(:componente) %></th>
-        <th><%= ComponenteAmbiente.human_attribute_name(:created_at) %></th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @componentes_ambiente.each do |componente_ambiente| %>
-        <tr data-href="<%= admin_componente_ambiente_path(componente_ambiente) %>">
-          <td><%= componente_ambiente.id %></td>
-          <td><%= componente_ambiente.descricao %></td>
-          <td><%= componente_ambiente.topico %></td>
-          <td><%= componente_ambiente.identificador_componente %></td>
-          <td><%= componente_ambiente.controle.descricao %></td>
-          <td><%= componente_ambiente.controle.componente.descricao %></td>
-          <td><%= ltime componente_ambiente.created_at %></td>
-          <td><%= link_icon_to_edit(edit_admin_componente_ambiente_path(componente_ambiente))%></td>
-          <td><%= link_icon_to_destroy(admin_componente_ambiente_path(componente_ambiente)) %></td>
+<div class="container-row">
+  <b><%= plural_model_name_for(ComponenteAmbiente) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= ComponenteAmbiente.human_attribute_name(:id) %></th>
+          <th><%= ComponenteAmbiente.human_attribute_name(:descricao) %></th>
+          <th><%= ComponenteAmbiente.human_attribute_name(:topico) %></th>
+          <th><%= ComponenteAmbiente.human_attribute_name(:identificador_componente) %></th>
+          <th><%= ComponenteAmbiente.human_attribute_name(:controle) %></th>
+          <th><%= ComponenteAmbiente.human_attribute_name(:componente) %></th>
+          <th><%= ComponenteAmbiente.human_attribute_name(:created_at) %></th>
+          <th colspan="2"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
 
-<div class="row">
-  <%= link_icon_to_back admin_grupo_ambientes_grupo_path(@ambiente_grupo.grupo) %>
-  <%= link_icon_to_new(new_admin_ambiente_grupo_componente_ambiente_path(@ambiente_grupo), action_new(@componentes_ambiente)) %>
+      <tbody>
+        <% @componentes_ambiente.each do |componente_ambiente| %>
+          <tr data-href="<%= admin_componente_ambiente_path(componente_ambiente) %>">
+            <td><%= componente_ambiente.id %></td>
+            <td><%= componente_ambiente.descricao %></td>
+            <td><%= componente_ambiente.topico %></td>
+            <td><%= componente_ambiente.identificador_componente %></td>
+            <td><%= componente_ambiente.controle.descricao %></td>
+            <td><%= componente_ambiente.controle.componente.descricao %></td>
+            <td><%= ltime componente_ambiente.created_at %></td>
+            <td><%= link_icon_to_edit(edit_admin_componente_ambiente_path(componente_ambiente))%></td>
+            <td><%= link_icon_to_destroy(admin_componente_ambiente_path(componente_ambiente)) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_grupo_ambientes_grupo_path(@ambiente_grupo.grupo) %>
+    <%= link_icon_to_new(new_admin_ambiente_grupo_componente_ambiente_path(@ambiente_grupo), action_new(@componentes_ambiente)) %>
+  </div>
 </div>
 
 <div class="center-align">

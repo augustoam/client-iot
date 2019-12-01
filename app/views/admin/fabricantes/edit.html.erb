@@ -1,9 +1,5 @@
-<!-- <#% breadcrumb :fabricante_edit, @fabricante %> -->
-<div class="row">
-  <h3>
-    <%= action_edit(@fabricante) %>
-    <%= singular_model_name_for(Fabricante) %>
-  </h3>
-</div>
+<% breadcrumb :fabricante_edit, @fabricante %>
 
-<%= render 'form', fabricante: @fabricante %>
+<div class="form-padding">
+  <%= render 'form', fabricante: @fabricante %>
+</div>

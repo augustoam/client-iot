@@ -1,6 +1,5 @@
 <% breadcrumb :ambiente_grupo_new, @grupo %>
-<div class="row">
-	<h3><%= action_new(@ambiente_grupo) %> <%= singular_model_name_for(AmbienteGrupo) %></h3>
-</div>
 
-<%= render 'form', ambiente_grupo: @ambiente_grupo %>
+<div class="form-padding">
+  <%= render 'form', ambiente_grupo: @ambiente_grupo %>
+</div>

@@ -1,57 +1,54 @@
 <% breadcrumb :grupos %>
 
 <div class="row">
-  <h3><%= plural_model_name_for(Grupo) %></h3>
-</div>
-
-<div class="row">
   <%= search_form_for @q, url: admin_grupos_path do |f| %>
-
-  <div class="col s11">
-    <%= f.search_field :nome_cont, class: "form-control", placeholder: "Pesquisar Grupos" %>
-  </div>
-  <div class="col s1">
-    <button class="waves-effect waves-light btn grey lighten-4" type="submit">
-      <i class="large material-icons black-text">search</i>
-    </button>
-  </div>
-
+    <div class="col s12">
+      <div class="input-search">
+        <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
+          <i class="material-icons icon-search icon-hover">search</i>
+        <% end %>
+        <%= f.search_field :nome_cont, class: "form-control", placeholder: "Pesquisar Groupos" %>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<div class="row">
-  <table class="table">
-    <thead>
-      <tr>
-        <th><%= Grupo.human_attribute_name(:id) %></th>
-        <th><%= Grupo.human_attribute_name(:nome) %></th>
-        <th><%= Grupo.human_attribute_name(:created_at) %></th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
+<div class="container-row">
+  <b><%= plural_model_name_for(Grupo) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= Grupo.human_attribute_name(:id) %></th>
+          <th><%= Grupo.human_attribute_name(:nome) %></th>
+          <th><%= Grupo.human_attribute_name(:created_at) %></th>
+          <th colspan="5"></th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <% @grupos.each do |grupo| %>
-      <tr data-href="<%= admin_grupo_path(grupo) %>">
-        <td><%= grupo.id %></td>
-        <td><%= grupo.nome %></td>
-        <td><%= ltime grupo.created_at %></td>
-        <td><%= link_icon_to_edit(edit_admin_grupo_path(grupo))%></td>
-        <td><%= link_icon_to_destroy(admin_grupo_path(grupo)) %></td>
-        <td><%= link_to plural_model_name_for(Usuario), admin_grupo_usuarios_path(grupo), class: "waves-effect waves-light btn grey lighten-4 black-text"%>
-        <td><%= link_to plural_model_name_for(AmbienteGrupo), admin_grupo_ambientes_grupo_path(grupo), class: "waves-effect waves-light btn grey lighten-4 black-text" %>
-        <td><%= link_to plural_model_name_for(AutomacaoGrupo), admin_grupo_automacoes_grupo_path(grupo), class: "waves-effect waves-light btn grey lighten-4 black-text" %>
+      <tbody>
+        <% @grupos.each do |grupo| %>
+          <tr data-href="<%= admin_grupo_path(grupo) %>">
+            <td><%= grupo.id %></td>
+            <td><%= grupo.nome %></td>
+            <td><%= ltime grupo.created_at %></td>
+            <td><%= link_to plural_model_name_for(Usuario), admin_grupo_usuarios_path(grupo)%>
+            <td><%= link_to plural_model_name_for(AmbienteGrupo), admin_grupo_ambientes_grupo_path(grupo) %>
+            <td><%= link_to plural_model_name_for(AutomacaoGrupo), admin_grupo_automacoes_grupo_path(grupo)%>
+            <td><%= link_icon_to_edit(edit_admin_grupo_path(grupo))%></td>
+            <td><%= link_icon_to_destroy(admin_grupo_path(grupo)) %></td>
           </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="row">
-      <%= link_icon_to_back admin_home_admin_index_path %>
-      <%= link_icon_to_new(new_admin_grupo_path, action_new(@grupos)) %>
-    </div>
+  <div class="row">
+    <%= link_icon_to_back admin_home_admin_index_path %>
+    <%= link_icon_to_new(new_admin_grupo_path, action_new(@grupos)) %>
+  </div>
+</div>
 
-    <div class="center-align">
-      <%= will_paginate @grupos, renderer: MaterializePagination::Rails %>
-    </div>
+<div class="center-align">
+  <%= will_paginate @grupos, renderer: MaterializePagination::Rails %>
+</div>

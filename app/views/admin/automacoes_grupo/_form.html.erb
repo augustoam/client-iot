@@ -6,11 +6,11 @@
   </div>
 
   <div class="row">
-    <%= f.input :ativo, wrapper_html: { class: 'm12 s12' } %>
+    <%= f.input :operador_condicao, wrapper_html: { class: 'm12 s12' }, collection: [['And', 'and'], ['Or', 'ou']] %>
   </div>
 
   <div class="row">
-    <%= f.input :operador_condicao, wrapper_html: { class: 'm12 s12' }, collection: [['And', 'and'], ['Or', 'ou']] %>
+    <%= f.input :ativo, wrapper_html: { class: 'm12 s12' } %>
   </div>
 
   <div class="row">

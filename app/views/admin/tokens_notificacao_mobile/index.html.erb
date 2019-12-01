@@ -1,36 +1,36 @@
 <% breadcrumb :tokens_notificacao_mobile, @usuario %>
-<div class="row">
-  <h3><%= plural_model_name_for(TokenNotificacaoMobile) %></h3>
-</div>
 
-<div class="row">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th><%= TokenNotificacaoMobile.human_attribute_name(:token) %></th>
-        <th><%= TokenNotificacaoMobile.human_attribute_name(:dt_criacao) %></th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @tokens_notificacao_mobile.each do |token_notificacao_mobile| %>
+<div class="container-row">
+  <b><%= plural_model_name_for(TokenNotificacaoMobile) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= token_notificacao_mobile.id %></td>
-          <td><%= token_notificacao_mobile.token %></td>
-          <td><%= ltime token_notificacao_mobile.created_at %></td>
-          <td><%= link_icon_to_edit(edit_admin_token_notificacao_mobile_path(token_notificacao_mobile))%></td>
-          <td><%= link_icon_to_destroy(admin_token_notificacao_mobile_path(token_notificacao_mobile)) %></td>
+          <th>ID</th>
+          <th><%= TokenNotificacaoMobile.human_attribute_name(:token) %></th>
+          <th><%= TokenNotificacaoMobile.human_attribute_name(:dt_criacao) %></th>
+          <th colspan="2"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
 
-<div class="row">
-  <%= link_icon_to_back index_all_admin_usuarios_path %>
-  <%= link_icon_to_new(new_admin_usuario_token_notificacao_mobile_path, action_new(@tokens_notificacao_mobile)) %>
+      <tbody>
+        <% @tokens_notificacao_mobile.each do |token_notificacao_mobile| %>
+          <tr>
+            <td><%= token_notificacao_mobile.id %></td>
+            <td><%= token_notificacao_mobile.token %></td>
+            <td><%= ltime token_notificacao_mobile.created_at %></td>
+            <td><%= link_icon_to_edit(edit_admin_token_notificacao_mobile_path(token_notificacao_mobile))%></td>
+            <td><%= link_icon_to_destroy(admin_token_notificacao_mobile_path(token_notificacao_mobile)) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back index_all_admin_usuarios_path %>
+    <%= link_icon_to_new(new_admin_usuario_token_notificacao_mobile_path, action_new(@tokens_notificacao_mobile)) %>
+  </div>
 </div>
 
 <div class="center-align">
