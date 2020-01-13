@@ -4,18 +4,18 @@
   <span class="grey-text text-darken-4">Início</span>
 <% end %>
 </li>
-<% grupos_por_usuario.each do |grupo| %>
+<% groups_por_user.each do |group| %>
 <li class="no-padding">
   <ul class="collapsible collapsible-accordion">
     <li>
-      <a class="collapsible-header white-text "><%= grupo.grupo.nome %>
+      <a class="collapsible-header white-text "><%= group.group.nome %>
         <i class="material-icons"></i>
       </a>
-      <% grupo.grupo.ambientes_grupo.each do |ambiente_grupo| %>
-        <% if ambiente_grupo.visivel %>
+      <% group.group.rooms_group.each do |room_group| %>
+        <% if room_group.visivel %>
           <div class="collapsible-body grey darken-3">
             <ul>
-              <li><%= link_to ambiente_grupo.nome, grupo_ambiente_grupo_componentes_ambiente_path(grupo, ambiente_grupo), class: "white-text" %></li>
+              <li><%= link_to room_group.nome, group_room_group_devices_room_path(group, room_group), class: "white-text" %></li>
             </ul>
           </div>
         <% end %>

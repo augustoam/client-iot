@@ -5,8 +5,8 @@ class Api::V2::BaseController < ActionController::API
 
   rescue_from JWTSessions::Errors::Unauthorized, with: :not_authorized
 
-  def usuario_sessao
-      @usuario_sessao = Usuario.find_by(email: payload['email'])
+  def user_sessao
+      @user_sessao = User.find_by(email: payload['email'])
   end
 
   def set_session_token

@@ -10,7 +10,7 @@ class SessionAuthenticationService
   end
 
   def call
-    autentica_usuario!
+    autentica_user!
     self
   end
 
@@ -34,13 +34,13 @@ class SessionAuthenticationService
     }
   end
 
-  def autentica_usuario!
-    find_usuario_by_email!
+  def autentica_user!
+    find_user_by_email!
     @sessao_valida = @user.valid_password?(@params[:password])
   end
 
-  def find_usuario_by_email!
-    @user = Usuario.find_for_database_authentication(email: @params[:email])
+  def find_user_by_email!
+    @user = User.find_for_database_authentication(email: @params[:email])
 
     raise 'Usuário inexistente' unless @user.present?
   end

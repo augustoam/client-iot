@@ -24,7 +24,7 @@ COPY lib/templates $PROJECT_PATH/lib/templates
 COPY Rakefile config.ru $PROJECT_PATH/
 COPY app/assets $PROJECT_PATH/app/assets
 COPY app/models/application_record.rb $PROJECT_PATH/app/models/application_record.rb
-COPY app/models/usuario.rb $PROJECT_PATH/app/models/usuario.rb
+COPY app/models/user.rb $PROJECT_PATH/app/models/user.rb
 COPY app/models/admin.rb $PROJECT_PATH/app/models/admin.rb
 ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE $SECRET_KEY_BASE

@@ -1,4 +1,4 @@
-module UsuarioPolicy
+module UserPolicy
   def index?
     user.admin?
   end

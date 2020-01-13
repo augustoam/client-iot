@@ -1,7 +1,7 @@
-<% breadcrumb :automacoes_grupo, @grupo %>
+<% breadcrumb :automacoes_group, @group %>
 
 <div class="row">
-  <%= search_form_for @q, url: admin_grupo_automacoes_grupo_path do |f| %>
+  <%= search_form_for @q, url: admin_group_automacoes_group_path do |f| %>
     <div class="col s12">
       <div class="input-search">
         <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
@@ -14,32 +14,32 @@
 </div>
 
 <div class="container-row">
-  <b><%= plural_model_name_for(AutomacaoGrupo) %></b>
+  <b><%= plural_model_name_for(AutomacaoGroup) %></b>
   <div class="row">
     <table class="table">
       <thead>
         <tr>
-          <th><%= AutomacaoGrupo.human_attribute_name(:id) %></th>
-          <th><%= AutomacaoGrupo.human_attribute_name(:descricao) %></th>
-          <th><%= AutomacaoGrupo.human_attribute_name(:ativo) %></th>
-          <th><%= AutomacaoGrupo.human_attribute_name(:operador_condicao) %></th>
-          <th><%= AutomacaoGrupo.human_attribute_name(:created_at) %></th>
+          <th><%= AutomacaoGroup.human_attribute_name(:id) %></th>
+          <th><%= AutomacaoGroup.human_attribute_name(:descricao) %></th>
+          <th><%= AutomacaoGroup.human_attribute_name(:ativo) %></th>
+          <th><%= AutomacaoGroup.human_attribute_name(:operador_condicao) %></th>
+          <th><%= AutomacaoGroup.human_attribute_name(:created_at) %></th>
           <th colspan="4"></th>
         </tr>
       </thead>
 
       <tbody>
-        <% @automacoes_grupo.each do |automacao_grupo| %>
-          <tr data-href="<%= admin_automacao_grupo_path(automacao_grupo) %>">
-            <td><%= automacao_grupo.id %></td>
-            <td><%= automacao_grupo.descricao %></td>
-            <td><%= automacao_grupo.ativo %></td>
-            <td><%= automacao_grupo.operador_condicao %></td>
-            <td><%= ltime automacao_grupo.created_at %></td>
-            <td><%= link_to 'Condições', admin_automacao_grupo_automacoes_grupo_condicoes_path(automacao_grupo) %></td>
-            <td><%= link_to 'Ações', admin_automacao_grupo_automacoes_grupo_acoes_path(automacao_grupo) %></td>
-            <td><%= link_icon_to_edit(edit_admin_automacao_grupo_path(automacao_grupo))%></td>
-            <td><%= link_icon_to_destroy(admin_automacao_grupo_path(automacao_grupo)) %></td>
+        <% @automacoes_group.each do |automacao_group| %>
+          <tr data-href="<%= admin_automacao_group_path(automacao_group) %>">
+            <td><%= automacao_group.id %></td>
+            <td><%= automacao_group.descricao %></td>
+            <td><%= automacao_group.ativo %></td>
+            <td><%= automacao_group.operador_condicao %></td>
+            <td><%= ltime automacao_group.created_at %></td>
+            <td><%= link_to 'Condições', admin_automacao_group_automacoes_group_condicoes_path(automacao_group) %></td>
+            <td><%= link_to 'Ações', admin_automacao_group_automacoes_group_acoes_path(automacao_group) %></td>
+            <td><%= link_icon_to_edit(edit_admin_automacao_group_path(automacao_group))%></td>
+            <td><%= link_icon_to_destroy(admin_automacao_group_path(automacao_group)) %></td>
           </tr>
         <% end %>
       </tbody>
@@ -47,11 +47,11 @@
   </div>
 
   <div class="row">
-    <%= link_icon_to_back admin_grupos_path %>
-    <%= link_icon_to_new(new_admin_grupo_automacao_grupo_path(@grupo), action_new(@automacoes_grupo)) %>
+    <%= link_icon_to_back admin_groups_path %>
+    <%= link_icon_to_new(new_admin_group_automacao_group_path(@group), action_new(@automacoes_group)) %>
   </div>
 </div>
 
 <div class="center-align">
-  <%= will_paginate @automacoes_grupo, renderer: MaterializePagination::Rails %>
+  <%= will_paginate @automacoes_group, renderer: MaterializePagination::Rails %>
 </div>

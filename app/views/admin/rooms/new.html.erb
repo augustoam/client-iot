@@ -1,0 +1,6 @@
+<% breadcrumb :room_new, @group %>
+<div class="row">
+	<h3><%= action_new(@room) %> <%= singular_model_name_for(Room) %></h3>
+</div>
+
+<%= render 'form', room: @room %>

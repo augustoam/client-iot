@@ -1,0 +1,33 @@
+<% breadcrumb :automacao_group_condicao, @automacao_group_condicao %>
+
+<div class="container-row">
+  <div class="row">
+    <b><%= UserAutomationCondition.human_attribute_name(:id) %></b>
+    <%= @automacao_group_condicao.id %>
+  </div>
+
+  <div class="row">
+    <b><%= UserAutomationCondition.human_attribute_name(:tipo_condicao) %></b>
+    <%= @automacao_group_condicao.tipo_condicao %>
+  </div>
+
+  <div class="row">
+    <b><%= UserAutomationCondition.human_attribute_name(:repeat) %></b>
+    <%= @automacao_group_condicao.repeat %>
+  </div>
+
+  <div class="row">
+    <b><%= UserAutomationCondition.human_attribute_name(:turn_on) %></b>
+    <%= @automacao_group_condicao.turn_on %>
+  </div>
+
+  <div class="row">
+    <b><%= UserAutomationCondition.human_attribute_name(:created_at) %></b>
+    <%= ltime @automacao_group_condicao.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_automacao_group_automacoes_group_condicoes_path(@automacao_group) %>
+    <%= link_no_icon_to_edit(edit_admin_automacao_group_condicao_path(@automacao_group_condicao))%>
+  </div>
+</div>

@@ -2,239 +2,239 @@ crumb :root do
   link 'Home', root_path
 end
 
-crumb :grupos do
-  link Grupo.model_name.human(count: 2), admin_grupos_path
+crumb :groups do
+  link Group.model_name.human(count: 2), admin_groups_path
   parent :root
 end
-crumb :grupo do |grupo|
-  link grupo.to_s, admin_grupo_path(grupo)
-  parent :grupos
+crumb :group do |group|
+  link group.to_s, admin_group_path(group)
+  parent :groups
 end
-crumb :grupo_edit do |grupo|
-  link t('views.actions.do_edit'), edit_admin_grupo_path(grupo)
-  parent :grupo, grupo
+crumb :group_edit do |group|
+  link t('views.actions.do_edit'), edit_admin_group_path(group)
+  parent :group, group
 end
-crumb :grupo_new do
+crumb :group_new do
   link t('views.actions.new')
-  parent :grupos
+  parent :groups
 end
 
-crumb :usuarios do |grupo|
-  link grupo.to_s, admin_grupo_usuarios_path(grupo)
-  parent :grupos
+crumb :users do |group|
+  link group.to_s, admin_group_users_path(group)
+  parent :groups
 end
-crumb :usuario do |grupo_usuario|
-  link grupo_usuario.usuario.to_s
-  parent :usuarios, grupo_usuario.grupo
+crumb :user do |group_user|
+  link group_user.user.to_s
+  parent :users, group_user.group
 end
-crumb :usuario_edit do |grupo_usuario|
-  link t('views.actions.edit'), edit_admin_grupo_usuario_path(grupo_usuario.grupo, grupo_usuario.usuario)
-  parent :usuario, grupo_usuario
+crumb :user_edit do |group_user|
+  link t('views.actions.edit'), edit_admin_group_user_path(group_user.group, group_user.user)
+  parent :user, group_user
 end
-crumb :usuario_new do |grupo|
+crumb :user_new do |group|
   link t('views.actions.new')
-  parent :usuarios, grupo
+  parent :users, group
 end
 
-crumb :ambientes do
-  link Ambiente.model_name.human(count: 2), admin_ambientes_path
+crumb :rooms do
+  link Room.model_name.human(count: 2), admin_rooms_path
   parent :root
 end
-crumb :ambiente do |ambiente|
-  link ambiente.to_s, admin_ambiente_path(ambiente)
-  parent :ambientes
+crumb :room do |room|
+  link room.to_s, admin_room_path(room)
+  parent :rooms
 end
-crumb :ambiente_edit do |ambiente|
-  link t('views.actions.do_edit'), edit_admin_ambiente_path(ambiente)
-  parent :ambiente, ambiente
+crumb :room_edit do |room|
+  link t('views.actions.do_edit'), edit_admin_room_path(room)
+  parent :room, room
 end
-crumb :ambiente_new do
+crumb :room_new do
   link t('views.actions.new')
-  parent :ambientes
+  parent :rooms
 end
 
-crumb :ambientes_grupo do |grupo|
-  link AmbienteGrupo.model_name.human(count: 2), admin_grupo_ambientes_grupo_path(grupo)
-  parent :grupos, grupo
+crumb :rooms_group do |group|
+  link RoomGroup.model_name.human(count: 2), admin_group_rooms_group_path(group)
+  parent :groups, group
 end
-crumb :ambiente_grupo do |ambiente_grupo|
-  link ambiente_grupo.to_s
-  parent :ambientes_grupo, ambiente_grupo.grupo
+crumb :room_group do |room_group|
+  link room_group.to_s
+  parent :rooms_group, room_group.group
 end
-crumb :ambiente_grupo_new do |grupo|
+crumb :room_group_new do |group|
   link t('views.actions.new')
-  parent :ambientes_grupo, grupo
+  parent :rooms_group, group
 end
-crumb :ambiente_grupo_edit do |ambiente_grupo|
-  link t('views.actions.do_edit'), edit_admin_ambiente_grupo_path(ambiente_grupo)
-  parent :ambiente_grupo, ambiente_grupo
+crumb :room_group_edit do |room_group|
+  link t('views.actions.do_edit'), edit_admin_room_group_path(room_group)
+  parent :room_group, room_group
 end
 
-crumb :automacoes_grupo do |grupo|
-  link AutomacaoGrupo.model_name.human(count: 2), admin_grupo_automacoes_grupo_path(grupo)
-  parent :grupos, grupo
+crumb :automacoes_group do |group|
+  link AutomacaoGroup.model_name.human(count: 2), admin_group_automacoes_group_path(group)
+  parent :groups, group
 end
-crumb :automacao_grupo do |automacao_grupo|
-  link automacao_grupo.to_s
-  parent :automacoes_grupo, automacao_grupo.grupo
+crumb :automacao_group do |automacao_group|
+  link automacao_group.to_s
+  parent :automacoes_group, automacao_group.group
 end
-crumb :automacao_grupo_new do |grupo|
+crumb :automacao_group_new do |group|
   link t('views.actions.new')
-  parent :automacoes_grupo, grupo
+  parent :automacoes_group, group
 end
-crumb :automacao_grupo_edit do |automacao_grupo|
-  link t('views.actions.do_edit'), edit_admin_automacao_grupo_path(automacao_grupo)
-  parent :automacao_grupo, automacao_grupo
+crumb :automacao_group_edit do |automacao_group|
+  link t('views.actions.do_edit'), edit_admin_automacao_group_path(automacao_group)
+  parent :automacao_group, automacao_group
 end
 
-crumb :automacoes_grupo_condicoes do |automacao_grupo|
-  link AutomacaoGrupoCondicao.model_name.human(count: 2), admin_automacao_grupo_automacoes_grupo_condicoes_path(automacao_grupo)
-  parent :automacoes_grupo, automacao_grupo.grupo
+crumb :automacoes_group_condicoes do |automacao_group|
+  link UserAutomationCondition.model_name.human(count: 2), admin_automacao_group_automacoes_group_condicoes_path(automacao_group)
+  parent :automacoes_group, automacao_group.group
 end
-crumb :automacao_grupo_condicao do |automacao_grupo_condicao|
-  link automacao_grupo_condicao.to_s
-  parent :automacoes_grupo_condicoes, automacao_grupo_condicao.automacao_grupo
+crumb :automacao_group_condicao do |automacao_group_condicao|
+  link automacao_group_condicao.to_s
+  parent :automacoes_group_condicoes, automacao_group_condicao.automacao_group
 end
-crumb :automacao_grupo_condicao_new do |automacao_grupo|
+crumb :automacao_group_condicao_new do |automacao_group|
   link t('views.actions.new')
-  parent :automacoes_grupo_condicoes, automacao_grupo
+  parent :automacoes_group_condicoes, automacao_group
 end
-crumb :automacao_grupo_condicao_edit do |automacao_grupo_condicao|
-  link t('views.actions.do_edit'), edit_admin_automacao_grupo_condicao_path(automacao_grupo_condicao)
-  parent :automacao_grupo_condicao, automacao_grupo_condicao
+crumb :automacao_group_condicao_edit do |automacao_group_condicao|
+  link t('views.actions.do_edit'), edit_admin_automacao_group_condicao_path(automacao_group_condicao)
+  parent :automacao_group_condicao, automacao_group_condicao
 end
 
-crumb :automacoes_grupo_acoes do |automacao_grupo|
-  link AutomacaoGrupoAcao.model_name.human(count: 2), admin_automacao_grupo_automacoes_grupo_acoes_path(automacao_grupo)
-  parent :automacoes_grupo, automacao_grupo.grupo
+crumb :automacoes_group_acoes do |automacao_group|
+  link AutomacaoGroupAcao.model_name.human(count: 2), admin_automacao_group_automacoes_group_acoes_path(automacao_group)
+  parent :automacoes_group, automacao_group.group
 end
-crumb :automacao_grupo_acao do |automacao_grupo_acao|
-  link automacao_grupo_acao.to_s
-  parent :automacoes_grupo_acoes, automacao_grupo_acao.automacao_grupo
+crumb :automacao_group_acao do |automacao_group_acao|
+  link automacao_group_acao.to_s
+  parent :automacoes_group_acoes, automacao_group_acao.automacao_group
 end
-crumb :automacao_grupo_acao_new do |automacao_grupo|
+crumb :automacao_group_acao_new do |automacao_group|
   link t('views.actions.new')
-  parent :automacoes_grupo_acoes, automacao_grupo
+  parent :automacoes_group_acoes, automacao_group
 end
-crumb :automacao_grupo_acao_edit do |automacao_grupo_acao|
-  link t('views.actions.do_edit'), edit_admin_automacao_grupo_acao_path(automacao_grupo_acao)
-  parent :automacao_grupo_acao, automacao_grupo_acao
+crumb :automacao_group_acao_edit do |automacao_group_acao|
+  link t('views.actions.do_edit'), edit_admin_automacao_group_acao_path(automacao_group_acao)
+  parent :automacao_group_acao, automacao_group_acao
 end
 
-crumb :componentes_ambiente do |ambiente_grupo|
-  link Componente.model_name.human(count: 2), admin_ambiente_grupo_componentes_ambiente_path(ambiente_grupo)
-  parent :ambientes_grupo, ambiente_grupo.grupo
+crumb :devices_room do |room_group|
+  link Device.model_name.human(count: 2), admin_room_group_devices_room_path(room_group)
+  parent :rooms_group, room_group.group
 end
-crumb :componente_ambiente do |componente_ambiente|
-  link componente_ambiente.to_s
-  parent :componentes_ambiente, componente_ambiente.ambiente_grupo
+crumb :device_room do |device_room|
+  link device_room.to_s
+  parent :devices_room, device_room.room_group
 end
-crumb :componente_ambiente_new do |ambiente_grupo|
+crumb :device_room_new do |room_group|
   link t('views.actions.new')
-  parent :componentes_ambiente, ambiente_grupo
+  parent :devices_room, room_group
 end
-crumb :componente_ambiente_edit do |componente_ambiente|
-  link t('views.actions.do_edit'), edit_admin_componente_ambiente_path(componente_ambiente.ambiente_grupo)
-  parent :componente_ambiente, componente_ambiente
+crumb :device_room_edit do |device_room|
+  link t('views.actions.do_edit'), edit_admin_device_room_path(device_room.room_group)
+  parent :device_room, device_room
 end
 
-crumb :controle_comandos do |controle|
-  link ControleComando.model_name.human(count: 2), admin_controle_controle_comandos_path(controle)
-  parent :controles, controle.descricao
+crumb :control_comandos do |control|
+  link ControlComando.model_name.human(count: 2), admin_control_control_comandos_path(control)
+  parent :controls, control.descricao
 end
-crumb :controle_comando do |controle_comando|
-  link controle_comando.to_s
-  parent :controle_comandos, controle_comando.controle
+crumb :control_comando do |control_comando|
+  link control_comando.to_s
+  parent :control_comandos, control_comando.control
 end
-crumb :controle_comando_new do |controle|
+crumb :control_comando_new do |control|
   link t('views.actions.new')
-  parent :controle_comandos, controle
+  parent :control_comandos, control
 end
-crumb :controle_comando_edit do |controle_comando|
-  link t('views.actions.do_edit'), edit_admin_controle_comando_path(controle_comando)
-  parent :controle_comando, controle_comando
+crumb :control_comando_edit do |control_comando|
+  link t('views.actions.do_edit'), edit_admin_control_comando_path(control_comando)
+  parent :control_comando, control_comando
 end
 
-crumb :componentes do
-  link Componente.model_name.human(count: 2), admin_componentes_path
+crumb :devices do
+  link Device.model_name.human(count: 2), admin_devices_path
   parent :root
 end
-crumb :componente_edit do |componente|
-  link t('views.actions.do_edit'), edit_admin_componente_path(componente)
-  parent :componente, componente
+crumb :device_edit do |device|
+  link t('views.actions.do_edit'), edit_admin_device_path(device)
+  parent :device, device
 end
-crumb :componente_new do |_componente|
+crumb :device_new do |_device|
   link t('views.actions.new')
-  parent :componentes
+  parent :devices
 end
-crumb :componente do |componente|
-  link componente.to_s
-  parent :componentes
+crumb :device do |device|
+  link device.to_s
+  parent :devices
 end
 
-crumb :componentes_propriedades do |componente|
-  link componente.descricao.concat(' Propriedades'), admin_componente_componentes_propriedades_path(componente)
-  parent :componentes, componente
+crumb :devices_propriedades do |device|
+  link device.descricao.concat(' Propriedades'), admin_device_devices_propriedades_path(device)
+  parent :devices, device
 end
-crumb :componente_propriedade do |componente_propriedade|
-  link componente_propriedade.to_s
-  parent :componentes_propriedades, componente_propriedade.componente
+crumb :device_propriedade do |device_propriedade|
+  link device_propriedade.to_s
+  parent :devices_propriedades, device_propriedade.device
 end
-crumb :componente_propriedade_new do |componente|
+crumb :device_propriedade_new do |device|
   link t('views.actions.new')
-  parent :componentes_propriedades, componente
+  parent :devices_propriedades, device
 end
-crumb :componente_propriedade_edit do |componente_propriedade|
-  link t('views.actions.do_edit'), edit_admin_componente_propriedade_path(componente_propriedade)
-  parent :componente_propriedade, componente_propriedade
+crumb :device_propriedade_edit do |device_propriedade|
+  link t('views.actions.do_edit'), edit_admin_device_propriedade_path(device_propriedade)
+  parent :device_propriedade, device_propriedade
 end
 
-crumb :layout_controles do
-  link LayoutControle.model_name.human(count: 2), admin_layout_controles_path
+crumb :layout_controls do
+  link ControlLayout.model_name.human(count: 2), admin_layout_controls_path
   parent :root
 end
-crumb :layout_controle_edit do |layout_controle|
-  link t('views.actions.do_edit'), edit_admin_layout_controle_path(layout_controle)
-  parent :layout_controle, layout_controle
+crumb :layout_control_edit do |layout_control|
+  link t('views.actions.do_edit'), edit_admin_layout_control_path(layout_control)
+  parent :layout_control, layout_control
 end
-crumb :layout_controle_new do |_layout_controle|
+crumb :layout_control_new do |_layout_control|
   link t('views.actions.new')
-  parent :layout_controles
+  parent :layout_controls
 end
-crumb :layout_controle do |layout_controle|
-  link layout_controle.to_s
-  parent :layout_controles
+crumb :layout_control do |layout_control|
+  link layout_control.to_s
+  parent :layout_controls
 end
 
-crumb :controles do
-  link Controle.model_name.human(count: 2), admin_controles_path
+crumb :controls do
+  link Control.model_name.human(count: 2), admin_controls_path
   parent :root
 end
-crumb :controle_edit do |controle|
-  link t('views.actions.do_edit'), edit_admin_controle_path(controle)
-  parent :controle, controle
+crumb :control_edit do |control|
+  link t('views.actions.do_edit'), edit_admin_control_path(control)
+  parent :control, control
 end
-crumb :controle_new do |_controle|
+crumb :control_new do |_control|
   link t('views.actions.new')
-  parent :controles
+  parent :controls
 end
-crumb :controle do |controle|
-  link controle.to_s
-  parent :controles
+crumb :control do |control|
+  link control.to_s
+  parent :controls
 end
 
-crumb :usuarios_all do
-  link Usuario.model_name.human(count: 2), index_all_admin_usuarios_path
+crumb :users_all do
+  link User.model_name.human(count: 2), index_all_admin_users_path
   parent :root
 end
 
-crumb :tokens_notificacao_mobile do |usuario|
-  link usuario.to_s, admin_usuario_tokens_notificacao_mobile_path(usuario)
-  parent :usuarios_all
+crumb :tokens_notificacao_mobile do |user|
+  link user.to_s, admin_user_tokens_notificacao_mobile_path(user)
+  parent :users_all
 end
 crumb :token_notificacao_mobile do |token_notificacao_mobile|
   link token_notificacao_mobile.to_s
-  parent :tokens_notificacao_mobile, token_notificacao_mobile.usuario
+  parent :tokens_notificacao_mobile, token_notificacao_mobile.user
 end
 crumb :token_notificacao_mobile_edit do |token_notificacao_mobile|
   link t('views.actions.edit'), edit_admin_token_notificacao_mobile_path(token_notificacao_mobile)
@@ -242,23 +242,23 @@ crumb :token_notificacao_mobile_edit do |token_notificacao_mobile|
 end
 crumb :token_notificacao_mobile_new do |token_notificacao_mobile|
   link t('views.actions.new')
-  parent :tokens_notificacao_mobile, token_notificacao_mobile.usuario
+  parent :tokens_notificacao_mobile, token_notificacao_mobile.user
 end
 
 
-crumb :fabricantes do
-  link Fabricante.model_name.human(count: 2), admin_fabricantes_path
+crumb :manufacturers do
+  link Manufacturer.model_name.human(count: 2), admin_manufacturers_path
   parent :root
 end
-crumb :fabricante do |fabricante|
-  link fabricante.to_s, admin_fabricante_path(fabricante)
-  parent :fabricantes
+crumb :manufacturer do |manufacturer|
+  link manufacturer.to_s, admin_manufacturer_path(manufacturer)
+  parent :manufacturers
 end
-crumb :fabricante_edit do |fabricante|
-  link t('views.actions.do_edit'), edit_admin_fabricante_path(fabricante)
-  parent :fabricante, fabricante
+crumb :manufacturer_edit do |manufacturer|
+  link t('views.actions.do_edit'), edit_admin_manufacturer_path(manufacturer)
+  parent :manufacturer, manufacturer
 end
-crumb :fabricante_new do
+crumb :manufacturer_new do
   link t('views.actions.new')
-  parent :fabricantes
+  parent :manufacturers
 end

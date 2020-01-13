@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin, @componente_ambiente], url: admin_componente_ambiente_form_path(@ambiente_grupo, @componente_ambiente)) do |f| %>
+<%= simple_form_for([:admin, @device_room], url: admin_device_room_form_path(@room_group, @device_room)) do |f| %>
 <%= f.error_notification %>
 
 <div class="row">
@@ -36,17 +36,17 @@
   <%= f.input :topico, wrapper_html: { class: 'm12 s12' } %>
 </div>
 <div class="row">
-  <%= f.input :identificador_componente, wrapper_html: { class: 'm12 s12' } %>
+  <%= f.input :identificador_device, wrapper_html: { class: 'm12 s12' } %>
 </div>
 <div class="row">
-  <%= f.association :controle, wrapper_html: { class: 'm12 s12' } %>
+  <%= f.association :control, wrapper_html: { class: 'm12 s12' } %>
 </div>
 
 <div class="row">
-  <% if @componente_ambiente.persisted? %>
-    <%= link_icon_to_back admin_componente_ambiente_path(componente_ambiente) %>
+  <% if @device_room.persisted? %>
+    <%= link_icon_to_back admin_device_room_path(device_room) %>
   <% else %>
-    <%= link_icon_to_back admin_ambiente_grupo_componentes_ambiente_path(@ambiente_grupo) %>
+    <%= link_icon_to_back admin_room_group_devices_room_path(@room_group) %>
   <% end %>
   <%= save_button %>
 </div>

@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin, @controle_comando], url: admin_controle_comando_form_path(@controle, @controle_comando)) do |f| %>
+<%= simple_form_for([:admin, @control_comando], url: admin_control_comando_form_path(@control, @control_comando)) do |f| %>
 <%= f.error_notification %>
 <div class="row">
   <%= f.input :comando, wrapper_html: { class: 'm12 s12' } %>
@@ -8,10 +8,10 @@
 </div>
 
 <div class="row">
-  <% if @controle_comando.persisted? %>
-    <%= link_icon_to_back admin_controle_comando_path(@controle_comando) %>
+  <% if @control_comando.persisted? %>
+    <%= link_icon_to_back admin_control_comando_path(@control_comando) %>
   <% else %>
-    <%= link_icon_to_back admin_controle_controle_comandos_path(@controle) %>
+    <%= link_icon_to_back admin_control_control_comandos_path(@control) %>
   <% end %>
   <%= save_button %>
 </div>

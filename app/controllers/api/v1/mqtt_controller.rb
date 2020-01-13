@@ -3,16 +3,16 @@ class Api::V1::MqttController < Api::V1::BaseController
 
   def publish
     parametros = JSON.parse(params[:parametros])
-    componente = ComponenteAmbiente.find(parametros['componente_ambiente']['id'])
+    device = DeviceRoom.find(parametros['device_room']['id'])
     if parametros['msg'].include? "off" or parametros['msg'].include? "on"
       if parametros['msg'] == 'power-off'
         estado = false
       else
         estado = true
       end
-      componente.update(estado: estado)
+      device.update(estado: estado)
     end
 
-    publish_mqtt(componente.topico, parametros['msg'])
+    publish_mqtt(device.topico, parametros['msg'])
   end
 end

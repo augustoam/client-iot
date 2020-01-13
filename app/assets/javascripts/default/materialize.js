@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', function() {
     // Start material select box
     $('select').formSelect();
 
-    // Select dos tipos de condições da automação -automacao_grupo_condicao.js
+    // Select dos tipos de condições da automação -automacao_group_condicao.js
     $('#tipo-condicao-select').find('input').ready(function() {
       updateFormCondicao();
     })

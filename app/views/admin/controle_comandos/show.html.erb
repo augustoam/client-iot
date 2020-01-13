@@ -1,22 +1,22 @@
-<% breadcrumb :controle_comando, @controle_comando %>
+<% breadcrumb :control_comando, @control_comando %>
 
 <div class="container-row">
 
   <div class="row">
-    <b><%= ControleComando.human_attribute_name(:id) %></b>
-    <%= @controle_comando.id %>
+    <b><%= ControlComando.human_attribute_name(:id) %></b>
+    <%= @control_comando.id %>
   </div>
   <div class="row">
-    <b><%= ControleComando.human_attribute_name(:comando) %></b>
-    <%= @controle_comando.comando %>
+    <b><%= ControlComando.human_attribute_name(:comando) %></b>
+    <%= @control_comando.comando %>
   </div>
   <div class="row">
-    <b><%= ControleComando.human_attribute_name(:codigo) %></b>
-    <%= @controle_comando.codigo %>
+    <b><%= ControlComando.human_attribute_name(:codigo) %></b>
+    <%= @control_comando.codigo %>
   </div>
 
   <div class="row">
-    <%= link_icon_to_back admin_controle_controle_comandos_path(@controle) %>
-    <%= link_no_icon_to_edit(edit_admin_controle_comando_path(@controle_comando))%>
+    <%= link_icon_to_back admin_control_control_comandos_path(@control) %>
+    <%= link_no_icon_to_edit(edit_admin_control_comando_path(@control_comando))%>
   </div>
 </div>

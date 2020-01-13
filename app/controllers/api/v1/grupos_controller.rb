@@ -1,18 +1,18 @@
-class Api::V1::GruposController < Api::V1::BaseController
+class Api::V1::GroupsController < Api::V1::BaseController
   before_action :authenticate_user
 
-  def get_grupos
-    if @usuario.present?
+  def get_groups
+    if @user.present?
       begin
-        syncinfra = Componente.find_by(descricao: 'SyncInfra')
-        @response = @usuario.grupos_usuarios.collect do |grupo_usuario|
-          result = grupo_usuario.as_json
-          result[:grupo]           = grupo_usuario.grupo
-          result[:ambientes_grupo] = grupo_usuario.grupo.ambientes_grupo.order(created_at: :asc)
-          result[:ambientes]       = Ambiente.all.order(created_at: :asc)
-          result[:componentes]     = Componente.all.order(created_at: :asc)
-          result[:controles]       = Controle.where(componente: syncinfra)
-          result[:usuarios_grupo]  = grupo_usuario.grupo.usuarios.select('grupos_usuarios.*', 'usuarios.email').order(created_at: :asc)
+        syncinfra = Device.find_by(descricao: 'SyncInfra')
+        @response = @user.groups_users.collect do |group_user|
+          result = group_user.as_json
+          result[:group]           = group_user.group
+          result[:rooms_group] = group_user.group.rooms_group.order(created_at: :asc)
+          result[:rooms]       = Room.all.order(created_at: :asc)
+          result[:devices]     = Device.all.order(created_at: :asc)
+          result[:controls]       = Control.where(device: syncinfra)
+          result[:users_group]  = group_user.group.users.select('groups_users.*', 'users.email').order(created_at: :asc)
           result
         end
         render json: @response.to_json, status: :ok
@@ -24,11 +24,11 @@ class Api::V1::GruposController < Api::V1::BaseController
     end
   end
 
-  def new_grupo
-    if @usuario.present?
+  def new_group
+    if @user.present?
       begin
-        grupo = @usuario.grupos.create!(nome: params[:nome])
-        render json: grupo.grupos_usuarios.to_json, status: :ok
+        group = @user.groups.create!(nome: params[:nome])
+        render json: group.groups_users.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
       end
@@ -37,11 +37,11 @@ class Api::V1::GruposController < Api::V1::BaseController
     end
   end
 
-  def edit_grupo
-    if @usuario.present?
+  def edit_group
+    if @user.present?
       begin
-        grupo = @usuario.grupos.find(params[:id]).update(nome: params[:nome])
-        render json: grupo.to_json, status: :ok
+        group = @user.groups.find(params[:id]).update(nome: params[:nome])
+        render json: group.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
       end
@@ -50,10 +50,10 @@ class Api::V1::GruposController < Api::V1::BaseController
     end
   end
 
-  def destroy_grupo
-    if @usuario.present?
+  def destroy_group
+    if @user.present?
       begin
-        @usuario.grupos.find(params[:id]).destroy
+        @user.groups.find(params[:id]).destroy
         render json: {}, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
@@ -65,6 +65,6 @@ class Api::V1::GruposController < Api::V1::BaseController
 
   def authenticate_user
     tokens = params[:tokens]
-    @usuario = Usuario.find_by(token: tokens)
+    @user = User.find_by(token: tokens)
   end
 end

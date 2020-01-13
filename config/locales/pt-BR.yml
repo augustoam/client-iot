@@ -3,82 +3,82 @@ pt-BR:
   "no":                                 'Não'
   activerecord:
     models:
-      grupo:
-        one:                            'Grupo'
-        other:                          'Grupos'
-      automacao_grupo:
-        one:                            'Automação do Grupo'
-        other:                          'Automações dos Grupos'
-      automacao_grupo_condicao:
+      group:
+        one:                            'Group'
+        other:                          'Groups'
+      automacao_group:
+        one:                            'Automação do Group'
+        other:                          'Automações dos Groups'
+      automacao_group_condicao:
         one:                            'Condição'
         other:                          'Condições'
-      grupo_usuario:
-        one:                            'Grupo Usuário'
-        other:                          'Grupos Usuários'
-      usuario:
+      group_user:
+        one:                            'Group Usuário'
+        other:                          'Groups Usuários'
+      user:
         one:                            'Usuário'
         other:                          'Usuários'
-      ambiente:
-        one:                            'Ambiente'
-        other:                          'Ambientes'
-      componente:
-        one:                            'Componente'
-        other:                          'Componentes'
-      componente_propriedade:
-        one:                            'Componente Propriedade'
-        other:                          'Componentes Propriedades'
+      room:
+        one:                            'Room'
+        other:                          'Rooms'
+      device:
+        one:                            'Device'
+        other:                          'Devices'
+      device_propriedade:
+        one:                            'Device Propriedade'
+        other:                          'Devices Propriedades'
       comando_infra_vermelho:
         one:                            'Comando Infravermelho'
         other:                          'Comandos Infravermelhos'
-      controle:
-        one:                            'Controle'
-        other:                          'Controles'
-      componente_ambiente:
-        one:                            'Componente Ambiente'
-        other:                          'Componentes Ambiente'
-      fabricante:
-        one:                            'Fabricante'
-        other:                          'Fabricantes'
-      layout_controle:
-        one:                            'Layout de Controle'
-        other:                          'Layouts de Controles'
+      control:
+        one:                            'Control'
+        other:                          'Controls'
+      device_room:
+        one:                            'Device Room'
+        other:                          'Devices Room'
+      manufacturer:
+        one:                            'Manufacturer'
+        other:                          'Manufacturers'
+      layout_control:
+        one:                            'Layout de Control'
+        other:                          'Layouts de Controls'
     attributes:
-      usuario:
+      user:
         id:                             ID
         email:                          Email
         admin:                          Administrador
         created_at:                     Data Criação
-      grupo:
+      group:
         id:                             ID
         nome:                           Nome
         created_at:                     Data Criação
-      controle:
+      control:
         id:                             ID
         descricao:                      Descrição
         obs:                            Observação
         created_at:                     Data Criação
-      componente_ambiente:
+      device_room:
         id:                             ID
         descricao:                      Descrição
-      componente_propriedade:
+      device_propriedade:
         id:                             ID
         descricao:                      Descrição
         id_propriedade:                 ID Propriedade
         created_at:                     Data Criação
-      automacao_grupo_condicao:
+      automacao_group_condicao:
         tipo_condicao:
           one:                         Tipo de condição
           complete_manually:           Completado Manualmente
           timer:                       Timer
-          componente:                  Componente
-      automacao_grupo_acao:
+          device:                  Device
+      automacao_group_acao:
         tipo_acao:
           one:                         Tipo de ação
           run_automation:              Rodar Automação
           turn_on_off_automation:      Desligar/Ligar Automação
           send_notification:           Enviar Notificação
           delay:                       Delay
-          componente:                  Componente
+          device:                  Device
 
   views:
     actions:
@@ -102,7 +102,7 @@ pt-BR:
         change_my_password:             Atualizar senha
         new_password:                   Nova senha
         confirm_new_password:           Confirme sua senha
-  usuarios:
+  users:
     password_change:
       change_my_password:               'Atualizar senha'
       new_password:                     'Nova senha'

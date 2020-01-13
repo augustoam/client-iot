@@ -1,0 +1,21 @@
+<% breadcrumb :group, @group %>
+
+<div class="container-row">
+  <div class="row">
+    <b><%= Group.human_attribute_name(:id) %></b>
+    <%= @group.id %>
+  </div>
+  <div class="row">
+    <b><%= Group.human_attribute_name(:name) %></b>
+    <%= @group.name %>
+  </div>
+  <div class="row">
+    <b><%= Group.human_attribute_name(:created_at) %></b>
+    <%= ltime @group.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_groups_path %>
+    <%= link_no_icon_to_edit(edit_admin_group_path(@group))%>
+  </div>
+</div>

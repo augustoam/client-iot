@@ -4,8 +4,8 @@ class Api::V1::BaseController < ActionController::API
 
   before_action :set_session_token
 
-  def usuario_sessao
-      @usuario_sessao = Usuario.find_by(email: payload['email'])
+  def user_sessao
+      @user_sessao = User.find_by(email: payload['email'])
   end
 
   def set_session_token

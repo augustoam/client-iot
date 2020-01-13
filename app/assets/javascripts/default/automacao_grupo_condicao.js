@@ -4,11 +4,11 @@ $(document).on('turbolinks:load', function() {
     updateFormCondicao(false);
   })
 
-  $(".form_automacao_grupo_condicao").submit(function() {
+  $(".form_automacao_group_condicao").submit(function() {
     updateFormCondicao(true);
   })
-  $(".componente-condicao-select").change(function() {
-    updateComponentePropriedade($(this));
+  $(".device-condicao-select").change(function() {
+    updateDevicePropriedade($(this));
   })
 
 });
@@ -25,6 +25,6 @@ function updateFormCondicao(isSubmiting) {
       $div.toggle(ativo);
   }
 
-  processaDiv($(".turn-on-select, .repeat-select, .componente-condicao-select"), $.inArray(condicao, ["Timer"]) >= 0);
-  processaDiv($(".componente-condicao-select, .componente-propriedade-select, .value-set-select"), $.inArray(condicao, ["Componente"]) >= 0);
+  processaDiv($(".turn-on-select, .repeat-select, .device-condicao-select"), $.inArray(condicao, ["Timer"]) >= 0);
+  processaDiv($(".device-condicao-select, .device-propriedade-select, .value-set-select"), $.inArray(condicao, ["Device"]) >= 0);
 }

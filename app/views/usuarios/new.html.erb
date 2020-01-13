@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-  	<h3><%= action_new(@usuario) %> <%= singular_model_name_for(Usuario) %></h3>
+  	<h3><%= action_new(@user) %> <%= singular_model_name_for(User) %></h3>
   </div>
 
-  <%= simple_form_for @usuario do |f| %>
-    <%= f.hidden_field :grupo_id, value: params[:grupo_id] %>
+  <%= simple_form_for @user do |f| %>
+    <%= f.hidden_field :group_id, value: params[:group_id] %>
     <div class="row">
       <%= f.input :email, wrapper_html: { class: 'm12 s12' }  %>
     </div>
@@ -12,7 +12,7 @@
       <%= f.input :admin, as: :boolean, boolean_style: :inline, wrapper_html: {class:"i-checks m12 s12"} %>
     </div>
     <div class="row">
-      <%= link_icon_to_back grupo_usuarios_path(grupo_id: params[:grupo_id]) %>
+      <%= link_icon_to_back group_users_path(group_id: params[:group_id]) %>
       <%= save_button %>
     </div>
   <% end %>

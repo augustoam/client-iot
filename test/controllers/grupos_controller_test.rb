@@ -1,48 +1,48 @@
 require 'test_helper'
 
-class GruposControllerTest < ActionDispatch::IntegrationTest
+class GroupsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @grupo = grupos(:one)
+    @group = groups(:one)
   end
 
   test "should get index" do
-    get grupos_url
+    get groups_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_grupo_url
+    get new_group_url
     assert_response :success
   end
 
-  test "should create grupo" do
-    assert_difference('Grupo.count') do
-      post grupos_url, params: { grupo: { ativo: @grupo.ativo, nome: @grupo.nome } }
+  test "should create group" do
+    assert_difference('Group.count') do
+      post groups_url, params: { group: { ativo: @group.ativo, nome: @group.nome } }
     end
 
-    assert_redirected_to grupo_url(Grupo.last)
+    assert_redirected_to group_url(Group.last)
   end
 
-  test "should show grupo" do
-    get grupo_url(@grupo)
+  test "should show group" do
+    get group_url(@group)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_grupo_url(@grupo)
+    get edit_group_url(@group)
     assert_response :success
   end
 
-  test "should update grupo" do
-    patch grupo_url(@grupo), params: { grupo: { ativo: @grupo.ativo, nome: @grupo.nome } }
-    assert_redirected_to grupo_url(@grupo)
+  test "should update group" do
+    patch group_url(@group), params: { group: { ativo: @group.ativo, nome: @group.nome } }
+    assert_redirected_to group_url(@group)
   end
 
-  test "should destroy grupo" do
-    assert_difference('Grupo.count', -1) do
-      delete grupo_url(@grupo)
+  test "should destroy group" do
+    assert_difference('Group.count', -1) do
+      delete group_url(@group)
     end
 
-    assert_redirected_to grupos_url
+    assert_redirected_to groups_url
   end
 end

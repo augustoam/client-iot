@@ -1,14 +1,14 @@
-<% breadcrumb :tokens_notificacao_mobile, @usuario %>
+<% breadcrumb :tokens_notificacao_mobile, @user %>
 
 <div class="container-row">
-  <b><%= plural_model_name_for(TokenNotificacaoMobile) %></b>
+  <b><%= plural_model_name_for(TokenNotification) %></b>
   <div class="row">
     <table class="table">
       <thead>
         <tr>
           <th>ID</th>
-          <th><%= TokenNotificacaoMobile.human_attribute_name(:token) %></th>
-          <th><%= TokenNotificacaoMobile.human_attribute_name(:dt_criacao) %></th>
+          <th><%= TokenNotification.human_attribute_name(:token) %></th>
+          <th><%= TokenNotification.human_attribute_name(:dt_criacao) %></th>
           <th colspan="2"></th>
         </tr>
       </thead>
@@ -28,8 +28,8 @@
   </div>
 
   <div class="row">
-    <%= link_icon_to_back index_all_admin_usuarios_path %>
-    <%= link_icon_to_new(new_admin_usuario_token_notificacao_mobile_path, action_new(@tokens_notificacao_mobile)) %>
+    <%= link_icon_to_back index_all_admin_users_path %>
+    <%= link_icon_to_new(new_admin_user_token_notificacao_mobile_path, action_new(@tokens_notificacao_mobile)) %>
   </div>
 </div>
 

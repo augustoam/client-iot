@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin, @usuario], url: admin_usuario_form_path(@grupo, @usuario)) do |f| %>
+<%= simple_form_for([:admin, @user], url: admin_user_form_path(@group, @user)) do |f| %>
   <%= f.error_notification %>
 
   <div class="row">
@@ -9,10 +9,10 @@
   </div>
   
   <div class="row">
-    <% if @usuario.persisted? %>
-      <%= link_icon_to_back admin_grupo_usuario_path(@grupo, @usuario) %>
+    <% if @user.persisted? %>
+      <%= link_icon_to_back admin_group_user_path(@group, @user) %>
     <% else %>
-      <%= link_icon_to_back admin_grupo_usuarios_path(@grupo) %>
+      <%= link_icon_to_back admin_group_users_path(@group) %>
     <% end %>
     <%= save_button %>
   </div>

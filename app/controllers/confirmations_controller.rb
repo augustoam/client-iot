@@ -4,13 +4,13 @@ class ConfirmationsController < Devise::ConfirmationsController
       self.resource = resource_class.find_by(confirmation_token: params[:confirmation_token])
       if resource
         if resource.confirmed?
-          redirect_to new_usuario_session_path, alert: "Conta já confirmada"
+          redirect_to new_user_session_path, alert: "Conta já confirmada"
         end
       else
-        redirect_to new_usuario_session_path, alert: "Token de confirmação não encontrado"
+        redirect_to new_user_session_path, alert: "Token de confirmação não encontrado"
       end
     else
-      redirect_to new_usuario_session_path, alert: "Token de confirmação não encontrado "
+      redirect_to new_user_session_path, alert: "Token de confirmação não encontrado "
     end
   end
 

@@ -1,20 +1,20 @@
-class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
+class Api::V1::DevicesRoomController < Api::V1::BaseController
   before_action :authenticate_user
 
-  def get_componentes_ambiente
-    if @usuario.present?
+  def get_devices_room
+    if @user.present?
       begin
-        ambiente_grupo = AmbienteGrupo.find(params[:ambiente_grupo_id])
+        room_group = RoomGroup.find(params[:room_group_id])
 
-        @componente_ambiente = ambiente_grupo.componentes_ambiente.collect do |componente_ambiente|
-          result = componente_ambiente.as_json
-          result[:componente] = componente_ambiente.controle.componente.as_json
-          result[:controle] = componente_ambiente.controle.layout_controle.as_json
-          result[:comandos] = componente_ambiente.controle.comandos_infra_vermelhos.as_json
+        @device_room = room_group.devices_room.collect do |device_room|
+          result = device_room.as_json
+          result[:device] = device_room.control.device.as_json
+          result[:control] = device_room.control.layout_control.as_json
+          result[:comandos] = device_room.control.comandos_infra_vermelhos.as_json
           result
         end
 
-        render json: @componente_ambiente.to_json, status: :ok
+        render json: @device_room.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
       end
@@ -23,26 +23,26 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
     end
   end
 
-  def new_componente_ambiente
-    if @usuario.present?
+  def new_device_room
+    if @user.present?
 
       topico = params[:topico]
       if topico.include? 'synchouse'
         begin
-          componente = Componente.find_by_descricao(params[:componente_descricao])
-          if params[:componente_id].present?
-            controle = Controle.find(params[:componente_id])
+          device = Device.find_by_descricao(params[:device_descricao])
+          if params[:device_id].present?
+            control = Control.find(params[:device_id])
           else
-            controle = Controle.find_by(componente: componente)
+            control = Control.find_by(device: device)
           end
 
-          componente_ambiente = ComponenteAmbiente.create!(
-            descricao: componente.descricao,
+          device_room = DeviceRoom.create!(
+            descricao: device.descricao,
             topico: topico,
-            controle: controle,
-            ambiente_grupo_id: params[:ambiente_grupo_id],
-            identificador_componente: topico)
-          render json: componente_ambiente.to_json, status: :ok
+            control: control,
+            room_group_id: params[:room_group_id],
+            identificador_device: topico)
+          render json: device_room.to_json, status: :ok
         rescue => exception
           render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
         end
@@ -54,11 +54,11 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
     end
   end
 
-  def edit_componente_ambiente
-    if @usuario.present?
+  def edit_device_room
+    if @user.present?
       begin
-        componente_ambiente = ComponenteAmbiente.find(params[:componente_ambiente_id]).update(descricao: params[:descricao])
-        render json: componente_ambiente.to_json, status: :ok
+        device_room = DeviceRoom.find(params[:device_room_id]).update(descricao: params[:descricao])
+        render json: device_room.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
       end
@@ -67,10 +67,10 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
     end
   end
 
-  def destroy_componente_ambiente
-    if @usuario.present?
+  def destroy_device_room
+    if @user.present?
       begin
-        ComponenteAmbiente.find(params[:componente_ambiente_id]).destroy
+        DeviceRoom.find(params[:device_room_id]).destroy
         render json: {}, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
@@ -82,6 +82,6 @@ class Api::V1::ComponentesAmbienteController < Api::V1::BaseController
 
   def authenticate_user
     tokens = params[:tokens]
-    @usuario = Usuario.find_by(token: tokens)
+    @user = User.find_by(token: tokens)
   end
 end

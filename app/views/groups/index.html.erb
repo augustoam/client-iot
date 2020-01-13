@@ -1,0 +1,13 @@
+<ul class="collection with-header">
+  <li class="collection-header grey lighten-4">
+    <h5>
+      <b>Groups</b>
+    </h5>
+  </li>
+
+  <% @groups.each do |group| %>
+    <%= link_to group_users_path(group.group), class: "collection-item" do %>
+      <b class="black-text"><%= group.group.nome %></b>
+    <% end %>
+  <% end %>
+</ul>

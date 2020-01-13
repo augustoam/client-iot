@@ -1,0 +1,59 @@
+<% breadcrumb :controls %>
+
+<div class="row">
+  <%= search_form_for @q, url: admin_controls_path do |f| %>
+    <div class="col s12">
+      <div class="input-search">
+        <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
+          <i class="material-icons icon-search icon-hover">search</i>
+        <% end %>
+        <%= f.search_field :descricao_or_obs_cont, class: "form-control", placeholder: "Search Devices" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="container-row">
+  <b><%= plural_model_name_for(Control) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= Control.human_attribute_name(:id) %></th>
+          <th><%= Control.human_attribute_name(:descricao) %></th>
+          <th><%= Device.human_attribute_name(:layout_control) %></th>
+          <th><%= Device.human_attribute_name(:device) %></th>
+          <th><%= Control.human_attribute_name(:manufacturer) %></th>
+          <th><%= Control.human_attribute_name(:created_at) %></th>
+          <th colspan="4"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @controls.each do |control| %>
+
+          <tr data-href="<%= admin_control_path(control) %>">
+            <td><%= control.id %></td>
+            <td><%= control.descricao %></td>
+            <td><%= control.layout_control.descricao %></td>
+            <td><%= control.device.descricao %></td>
+            <td><%= control.manufacturer %></td>
+            <td><%= ltime control.created_at %></td>
+            <td><%= link_icon_to_edit(edit_admin_control_path(control))%></td>
+            <td><%= link_icon_to_destroy(admin_control_path(control)) %></td>
+            <td><%= link_to 'Comandos', admin_control_control_comandos_path(control) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_home_admin_index_path %>
+    <%= link_icon_to_new(new_admin_control_path, action_new(@controls)) %>
+  </div>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @controls_devices, renderer: MaterializePagination::Rails %>
+</div>

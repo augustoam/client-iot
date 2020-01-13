@@ -4,31 +4,31 @@ unless Rails.env.test?
     Admin.create(email: 'admin@admin.com', password: 'amendoim')
   end
 
-  if Usuario.count.zero?
-    usuario = Usuario.create(email: 'usuario@usuario.com', password: 'amendoim', admin: 'true')
-    usuario.confirm
+  if User.count.zero?
+    user = User.create(email: 'user@user.com', password: 'amendoim', admin: 'true')
+    user.confirm
   end
 
-  fabricante = Fabricante.create(descricao: 'Samsung') if Fabricante.count.zero?
+  # manufacturer = Manufacturer.create(descricao: 'Samsung') if Manufacturer.count.zero?
 
-  if Componente.count.zero?
-    componente1 = Componente.create(descricao: 'SyncRelay')
-    componente2 = Componente.create(descricao: 'SyncInfra')
-    componente3 = Componente.create(descricao: 'SyncWeather')
-    componente4 = Componente.create(descricao: 'SyncPresence')
-  end
+  # if Device.count.zero?
+  #   device1 = Device.create(descricao: 'SyncRelay')
+  #   device2 = Device.create(descricao: 'SyncInfra')
+  #   device3 = Device.create(descricao: 'SyncWeather')
+  #   device4 = Device.create(descricao: 'SyncPresence')
+  # end
 
-  if LayoutControle.count.zero?
-    layout1 = LayoutControle.create(descricao: 'nenhum',          tipo_layout: 'nenhum')
-    layout2 = LayoutControle.create(descricao: 'Televisão',       tipo_layout: 'televisao')
-    layout3 = LayoutControle.create(descricao: 'Ar Condicionado', tipo_layout: 'arcondicionado')
-    layout4 = LayoutControle.create(descricao: 'Home Teather',    tipo_layout: 'hometeather')
-  end
+  # if ControlLayout.count.zero?
+  #   layout1 = ControlLayout.create(descricao: 'nenhum',          tipo_layout: 'nenhum')
+  #   layout2 = ControlLayout.create(descricao: 'Televisão',       tipo_layout: 'televisao')
+  #   layout3 = ControlLayout.create(descricao: 'Ar Condicionado', tipo_layout: 'arcondicionado')
+  #   layout4 = ControlLayout.create(descricao: 'Home Teather',    tipo_layout: 'hometeather')
+  # end
 
-  if Controle.count.zero?
-    controle1 = Controle.create(descricao: 'Nenhum',          fabricante: fabricante, componente: componente1, layout_controle: layout1)
-    controle2 = Controle.create(descricao: 'Televisao',       fabricante: fabricante, componente: componente2, layout_controle: layout2)
-    controle3 = Controle.create(descricao: 'Ar Condicionado', fabricante: fabricante, componente: componente2, layout_controle: layout3)
-    controle3 = Controle.create(descricao: 'Home Teather',    fabricante: fabricante, componente: componente2, layout_controle: layout4)
-  end
+  # if Control.count.zero?
+  #   control1 = Control.create(descricao: 'Nenhum',          manufacturer: manufacturer, device: device1, layout_control: layout1)
+  #   control2 = Control.create(descricao: 'Televisao',       manufacturer: manufacturer, device: device2, layout_control: layout2)
+  #   control3 = Control.create(descricao: 'Ar Condicionado', manufacturer: manufacturer, device: device2, layout_control: layout3)
+  #   control3 = Control.create(descricao: 'Home Teather',    manufacturer: manufacturer, device: device2, layout_control: layout4)
+  # end
 end

@@ -1,14 +1,14 @@
-<% @grupos_usuario.each do |grupo_usuario| %>
+<% @groups_user.each do |group_user| %>
   <div class="row">
-    <div class="center-align white-text descricao-grupo" ><b><%= grupo_usuario.grupo.nome %></b></div>
-    <% grupo_usuario.grupo.ambientes_grupo.each do |ambiente_grupo| %>
-      <% if ambiente_grupo.visivel %>
+    <div class="center-align white-text descricao-group" ><b><%= group_user.group.nome %></b></div>
+    <% group_user.group.rooms_group.each do |room_group| %>
+      <% if room_group.visivel %>
         <div class="col s6 m4">
-          <div class="card-ambiente" data-href="<%= grupo_ambiente_grupo_componentes_ambiente_path(grupo_usuario, ambiente_grupo) %>">
+          <div class="card-room" data-href="<%= group_room_group_devices_room_path(group_user, room_group) %>">
             <div class="center-align white-text">
-              <i class="large material-icons"><%= ambiente_grupo.icone %></i>
+              <i class="large material-icons"><%= room_group.icone %></i>
               <p>
-                <b><%= ambiente_grupo.nome %></b>
+                <b><%= room_group.nome %></b>
               </p>
             </div>
           </div>

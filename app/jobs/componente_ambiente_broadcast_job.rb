@@ -1,14 +1,14 @@
-class ComponenteAmbienteBroadcastJob < ApplicationJob
+class DeviceRoomBroadcastJob < ApplicationJob
   queue_as :critical
 
-  def perform(componente_ambiente)
-    ActionCable.server.broadcast 'componente_ambiente_channel', componente_ambiente: render_componente_ambiente(componente_ambiente)
+  def perform(device_room)
+    ActionCable.server.broadcast 'device_room_channel', device_room: render_device_room(device_room)
   end
 
   private
 
-  def render_componente_ambiente(componente_ambiente)
-    ApplicationController.renderer.render(partial: "componentes_ambiente/#{componente_ambiente.componente.layout_controle.descricao.downcase}",
-                                          locals: { componente_ambiente: componente_ambiente })
+  def render_device_room(device_room)
+    ApplicationController.renderer.render(partial: "devices_room/#{device_room.device.layout_control.descricao.downcase}",
+                                          locals: { device_room: device_room })
   end
 end

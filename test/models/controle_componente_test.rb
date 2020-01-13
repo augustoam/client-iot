@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ControleComponenteTest < ActiveSupport::TestCase
+class ControlDeviceTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

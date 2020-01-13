@@ -1,0 +1,42 @@
+<%= simple_form_for([:admin, @automacao_group_acao], url: admin_automacao_group_acao_form_path(@automacao_group, @automacao_group_acao), input_html: { class: 'form_automacao_group_acao' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <%= f.input :tipo_acao,
+      wrapper_html: { class: 'm12 s12', id: 'tipo-acao-select' },
+      collection: tipo_acao_keys %>
+  </div>
+
+  <div class="row">
+    <%= f.input :delay_time, wrapper_html: { class: 'm12 s12 delay-time-select' } %>
+  </div>
+
+  <div class="row">
+    <%= f.association :run_automacao, collection: automacoes_group(@automacao_group.group), wrapper_html: { class: 'm12 s12 run-automacao-select' } %>
+  </div>
+
+  <div class="row">
+    <%= f.association :turn_on_off_automation, collection: automacoes_group(@automacao_group.group), wrapper_html: { class: 'm12 s12 turn-on-off-automation-select' } %>
+  </div>
+
+  <div class="row">
+    <%= f.association :device_room, collection: devices_rooms(@automacao_group.group.rooms_group), wrapper_html: { class: 'm12 s12 device-acao-select' } %>
+  </div>
+
+  <div class="row">
+    <%= f.association :control_comando, collection: control_comandos, wrapper_html: { class: 'm12 s12 device-propriedade-acao-select' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :turn_on_off, collection: [['On', 'on'],['Off', 'off']], wrapper_html: { class: 'm12 s12 turn-on-off-select' } %>
+  </div>
+
+  <div class="row">
+    <% if @automacao_group_acao.persisted? %>
+      <%= link_icon_to_back admin_automacao_group_acao_path(@automacao_group_acao) %>
+    <% else %>
+      <%= link_icon_to_back admin_automacao_group_automacoes_group_acoes_path(@automacao_group) %>
+    <% end %>
+    <%= save_button %>
+  </div>
+<% end %>

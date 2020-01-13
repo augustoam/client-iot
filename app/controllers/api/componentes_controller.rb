@@ -1,17 +1,17 @@
-class Api::ComponentesController < ActionController::API
+class Api::DevicesController < ActionController::API
   include MqttBroker
 
   def publish
-    componente = ComponenteAmbiente.find(params[:componente_ambiente])
+    device = DeviceRoom.find(params[:device_room])
     if params[:acao].include? "off" or params[:acao].include? "on"
       if params[:acao] == 'power-off'
         estado = false
       else
         estado = true
       end
-      componente.update(estado: estado)
+      device.update(estado: estado)
     end
 
-    publish_mqtt(componente.topico, params[:acao])
+    publish_mqtt(device.topico, params[:acao])
   end
 end

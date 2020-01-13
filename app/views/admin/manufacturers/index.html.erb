@@ -1,0 +1,49 @@
+<% breadcrumb :manufacturers %>
+
+<div class="row">
+  <%= search_form_for @q, url: admin_manufacturers_path do |f| %>
+    <div class="col s12">
+      <div class="input-search">
+        <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
+          <i class="material-icons icon-search icon-hover">search</i>
+        <% end %>
+        <%= f.search_field :name_cont, class: "form-control", placeholder: "Search Fabricants" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="container-row">
+  <b><%= plural_model_name_for(Group) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= Manufacturer.human_attribute_name(:id) %></th>
+          <th><%= Manufacturer.human_attribute_name(:name) %></th>
+          <th><%= Manufacturer.human_attribute_name(:created_at) %></th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @manufacturers.each do |manufacturer| %>
+          <tr data-href="<%= admin_manufacturer_path(manufacturer) %>">
+            <td><%= manufacturer.id %></td>
+            <td><%= manufacturer.name %></td>
+            <td><%= ltime manufacturer.created_at %></td>
+            <td><%= link_icon_to_edit(edit_admin_manufacturer_path(manufacturer))%></td>
+            <td><%= link_icon_to_destroy(admin_manufacturer_path(manufacturer)) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <%= link_icon_to_back admin_home_admin_index_path %>
+    <%= link_icon_to_new(new_admin_manufacturer_path, action_new(@manufacturers)) %>
+  </div>
+</div>

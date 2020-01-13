@@ -1,7 +1,7 @@
-<% breadcrumb :componentes_ambiente, @ambiente_grupo %>
+<% breadcrumb :devices_room, @room_group %>
 
 <div class="row">
-  <%= search_form_for @q, url: admin_ambiente_grupo_componentes_ambiente_path do |f| %>
+  <%= search_form_for @q, url: admin_room_group_devices_room_path do |f| %>
     <div class="col s12">
       <div class="input-search">
         <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
@@ -14,34 +14,34 @@
 </div>
 
 <div class="container-row">
-  <b><%= plural_model_name_for(ComponenteAmbiente) %></b>
+  <b><%= plural_model_name_for(DeviceRoom) %></b>
   <div class="row">
     <table class="table">
       <thead>
         <tr>
-          <th><%= ComponenteAmbiente.human_attribute_name(:id) %></th>
-          <th><%= ComponenteAmbiente.human_attribute_name(:descricao) %></th>
-          <th><%= ComponenteAmbiente.human_attribute_name(:topico) %></th>
-          <th><%= ComponenteAmbiente.human_attribute_name(:identificador_componente) %></th>
-          <th><%= ComponenteAmbiente.human_attribute_name(:controle) %></th>
-          <th><%= ComponenteAmbiente.human_attribute_name(:componente) %></th>
-          <th><%= ComponenteAmbiente.human_attribute_name(:created_at) %></th>
+          <th><%= DeviceRoom.human_attribute_name(:id) %></th>
+          <th><%= DeviceRoom.human_attribute_name(:descricao) %></th>
+          <th><%= DeviceRoom.human_attribute_name(:topico) %></th>
+          <th><%= DeviceRoom.human_attribute_name(:identificador_device) %></th>
+          <th><%= DeviceRoom.human_attribute_name(:control) %></th>
+          <th><%= DeviceRoom.human_attribute_name(:device) %></th>
+          <th><%= DeviceRoom.human_attribute_name(:created_at) %></th>
           <th colspan="2"></th>
         </tr>
       </thead>
 
       <tbody>
-        <% @componentes_ambiente.each do |componente_ambiente| %>
-          <tr data-href="<%= admin_componente_ambiente_path(componente_ambiente) %>">
-            <td><%= componente_ambiente.id %></td>
-            <td><%= componente_ambiente.descricao %></td>
-            <td><%= componente_ambiente.topico %></td>
-            <td><%= componente_ambiente.identificador_componente %></td>
-            <td><%= componente_ambiente.controle.descricao %></td>
-            <td><%= componente_ambiente.controle.componente.descricao %></td>
-            <td><%= ltime componente_ambiente.created_at %></td>
-            <td><%= link_icon_to_edit(edit_admin_componente_ambiente_path(componente_ambiente))%></td>
-            <td><%= link_icon_to_destroy(admin_componente_ambiente_path(componente_ambiente)) %></td>
+        <% @devices_room.each do |device_room| %>
+          <tr data-href="<%= admin_device_room_path(device_room) %>">
+            <td><%= device_room.id %></td>
+            <td><%= device_room.descricao %></td>
+            <td><%= device_room.topico %></td>
+            <td><%= device_room.identificador_device %></td>
+            <td><%= device_room.control.descricao %></td>
+            <td><%= device_room.control.device.descricao %></td>
+            <td><%= ltime device_room.created_at %></td>
+            <td><%= link_icon_to_edit(edit_admin_device_room_path(device_room))%></td>
+            <td><%= link_icon_to_destroy(admin_device_room_path(device_room)) %></td>
           </tr>
         <% end %>
       </tbody>
@@ -49,11 +49,11 @@
   </div>
 
   <div class="row">
-    <%= link_icon_to_back admin_grupo_ambientes_grupo_path(@ambiente_grupo.grupo) %>
-    <%= link_icon_to_new(new_admin_ambiente_grupo_componente_ambiente_path(@ambiente_grupo), action_new(@componentes_ambiente)) %>
+    <%= link_icon_to_back admin_group_rooms_group_path(@room_group.group) %>
+    <%= link_icon_to_new(new_admin_room_group_device_room_path(@room_group), action_new(@devices_room)) %>
   </div>
 </div>
 
 <div class="center-align">
-  <%= will_paginate @componentes_ambiente, renderer: MaterializePagination::Rails %>
+  <%= will_paginate @devices_room, renderer: MaterializePagination::Rails %>
 </div>

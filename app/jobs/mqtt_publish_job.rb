@@ -3,8 +3,8 @@ class MqttPublishJob < ApplicationJob
 
   queue_as :critical
 
-  def perform(automacao_grupo_id, topic = 'COMPLETE_SCHEDULE')
-    p "AUTOMACAO EXECUTADA -> AUTOMACAO_GRUPO_ID: #{automacao_grupo_id}"
+  def perform(automacao_group_id, topic = 'COMPLETE_SCHEDULE')
+    p "AUTOMACAO EXECUTADA -> AUTOMACAO_GRUPO_ID: #{automacao_group_id}"
 
     uri = URI.parse ENV['CLOUDMQTT_URL']
       conn_opts = {
@@ -15,7 +15,7 @@ class MqttPublishJob < ApplicationJob
       }
 
     msg = {
-      automacao_grupo_id: automacao_grupo_id
+      automacao_group_id: automacao_group_id
     }.to_json
 
     MQTT::Client.connect(conn_opts) do |_client|

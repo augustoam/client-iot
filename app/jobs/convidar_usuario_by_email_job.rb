@@ -1,9 +1,9 @@
-class ConvidarUsuarioByEmailJob < ApplicationJob
+class ConvidarUserByEmailJob < ApplicationJob
 
   queue_as :default
 
-  def perform(usuario)
-    Devise::Mailer.confirmation_instructions(usuario, usuario.confirmation_token).deliver
+  def perform(user)
+    Devise::Mailer.confirmation_instructions(user, user.confirmation_token).deliver
   end
 
 end

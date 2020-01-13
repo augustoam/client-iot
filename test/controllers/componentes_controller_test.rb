@@ -1,48 +1,48 @@
 require 'test_helper'
 
-class ComponentesControllerTest < ActionDispatch::IntegrationTest
+class DevicesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @componente = componentes(:one)
+    @device = devices(:one)
   end
 
   test "should get index" do
-    get componentes_url
+    get devices_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_componente_url
+    get new_device_url
     assert_response :success
   end
 
-  test "should create componente" do
-    assert_difference('Componente.count') do
-      post componentes_url, params: { componente: { ambiente_id: @componente.ambiente_id, descricao: @componente.descricao, topico: @componente.topico } }
+  test "should create device" do
+    assert_difference('Device.count') do
+      post devices_url, params: { device: { room_id: @device.room_id, descricao: @device.descricao, topico: @device.topico } }
     end
 
-    assert_redirected_to componente_url(Componente.last)
+    assert_redirected_to device_url(Device.last)
   end
 
-  test "should show componente" do
-    get componente_url(@componente)
+  test "should show device" do
+    get device_url(@device)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_componente_url(@componente)
+    get edit_device_url(@device)
     assert_response :success
   end
 
-  test "should update componente" do
-    patch componente_url(@componente), params: { componente: { ambiente_id: @componente.ambiente_id, descricao: @componente.descricao, topico: @componente.topico } }
-    assert_redirected_to componente_url(@componente)
+  test "should update device" do
+    patch device_url(@device), params: { device: { room_id: @device.room_id, descricao: @device.descricao, topico: @device.topico } }
+    assert_redirected_to device_url(@device)
   end
 
-  test "should destroy componente" do
-    assert_difference('Componente.count', -1) do
-      delete componente_url(@componente)
+  test "should destroy device" do
+    assert_difference('Device.count', -1) do
+      delete device_url(@device)
     end
 
-    assert_redirected_to componentes_url
+    assert_redirected_to devices_url
   end
 end

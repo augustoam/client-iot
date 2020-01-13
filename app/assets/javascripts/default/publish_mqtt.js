@@ -12,23 +12,23 @@ $(document).on('turbolinks:load', function() {
 
 function publishMqttInfravermelho(element) {
   var elemento = document.getElementById(element[0].id);
-  var componente_ambiente = elemento.getAttribute("data-componente-ambiente");
+  var device_room = elemento.getAttribute("data-device-room");
   var acao = elemento.getAttribute("data-acao");
 
   var vData = {
     acao: acao,
-    componente_ambiente: componente_ambiente
+    device_room: device_room
   };
-  console.log('publish componente:' + componente_ambiente + ' acao:' + acao);
+  console.log('publish device:' + device_room + ' acao:' + acao);
   $.post({
     data: vData,
-    url: "/api/componentes/publish"
+    url: "/api/devices/publish"
   });
 }
 
 function publishMqtt(element) {
-  var elemento = element[0].getElementsByClassName('componente-ambiente-publish');
-  var componente_ambiente = elemento[0].getAttribute("data-componente-ambiente");
+  var elemento = element[0].getElementsByClassName('device-room-publish');
+  var device_room = elemento[0].getAttribute("data-device-room");
   var acao = '';
 
   if ((elemento[0].id).indexOf('switch') !== -1) {
@@ -41,12 +41,12 @@ function publishMqtt(element) {
 
   var vData = {
     acao: acao,
-    componente_ambiente: componente_ambiente
+    device_room: device_room
   };
-  console.log('publish componente:' + componente_ambiente + ' acao:' + acao);
+  console.log('publish device:' + device_room + ' acao:' + acao);
   $.post({
     data: vData,
-    url: "/api/componentes/publish"
+    url: "/api/devices/publish"
   });
 
 }

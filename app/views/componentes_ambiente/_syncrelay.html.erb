@@ -1,17 +1,17 @@
-<div "componente-<%= componente_ambiente.id %>" class="componente_ambiente luz">
-  <div class="z-depth-5 white-text card-componente grey darken-4 valign-wrapper">
+<div "device-<%= device_room.id %>" class="device_room luz">
+  <div class="z-depth-5 white-text card-device grey darken-4 valign-wrapper">
     <div class="col s12 center-align" style="margin-top:2px;">
-      <b><%= componente_ambiente.descricao %></b>
+      <b><%= device_room.descricao %></b>
     </div>
 
     <div class="col s12 center-align">
       <div class="switch">
         <label style="font-size:9px;">
           Off
-          <% if componente_ambiente.estado %>
-            <input type="checkbox" id="switch-<%= componente_ambiente.descricao %><%= componente_ambiente.id %>" class="componente-ambiente-publish" data-componente-ambiente="<%=componente_ambiente.id%>" checked="checked">
+          <% if device_room.estado %>
+            <input type="checkbox" id="switch-<%= device_room.descricao %><%= device_room.id %>" class="device-room-publish" data-device-room="<%=device_room.id%>" checked="checked">
           <% else %>
-            <input type="checkbox" id="switch-<%= componente_ambiente.descricao %><%= componente_ambiente.id %>" class="componente-ambiente-publish" data-componente-ambiente="<%=componente_ambiente.id%>" unchecked="unchecked">
+            <input type="checkbox" id="switch-<%= device_room.descricao %><%= device_room.id %>" class="device-room-publish" data-device-room="<%=device_room.id%>" unchecked="unchecked">
           <% end %>
           <span class="lever"></span>
           On

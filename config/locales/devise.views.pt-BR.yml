@@ -1,7 +1,7 @@
 pt-BR:
   devise:
     registrations:
-      usuario:
+      user:
         signed_up_invalid: Este email não é válido para cadastro. Verifique antes de continuar.
     sessions:
       new:
@@ -13,7 +13,7 @@ pt-BR:
           attributes:
             identificador_tarefa:
               taken: Erro
-        usuario:
+        user:
           attributes:
             email:
               taken: este email já esta cadastrado!
@@ -36,7 +36,7 @@ pt-BR:
         unlock_token: Desbloquear token
     models:
       user: Usuário
-  usuarios:
+  users:
     devise:
       confirmations:
         confirmed: A sua conta foi confirmada com sucesso.

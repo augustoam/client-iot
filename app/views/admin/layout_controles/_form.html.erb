@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin, @layout_controle]) do |f| %>
+<%= simple_form_for([:admin, @layout_control]) do |f| %>
 <%= f.error_notification %>
 
 <div class="row">
@@ -14,10 +14,10 @@
 </div>
 
 <div class="row">
-  <% if @layout_controle.persisted? %>
-    <%= link_icon_to_back admin_layout_controle_path(@layout_controle) %>
+  <% if @layout_control.persisted? %>
+    <%= link_icon_to_back admin_layout_control_path(@layout_control) %>
   <% else %>
-    <%= link_icon_to_back admin_layout_controles_path %>
+    <%= link_icon_to_back admin_layout_controls_path %>
   <% end %>
   <%= save_button %>
 </div>

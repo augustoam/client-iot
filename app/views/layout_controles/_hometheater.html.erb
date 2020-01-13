@@ -5,11 +5,11 @@
       <%= link_to '', class: 'z-depth-5 btn-floating btn-medium grey lighten-3 botao-infra-vermelho',
                       id: "comando-infra-vermelho-power",
                       data: {
-                             componente: componente.id,
-                             topico: topico_comando('desligar', componente),
-                             acao: "power-" + estado_componente(componente)
+                             device: device.id,
+                             topico: topico_comando('desligar', device),
+                             acao: "power-" + estado_device(device)
                             } do %>
-        <% if componente.estado %>
+        <% if device.estado %>
           <i class="small material-icons green-text">power_settings_new</i>
         <% else %>
            <i class="small material-icons red-text">power_settings_new</i>
@@ -24,8 +24,8 @@
       <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
                       id: "comando-infra-vermelho-usb",
                       data: {
-                             componente: componente.id,
-                             topico: topico_comando('usb', componente),
+                             device: device.id,
+                             topico: topico_comando('usb', device),
                              acao: "usb"
                             } do %>
          <i style="font-size: 12px;">USB</i>
@@ -37,8 +37,8 @@
         <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
                         id: "comando-infra-vermelho-usb",
                         data: {
-                               componente: componente.id,
-                               topico: topico_comando('radio', componente),
+                               device: device.id,
+                               topico: topico_comando('radio', device),
                                acao: "radio"
                               } do %>
            <i style="font-size: 12px;">RADIO</i>
@@ -50,8 +50,8 @@
         <%= link_to '', class: 'z-depth-5 btn-floating btn-samll waves-effect waves-light grey botao-infra-vermelho',
                         id: "comando-infra-vermelho-usb",
                         data: {
-                               componente: componente.id,
-                               topico: topico_comando('aux', componente),
+                               device: device.id,
+                               topico: topico_comando('aux', device),
                                acao: "aux"
                               } do %>
            <i style="font-size: 12px;">AUX</i>
@@ -63,8 +63,8 @@
         <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
                         id: "comando-infra-vermelho-usb",
                         data: {
-                               componente: componente.id,
-                               topico: topico_comando('hdmi', componente),
+                               device: device.id,
+                               topico: topico_comando('hdmi', device),
                                acao: "hdmi"
                               } do %>
            <i style="font-size: 12px;">HDMI</i>
@@ -78,8 +78,8 @@
         <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
                         id: "comando-infra-vermelho-volume-down",
                         data: {
-                               componente: componente.id,
-                               topico: topico_comando('volume-down', componente),
+                               device: device.id,
+                               topico: topico_comando('volume-down', device),
                                acao: "volume-down"
                               } do %>
            <i class="large material-icons">arrow_upward</i>
@@ -95,8 +95,8 @@
           <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
                           id: "comando-infra-vermelho-canal-down",
                           data: {
-                                 componente: componente.id,
-                                 topico: topico_comando('canal-down', componente),
+                                 device: device.id,
+                                 topico: topico_comando('canal-down', device),
                                  acao: "canal-down"
                                 } do %>
              <i class="large material-icons">arrow_back</i>
@@ -108,8 +108,8 @@
           <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
                           id: "comando-infra-vermelho-canal-down",
                           data: {
-                                 componente: componente.id,
-                                 topico: topico_comando('canal-down', componente),
+                                 device: device.id,
+                                 topico: topico_comando('canal-down', device),
                                  acao: "canal-down"
                                 } do %>
              <i class="large material-icons">check</i>
@@ -121,8 +121,8 @@
           <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
                           id: "comando-infra-vermelho-canal-down",
                           data: {
-                                 componente: componente.id,
-                                 topico: topico_comando('canal-down', componente),
+                                 device: device.id,
+                                 topico: topico_comando('canal-down', device),
                                  acao: "canal-down"
                                 } do %>
              <i class="large material-icons">arrow_forward</i>
@@ -138,8 +138,8 @@
         <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
                         id: "comando-infra-vermelho-volume-down",
                         data: {
-                               componente: componente.id,
-                               topico: topico_comando('volume-down', componente),
+                               device: device.id,
+                               topico: topico_comando('volume-down', device),
                                acao: "volume-down"
                               } do %>
            <i class="large material-icons">arrow_downward</i>
@@ -153,8 +153,8 @@
         <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light lighten-3 grey botao-infra-vermelho',
                         id: "comando-infra-vermelho-faixa-anterior",
                         data: {
-                               componente: componente.id,
-                               topico: topico_comando('faixa-anterior', componente),
+                               device: device.id,
+                               topico: topico_comando('faixa-anterior', device),
                                acao: "faixa-anterior"
                               } do %>
            <i class="large material-icons black-text">skip_previous</i>
@@ -166,11 +166,11 @@
         <%= link_to '', class: 'z-depth-5 btn-floating btn-large lighten-3 grey botao-infra-vermelho',
                         id: "comando-infra-vermelho-play-pause",
                         data: {
-                               componente: componente.id,
-                               topico: topico_comando('play-pause', componente),
+                               device: device.id,
+                               topico: topico_comando('play-pause', device),
                                acao: "play-pause"
                               } do %>
-          <% if componente.estado %>
+          <% if device.estado %>
             <i class="small material-icons black-text" style="margin-top: 4px;">play_arrow</i>
           <% else %>
              <i class="small material-icons black-text" style="margin-top: 4px;">pause</i>
@@ -183,8 +183,8 @@
         <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light lighten-3 grey botao-infra-vermelho',
                         id: "comando-infra-vermelho-proxima-faixa",
                         data: {
-                               componente: componente.id,
-                               topico: topico_comando('proxima-faixa', componente),
+                               device: device.id,
+                               topico: topico_comando('proxima-faixa', device),
                                acao: "proxima-faixa"
                               } do %>
            <i class="large material-icons black-text">skip_next</i>
@@ -198,8 +198,8 @@
         <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light lighten-3 grey botao-infra-vermelho',
                         id: "comando-infra-vermelho-mute",
                         data: {
-                               componente: componente.id,
-                               topico: topico_comando('mute', componente),
+                               device: device.id,
+                               topico: topico_comando('mute', device),
                                acao: "mute"
                               } do %>
            <i class="large material-icons black-text">volume_off</i>
@@ -211,8 +211,8 @@
         <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light lighten-3 grey botao-infra-vermelho',
                         id: "comando-infra-vermelho-stop",
                         data: {
-                               componente: componente.id,
-                               topico: topico_comando('stop', componente),
+                               device: device.id,
+                               topico: topico_comando('stop', device),
                                acao: "stop"
                               } do %>
            <i class="large material-icons black-text">stop</i>
@@ -227,8 +227,8 @@
       <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 botao-infra-vermelho',
                       id: "comando-infra-vermelho-volume-up",
                       data: {
-                             componente: componente.id,
-                             topico: topico_comando('volume-up', componente),
+                             device: device.id,
+                             topico: topico_comando('volume-up', device),
                              acao: "volume-up"
                             } do %>
          <i class="large material-icons black-text" style="margin-top: 4px;">add</i>
@@ -240,8 +240,8 @@
       <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey botao-infra-vermelho',
                       id: "comando-infra-vermelho-canal-down",
                       data: {
-                             componente: componente.id,
-                             topico: topico_comando('canal-down', componente),
+                             device: device.id,
+                             topico: topico_comando('canal-down', device),
                              acao: "canal-down"
                             } do %>
          <i class="material-icons">apps</i>
@@ -253,8 +253,8 @@
       <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 botao-infra-vermelho',
                       id: "comando-infra-vermelho-volume-down",
                       data: {
-                             componente: componente.id,
-                             topico: topico_comando('volume-down', componente),
+                             device: device.id,
+                             topico: topico_comando('volume-down', device),
                              acao: "volume-down"
                             } do %>
          <i class="large material-icons black-text" style="margin-top: 4px;">remove</i>

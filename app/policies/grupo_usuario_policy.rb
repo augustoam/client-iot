@@ -1,10 +1,10 @@
-class GrupoUsuarioPolicy < ApplicationPolicy
+class GroupUserPolicy < ApplicationPolicy
   def index?
-    usuario.admin?
+    user.admin?
   end
   # 
   # def show?
-  #   current_usuario.grupos_usuarios.incluse? record
+  #   current_user.groups_users.incluse? record
   # end
 
   class Scope < Scope

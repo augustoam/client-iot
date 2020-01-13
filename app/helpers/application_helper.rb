@@ -1,7 +1,7 @@
 module ApplicationHelper
 
-  def grupos_por_usuario
-    return GrupoUsuario.where(usuario_id: current_usuario)
+  def groups_por_user
+    return GroupUser.where(user_id: current_user)
   end
 
   def link_no_icon_to_edit(path, options = {})

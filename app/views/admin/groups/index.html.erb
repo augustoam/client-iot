@@ -1,0 +1,54 @@
+<% breadcrumb :groups %>
+
+<div class="row">
+  <%= search_form_for @q, url: admin_groups_path do |f| %>
+    <div class="col s12">
+      <div class="input-search">
+        <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
+          <i class="material-icons icon-search icon-hover">search</i>
+        <% end %>
+        <%= f.search_field :name_cont, class: "form-control", placeholder: "Pesquisar Groupos" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="container-row">
+  <b><%= plural_model_name_for(Group) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= Group.human_attribute_name(:id) %></th>
+          <th><%= Group.human_attribute_name(:name) %></th>
+          <th><%= Group.human_attribute_name(:created_at) %></th>
+          <th colspan="5"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr data-href="<%= admin_group_path(group) %>">
+            <td><%= group.id %></td>
+            <td><%= group.name %></td>
+            <td><%= ltime group.created_at %></td>
+            <td><%= link_to plural_model_name_for(User), admin_group_users_path(group)%>
+            <td><%= link_to plural_model_name_for(GroupRoom), admin_group_group_rooms_path(group) %>
+            <td><%= link_to plural_model_name_for(UserAutomation), admin_group_user_automations_path(group)%>
+            <td><%= link_icon_to_edit(edit_admin_group_path(group))%></td>
+            <td><%= link_icon_to_destroy(admin_group_path(group)) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_home_admin_index_path %>
+    <%= link_icon_to_new(new_admin_group_path, action_new(@groups)) %>
+  </div>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @groups, renderer: MaterializePagination::Rails %>
+</div>

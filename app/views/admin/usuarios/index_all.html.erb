@@ -1,7 +1,7 @@
-<% breadcrumb :usuarios_all %>
+<% breadcrumb :users_all %>
 
 <div class="row">
-  <%= search_form_for @q, url: index_all_admin_usuarios_path do |f| %>
+  <%= search_form_for @q, url: index_all_admin_users_path do |f| %>
     <div class="col s12">
       <div class="input-search">
         <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
@@ -14,24 +14,24 @@
 </div>
 
 <div class="container-row">
-  <b><%= plural_model_name_for(Usuario) %></b>
+  <b><%= plural_model_name_for(User) %></b>
   <div class="row">
     <table class="table">
       <thead>
         <tr>
-          <th><%= Usuario.human_attribute_name(:id) %></th>
-          <th><%= Usuario.human_attribute_name(:email) %></th>
-          <th><%= Usuario.human_attribute_name(:created_at) %></th>
+          <th><%= User.human_attribute_name(:id) %></th>
+          <th><%= User.human_attribute_name(:email) %></th>
+          <th><%= User.human_attribute_name(:created_at) %></th>
           <th colspan="1"></th>
         </tr>
       </thead>
 
       <tbody>
-        <% @usuarios.each do |usuario| %>
-            <td><%= usuario.id %></td>
-            <td><%= usuario.email %></td>
-            <td><%= ltime usuario.created_at %></td>
-            <td><%= link_to 'Tokens', admin_usuario_tokens_notificacao_mobile_path(usuario) %></td>
+        <% @users.each do |user| %>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= ltime user.created_at %></td>
+            <td><%= link_to 'Tokens', admin_user_tokens_notificacao_mobile_path(user) %></td>
           </tr>
         <% end %>
       </tbody>
@@ -44,5 +44,5 @@
 </div>
 
 <div class="center-align">
-  <%= will_paginate @usuarios, renderer: MaterializePagination::Rails %>
+  <%= will_paginate @users, renderer: MaterializePagination::Rails %>
 </div>

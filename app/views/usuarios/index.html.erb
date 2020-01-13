@@ -1,23 +1,23 @@
 <ul class="collection with-header">
   <li class="collection-header grey lighten-4">
     <h5>
-      <b>Usuários do grupo</b>
+      <b>Usuários do group</b>
     </h5>
   </li>
 
-  <% @usuarios.each do |usuario| %>
+  <% @users.each do |user| %>
     <li class="collection-item">
-      <b  ><%= usuario.email %> <% if usuario.admin? %> - Admin <% end %></b>
-      <% if usuario.email != current_usuario.email %>
+      <b  ><%= user.email %> <% if user.admin? %> - Admin <% end %></b>
+      <% if user.email != current_user.email %>
         <b class="secondary-content">
-          <%= link_to usuario_path(usuario, grupo_id: @grupo), method: :delete, data: {confirm: 'Você tem certeza?'}, class: "red-text" do %>
+          <%= link_to user_path(user, group_id: @group), method: :delete, data: {confirm: 'Você tem certeza?'}, class: "red-text" do %>
             <i class="material-icons">clear</i>
           <% end %>
         </b>
       <% end %>
-      <% if usuario.email != current_usuario.email %>
+      <% if user.email != current_user.email %>
         <b class="secondary-content">
-          <%= link_to edit_grupo_usuario_path(@grupo, usuario), class: "black-text" do %>
+          <%= link_to edit_group_user_path(@group, user), class: "black-text" do %>
             <i class="material-icons">edit</i>
           <% end %>
         </b>
@@ -27,7 +27,7 @@
 </ul>
 
 <div class="fixed-action-btn right-align">
-  <%= link_to new_grupo_usuario_path, class: "btn-floating btn-large red" do %>
+  <%= link_to new_group_user_path, class: "btn-floating btn-large red" do %>
     <i class="large material-icons" style="margin-top: 5px;">add</i>
   <% end %>
 </div>

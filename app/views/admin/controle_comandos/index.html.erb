@@ -1,7 +1,7 @@
-<% breadcrumb :controle_comandos, @controle %>
+<% breadcrumb :control_comandos, @control %>
 
 <div class="row">
-  <%= search_form_for @q, url: admin_controle_controle_comandos_path do |f| %>
+  <%= search_form_for @q, url: admin_control_control_comandos_path do |f| %>
     <div class="col s12">
       <div class="input-search">
         <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
@@ -14,28 +14,28 @@
 </div>
 
 <div class="container-row">
-  <b><%= plural_model_name_for(ControleComando) %></b>
+  <b><%= plural_model_name_for(ControlComando) %></b>
   <div class="row">
   <table class="table">
     <thead>
       <tr>
-        <th><%= ControleComando.human_attribute_name(:id) %></th>
-        <th><%= ControleComando.human_attribute_name(:comando) %></th>
-        <th><%= ControleComando.human_attribute_name(:codigo) %></th>
-        <th><%= ControleComando.human_attribute_name(:created_at) %></th>
+        <th><%= ControlComando.human_attribute_name(:id) %></th>
+        <th><%= ControlComando.human_attribute_name(:comando) %></th>
+        <th><%= ControlComando.human_attribute_name(:codigo) %></th>
+        <th><%= ControlComando.human_attribute_name(:created_at) %></th>
         <th colspan="3"></th>
       </tr>
     </thead>
 
     <tbody>
-      <% @controle_comandos.each do |controle_comando| %>
-        <tr data-href="<%= admin_controle_comando_path(controle_comando) %>">
-          <td><%= controle_comando.id %></td>
-          <td><%= controle_comando.comando %></td>
-          <td><%= controle_comando.codigo %></td>
-          <td><%= controle_comando.created_at %></td>
-          <td><%= link_icon_to_edit(edit_admin_controle_comando_path(controle_comando)) %></td>
-          <td><%= link_icon_to_destroy(admin_controle_comando_path(controle_comando)) %></td>
+      <% @control_comandos.each do |control_comando| %>
+        <tr data-href="<%= admin_control_comando_path(control_comando) %>">
+          <td><%= control_comando.id %></td>
+          <td><%= control_comando.comando %></td>
+          <td><%= control_comando.codigo %></td>
+          <td><%= control_comando.created_at %></td>
+          <td><%= link_icon_to_edit(edit_admin_control_comando_path(control_comando)) %></td>
+          <td><%= link_icon_to_destroy(admin_control_comando_path(control_comando)) %></td>
         </tr>
       <% end %>
     </tbody>
@@ -43,11 +43,11 @@
   </div>
 
   <div class="row">
-  <%= link_icon_to_back admin_controles_path %>
-  <%= link_icon_to_new(new_admin_controle_controle_comando_path(@controle), action_new(@controle_comandos)) %>
+  <%= link_icon_to_back admin_controls_path %>
+  <%= link_icon_to_new(new_admin_control_control_comando_path(@control), action_new(@control_comandos)) %>
   </div>
 </div>
 
 <div class="center-align">
-<%= will_paginate @controle_comandos, renderer: MaterializePagination::Rails %>
+<%= will_paginate @control_comandos, renderer: MaterializePagination::Rails %>
 </div>

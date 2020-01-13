@@ -1,0 +1,28 @@
+<% breadcrumb :device, @device %>
+<div class="container-row">
+  <div class="row">
+    <b><%= Device.human_attribute_name(:id) %></b>
+    <%= @device.id %>
+  </div>
+  <div class="row">
+    <b><%= Device.human_attribute_name(:name) %></b>
+    <%= @device.descricao %>
+  </div>
+  <div class="row">
+    <b><%= Device.human_attribute_name(:url_icon) %></b>
+    <%= @device.url_icon %>
+  </div>
+  <div class="row">
+    <b><%= Device.human_attribute_name(:model) %></b>
+    <%= @device.model %>
+  </div>
+  <div class="row">
+    <b><%= Device.human_attribute_name(:created_at) %></b>
+    <%= ltime @device.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_devices_path %>
+    <%= link_no_icon_to_edit(edit_admin_device_path(@device))%>
+  </div>
+</div>

@@ -3,12 +3,12 @@
  
   <div class="row">
     <div class="row">
-      <%= f.input :token, label: TokenNotificacaoMobile.human_attribute_name(:token), wrapper_html: { class: 'm12 s12' } %>
+      <%= f.input :token, label: TokenNotification.human_attribute_name(:token), wrapper_html: { class: 'm12 s12' } %>
     </div>
   </div>
 
   <div class="row">
-    <%= link_icon_to_back admin_usuario_tokens_notificacao_mobile_path(@token_notificacao_mobile.usuario) %>
+    <%= link_icon_to_back admin_user_tokens_notificacao_mobile_path(@token_notificacao_mobile.user) %>
     <%= save_button %>
   </div>
 <% end %>

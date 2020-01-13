@@ -2,10 +2,10 @@ class Api::V2::SessionsController < Api::V2::BaseController
   skip_before_action :authorize_access_request!
 
   def reset_password
-    resource = Usuario.find_by_email(params['email'])
+    resource = User.find_by_email(params['email'])
     if resource.present?
       resource.send_reset_password_instructions
-      render json: { usuario: resource.email }, status: :ok
+      render json: { user: resource.email }, status: :ok
     else
       render json: { msg: 'Email inválido!' }, status: :unauthorized
     end

@@ -1,9 +1,9 @@
 require "application_system_test_case"
 
-class AmbientesTest < ApplicationSystemTestCase
+class RoomsTest < ApplicationSystemTestCase
   # test "visiting the index" do
-  #   visit ambientes_url
+  #   visit rooms_url
   #
-  #   assert_selector "h1", text: "Ambiente"
+  #   assert_selector "h1", text: "Room"
   # end
 end

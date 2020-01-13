@@ -2,8 +2,8 @@
 
 one:
   nome: MyString
-  grupo_id: 1
+  group_id: 1
 
 two:
   nome: MyString
-  grupo_id: 1
+  group_id: 1

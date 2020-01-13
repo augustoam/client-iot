@@ -1,0 +1,24 @@
+<% breadcrumb :manufacturer, @manufacturer %>
+<div class="container-row">
+  <div class="row">
+    <b><%= Manufacturer.human_attribute_name(:id) %></b>
+    <%= @manufacturer.id %>
+  </div>
+  <div class="row">
+    <b><%= Manufacturer.human_attribute_name(:descricao) %></b>
+    <%= @manufacturer.name %>
+  </div>
+  <div class="row">
+    <b><%= Manufacturer.human_attribute_name(:obs) %></b>
+    <%= @manufacturer.obs %>
+  </div>
+  <div class="row">
+    <b><%= Manufacturer.human_attribute_name(:created_at) %></b>
+    <%= ltime @manufacturer.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_manufacturers_path %>
+    <%= link_no_icon_to_edit(edit_admin_manufacturer_path(@manufacturer))%>
+  </div>
+</div>

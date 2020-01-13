@@ -1,0 +1,28 @@
+<%= simple_form_for([:admin, @room]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <%= f.input :descricao, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :icone, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :url_icone, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :obs, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <% if @room.persisted? %>
+      <%= link_icon_to_back admin_room_path(@room) %>
+    <% else %>
+      <%= link_icon_to_back admin_rooms_path %>
+    <% end %>
+    <%= save_button %>
+  </div>
+<% end %>

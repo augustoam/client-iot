@@ -1,12 +1,12 @@
 class Api::V1::RegistrationsController < Api::V1::BaseController
   def create
-    unless Usuario.find_by(email: params[:email])
-      @usuario = Usuario.new(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
-      if @usuario.password_match?
-        if @usuario.valid?
-          @usuario.save
+    unless User.find_by(email: params[:email])
+      @user = User.new(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+      if @user.password_match?
+        if @user.valid?
+          @user.save
 
-          render json: { msg: 'Verifique seu email para prosseguir com a confirmação da sua conta!', usuario: @usuario.email }, status: :ok
+          render json: { msg: 'Verifique seu email para prosseguir com a confirmação da sua conta!', user: @user.email }, status: :ok
         else
           render json: { msg: 'Este usuário não é válido!' }, status: :unauthorized
         end

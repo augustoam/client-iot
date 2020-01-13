@@ -1,7 +1,7 @@
-class ComponentePolicy < ApplicationPolicy
+class DevicePolicy < ApplicationPolicy
   class Scope < Scope
     def index?
-      usuario.admin?
+      user.admin?
     end
     def resolve
       scope

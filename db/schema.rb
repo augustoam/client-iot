@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190521084214) do
+ActiveRecord::Schema.define(version: 20190114225332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "Fabricantes", id: :serial, force: :cascade do |t|
-    t.string "descricao", limit: 255
-    t.string "obs", limit: 255
-    t.datetime "createdAt", null: false
-    t.datetime "updatedAt", null: false
-  end
-
-  create_table "SequelizeMeta", primary_key: "name", id: :string, limit: 255, force: :cascade do |t|
-  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -42,161 +32,154 @@ ActiveRecord::Schema.define(version: 20190521084214) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "ambientes", force: :cascade do |t|
-    t.string "descricao"
-    t.string "icone"
-    t.string "obs"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "url_icone"
-  end
-
-  create_table "ambientes_grupo", force: :cascade do |t|
-    t.string "nome"
-    t.integer "grupo_id"
-    t.integer "ambiente_id"
-    t.string "icone"
-    t.boolean "visivel", default: true
+  create_table "control_commands", force: :cascade do |t|
+    t.integer "control_id"
+    t.string "command"
+    t.string "code"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "automacoes_grupo", force: :cascade do |t|
-    t.integer "grupo_id"
-    t.integer "tipo"
-    t.string "descricao", default: "", null: false
-    t.boolean "ativo", default: true
+  create_table "control_layouts", force: :cascade do |t|
+    t.string "name", limit: 255
+    t.text "obs"
+    t.string "type"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "operador_condicao"
-    t.string "topico_complete_manually"
   end
 
-  create_table "automacoes_grupo_acoes", force: :cascade do |t|
-    t.integer "tipo_acao"
-    t.decimal "delay_time"
-    t.integer "run_automacao_id"
-    t.integer "turn_on_off_automation_id"
-    t.integer "automacao_grupo_id"
-    t.integer "componente_ambiente_id"
-    t.integer "controle_comando_id"
+  create_table "controls", force: :cascade do |t|
+    t.string "name", limit: 255
+    t.text "obs"
+    t.integer "manufacturer_id"
+    t.integer "control_layout_id"
+    t.integer "device_id"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "turn_on_off"
   end
 
-  create_table "automacoes_grupo_condicoes", force: :cascade do |t|
-    t.integer "tipo_condicao"
-    t.string "repeat"
-    t.datetime "turn_on"
-    t.integer "automacao_grupo_id"
-    t.integer "componente_ambiente_id"
-    t.integer "controle_comando_id"
+  create_table "devices", force: :cascade do |t|
+    t.string "name", limit: 255
+    t.string "model", limit: 255
+    t.string "url_icon"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "value_set"
-    t.string "schedule_cron"
   end
 
-  create_table "componentes", force: :cascade do |t|
-    t.string "descricao"
-    t.string "modelo"
+  create_table "group_rooms", force: :cascade do |t|
+    t.string "name", limit: 255
+    t.integer "group_id"
+    t.integer "room_id"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "comando_unico", default: false
-    t.string "url_icone"
   end
 
-  create_table "componentes_ambiente", force: :cascade do |t|
-    t.integer "ambiente_grupo_id"
-    t.string "topico"
-    t.string "valor"
-    t.boolean "estado", default: false
-    t.text "descricao"
-    t.text "identificador_componente"
+  create_table "groups", force: :cascade do |t|
+    t.string "name", limit: 255
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "controle_id"
+  end
+
+  create_table "manufacturers", force: :cascade do |t|
+    t.string "name", limit: 255
+    t.text "obs"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notification_tokens", force: :cascade do |t|
+    t.string "token"
+    t.integer "user_id"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "room_devices", force: :cascade do |t|
+    t.string "name", limit: 255
+    t.integer "room_id"
+    t.integer "device_id"
+    t.string "topic_id"
+    t.string "sensor_value"
     t.boolean "power"
+    t.boolean "online"
     t.string "result"
+    t.string "state"
     t.string "info1"
     t.string "info2"
     t.string "info3"
-    t.boolean "onlline"
-    t.string "state"
-    t.string "topico_power"
-    t.string "topico_result"
-    t.string "topico_info1"
-    t.string "topico_info2"
-    t.string "topico_info3"
-    t.string "topico_online"
-    t.string "topico_state"
-  end
-
-  create_table "controle_comandos", force: :cascade do |t|
-    t.integer "controle_id"
-    t.string "comando"
-    t.string "codigo"
+    t.string "topic_info1"
+    t.string "topic_info2"
+    t.string "topic_info3"
+    t.string "topic_power"
+    t.string "topic_online"
+    t.string "topic_result"
+    t.string "topic_publish"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "controles", force: :cascade do |t|
-    t.string "descricao"
-    t.text "obs"
-    t.integer "fabricante_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "layout_controle_id"
-    t.integer "componente_id"
-  end
-
-  create_table "fabricantes", force: :cascade do |t|
-    t.string "descricao"
+  create_table "rooms", force: :cascade do |t|
+    t.string "name", limit: 255
     t.string "obs"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "grupos", force: :cascade do |t|
-    t.string "nome"
-    t.boolean "ativo", default: true
+  create_table "user_automation_actions", force: :cascade do |t|
+    t.integer "type"
+    t.decimal "delay_time"
+    t.integer "run_automation_id"
+    t.integer "user_automation_id"
+    t.integer "turn_on_off_automation_id"
+    t.integer "room_device_id"
+    t.integer "control_command_id"
+    t.boolean "turn_on_off"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "grupos_usuarios", force: :cascade do |t|
-    t.integer "grupo_id"
-    t.integer "usuario_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "admin", default: false
-  end
-
-  create_table "layout_controles", force: :cascade do |t|
-    t.string "descricao"
-    t.string "obs"
-    t.string "tipo_layout"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "log_componentes", force: :cascade do |t|
-    t.integer "grupo_id"
-    t.integer "usuario_id"
-    t.integer "componente_id"
-    t.string "comando"
-    t.datetime "dt_criacao", default: "2018-10-02 03:57:25"
-  end
-
-  create_table "tokens_notificacao_mobile", force: :cascade do |t|
-    t.string "token"
-    t.integer "usuario_id"
+  create_table "user_automation_conditions", force: :cascade do |t|
+    t.integer "user_automation_id"
+    t.integer "repeat"
+    t.integer "type"
+    t.integer "room_device_id"
+    t.integer "control_command_id"
+    t.datetime "turn_on"
+    t.string "value_set"
+    t.string "schedule_cron"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "usuarios", force: :cascade do |t|
+  create_table "user_automations", force: :cascade do |t|
+    t.integer "user_id"
+    t.boolean "condition_operator"
+    t.string "name", limit: 255
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_groups", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -213,29 +196,28 @@ ActiveRecord::Schema.define(version: 20190521084214) do
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "token"
-    t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_usuarios_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "ambientes_grupo", "ambientes"
-  add_foreign_key "ambientes_grupo", "grupos"
-  add_foreign_key "automacoes_grupo_acoes", "automacoes_grupo"
-  add_foreign_key "automacoes_grupo_acoes", "automacoes_grupo", column: "run_automacao_id"
-  add_foreign_key "automacoes_grupo_acoes", "automacoes_grupo", column: "turn_on_off_automation_id"
-  add_foreign_key "automacoes_grupo_acoes", "componentes_ambiente"
-  add_foreign_key "automacoes_grupo_acoes", "controle_comandos"
-  add_foreign_key "automacoes_grupo_condicoes", "automacoes_grupo"
-  add_foreign_key "automacoes_grupo_condicoes", "componentes_ambiente"
-  add_foreign_key "automacoes_grupo_condicoes", "controle_comandos"
-  add_foreign_key "componentes_ambiente", "ambientes_grupo"
-  add_foreign_key "componentes_ambiente", "controles"
-  add_foreign_key "controle_comandos", "controles"
-  add_foreign_key "controles", "componentes"
-  add_foreign_key "controles", "fabricantes"
-  add_foreign_key "controles", "layout_controles"
-  add_foreign_key "grupos_usuarios", "grupos"
-  add_foreign_key "grupos_usuarios", "usuarios"
-  add_foreign_key "tokens_notificacao_mobile", "usuarios"
+  add_foreign_key "control_commands", "controls"
+  add_foreign_key "controls", "control_layouts"
+  add_foreign_key "controls", "devices"
+  add_foreign_key "controls", "manufacturers"
+  add_foreign_key "group_rooms", "groups"
+  add_foreign_key "group_rooms", "rooms"
+  add_foreign_key "notification_tokens", "users"
+  add_foreign_key "room_devices", "devices"
+  add_foreign_key "room_devices", "rooms"
+  add_foreign_key "user_automation_actions", "control_commands"
+  add_foreign_key "user_automation_actions", "room_devices"
+  add_foreign_key "user_automation_actions", "user_automations"
+  add_foreign_key "user_automation_actions", "user_automations", column: "run_automation_id"
+  add_foreign_key "user_automation_actions", "user_automations", column: "turn_on_off_automation_id"
+  add_foreign_key "user_automation_conditions", "control_commands"
+  add_foreign_key "user_automation_conditions", "room_devices"
+  add_foreign_key "user_automation_conditions", "user_automations"
+  add_foreign_key "user_groups", "groups"
+  add_foreign_key "user_groups", "users"
 end

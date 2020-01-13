@@ -1,0 +1,33 @@
+<% breadcrumb :room, @room %>
+
+<div class="container-row">
+  <div class="row">
+    <b><%= Room.human_attribute_name(:id) %></b>
+    <%= @room.id %>
+  </div>
+  <div class="row">
+    <b><%= Room.human_attribute_name(:descricao) %></b>
+    <%= @room.descricao %>
+  </div>
+  <div class="row">
+    <b><%= Room.human_attribute_name(:icone) %></b>
+    <%= @room.icone %>
+  </div>
+  <div class="row">
+    <b><%= Room.human_attribute_name(:url_icone) %></b>
+    <%= @room.url_icone %>
+  </div>
+  <div class="row">
+    <b><%= Room.human_attribute_name(:obs) %></b>
+    <%= @room.obs %>
+  </div>
+  <div class="row">
+    <b><%= Room.human_attribute_name(:created_at) %></b>
+    <%= ltime @room.created_at %>
+  </div>
+  
+  <div class="row">
+    <%= link_icon_to_back admin_rooms_path %>
+    <%= link_no_icon_to_edit(edit_admin_room_path(@room))%>
+  </div>
+</div>

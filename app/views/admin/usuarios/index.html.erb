@@ -1,7 +1,7 @@
-<% breadcrumb :usuarios, @grupo %>
+<% breadcrumb :users, @group %>
 
 <div class="row">
-  <%= search_form_for @q, url: admin_grupo_usuarios_path do |f| %>
+  <%= search_form_for @q, url: admin_group_users_path do |f| %>
     <div class="col s12">
       <div class="input-search">
         <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
@@ -14,26 +14,26 @@
 </div>
 
 <div class="container-row">
-  <b><%= plural_model_name_for(Usuario) %></b>
+  <b><%= plural_model_name_for(User) %></b>
   <div class="row">
     <table class="table">
       <thead>
         <tr>
-          <th><%= Usuario.human_attribute_name(:id) %></th>
-          <th><%= Usuario.human_attribute_name(:email) %></th>
+          <th><%= User.human_attribute_name(:id) %></th>
+          <th><%= User.human_attribute_name(:email) %></th>
           <th colspan="4"></th>
         </tr>
       </thead>
 
       <tbody>
-        <% @usuarios.each do |usuario| %>
-          <tr data-href="<%= admin_grupo_usuario_path(@grupo,usuario) %>">
-            <td><%= usuario.id %></td>
-            <td><%= usuario.email %></td>
-            <td><%= ltime usuario.created_at %></td>
-            <td><%= link_icon_to_edit(edit_admin_grupo_usuario_path(@grupo, usuario))%></td>
-            <td><%= link_icon_to_destroy(admin_grupo_usuario_path(@grupo, usuario)) %></td>
-            <td><%= link_to 'Remover do grupo', remover_admin_grupo_usuario_path(@grupo, usuario) %></td>
+        <% @users.each do |user| %>
+          <tr data-href="<%= admin_group_user_path(@group,user) %>">
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= ltime user.created_at %></td>
+            <td><%= link_icon_to_edit(edit_admin_group_user_path(@group, user))%></td>
+            <td><%= link_icon_to_destroy(admin_group_user_path(@group, user)) %></td>
+            <td><%= link_to 'Remover do group', remover_admin_group_user_path(@group, user) %></td>
           </tr>
         <% end %>
       </tbody>
@@ -42,10 +42,10 @@
 </div>
 
 <div class="row">
-  <%= link_icon_to_back admin_grupos_path %>
-  <%= link_icon_to_new(new_admin_grupo_usuario_path(@grupo), action_new(@usuarios)) %>
+  <%= link_icon_to_back admin_groups_path %>
+  <%= link_icon_to_new(new_admin_group_user_path(@group), action_new(@users)) %>
 </div>
 
 <div class="center-align">
-  <%= will_paginate @usuarios, renderer: MaterializePagination::Rails %>
+  <%= will_paginate @users, renderer: MaterializePagination::Rails %>
 </div>

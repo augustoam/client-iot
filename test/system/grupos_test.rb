@@ -1,9 +1,9 @@
 require "application_system_test_case"
 
-class GruposTest < ApplicationSystemTestCase
+class GroupsTest < ApplicationSystemTestCase
   # test "visiting the index" do
-  #   visit grupos_url
+  #   visit groups_url
   #
-  #   assert_selector "h1", text: "Grupo"
+  #   assert_selector "h1", text: "Group"
   # end
 end

@@ -1,24 +1,24 @@
-class Api::V1::AmbientesController < Api::V1::BaseController
+class Api::V1::RoomsController < Api::V1::BaseController
   before_action :authenticate_user
 
-  def new_ambiente
-    ambiente = Ambiente.find(params[:ambiente_id])
-    grupo = @usuario.grupos.find(params[:grupo_id])
-    ambiente_grupo = grupo.ambientes_grupo.create!(nome: ambiente.descricao, icone: ambiente.icone, ambiente: ambiente)
-    render json: ambiente_grupo.to_json, status: :ok
+  def new_room
+    room = Room.find(params[:room_id])
+    group = @user.groups.find(params[:group_id])
+    room_group = group.rooms_group.create!(nome: room.descricao, icone: room.icone, room: room)
+    render json: room_group.to_json, status: :ok
   rescue => exception
     render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
   end
 
-  def edit_ambiente
-    ambiente_grupo = AmbienteGrupo.find(params[:id]).update(nome: params[:nome])
-    render json: ambiente_grupo.to_json, status: :ok
+  def edit_room
+    room_group = RoomGroup.find(params[:id]).update(nome: params[:nome])
+    render json: room_group.to_json, status: :ok
   rescue => exception
     render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
   end
 
-  def destroy_ambiente
-    AmbienteGrupo.find(params[:id]).destroy
+  def destroy_room
+    RoomGroup.find(params[:id]).destroy
     render json: {}, status: :ok
   rescue => exception
     render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found

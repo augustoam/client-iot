@@ -8,7 +8,7 @@ default:      &default
 
 development:
   <<:         *default
-  database:   synchouse
+  database:   synchouse_api2
 
 test:
   <<:         *default

@@ -1,88 +1,88 @@
-class UsuariosController < ApplicationController
+class UsersController < ApplicationController
   include ControllerResponder
-  before_action :set_grupo, only: [:index, :destroy, :edit, :update]
-  before_action :set_usuario, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:index, :destroy, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @usuarios = @grupo.usuarios.all
+    @users = @group.users.all
   end
 
   def show
   end
 
   def new
-    @usuario = Usuario.new
+    @user = User.new
   end
 
   def edit
   end
 
   def password_change
-    @usuario = Usuario.find(params[:usuario_id])
+    @user = User.find(params[:user_id])
   end
 
   def password_update
-    @usuario = Usuario.find(params[:usuario_id])
-    @usuario.attempt_set_password(params[:usuario])
-    if @usuario.valid? && @usuario.password_match?
-      redirect_to usuario_path(@usuario), notice: "Senha alterada com sucesso"
+    @user = User.find(params[:user_id])
+    @user.attempt_set_password(params[:user])
+    if @user.valid? && @user.password_match?
+      redirect_to user_path(@user), notice: "Senha alterada com sucesso"
     else
-      redirect_to usuario_password_change_path(@usuario), notice: "Senha inválida."
+      redirect_to user_password_change_path(@user), notice: "Senha inválida."
     end
   end
 
   def create
-    if params[:usuario]
-      @grupo = Grupo.find(params[:usuario][:grupo_id])
-      @grupo_usuario = @grupo.grupos_usuarios.new
+    if params[:user]
+      @group = Group.find(params[:user][:group_id])
+      @group_user = @group.groups_users.new
 
-      @usuario = Usuario.find_by(email: params[:usuario][:email])
-      if @usuario
-        if @grupo.usuarios.include?(@usuario)
-          redirect_to grupo_usuarios_path(@grupo), alert: "Usuário #{@usuario.email} já é administrador deste grupo"
+      @user = User.find_by(email: params[:user][:email])
+      if @user
+        if @group.users.include?(@user)
+          redirect_to group_users_path(@group), alert: "Usuário #{@user.email} já é administrador deste group"
         end
       else
         password = Devise.friendly_token.first(8)
-        @usuario = Usuario.create!(email: params[:usuario][:email], password: password)
-        @grupo_usuario.usuario = @usuario
-        @grupo_usuario.save
+        @user = User.create!(email: params[:user][:email], password: password)
+        @group_user.user = @user
+        @group_user.save
 
-        ConvidarUsuarioByEmailJob.perform_later(@usuario)
+        ConvidarUserByEmailJob.perform_later(@user)
 
-        redirect_to grupo_usuarios_path(@grupo), notice: "Usuário criado com sucesso"
+        redirect_to group_users_path(@group), notice: "Usuário criado com sucesso"
       end
     else
-      redirect_to grupo_path(@grupo), alert: "Informe um e-mail válido"
+      redirect_to group_path(@group), alert: "Informe um e-mail válido"
     end
   end
 
   def update
-    @usuario.assign_attributes(usuario_params.except(:password, :password_confirmation))
-    if(!usuario_params[:password].to_s.empty?) && usuario_params[:password].to_s != @usuario.password
-      @usuario.password = usuario_params[:password]
-      @usuario.password_confirmation = usuario_params[:password_confirmation]
+    @user.assign_attributes(user_params.except(:password, :password_confirmation))
+    if(!user_params[:password].to_s.empty?) && user_params[:password].to_s != @user.password
+      @user.password = user_params[:password]
+      @user.password_confirmation = user_params[:password_confirmation]
     end
-    @usuario.save
-    redirect_to grupo_usuarios_path(@grupo), notice: "Usuário alterado com sucesso"
+    @user.save
+    redirect_to group_users_path(@group), notice: "Usuário alterado com sucesso"
   end
 
   def destroy
-    @usuario.destroy
-    redirect_to grupo_usuarios_path(@grupo), notice: "Usuário removido com sucesso"
+    @user.destroy
+    redirect_to group_users_path(@group), notice: "Usuário removido com sucesso"
   end
 
 
   private
-    def set_grupo
-      @grupo = Grupo.find(params[:grupo_id])
+    def set_group
+      @group = Group.find(params[:group_id])
     end
 
-    def set_usuario
-      @usuario = Usuario.find(params[:id])
+    def set_user
+      @user = User.find(params[:id])
     end
 
-    def usuario_params
-      params.require(:usuario).permit(:email, :admin)
+    def user_params
+      params.require(:user).permit(:email, :admin)
     end
 
 end

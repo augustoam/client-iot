@@ -1,0 +1,37 @@
+<% breadcrumb :control, @control %>
+
+<div class="container-row">
+  <div class="row">
+    <b><%= Control.human_attribute_name(:id) %></b>
+    <%= @control.id %>
+  </div>
+  <div class="row">
+    <b><%= Control.human_attribute_name(:descricao) %></b>
+    <%= @control.descricao %>
+  </div>
+  <div class="row">
+    <b><%= Control.human_attribute_name(:obs) %></b>
+    <%= @control.obs %>
+  </div>
+  <div class="row">
+    <b><%= Control.human_attribute_name(:manufacturer) %></b>
+    <%= @control.manufacturer %>
+  </div>
+  <div class="row">
+    <b><%= Device.human_attribute_name(:device) %></b>
+    <%= @control.device.descricao %>
+  </div>
+  <div class="row">
+    <b><%= Device.human_attribute_name(:layout_control) %></b>
+    <%= @control.layout_control.descricao %>
+  </div>
+  <div class="row">
+    <b><%= Control.human_attribute_name(:created_at) %></b>
+    <%= ltime @control.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_controls_path %>
+    <%= link_no_icon_to_edit(edit_admin_control_path(@control))%>
+  </div>
+</div>

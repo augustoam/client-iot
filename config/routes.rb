@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  resources :componentes
+  resources :devices
   root 'home#index'
 
   mount ActionCable.server => '/cable'
 
-  devise_for :usuarios, controllers: {
+  devise_for :users, controllers: {
     confirmations: 'confirmations'
   }
-  as :usuario do
+  as :user do
     patch '/confirm' => 'confirmations#confirm'
   end
 
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     sessions: 'admin/devise/sessions'
   }
 
-  get '/usuarios' => redirect('/usuarios/sign_in')
+  get '/users' => redirect('/users/sign_in')
   get '/admin' => redirect('/admin/sign_in')
 
 
@@ -27,11 +27,11 @@ Rails.application.routes.draw do
     post :registration_new
   end
 
-  resources :grupos do
-    resources :usuarios
-    resources :ambientes_grupo do
-      resources :componentes_ambiente, shallow: true do
-        resources :layout_controles, shallow: true
+  resources :groups do
+    resources :users
+    resources :group_rooms do
+      resources :room_devices, shallow: true do
+        resources :control_layouts, shallow: true
       end
     end
   end
@@ -42,36 +42,36 @@ Rails.application.routes.draw do
         post :reset_password, on: :collection
       end
       resources :registrations
-      namespace :usuarios_grupo do
-        post :add_usuario_grupo
-        post :destroy_usuario_grupo
-        post :set_admin_usuario_grupo
+      namespace :users_group do
+        post :add_user_group
+        post :destroy_user_group
+        post :set_admin_user_group
       end
       namespace :mqtt do
         post :publish
       end
-      namespace :grupos do
-        get :get_grupos
-        post :new_grupo
-        post :edit_grupo
-        post :destroy_grupo
+      namespace :groups do
+        get :get_groups
+        post :new_group
+        post :edit_group
+        post :destroy_group
       end
-      namespace :ambientes do
-        post :new_ambiente
-        post :edit_ambiente
-        post :destroy_ambiente
+      namespace :rooms do
+        post :new_room
+        post :edit_room
+        post :destroy_room
       end
-      namespace :componentes_ambiente do
-        get :get_componentes_ambiente
-        post :new_componente_ambiente
-        post :edit_componente_ambiente
-        post :destroy_componente_ambiente
+      namespace :devices_room do
+        get :get_devices_room
+        post :new_device_room
+        post :edit_device_room
+        post :destroy_device_room
       end
     end
     namespace :request do
       post :google_api_request
     end
-    namespace :componentes do
+    namespace :devices do
       post :publish
       post :recebe_estado
     end
@@ -83,16 +83,16 @@ Rails.application.routes.draw do
         post :reset_password, on: :collection
       end
       resources :registrations
-      namespace :grupos do
-        get :get_grupos
-        post :new_grupo
-        post :edit_grupo
-        post :destroy_grupo
+      namespace :groups do
+        get :get_groups
+        post :new_group
+        post :edit_group
+        post :destroy_group
       end
     end
   end
 
-  resources :usuarios do
+  resources :users do
     get :password_change
     patch :password_update
   end
@@ -100,32 +100,32 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :home_admin
     resources :administrador
-    resources :fabricantes
-    resources :ambientes
-    resources :componentes do
-      resources :componentes_propriedades, shallow: true
+    resources :manufacturers
+    resources :rooms
+    resources :devices do
+      resources :devices_propriedades, shallow: true
     end
-    resources :layout_controles
-    resources :usuarios do
+    resources :control_layouts
+    resources :users do
       get :index_all, on: :collection
-      resources :tokens_notificacao_mobile, shallow: true
+      resources :notification_tokens, shallow: true
     end
-    resources :grupos do
-      resources :automacoes_grupo, shallow: true do
-        resources :automacoes_grupo_condicoes, shallow: true do
-          post :update_componente_propriedades, on: :collection
+    resources :groups do
+      resources :user_automations, shallow: true do
+        resources :user_automation_conditions, shallow: true do
+          post :update_device_propriedades, on: :collection
         end
-        resources :automacoes_grupo_acoes, shallow: true
+        resources :user_automation_actions, shallow: true
       end
-      resources :usuarios do
+      resources :users do
         get :remover, on: :member
       end
-      resources :ambientes_grupo, shallow: true do
-        resources :componentes_ambiente
+      resources :group_rooms, shallow: true do
+        resources :room_devices
       end
     end
-    resources :controles do
-      resources :controle_comandos, shallow: true
+    resources :controls do
+      resources :control_commands, shallow: true
     end
   end
 

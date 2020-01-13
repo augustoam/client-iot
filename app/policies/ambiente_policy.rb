@@ -1,6 +1,6 @@
-class AmbientePolicy < ApplicationPolicy
+class RoomPolicy < ApplicationPolicy
   def index?
-    usuario.admin?
+    user.admin?
   end
 
   class Scope < Scope

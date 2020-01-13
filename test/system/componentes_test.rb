@@ -1,9 +1,9 @@
 require "application_system_test_case"
 
-class ComponentesTest < ApplicationSystemTestCase
+class DevicesTest < ApplicationSystemTestCase
   # test "visiting the index" do
-  #   visit componentes_url
+  #   visit devices_url
   #
-  #   assert_selector "h1", text: "Componente"
+  #   assert_selector "h1", text: "Device"
   # end
 end

@@ -1,48 +1,48 @@
 require 'test_helper'
 
-class AmbientesControllerTest < ActionDispatch::IntegrationTest
+class RoomsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @ambiente = ambientes(:one)
+    @room = rooms(:one)
   end
 
   test "should get index" do
-    get ambientes_url
+    get rooms_url
     assert_response :success
   end
 
   test "should get new" do
-    get new_ambiente_url
+    get new_room_url
     assert_response :success
   end
 
-  test "should create ambiente" do
-    assert_difference('Ambiente.count') do
-      post ambientes_url, params: { ambiente: { grupo_id: @ambiente.grupo_id, nome: @ambiente.nome } }
+  test "should create room" do
+    assert_difference('Room.count') do
+      post rooms_url, params: { room: { group_id: @room.group_id, nome: @room.nome } }
     end
 
-    assert_redirected_to ambiente_url(Ambiente.last)
+    assert_redirected_to room_url(Room.last)
   end
 
-  test "should show ambiente" do
-    get ambiente_url(@ambiente)
+  test "should show room" do
+    get room_url(@room)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_ambiente_url(@ambiente)
+    get edit_room_url(@room)
     assert_response :success
   end
 
-  test "should update ambiente" do
-    patch ambiente_url(@ambiente), params: { ambiente: { grupo_id: @ambiente.grupo_id, nome: @ambiente.nome } }
-    assert_redirected_to ambiente_url(@ambiente)
+  test "should update room" do
+    patch room_url(@room), params: { room: { group_id: @room.group_id, nome: @room.nome } }
+    assert_redirected_to room_url(@room)
   end
 
-  test "should destroy ambiente" do
-    assert_difference('Ambiente.count', -1) do
-      delete ambiente_url(@ambiente)
+  test "should destroy room" do
+    assert_difference('Room.count', -1) do
+      delete room_url(@room)
     end
 
-    assert_redirected_to ambientes_url
+    assert_redirected_to rooms_url
   end
 end

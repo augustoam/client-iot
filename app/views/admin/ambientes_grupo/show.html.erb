@@ -1,25 +1,25 @@
-<% breadcrumb :ambiente_grupo, @ambiente_grupo %>
+<% breadcrumb :room_group, @room_group %>
 
 <div class="container-row">
   <div class="row">
-    <b><%= AmbienteGrupo.human_attribute_name(:id) %></b>
-    <%= @ambiente_grupo.id %>
+    <b><%= RoomGroup.human_attribute_name(:id) %></b>
+    <%= @room_group.id %>
   </div>
   <div class="row">
-    <b><%= AmbienteGrupo.human_attribute_name(:nome) %></b>
-    <%= @ambiente_grupo.nome %>
+    <b><%= RoomGroup.human_attribute_name(:nome) %></b>
+    <%= @room_group.nome %>
   </div>
   <div class="row">
-    <b><%= AmbienteGrupo.human_attribute_name(:icone) %></b>
-    <%= @ambiente_grupo.icone %>
+    <b><%= RoomGroup.human_attribute_name(:icone) %></b>
+    <%= @room_group.icone %>
   </div>
   <div class="row">
-    <b><%= AmbienteGrupo.human_attribute_name(:created_at) %></b>
-    <%= ltime @ambiente_grupo.created_at %>
+    <b><%= RoomGroup.human_attribute_name(:created_at) %></b>
+    <%= ltime @room_group.created_at %>
   </div>
 
   <div class="row">
-    <%= link_icon_to_back admin_grupo_ambientes_grupo_path(@grupo) %>
-    <%= link_no_icon_to_edit(edit_admin_ambiente_grupo_path(@ambiente_grupo))%>
+    <%= link_icon_to_back admin_group_rooms_group_path(@group) %>
+    <%= link_no_icon_to_edit(edit_admin_room_group_path(@room_group))%>
   </div>
 </div>
