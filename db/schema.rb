@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20190114225332) do
   create_table "control_layouts", force: :cascade do |t|
     t.string "name", limit: 255
     t.text "obs"
-    t.string "type"
+    t.string "type_name"
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

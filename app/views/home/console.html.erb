@@ -1,6 +1,6 @@
 <% @groups_user.each do |group_user| %>
   <div class="row">
-    <div class="center-align white-text descricao-group" ><b><%= group_user.group.nome %></b></div>
+    <div class="center-align white-text name-group" ><b><%= group_user.group.nome %></b></div>
     <% group_user.group.rooms_group.each do |room_group| %>
       <% if room_group.visivel %>
         <div class="col s6 m4">

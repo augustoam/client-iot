@@ -7,7 +7,7 @@ module UsersHelper
     end
   end
 
-  def group_user(group, user)
-    group.groups_users.find_by(user_id: user)
+  def user_group(group, user)
+    group.user_groups.find_by(user_id: user)
   end
 end

@@ -2,7 +2,7 @@
 <%= f.error_notification %>
 
 <div class="row">
-  <%= f.input :descricao, wrapper_html: { class: 'm12 s12' } %>
+  <%= f.input :name, wrapper_html: { class: 'm12 s12' } %>
 </div>
 
 <div class="row">
@@ -16,9 +16,12 @@
   <%= f.association :device, wrapper_html: { class: 'm12 s12' } %>
 </div>
 <div class="row">
-  <%= f.association :layout_control, wrapper_html: { class: 'm12 s12' } %>
+  <%= f.association :control_layout, wrapper_html: { class: 'm12 s12' } %>
 </div>
 
+<div class="row">
+  <%= f.input :active, wrapper_html: { class: 'm12 s12' } %>
+</div>
 
 <div class="row">
   <% if @control.persisted? %>

@@ -9,8 +9,8 @@ class Api::V1::DevicesRoomController < Api::V1::BaseController
         @device_room = room_group.devices_room.collect do |device_room|
           result = device_room.as_json
           result[:device] = device_room.control.device.as_json
-          result[:control] = device_room.control.layout_control.as_json
-          result[:comandos] = device_room.control.comandos_infra_vermelhos.as_json
+          result[:control] = device_room.control.control_layout.as_json
+          result[:commands] = device_room.control.comandos_infra_vermelhos.as_json
           result
         end
 
@@ -29,7 +29,7 @@ class Api::V1::DevicesRoomController < Api::V1::BaseController
       topico = params[:topico]
       if topico.include? 'synchouse'
         begin
-          device = Device.find_by_descricao(params[:device_descricao])
+          device = Device.find_by_name(params[:device_name])
           if params[:device_id].present?
             control = Control.find(params[:device_id])
           else
@@ -37,7 +37,7 @@ class Api::V1::DevicesRoomController < Api::V1::BaseController
           end
 
           device_room = DeviceRoom.create!(
-            descricao: device.descricao,
+            name: device.name,
             topico: topico,
             control: control,
             room_group_id: params[:room_group_id],
@@ -57,7 +57,7 @@ class Api::V1::DevicesRoomController < Api::V1::BaseController
   def edit_device_room
     if @user.present?
       begin
-        device_room = DeviceRoom.find(params[:device_room_id]).update(descricao: params[:descricao])
+        device_room = DeviceRoom.find(params[:device_room_id]).update(name: params[:name])
         render json: device_room.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found

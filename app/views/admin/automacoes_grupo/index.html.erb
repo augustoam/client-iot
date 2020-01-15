@@ -7,7 +7,7 @@
         <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
           <i class="material-icons icon-search icon-hover">search</i>
         <% end %>
-        <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Search Automations" %>
+        <%= f.search_field :name_cont, class: "form-control", placeholder: "Search Automations" %>
       </div>
     </div>
   <% end %>
@@ -20,7 +20,7 @@
       <thead>
         <tr>
           <th><%= AutomacaoGroup.human_attribute_name(:id) %></th>
-          <th><%= AutomacaoGroup.human_attribute_name(:descricao) %></th>
+          <th><%= AutomacaoGroup.human_attribute_name(:name) %></th>
           <th><%= AutomacaoGroup.human_attribute_name(:ativo) %></th>
           <th><%= AutomacaoGroup.human_attribute_name(:operador_condicao) %></th>
           <th><%= AutomacaoGroup.human_attribute_name(:created_at) %></th>
@@ -32,7 +32,7 @@
         <% @automacoes_group.each do |automacao_group| %>
           <tr data-href="<%= admin_automacao_group_path(automacao_group) %>">
             <td><%= automacao_group.id %></td>
-            <td><%= automacao_group.descricao %></td>
+            <td><%= automacao_group.name %></td>
             <td><%= automacao_group.ativo %></td>
             <td><%= automacao_group.operador_condicao %></td>
             <td><%= ltime automacao_group.created_at %></td>

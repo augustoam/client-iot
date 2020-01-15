@@ -4,7 +4,7 @@ class Api::V1::GroupsController < Api::V1::BaseController
   def get_groups
     if @user.present?
       begin
-        syncinfra = Device.find_by(descricao: 'SyncInfra')
+        syncinfra = Device.find_by(name: 'SyncInfra')
         @response = @user.groups_users.collect do |group_user|
           result = group_user.as_json
           result[:group]           = group_user.group

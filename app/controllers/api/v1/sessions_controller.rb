@@ -2,11 +2,11 @@ class Api::V1::SessionsController < Api::V1::BaseController
   def session_new
     user = User.find_by_email(params[:email])
     if user.present?
-      token_notificacao = params[:token_notificacao]
+      notification_token = params[:notification_token]
       # Cria o token para notificação para o dispositivo do cliente
-      unless user.tokens_notificacao_mobile.find_by(token: token_notificacao)
-        if token_notificacao != 'undefined'
-          user.tokens_notificacao_mobile.create!(token: token_notificacao)
+      unless user.notification_tokens.find_by(token: notification_token)
+        if notification_token != 'undefined'
+          user.notification_tokens.create!(token: notification_token)
         end
       end
       render json: { user: user.email, token: user.token }, status: :ok

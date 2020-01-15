@@ -17,7 +17,7 @@ class AutomacaoService
 
         if automacao_group_condicao.tipo_condicao. == CONDICAO_COMPONENTE
           device_room = DeviceRoom.find(automacao_group_condicao.device_room_id)
-          if device_room.control.device.descricao.upcase == 'SYNCRELAY'
+          if device_room.control.device.name.upcase == 'SYNCRELAY'
             if device_room.estado.to_s == automacao_group_condicao.device_propriedade.id_propriedade
               @condicao_valida = true
             else
@@ -25,7 +25,7 @@ class AutomacaoService
             end
           end
 
-          if device_room.control.device.descricao.upcase == 'SYNCWEATHER'
+          if device_room.control.device.name.upcase == 'SYNCWEATHER'
 
             params = JSON.parse(device_room.valor)
             if automacao_group_condicao.device_propriedade.id_propriedade.upcase == 'ABOVE_TEMPERATURE'
@@ -56,7 +56,7 @@ class AutomacaoService
             end
           end
 
-          if device_room.control.device.descricao.upcase == 'SYNCPRESENCE'
+          if device_room.control.device.name.upcase == 'SYNCPRESENCE'
             if automacao_group_condicao.device_propriedade.id_propriedade == 'MOTION_DETECTED'
               if device_room.estado
                 @condicao_valida = true
@@ -65,7 +65,7 @@ class AutomacaoService
           end
         end
       end
-      p ('automacao group: ').concat(automacoes_group.descricao).concat(' - ').concat(@condicao_valida)
+      p ('automacao group: ').concat(automacoes_group.name).concat(' - ').concat(@condicao_valida)
     end
   end
 end

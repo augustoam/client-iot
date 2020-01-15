@@ -1,7 +1,7 @@
 class Api::V2::GroupsController < Api::V2::BaseController
 
   def get_groups
-    syncinfra = Device.find_by(descricao: 'SyncInfra')
+    syncinfra = Device.find_by(name: 'SyncInfra')
     response = []
     user_sessao.groups_users.collect { |group_user|
       result = {}

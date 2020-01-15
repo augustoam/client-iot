@@ -1,0 +1,19 @@
+<%= simple_form_for([:admin, @notification_token], url: notification_token_form_path(@notification_token)) do |f| %>
+  <%= f.error_notification %>
+ 
+  <div class="row">
+    <div class="row">
+      <%= f.input :token, label: NotificationToken.human_attribute_name(:token), wrapper_html: { class: 'm12 s12' } %>
+    </div>
+
+    <div class="row">
+      <%= f.input :active, wrapper_html: { class: 'm12 s12' } %>
+    </div>
+  </div>
+  
+
+  <div class="row">
+    <%= link_icon_to_back admin_user_notification_tokens_path(@notification_token.user) %>
+    <%= save_button %>
+  </div>
+<% end %>

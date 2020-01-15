@@ -3,7 +3,7 @@ class UserAutomationCondition < ApplicationRecord
   enum type: [:complete_manually, :timer, :device]
   belongs_to :user_automation, foreign_key: :user_automation_id
   belongs_to :room_device, required: false, foreign_key: :room_device_id
-  belongs_to :control_command, class_name: 'ControlComando', required: false, foreign_key: :control_command_id
+  belongs_to :control_command, class_name: 'ControlCommand', required: false, foreign_key: :control_command_id
 
   before_save :update_columns
 

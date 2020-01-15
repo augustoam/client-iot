@@ -1,0 +1,55 @@
+<% breadcrumb :control_commands, @control %>
+
+<div class="row">
+  <%= search_form_for @q, url: admin_control_control_commands_path do |f| %>
+    <div class="col s12">
+      <div class="input-search">
+        <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
+          <i class="material-icons icon-search icon-hover">search</i>
+        <% end %>
+        <%= f.search_field :command_cont, class: "form-control", placeholder: "Search Commands" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="container-row">
+  <b><%= plural_model_name_for(ControlCommand) %></b>
+  <div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= ControlCommand.human_attribute_name(:id) %></th>
+        <th><%= ControlCommand.human_attribute_name(:command) %></th>
+        <th><%= ControlCommand.human_attribute_name(:code) %></th>
+        <th><%= ControlCommand.human_attribute_name(:active) %></th>
+        <th><%= ControlCommand.human_attribute_name(:created_at) %></th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @control_commands.each do |control_command| %>
+        <tr data-href="<%= admin_control_command_path(control_command) %>">
+          <td><%= control_command.id %></td>
+          <td><%= control_command.command %></td>
+          <td><%= control_command.code %></td>
+          <td><%= control_command.active %></td>
+          <td><%= control_command.created_at %></td>
+          <td><%= link_icon_to_edit(edit_admin_control_command_path(control_command)) %></td>
+          <td><%= link_icon_to_destroy(admin_control_command_path(control_command)) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="row">
+  <%= link_icon_to_back admin_controls_path %>
+  <%= link_icon_to_new(new_admin_control_control_command_path(@control), action_new(@control_commands)) %>
+  </div>
+</div>
+
+<div class="center-align">
+<%= will_paginate @control_commands, renderer: MaterializePagination::Rails %>
+</div>

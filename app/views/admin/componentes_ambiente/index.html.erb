@@ -7,7 +7,7 @@
         <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
           <i class="material-icons icon-search icon-hover">search</i>
         <% end %>
-        <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Search Devices" %>
+        <%= f.search_field :name_cont, class: "form-control", placeholder: "Search Devices" %>
       </div>
     </div>
   <% end %>
@@ -20,7 +20,7 @@
       <thead>
         <tr>
           <th><%= DeviceRoom.human_attribute_name(:id) %></th>
-          <th><%= DeviceRoom.human_attribute_name(:descricao) %></th>
+          <th><%= DeviceRoom.human_attribute_name(:name) %></th>
           <th><%= DeviceRoom.human_attribute_name(:topico) %></th>
           <th><%= DeviceRoom.human_attribute_name(:identificador_device) %></th>
           <th><%= DeviceRoom.human_attribute_name(:control) %></th>
@@ -34,11 +34,11 @@
         <% @devices_room.each do |device_room| %>
           <tr data-href="<%= admin_device_room_path(device_room) %>">
             <td><%= device_room.id %></td>
-            <td><%= device_room.descricao %></td>
+            <td><%= device_room.name %></td>
             <td><%= device_room.topico %></td>
             <td><%= device_room.identificador_device %></td>
-            <td><%= device_room.control.descricao %></td>
-            <td><%= device_room.control.device.descricao %></td>
+            <td><%= device_room.control.name %></td>
+            <td><%= device_room.control.device.name %></td>
             <td><%= ltime device_room.created_at %></td>
             <td><%= link_icon_to_edit(edit_admin_device_room_path(device_room))%></td>
             <td><%= link_icon_to_destroy(admin_device_room_path(device_room)) %></td>

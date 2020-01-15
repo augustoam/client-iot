@@ -54,15 +54,15 @@ pt-BR:
         created_at:                     Data Criação
       control:
         id:                             ID
-        descricao:                      Descrição
+        name:                      Descrição
         obs:                            Observação
         created_at:                     Data Criação
       device_room:
         id:                             ID
-        descricao:                      Descrição
+        name:                      Descrição
       device_propriedade:
         id:                             ID
-        descricao:                      Descrição
+        name:                      Descrição
         id_propriedade:                 ID Propriedade
         created_at:                     Data Criação
       automacao_group_condicao:

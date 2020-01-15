@@ -5,6 +5,6 @@ class UserAutomation < ApplicationRecord
   enum condition_operator: [:and, :ou]
 
   def to_s
-    self.descricao
+    self.name
   end
 end

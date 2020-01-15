@@ -51,6 +51,6 @@ class Admin::AutomacoesGroupController < ApplicationController
     end
 
     def automacao_group_params
-      params.require(:automacao_group).permit(:descricao, :ativo, :tipo, :operador_condicao)
+      params.require(:automacao_group).permit(:name, :ativo, :tipo, :operador_condicao)
     end
 end

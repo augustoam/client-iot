@@ -8,7 +8,7 @@ class DeviceRoomBroadcastJob < ApplicationJob
   private
 
   def render_device_room(device_room)
-    ApplicationController.renderer.render(partial: "devices_room/#{device_room.device.layout_control.descricao.downcase}",
+    ApplicationController.renderer.render(partial: "devices_room/#{device_room.device.control_layout.name.downcase}",
                                           locals: { device_room: device_room })
   end
 end

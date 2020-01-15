@@ -2,8 +2,8 @@
 
 one:
   ad: MyString
-  descricao: MyString
+  name: MyString
 
 two:
   ad: MyString
-  descricao: MyString
+  name: MyString

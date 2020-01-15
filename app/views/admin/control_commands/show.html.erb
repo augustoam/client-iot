@@ -1,0 +1,30 @@
+<% breadcrumb :control_command, @control_command %>
+
+<div class="container-row">
+
+  <div class="row">
+    <b><%= ControlCommand.human_attribute_name(:id) %></b>
+    <%= @control_command.id %>
+  </div>
+  <div class="row">
+    <b><%= ControlCommand.human_attribute_name(:command) %></b>
+    <%= @control_command.command %>
+  </div>
+  <div class="row">
+    <b><%= ControlCommand.human_attribute_name(:code) %></b>
+    <%= @control_command.code %>
+  </div>
+  <div class="row">
+    <b><%= ControlCommand.human_attribute_name(:active) %></b>
+    <%= @control_command.active %>
+  </div>
+  <div class="row">
+    <b><%= ControlCommand.human_attribute_name(:createdAt) %></b>
+    <%= @control_command.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_control_control_commands_path(@control) %>
+    <%= link_no_icon_to_edit(edit_admin_control_command_path(@control_command))%>
+  </div>
+</div>

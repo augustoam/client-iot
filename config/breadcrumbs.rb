@@ -138,21 +138,21 @@ crumb :device_room_edit do |device_room|
   parent :device_room, device_room
 end
 
-crumb :control_comandos do |control|
-  link ControlComando.model_name.human(count: 2), admin_control_control_comandos_path(control)
-  parent :controls, control.descricao
+crumb :control_commands do |control|
+  link ControlCommand.model_name.human(count: 2), admin_control_control_commands_path(control)
+  parent :controls, control.name
 end
-crumb :control_comando do |control_comando|
-  link control_comando.to_s
-  parent :control_comandos, control_comando.control
+crumb :control_command do |control_command|
+  link control_command.to_s
+  parent :control_commands, control_command.control
 end
-crumb :control_comando_new do |control|
+crumb :control_command_new do |control|
   link t('views.actions.new')
-  parent :control_comandos, control
+  parent :control_commands, control
 end
-crumb :control_comando_edit do |control_comando|
-  link t('views.actions.do_edit'), edit_admin_control_comando_path(control_comando)
-  parent :control_comando, control_comando
+crumb :control_command_edit do |control_command|
+  link t('views.actions.do_edit'), edit_admin_control_command_path(control_command)
+  parent :control_command, control_command
 end
 
 crumb :devices do
@@ -173,7 +173,7 @@ crumb :device do |device|
 end
 
 crumb :devices_propriedades do |device|
-  link device.descricao.concat(' Propriedades'), admin_device_devices_propriedades_path(device)
+  link device.name.concat(' Propriedades'), admin_device_devices_propriedades_path(device)
   parent :devices, device
 end
 crumb :device_propriedade do |device_propriedade|
@@ -189,21 +189,21 @@ crumb :device_propriedade_edit do |device_propriedade|
   parent :device_propriedade, device_propriedade
 end
 
-crumb :layout_controls do
-  link ControlLayout.model_name.human(count: 2), admin_layout_controls_path
+crumb :control_layouts do
+  link ControlLayout.model_name.human(count: 2), admin_control_layouts_path
   parent :root
 end
-crumb :layout_control_edit do |layout_control|
-  link t('views.actions.do_edit'), edit_admin_layout_control_path(layout_control)
-  parent :layout_control, layout_control
+crumb :control_layout_edit do |control_layout|
+  link t('views.actions.do_edit'), edit_admin_control_layout_path(control_layout)
+  parent :control_layout, control_layout
 end
-crumb :layout_control_new do |_layout_control|
+crumb :control_layout_new do |_control_layout|
   link t('views.actions.new')
-  parent :layout_controls
+  parent :control_layouts
 end
-crumb :layout_control do |layout_control|
-  link layout_control.to_s
-  parent :layout_controls
+crumb :control_layout do |control_layout|
+  link control_layout.to_s
+  parent :control_layouts
 end
 
 crumb :controls do
@@ -228,21 +228,21 @@ crumb :users_all do
   parent :root
 end
 
-crumb :tokens_notificacao_mobile do |user|
-  link user.to_s, admin_user_tokens_notificacao_mobile_path(user)
+crumb :notification_tokens do |user|
+  link user.to_s, admin_user_notification_tokens_path(user)
   parent :users_all
 end
-crumb :token_notificacao_mobile do |token_notificacao_mobile|
-  link token_notificacao_mobile.to_s
-  parent :tokens_notificacao_mobile, token_notificacao_mobile.user
+crumb :notification_token do |notification_token|
+  link notification_token.to_s
+  parent :notification_tokens, notification_token.user
 end
-crumb :token_notificacao_mobile_edit do |token_notificacao_mobile|
-  link t('views.actions.edit'), edit_admin_token_notificacao_mobile_path(token_notificacao_mobile)
-  parent :token_notificacao_mobile, token_notificacao_mobile
+crumb :notification_token_edit do |notification_token|
+  link t('views.actions.edit'), edit_admin_notification_token_path(notification_token)
+  parent :notification_token, notification_token
 end
-crumb :token_notificacao_mobile_new do |token_notificacao_mobile|
+crumb :notification_token_new do |notification_token|
   link t('views.actions.new')
-  parent :tokens_notificacao_mobile, token_notificacao_mobile.user
+  parent :notification_tokens, notification_token.user
 end
 
 

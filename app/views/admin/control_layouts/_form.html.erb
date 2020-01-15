@@ -1,0 +1,28 @@
+<%= simple_form_for([:admin, @control_layout]) do |f| %>
+<%= f.error_notification %>
+
+<div class="row">
+  <%= f.input :name, wrapper_html: { class: 'm12 s12' } %>
+</div>
+
+<div class="row">
+  <%= f.input :type_name, wrapper_html: { class: 'm12 s12' } %>
+</div>
+
+<div class="row">
+  <%= f.input :obs, wrapper_html: { class: 'm12 s12' } %>
+</div>
+
+<div class="row">
+  <%= f.input :active, wrapper_html: { class: 'm12 s12' } %>
+</div>
+
+<div class="row">
+  <% if @control_layout.persisted? %>
+    <%= link_icon_to_back admin_control_layout_path(@control_layout) %>
+  <% else %>
+    <%= link_icon_to_back admin_control_layouts_path %>
+  <% end %>
+  <%= save_button %>
+</div>
+<% end %>

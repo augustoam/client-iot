@@ -1,9 +1,9 @@
 module Admin::TokensNotificationsHelper
-  def token_notificacao_mobile_form_path(token_notificacao_mobile)
-    if token_notificacao_mobile.new_record?
-      admin_user_tokens_notificacao_mobile_path(token_notificacao_mobile.user)
+  def notification_token_form_path(notification_token)
+    if notification_token.new_record?
+      admin_user_notification_tokens_path(notification_token.user)
     else
-      admin_token_notificacao_mobile_path(token_notificacao_mobile)
+      admin_notification_token_path(notification_token)
     end
   end
 end

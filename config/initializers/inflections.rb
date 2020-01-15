@@ -13,7 +13,7 @@
 # These inflection rules are supported but not enabled by default:
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'user', 'users'
-  inflect.irregular 'notification_token', 'notificatio_tokens'
+  inflect.irregular 'notification_token', 'notification_tokens'
   inflect.irregular 'group', 'groups'
   inflect.irregular 'user_group', 'user_groups'
   inflect.irregular 'room', 'rooms'

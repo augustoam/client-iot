@@ -45,6 +45,6 @@ class Admin::ControlsController < ApplicationController
   end
 
   def control_params
-    params.require(:control).permit(:descricao, :obs, :manufacturer_id, :layout_control_id, :device_id)
+    params.require(:control).permit(:name, :obs, :manufacturer_id, :control_layout_id, :device_id)
   end
 end

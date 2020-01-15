@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     @temperatura = ''
     # DeviceRoom
     #   .joins(room: { group: :users })
-    #   .where(User.table_name => { id: current_user }, descricao: 'Temperatura')
+    #   .where(User.table_name => { id: current_user }, name: 'Temperatura')
     #   .each do |device_room|
     #   @temperatura += device_room.room.group.nome + ' ' + device_room.valor.to_s + ' C°'
     # end

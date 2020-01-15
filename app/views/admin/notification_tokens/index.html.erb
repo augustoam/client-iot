@@ -1,0 +1,40 @@
+<% breadcrumb :notification_tokens, @user %>
+
+<div class="container-row">
+  <b><%= plural_model_name_for(NotificationToken) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th><%= NotificationToken.human_attribute_name(:token) %></th>
+          <th><%= NotificationToken.human_attribute_name(:active) %></th>
+          <th><%= NotificationToken.human_attribute_name(:created_at) %></th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @notification_tokens.each do |notification_token| %>
+          <tr>
+            <td><%= notification_token.id %></td>
+            <td><%= notification_token.token %></td>
+            <td><%= notification_token.active %></td>
+            <td><%= ltime notification_token.created_at %></td>
+            <td><%= link_icon_to_edit(edit_admin_notification_token_path(notification_token))%></td>
+            <td><%= link_icon_to_destroy(admin_notification_token_path(notification_token)) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back index_all_admin_users_path %>
+    <%= link_icon_to_new(new_admin_user_notification_token_path, action_new(@notification_tokens)) %>
+  </div>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @notification_tokens, renderer: MaterializePagination::Rails %>
+</div>

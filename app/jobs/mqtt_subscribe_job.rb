@@ -36,7 +36,7 @@ class MqttSubscribeJob < ApplicationJob
             devices_rooms = DeviceRoom.where(topico_info1: topic)
             if devices_rooms.present?
               devices_rooms.each do |device_room|
-                puts device_room.descricao + ' - ' + message
+                puts device_room.name + ' - ' + message
                 device_room.update!(info1: message)
               end
             else
@@ -47,7 +47,7 @@ class MqttSubscribeJob < ApplicationJob
             devices_rooms = DeviceRoom.where(topico_info2: topic)
             if devices_rooms.present?
               devices_rooms.each do |device_room|
-                puts device_room.descricao + ' - ' + message
+                puts device_room.name + ' - ' + message
                 device_room.update!(info2: message)
               end
             else
@@ -58,7 +58,7 @@ class MqttSubscribeJob < ApplicationJob
             devices_rooms = DeviceRoom.where(topico_info3: topic)
             if devices_rooms.present?
               devices_rooms.each do |device_room|
-                puts device_room.descricao + ' - ' + message
+                puts device_room.name + ' - ' + message
                 device_room.update!(info3: message)
               end
             else
@@ -69,7 +69,7 @@ class MqttSubscribeJob < ApplicationJob
             devices_rooms = DeviceRoom.where(topico_result: topic)
             if devices_rooms.present?
               devices_rooms.each do |device_room|
-                puts device_room.descricao + ' - ' + message
+                puts device_room.name + ' - ' + message
                 device_room.update!(result: message)
               end
             else
@@ -80,7 +80,7 @@ class MqttSubscribeJob < ApplicationJob
             devices_rooms = DeviceRoom.where(topico_state: topic)
             if devices_rooms.present?
               devices_rooms.each do |device_room|
-                puts device_room.descricao + ' - ' + message
+                puts device_room.name + ' - ' + message
                 device_room.update!(state: message)
               end
             else
@@ -93,7 +93,7 @@ class MqttSubscribeJob < ApplicationJob
               devices_rooms.each do |device_room|
                 power = false
                 power = true if message.upcase.include? 'ON'
-                puts device_room.descricao + ' - ' + message
+                puts device_room.name + ' - ' + message
                 device_room.update!(power: power)
               end
             else
@@ -106,7 +106,7 @@ class MqttSubscribeJob < ApplicationJob
               devices_rooms.each do |device_room|
                 online = false
                 online = true if message.upcase.include? 'ONLINE'
-                puts device_room.descricao + ' - ' + message
+                puts device_room.name + ' - ' + message
                 device_room.update!(onlline: online)
               end
             else

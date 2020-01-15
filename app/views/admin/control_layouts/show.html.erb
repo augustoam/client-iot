@@ -1,0 +1,33 @@
+<% breadcrumb :control_layout, @control_layout %>
+
+<div class="container-row">
+  <div class="row">
+    <b><%= ControlLayout.human_attribute_name(:id) %></b>
+    <%= @control_layout.id %>
+  </div>
+  <div class="row">
+    <b><%= ControlLayout.human_attribute_name(:name) %></b>
+    <%= @control_layout.name %>
+  </div>
+  <div class="row">
+    <b><%= ControlLayout.human_attribute_name(:type_name) %></b>
+    <%= @control_layout.type_name %>
+  </div>
+  <div class="row">
+    <b><%= ControlLayout.human_attribute_name(:obs) %></b>
+    <%= @control_layout.obs %>
+  </div>
+    <div class="row">
+    <b><%= ControlLayout.human_attribute_name(:active) %></b>
+    <%= @control_layout.active %>
+  </div>
+  <div class="row">
+    <b><%= ControlLayout.human_attribute_name(:created_at) %></b>
+    <%= ltime @control_layout.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_control_layouts_path %>
+    <%= link_no_icon_to_edit(edit_admin_control_layout_path(@control_layout))%>
+  </div>
+</div>

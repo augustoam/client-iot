@@ -1,0 +1,21 @@
+<%= simple_form_for([:admin, @control_command], url: admin_control_command_form_path(@control, @control_command)) do |f| %>
+<%= f.error_notification %>
+<div class="row">
+  <%= f.input :command, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.input :code, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.input :active, wrapper_html: { class: 'm12 s12' } %>
+</div>
+
+<div class="row">
+  <% if @control_command.persisted? %>
+    <%= link_icon_to_back admin_control_command_path(@control_command) %>
+  <% else %>
+    <%= link_icon_to_back admin_control_control_commands_path(@control) %>
+  <% end %>
+  <%= save_button %>
+</div>
+<% end %>

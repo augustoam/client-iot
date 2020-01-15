@@ -50,7 +50,7 @@ class Admin::DevicesRoomController < ApplicationController
   end
 
   def device_room_params
-    params.require(:device_room).permit(:descricao, :topico, :topico_info1, :info1,
+    params.require(:device_room).permit(:name, :topico, :topico_info1, :info1,
                                                 :topico_info2, :info2, :topico_info3, :info3,
                                                 :topico_result, :result, :topico_state, :state,
                                                 :topico_power, :power, :topico_online, :onlline,

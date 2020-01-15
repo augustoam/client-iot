@@ -6,8 +6,8 @@
     <%= @control.id %>
   </div>
   <div class="row">
-    <b><%= Control.human_attribute_name(:descricao) %></b>
-    <%= @control.descricao %>
+    <b><%= Control.human_attribute_name(:name) %></b>
+    <%= @control.name %>
   </div>
   <div class="row">
     <b><%= Control.human_attribute_name(:obs) %></b>
@@ -19,11 +19,15 @@
   </div>
   <div class="row">
     <b><%= Device.human_attribute_name(:device) %></b>
-    <%= @control.device.descricao %>
+    <%= @control.device %>
   </div>
   <div class="row">
-    <b><%= Device.human_attribute_name(:layout_control) %></b>
-    <%= @control.layout_control.descricao %>
+    <b><%= Device.human_attribute_name(:control_layout) %></b>
+    <%= @control.control_layout %>
+  </div>
+    <div class="row">
+    <b><%= Device.human_attribute_name(:active) %></b>
+    <%= @control.active %>
   </div>
   <div class="row">
     <b><%= Control.human_attribute_name(:created_at) %></b>

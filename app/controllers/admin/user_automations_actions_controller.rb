@@ -57,6 +57,6 @@ class Admin::AutomacoesGroupAcoesController < ApplicationController
 
     def automacao_group_acao_params
       params.require(:automacao_group_acao).permit(:tipo_acao, :delay_time, :run_automacao_id, :turn_on_off_automation_id, :turn_on_off,
-                                                   :automacao_group_id, :device_room_id, :control_comando_id)
+                                                   :automacao_group_id, :device_room_id, :control_command_id)
     end
 end

@@ -2,7 +2,7 @@
   <% @devices_room.each do |device_room| %>
     <div class="container">
       <div id="device-<%= device_room.id %>" class="publish-mqtt">
-        <%= render partial: "devices_room/#{device_room.control.device.descricao.downcase}", locals: {device_room: device_room} %>
+        <%= render partial: "devices_room/#{device_room.control.device.name.downcase}", locals: {device_room: device_room} %>
       </div>
     </div>
   <% end %>

@@ -6,8 +6,8 @@
     <%= @device_room.id %>
   </div>
   <div class="row">
-    <b><%= DeviceRoom.human_attribute_name(:descricao) %></b>
-    <%= @device_room.descricao %>
+    <b><%= DeviceRoom.human_attribute_name(:name) %></b>
+    <%= @device_room.name %>
   </div>
   <div class="row">
     <b><%= DeviceRoom.human_attribute_name(:topico) %></b>
@@ -19,7 +19,7 @@
   </div>
   <div class="row">
     <b><%= DeviceRoom.human_attribute_name(:control) %></b>
-    <%= @device_room.control.descricao %>
+    <%= @device_room.control.name %>
   </div>
   <div class="row">
     <b><%= DeviceRoom.human_attribute_name(:created_at) %></b>
