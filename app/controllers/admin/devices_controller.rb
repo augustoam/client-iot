@@ -44,6 +44,6 @@ class Admin::DevicesController < ApplicationController
   end
 
   def device_params
-    params.require(:device).permit(:descricao, :modelo, :comando_unico, :url_icone, :identificador_device)
+    params.require(:device).permit(:name, :model, :url_icon, :active)
   end
 end

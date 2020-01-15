@@ -5,12 +5,16 @@
     <%= @manufacturer.id %>
   </div>
   <div class="row">
-    <b><%= Manufacturer.human_attribute_name(:descricao) %></b>
+    <b><%= Manufacturer.human_attribute_name(:name) %></b>
     <%= @manufacturer.name %>
   </div>
   <div class="row">
     <b><%= Manufacturer.human_attribute_name(:obs) %></b>
     <%= @manufacturer.obs %>
+  </div>
+  <div class="row">
+    <b><%= Manufacturer.human_attribute_name(:active) %></b>
+    <%= @manufacturer.active %>
   </div>
   <div class="row">
     <b><%= Manufacturer.human_attribute_name(:created_at) %></b>

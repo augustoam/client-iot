@@ -7,7 +7,7 @@
         <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
           <i class="material-icons icon-search icon-hover">search</i>
         <% end %>
-        <%= f.search_field :descricao_cont, class: "form-control", placeholder: "Pesquisar Rooms" %>
+        <%= f.search_field :name_cont, class: "form-control", placeholder: "Pesquisar Rooms" %>
       </div>
     </div>
   <% end %>
@@ -20,8 +20,8 @@
       <thead>
         <tr>
           <th><%= Room.human_attribute_name(:id) %></th>
-          <th><%= Room.human_attribute_name(:descricao) %></th>
-          <th><%= Room.human_attribute_name(:icone) %></th>
+          <th><%= Room.human_attribute_name(:name) %></th>
+          <th><%= Room.human_attribute_name(:active) %></th>
           <th><%= Room.human_attribute_name(:created_at) %></th>
           <th colspan="2"></th>
         </tr>
@@ -31,8 +31,8 @@
         <% @rooms.each do |room| %>
           <tr data-href="<%= admin_room_path(room) %>">
             <td><%= room.id %></td>
-            <td><%= room.descricao %></td>
-            <td><%= room.icone %></td>
+            <td><%= room.name %></td>
+            <td><%= room.active %></td>
             <td><%= ltime room.created_at %></td>
             <td><%= link_icon_to_edit(edit_admin_room_path(room))%></td>
             <td><%= link_icon_to_destroy(admin_room_path(room)) %></td>

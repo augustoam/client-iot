@@ -21,6 +21,8 @@
         <tr>
           <th><%= Device.human_attribute_name(:id) %></th>
           <th><%= Device.human_attribute_name(:name) %></th>
+          <th><%= Device.human_attribute_name(:model) %></th>
+          <th><%= Device.human_attribute_name(:active) %></th>
           <th><%= Device.human_attribute_name(:created_at) %></th>
           <th colspan="2"></th>
         </tr>
@@ -31,6 +33,8 @@
           <tr data-href="<%= admin_device_path(device) %>">
             <td><%= device.id %></td>
             <td><%= device.name %></td>
+            <td><%= device.model %></td>
+            <td><%= device.active %></td>
             <td><%= ltime device.created_at %></td>
             <td><%= link_icon_to_edit(edit_admin_device_path(device))%></td>
             <td><%= link_icon_to_destroy(admin_device_path(device)) %></td>

@@ -21,6 +21,7 @@
         <tr>
           <th><%= Manufacturer.human_attribute_name(:id) %></th>
           <th><%= Manufacturer.human_attribute_name(:name) %></th>
+          <th><%= Manufacturer.human_attribute_name(:active) %></th>
           <th><%= Manufacturer.human_attribute_name(:created_at) %></th>
           <th colspan="2"></th>
         </tr>
@@ -31,6 +32,7 @@
           <tr data-href="<%= admin_manufacturer_path(manufacturer) %>">
             <td><%= manufacturer.id %></td>
             <td><%= manufacturer.name %></td>
+            <td><%= manufacturer.active %></td>
             <td><%= ltime manufacturer.created_at %></td>
             <td><%= link_icon_to_edit(edit_admin_manufacturer_path(manufacturer))%></td>
             <td><%= link_icon_to_destroy(admin_manufacturer_path(manufacturer)) %></td>

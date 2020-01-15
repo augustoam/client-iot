@@ -6,15 +6,19 @@
   </div>
   <div class="row">
     <b><%= Device.human_attribute_name(:name) %></b>
-    <%= @device.descricao %>
+    <%= @device.name %>
+  </div>
+  <div class="row">
+    <b><%= Device.human_attribute_name(:model) %></b>
+    <%= @device.model %>
   </div>
   <div class="row">
     <b><%= Device.human_attribute_name(:url_icon) %></b>
     <%= @device.url_icon %>
   </div>
   <div class="row">
-    <b><%= Device.human_attribute_name(:model) %></b>
-    <%= @device.model %>
+    <b><%= Device.human_attribute_name(:active) %></b>
+    <%= @device.active %>
   </div>
   <div class="row">
     <b><%= Device.human_attribute_name(:created_at) %></b>

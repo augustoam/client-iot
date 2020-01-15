@@ -8,6 +8,6 @@ class Group < ApplicationRecord
   validates :name, presence: true
 
   def to_s
-    name.to_s
+    self.name.to_s
   end
 end

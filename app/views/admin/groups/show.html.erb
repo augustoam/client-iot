@@ -10,6 +10,10 @@
     <%= @group.name %>
   </div>
   <div class="row">
+    <b><%= Group.human_attribute_name(:active) %></b>
+    <%= @group.active %>
+  </div>
+  <div class="row">
     <b><%= Group.human_attribute_name(:created_at) %></b>
     <%= ltime @group.created_at %>
   </div>

@@ -21,6 +21,7 @@
         <tr>
           <th><%= Group.human_attribute_name(:id) %></th>
           <th><%= Group.human_attribute_name(:name) %></th>
+          <th><%= Group.human_attribute_name(:active) %></th>
           <th><%= Group.human_attribute_name(:created_at) %></th>
           <th colspan="5"></th>
         </tr>
@@ -31,6 +32,7 @@
           <tr data-href="<%= admin_group_path(group) %>">
             <td><%= group.id %></td>
             <td><%= group.name %></td>
+            <td><%= group.active %></td>
             <td><%= ltime group.created_at %></td>
             <td><%= link_to plural_model_name_for(User), admin_group_users_path(group)%>
             <td><%= link_to plural_model_name_for(GroupRoom), admin_group_group_rooms_path(group) %>

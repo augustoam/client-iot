@@ -45,6 +45,6 @@ class Admin::RoomsController < ApplicationController
   end
 
   def room_params
-    params.require(:room).permit(:descricao, :icone, :url_icone, :obs)
+    params.require(:room).permit(:name, :obs, :active)
   end
 end
