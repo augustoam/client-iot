@@ -1,0 +1,29 @@
+<% breadcrumb :room_device, @room_device %>
+
+<div class="container-row">
+  <div class="row">
+    <b><%= RoomDevice.human_attribute_name(:id) %></b>
+    <%= @room_device.id %>
+  </div>
+  <div class="row">
+    <b><%= RoomDevice.human_attribute_name(:name) %></b>
+    <%= @room_device.name %>
+  </div>
+  <div class="row">
+    <b><%= RoomDevice.human_attribute_name(:topic_id) %></b>
+    <%= @room_device.topic_id %>
+  </div>
+  <div class="row">
+    <b><%= RoomDevice.human_attribute_name(:control) %></b>
+    <%= @room_device.control.name %>
+  </div>
+  <div class="row">
+    <b><%= RoomDevice.human_attribute_name(:created_at) %></b>
+    <%= ltime @room_device.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_group_room_room_devices_path(@group_room) %>
+    <%= link_no_icon_to_edit(edit_admin_room_device_path(@room_device))%>
+  </div>
+</div>

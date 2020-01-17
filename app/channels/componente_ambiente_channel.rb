@@ -1,6 +1,6 @@
-class DeviceRoomChannel < ApplicationCable::Channel
+class RoomDeviceChannel < ApplicationCable::Channel
   def subscribed
-    stream_from 'device_room_channel'
+    stream_from 'room_device_channel'
   end
 
   def unsubscribed
@@ -8,6 +8,6 @@ class DeviceRoomChannel < ApplicationCable::Channel
   end
 
   def estado(data)
-    ActionCable.server.broadcast 'device_room_channel', device_room: data['device_room']
+    ActionCable.server.broadcast 'room_device_channel', room_device: data['room_device']
   end
 end

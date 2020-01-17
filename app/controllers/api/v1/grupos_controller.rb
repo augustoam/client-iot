@@ -8,7 +8,7 @@ class Api::V1::GroupsController < Api::V1::BaseController
         @response = @user.groups_users.collect do |group_user|
           result = group_user.as_json
           result[:group]           = group_user.group
-          result[:rooms_group] = group_user.group.rooms_group.order(created_at: :asc)
+          result[:group_rooms] = group_user.group.group_rooms.order(created_at: :asc)
           result[:rooms]       = Room.all.order(created_at: :asc)
           result[:devices]     = Device.all.order(created_at: :asc)
           result[:controls]       = Control.where(device: syncinfra)

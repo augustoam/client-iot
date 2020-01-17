@@ -1,7 +1,7 @@
-<div class="device_room luz">
+<div class="room_device luz">
   <div class="z-depth-5 white-text card-device grey darken-4">
     <div class="col s12 center-align" style="margin-top:6px;">
-      <b><%= device_room.name %></b>
+      <b><%= room_device.name %></b>
     </div>
 
     <div class="col m1 s3 center-align modal-trigger" href="#modal1">
@@ -14,10 +14,10 @@
       <div class="switch">
         <label style="font-size:9px;">
           off
-          <% if device_room.estado %>
-            <input type="checkbox" id="switch-<%= device_room.name %><%= device_room.id %>" class="botao-infra-vermelho" data-device-room="<%=device_room.id%>" data-topico="<%=device_room.topico%>" checked="checked">
+          <% if room_device.estado %>
+            <input type="checkbox" id="switch-<%= room_device.name %><%= room_device.id %>" class="botao-infra-vermelho" data-device-room="<%=room_device.id%>" data-topico="<%=room_device.topico%>" checked="checked">
           <% else %>
-            <input type="checkbox" id="switch-<%= device_room.name %><%= device_room.id %>" class="botao-infra-vermelho" data-device-room="<%=device_room.id%>" data-topico="<%=device_room.topico%>" unchecked="unchecked">
+            <input type="checkbox" id="switch-<%= room_device.name %><%= room_device.id %>" class="botao-infra-vermelho" data-device-room="<%=room_device.id%>" data-topico="<%=room_device.topico%>" unchecked="unchecked">
           <% end %>
           <span class="lever"></span>
           on
@@ -35,13 +35,13 @@
   <div id="modal1" class="modal bottom-sheet" style="height: 600px;">
     <div class="modal-content" style="width: 100%">
       <div class="col s4">
-        <div class="red darken-1 card-color" id="comando-infra-vermelho-red-darken" data-device-room="<%=device_room.id%>" data-topico='augusto.albertoni@gmail.com/room/lights' data-acao="red"></div>
+        <div class="red darken-1 card-color" id="comando-infra-vermelho-red-darken" data-device-room="<%=room_device.id%>" data-topico='augusto.albertoni@gmail.com/room/lights' data-acao="red"></div>
       </div>
       <div class="col s4">
-        <div class="light-green darken-2 card-color" id="comando-infra-vermelho-green-light" data-device-room="<%=device_room.id%>" data-topico='augusto.albertoni@gmail.com/room/lights' data-acao="green"></div>
+        <div class="light-green darken-2 card-color" id="comando-infra-vermelho-green-light" data-device-room="<%=room_device.id%>" data-topico='augusto.albertoni@gmail.com/room/lights' data-acao="green"></div>
       </div>
       <div class="col s4">
-        <div class=" light-blue darken-4 card-color" id="comando-infra-vermelho-blue-light" data-device-room="<%=device_room.id%>" data-topico='augusto.albertoni@gmail.com/room/lights' data-acao="blue"></div>
+        <div class=" light-blue darken-4 card-color" id="comando-infra-vermelho-blue-light" data-device-room="<%=room_device.id%>" data-topico='augusto.albertoni@gmail.com/room/lights' data-acao="blue"></div>
       </div>
       <div class="col s4">
         <div class=" orange darken-3 card-color"></div>

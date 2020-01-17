@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function() {
     updateFormCondicao(false);
   })
 
-  $(".form_automacao_group_condicao").submit(function() {
+  $(".form_group_automation_condition").submit(function() {
     updateFormCondicao(true);
   })
   $(".device-condicao-select").change(function() {

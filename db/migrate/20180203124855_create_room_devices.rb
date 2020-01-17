@@ -2,8 +2,8 @@ class CreateRoomDevices < ActiveRecord::Migration[5.1]
   def change
     create_table :room_devices do |t|
       t.string :name, limit: 255
-      t.integer :room_id
-      t.integer :device_id
+      t.integer :group_room_id
+      t.integer :control_id
       t.string :topic_id
       t.string :sensor_value
       t.boolean :power
@@ -19,7 +19,7 @@ class CreateRoomDevices < ActiveRecord::Migration[5.1]
       t.string :topic_power
       t.string :topic_online
       t.string :topic_result
-      t.string :topic_publish
+      t.string :topic_state
       t.boolean :active, default: true
 
       t.timestamps

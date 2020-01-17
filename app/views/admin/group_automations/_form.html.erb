@@ -1,0 +1,24 @@
+<%= simple_form_for([:admin, @group_automation], url: admin_group_automation_form_path(@group, @group_automation)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <%= f.input :name, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :operador_condicao, wrapper_html: { class: 'm12 s12' }, collection: [['And', 'and'], ['Or', 'ou']] %>
+  </div>
+
+  <div class="row">
+    <%= f.input :ativo, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <% if @group_automation.persisted? %>
+      <%= link_icon_to_back admin_group_automation_path(@group_automation) %>
+    <% else %>
+      <%= link_icon_to_back admin_group_group_automations_path(@group) %>
+    <% end %>
+    <%= save_button %>
+  </div>
+<% end %>

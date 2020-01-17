@@ -1,20 +1,20 @@
 class Api::V1::DevicesRoomController < Api::V1::BaseController
   before_action :authenticate_user
 
-  def get_devices_room
+  def get_room_devices
     if @user.present?
       begin
-        room_group = RoomGroup.find(params[:room_group_id])
+        group_room = GroupRoom.find(params[:group_room_id])
 
-        @device_room = room_group.devices_room.collect do |device_room|
-          result = device_room.as_json
-          result[:device] = device_room.control.device.as_json
-          result[:control] = device_room.control.control_layout.as_json
-          result[:commands] = device_room.control.comandos_infra_vermelhos.as_json
+        @room_device = group_room.room_devices.collect do |room_device|
+          result = room_device.as_json
+          result[:device] = room_device.control.device.as_json
+          result[:control] = room_device.control.control_layout.as_json
+          result[:commands] = room_device.control.comandos_infra_vermelhos.as_json
           result
         end
 
-        render json: @device_room.to_json, status: :ok
+        render json: @room_device.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
       end
@@ -23,7 +23,7 @@ class Api::V1::DevicesRoomController < Api::V1::BaseController
     end
   end
 
-  def new_device_room
+  def new_room_device
     if @user.present?
 
       topico = params[:topico]
@@ -36,13 +36,13 @@ class Api::V1::DevicesRoomController < Api::V1::BaseController
             control = Control.find_by(device: device)
           end
 
-          device_room = DeviceRoom.create!(
+          room_device = RoomDevice.create!(
             name: device.name,
             topico: topico,
             control: control,
-            room_group_id: params[:room_group_id],
+            group_room_id: params[:group_room_id],
             identificador_device: topico)
-          render json: device_room.to_json, status: :ok
+          render json: room_device.to_json, status: :ok
         rescue => exception
           render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
         end
@@ -54,11 +54,11 @@ class Api::V1::DevicesRoomController < Api::V1::BaseController
     end
   end
 
-  def edit_device_room
+  def edit_room_device
     if @user.present?
       begin
-        device_room = DeviceRoom.find(params[:device_room_id]).update(name: params[:name])
-        render json: device_room.to_json, status: :ok
+        room_device = RoomDevice.find(params[:room_device_id]).update(name: params[:name])
+        render json: room_device.to_json, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found
       end
@@ -67,10 +67,10 @@ class Api::V1::DevicesRoomController < Api::V1::BaseController
     end
   end
 
-  def destroy_device_room
+  def destroy_room_device
     if @user.present?
       begin
-        DeviceRoom.find(params[:device_room_id]).destroy
+        RoomDevice.find(params[:room_device_id]).destroy
         render json: {}, status: :ok
       rescue => exception
         render json: { msg: 'Ops.. parece que aconteceu um problema =(', err: exception }, status: :not_found

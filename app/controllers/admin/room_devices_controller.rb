@@ -1,59 +1,59 @@
-class Admin::DevicesRoomController < ApplicationController
+class Admin::RoomDevicesController < ApplicationController
   layout 'admin'
-  before_action :set_room_group, only: %i[index new create]
-  before_action :set_device_room, only: %i[show edit update destroy]
+  before_action :set_group_room, only: %i[index new create]
+  before_action :set_room_device, only: %i[show edit update destroy]
 
   def index
-    @q = @room_group.devices_room.ransack(params[:q])
-    @devices_room = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
+    @q = @group_room.room_devices.ransack(params[:q])
+    @room_devices = @q.result.paginate(page: params[:page], per_page: params[:per_page] || 35).order(created_at: :asc)
   end
 
   def show; end
 
   def new
-    @device_room = DeviceRoom.new
+    @room_device = RoomDevice.new
   end
 
   def edit; end
 
   def create
-    @device_room = @room_group.devices_room.new(device_room_params)
-    if @device_room.save
-      redirect_to admin_room_group_devices_room_path(@room_group), notice: "#{DeviceRoom.model_name.human} criado com sucesso"
+    @room_device = @group_room.room_devices.new(room_device_params)
+    if @room_device.save
+      redirect_to admin_group_room_room_devices_path(@group_room), notice: "#{RoomDevice.model_name.human} criado com sucesso"
     else
       render :new
     end
   end
 
   def update
-    if @device_room.update(device_room_params)
-      redirect_to admin_device_room_path(@device_room), notice: "#{DeviceRoom.model_name.human} alterado com sucesso."
+    if @room_device.update(room_device_params)
+      redirect_to admin_room_device_path(@room_device), notice: "#{RoomDevice.model_name.human} alterado com sucesso."
     else
       render :edit
     end
   end
 
   def destroy
-    @device_room.destroy
-    redirect_to admin_room_group_devices_room_path(@room_group), notice: "#{DeviceRoom.model_name.human} excluído com sucesso."
+    @room_device.destroy
+    redirect_to admin_group_room_room_devices_path(@group_room), notice: "#{RoomDevice.model_name.human} excluído com sucesso."
   end
 
   private
 
-  def set_device_room
-    @device_room = DeviceRoom.find(params[:id])
-    @room_group = @device_room.room_group
+  def set_room_device
+    @room_device = RoomDevice.find(params[:id])
+    @group_room = @room_device.group_room
   end
 
-  def set_room_group
-    @room_group = RoomGroup.find(params[:room_group_id])
+  def set_group_room
+    @group_room = GroupRoom.find(params[:group_room_id])
   end
 
-  def device_room_params
-    params.require(:device_room).permit(:name, :topico, :topico_info1, :info1,
-                                                :topico_info2, :info2, :topico_info3, :info3,
-                                                :topico_result, :result, :topico_state, :state,
-                                                :topico_power, :power, :topico_online, :onlline,
-                                                :identificador_device, :control_id, :room_group_id)
+  def room_device_params
+    params.require(:room_device).permit(:name, :topic_info1, :info1,
+                                        :topic_info2, :info2, :topic_info3, :info3,
+                                        :topic_result, :result, :topic_state, :state,
+                                        :topic_power, :power, :topic_online, :online,
+                                        :control_id, :topic_id, :sensor_value, :group_room_id)
   end
 end

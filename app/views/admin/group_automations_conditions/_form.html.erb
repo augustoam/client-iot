@@ -1,0 +1,58 @@
+<div id="group_automation_conditions_form">
+<%= simple_form_for([:admin, @group_automation_condition], url: admin_group_automation_condition_form_path(@group_automation, @group_automation_condition), input_html: { class: 'form_group_automation_condition',  multipart: true }) do |f| %>
+
+  <%= f.error_notification %>
+
+  <div class="repeat-data-content">
+    <%= @group_automation_condition.repeat %>
+  </div>
+
+  <div class="row">
+    <%= f.input :tipo_condicao,
+      wrapper_html: { class: 'm12 s12', id: 'tipo-condicao-select' },
+      collection: tipo_condicao_keys %>
+  </div>
+
+  <div class="row">
+    <%= f.input :repeat,
+      wrapper_html: { class: 'm12 s12 repeat-select' },
+      input_html: { multiple: true },
+      collection: [['Once', 'once'],
+                    ['Every Day', 'every_day'],
+                    ['Weekdays', 'weekdays'],
+                    ['Weekends', 'weekends'],
+                    ['Sunday', 'sunday'],
+                    ['Monday', 'monday'],
+                    ['Tuesday', 'tuesday'],
+                    ['Wednesday', 'wednesday'],
+                    ['Thursday', 'thursday'],
+                    ['Friday', 'friday'],
+                    ['Saturday', 'saturday']] %>
+  </div>
+
+  <div class="row">
+    <%= f.input :turn_on, wrapper_html: { class: 'm12 s12 turn-on-select' } %>
+  </div>
+
+  <div class="row input-device-room" data-group-id="<%= @group_automation.group.id %>">
+    <%= f.association :room_device, collection: room_devicess(@group_automation.group.group_rooms), wrapper_html: { class: 'm12 s12 device-condicao-select', id: "device-room-select" } %>
+  </div>
+
+  <div class="row device-propriedade">
+    <%= f.association :control_command, collection: control_commands, wrapper_html: { class: 'm12 s12 device-propriedade-select' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :value_set, wrapper_html: { class: 'm12 s12 value-set-select' } %>
+  </div>
+
+  <div class="row">
+    <% if @group_automation_condition.persisted? %>
+      <%= link_icon_to_back admin_group_automation_condition_path(@group_automation_condition) %>
+    <% else %>
+      <%= link_icon_to_back admin_group_automation_group_automation_conditions_path(@group_automation) %>
+    <% end %>
+    <%= save_button %>
+  </div>
+<% end %>
+</div>

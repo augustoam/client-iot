@@ -61,11 +61,11 @@ Rails.application.routes.draw do
         post :edit_room
         post :destroy_room
       end
-      namespace :devices_room do
-        get :get_devices_room
-        post :new_device_room
-        post :edit_device_room
-        post :destroy_device_room
+      namespace :room_devices do
+        get :get_room_devices
+        post :new_room_device
+        post :edit_room_device
+        post :destroy_room_device
       end
     end
     namespace :request do
@@ -111,11 +111,11 @@ Rails.application.routes.draw do
       resources :notification_tokens, shallow: true
     end
     resources :groups do
-      resources :user_automations, shallow: true do
-        resources :user_automation_conditions, shallow: true do
+      resources :group_automations, shallow: true do
+        resources :group_automation_conditions, shallow: true do
           post :update_device_propriedades, on: :collection
         end
-        resources :user_automation_actions, shallow: true
+        resources :group_automation_actions, shallow: true
       end
       resources :users do
         get :remover, on: :member

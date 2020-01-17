@@ -2,7 +2,7 @@ class Api::DevicesController < ActionController::API
   include MqttBroker
 
   def publish
-    device = DeviceRoom.find(params[:device_room])
+    device = RoomDevice.find(params[:room_device])
     if params[:acao].include? "off" or params[:acao].include? "on"
       if params[:acao] == 'power-off'
         estado = false

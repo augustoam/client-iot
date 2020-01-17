@@ -53,89 +53,89 @@ crumb :room_new do
   parent :rooms
 end
 
-crumb :rooms_group do |group|
-  link RoomGroup.model_name.human(count: 2), admin_group_rooms_group_path(group)
+crumb :group_rooms do |group|
+  link GroupRoom.model_name.human(count: 2), admin_group_group_rooms_path(group)
   parent :groups, group
 end
-crumb :room_group do |room_group|
-  link room_group.to_s
-  parent :rooms_group, room_group.group
+crumb :group_room do |group_room|
+  link group_room.to_s
+  parent :group_rooms, group_room.group
 end
-crumb :room_group_new do |group|
+crumb :group_room_new do |group|
   link t('views.actions.new')
-  parent :rooms_group, group
+  parent :group_rooms, group
 end
-crumb :room_group_edit do |room_group|
-  link t('views.actions.do_edit'), edit_admin_room_group_path(room_group)
-  parent :room_group, room_group
+crumb :group_room_edit do |group_room|
+  link t('views.actions.do_edit'), edit_admin_group_room_path(group_room)
+  parent :group_room, group_room
 end
 
-crumb :automacoes_group do |group|
-  link AutomacaoGroup.model_name.human(count: 2), admin_group_automacoes_group_path(group)
+crumb :group_automations do |group|
+  link GroupAutomation.model_name.human(count: 2), admin_group_group_automations_path(group)
   parent :groups, group
 end
-crumb :automacao_group do |automacao_group|
-  link automacao_group.to_s
-  parent :automacoes_group, automacao_group.group
+crumb :group_automation do |group_automation|
+  link group_automation.to_s
+  parent :group_automations, group_automation.group
 end
-crumb :automacao_group_new do |group|
+crumb :group_automation_new do |group|
   link t('views.actions.new')
-  parent :automacoes_group, group
+  parent :group_automations, group
 end
-crumb :automacao_group_edit do |automacao_group|
-  link t('views.actions.do_edit'), edit_admin_automacao_group_path(automacao_group)
-  parent :automacao_group, automacao_group
+crumb :group_automation_edit do |group_automation|
+  link t('views.actions.do_edit'), edit_admin_group_automation_path(group_automation)
+  parent :group_automation, group_automation
 end
 
-crumb :automacoes_group_condicoes do |automacao_group|
-  link UserAutomationCondition.model_name.human(count: 2), admin_automacao_group_automacoes_group_condicoes_path(automacao_group)
-  parent :automacoes_group, automacao_group.group
+crumb :group_automation_conditions do |group_automation|
+  link GroupAutomationCondition.model_name.human(count: 2), admin_group_automation_group_automation_conditions_path(group_automation)
+  parent :group_automations, group_automation.group
 end
-crumb :automacao_group_condicao do |automacao_group_condicao|
-  link automacao_group_condicao.to_s
-  parent :automacoes_group_condicoes, automacao_group_condicao.automacao_group
+crumb :group_automation_condition do |group_automation_condition|
+  link group_automation_condition.to_s
+  parent :group_automation_conditions, group_automation_condition.group_automation
 end
-crumb :automacao_group_condicao_new do |automacao_group|
+crumb :group_automation_condition_new do |group_automation|
   link t('views.actions.new')
-  parent :automacoes_group_condicoes, automacao_group
+  parent :group_automation_conditions, group_automation
 end
-crumb :automacao_group_condicao_edit do |automacao_group_condicao|
-  link t('views.actions.do_edit'), edit_admin_automacao_group_condicao_path(automacao_group_condicao)
-  parent :automacao_group_condicao, automacao_group_condicao
+crumb :group_automation_condition_edit do |group_automation_condition|
+  link t('views.actions.do_edit'), edit_admin_group_automation_condition_path(group_automation_condition)
+  parent :group_automation_condition, group_automation_condition
 end
 
-crumb :automacoes_group_acoes do |automacao_group|
-  link AutomacaoGroupAcao.model_name.human(count: 2), admin_automacao_group_automacoes_group_acoes_path(automacao_group)
-  parent :automacoes_group, automacao_group.group
+crumb :group_automation_actions do |group_automation|
+  link GroupAutomationAcao.model_name.human(count: 2), admin_group_automation_group_automation_actions_path(group_automation)
+  parent :group_automations, group_automation.group
 end
-crumb :automacao_group_acao do |automacao_group_acao|
-  link automacao_group_acao.to_s
-  parent :automacoes_group_acoes, automacao_group_acao.automacao_group
+crumb :group_automation_action do |group_automation_action|
+  link group_automation_action.to_s
+  parent :group_automation_actions, group_automation_action.group_automation
 end
-crumb :automacao_group_acao_new do |automacao_group|
+crumb :group_automation_action_new do |group_automation|
   link t('views.actions.new')
-  parent :automacoes_group_acoes, automacao_group
+  parent :group_automation_actions, group_automation
 end
-crumb :automacao_group_acao_edit do |automacao_group_acao|
-  link t('views.actions.do_edit'), edit_admin_automacao_group_acao_path(automacao_group_acao)
-  parent :automacao_group_acao, automacao_group_acao
+crumb :group_automation_action_edit do |group_automation_action|
+  link t('views.actions.do_edit'), edit_admin_group_automation_action_path(group_automation_action)
+  parent :group_automation_action, group_automation_action
 end
 
-crumb :devices_room do |room_group|
-  link Device.model_name.human(count: 2), admin_room_group_devices_room_path(room_group)
-  parent :rooms_group, room_group.group
+crumb :room_devices do |group_room|
+  link Device.model_name.human(count: 2), admin_group_room_room_devices_path(group_room)
+  parent :group_rooms, group_room.group
 end
-crumb :device_room do |device_room|
-  link device_room.to_s
-  parent :devices_room, device_room.room_group
+crumb :room_device do |room_device|
+  link room_device.to_s
+  parent :room_devices, room_device.group_room
 end
-crumb :device_room_new do |room_group|
+crumb :room_device_new do |group_room|
   link t('views.actions.new')
-  parent :devices_room, room_group
+  parent :room_devices, group_room
 end
-crumb :device_room_edit do |device_room|
-  link t('views.actions.do_edit'), edit_admin_device_room_path(device_room.room_group)
-  parent :device_room, device_room
+crumb :room_device_edit do |room_device|
+  link t('views.actions.do_edit'), edit_admin_room_device_path(room_device.group_room)
+  parent :room_device, room_device
 end
 
 crumb :control_commands do |control|

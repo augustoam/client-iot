@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function() {
 
 completeManually = (element) => {
   var vData = {
-    automacao_group_id: element[0].getAttribute('data-automacao-group')
+    group_automation_id: element[0].getAttribute('data-automacao-group')
   };
 
   $.post({

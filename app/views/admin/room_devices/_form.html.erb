@@ -1,0 +1,53 @@
+<%= simple_form_for([:admin, @room_device], url: admin_room_device_form_path(@group_room, @room_device)) do |f| %>
+<%= f.error_notification %>
+
+<div class="row">
+  <%= f.input :name, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.input :topic_info1, wrapper_html: { class: 'm6 s6' } %>
+  <%= f.input :info1, wrapper_html: { class: 'm6 s6' } %>
+</div>
+<div class="row">
+  <%= f.input :topic_info2, wrapper_html: { class: 'm6 s6' } %>
+  <%= f.input :info2, wrapper_html: { class: 'm6 s6' } %>
+</div>
+<div class="row">
+  <%= f.input :topic_info3, wrapper_html: { class: 'm6 s6' } %>
+  <%= f.input :info3, wrapper_html: { class: 'm6 s6' } %>
+</div>
+<div class="row">
+  <%= f.input :topic_result, wrapper_html: { class: 'm6 s6' } %>
+  <%= f.input :result, wrapper_html: { class: 'm6 s6' } %>
+</div>
+<div class="row">
+  <%= f.input :topic_state, wrapper_html: { class: 'm6 s6' } %>
+  <%= f.input :state, wrapper_html: { class: 'm6 s6' } %>
+</div>
+<div class="row">
+  <%= f.input :topic_power, wrapper_html: { class: 'm6 s6' } %>
+  <%= f.input :power, wrapper_html: { class: 'm6 s6' } %>
+</div>
+<div class="row">
+  <%= f.input :topic_online, wrapper_html: { class: 'm6 s6' } %>
+  <%= f.input :online, wrapper_html: { class: 'm6 s6' } %>
+</div>
+<div class="row">
+  <%= f.input :topic_id, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.input :sensor_value, wrapper_html: { class: 'm12 s12' } %>
+</div>
+<div class="row">
+  <%= f.association :control, wrapper_html: { class: 'm12 s12' } %>
+</div>
+
+<div class="row">
+  <% if @room_device.persisted? %>
+    <%= link_icon_to_back admin_room_device_path(room_device) %>
+  <% else %>
+    <%= link_icon_to_back admin_group_room_room_devices_path(@group_room) %>
+  <% end %>
+  <%= save_button %>
+</div>
+<% end %>

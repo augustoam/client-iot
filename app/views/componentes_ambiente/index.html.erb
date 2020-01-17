@@ -1,8 +1,8 @@
-<div class="row" id="device_room">
-  <% @devices_room.each do |device_room| %>
+<div class="row" id="room_device">
+  <% @room_devices.each do |room_device| %>
     <div class="container">
-      <div id="device-<%= device_room.id %>" class="publish-mqtt">
-        <%= render partial: "devices_room/#{device_room.control.device.name.downcase}", locals: {device_room: device_room} %>
+      <div id="device-<%= room_device.id %>" class="publish-mqtt">
+        <%= render partial: "room_devices/#{room_device.control.device.name.downcase}", locals: {room_device: room_device} %>
       </div>
     </div>
   <% end %>

@@ -1,0 +1,24 @@
+<%= simple_form_for([:admin, @group_room], url: admin_group_room_form_path(@group, @group_room)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <%= f.input :name, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.association :room, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <%= f.input :active, wrapper_html: { class: 'm12 s12' } %>
+  </div>
+
+  <div class="row">
+    <% if @group_room.persisted? %>
+      <%= link_icon_to_back admin_group_room_path(@group_room) %>
+    <% else %>
+      <%= link_icon_to_back admin_group_group_rooms_path(@group) %>
+    <% end %>
+    <%= save_button %>
+  </div>
+<% end %>

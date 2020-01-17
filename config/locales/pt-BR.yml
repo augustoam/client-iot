@@ -1,77 +1,79 @@
 pt-BR:
-  "yes":                                'Sim'
-  "no":                                 'Não'
+  "yes":                                'Yes'
+  "no":                                 'No'
   activerecord:
     models:
       group:
         one:                            'Group'
         other:                          'Groups'
-      automacao_group:
-        one:                            'Automação do Group'
-        other:                          'Automações dos Groups'
-      automacao_group_condicao:
-        one:                            'Condição'
-        other:                          'Condições'
-      group_user:
-        one:                            'Group Usuário'
-        other:                          'Groups Usuários'
+      group_automation:
+        one:                            'Group Automation'
+        other:                          'Group Automations'
+      group_automation_condition:
+        one:                            'Group Automation Condition'
+        other:                          'Group Automation Conditions'
+      group_automation_action:
+        one:                            'Group Automation Action'
+        other:                          'Group Automation Actions'
+      user_group:
+        one:                            'User Group'
+        other:                          'User Groups'
       user:
-        one:                            'Usuário'
-        other:                          'Usuários'
+        one:                            'User'
+        other:                          'Users'
       room:
         one:                            'Room'
         other:                          'Rooms'
       device:
         one:                            'Device'
         other:                          'Devices'
-      device_propriedade:
-        one:                            'Device Propriedade'
-        other:                          'Devices Propriedades'
-      comando_infra_vermelho:
-        one:                            'Comando Infravermelho'
-        other:                          'Comandos Infravermelhos'
+      control_command:
+        one:                            'Control Command'
+        other:                          'Control Commands'
       control:
         one:                            'Control'
         other:                          'Controls'
-      device_room:
-        one:                            'Device Room'
-        other:                          'Devices Room'
+      room_device:
+        one:                            'Room Device'
+        other:                          'Room Devices'
+      group_room:
+        one:                            'Group Room'
+        other:                          'Group Rooms'
       manufacturer:
         one:                            'Manufacturer'
         other:                          'Manufacturers'
-      layout_control:
-        one:                            'Layout de Control'
-        other:                          'Layouts de Controls'
+      control_layout:
+        one:                            'Control Layout'
+        other:                          'Control Layouts'
     attributes:
       user:
         id:                             ID
         email:                          Email
-        admin:                          Administrador
-        created_at:                     Data Criação
+        admin:                          Administrator
+        created_at:                     Creation Date
       group:
         id:                             ID
-        nome:                           Nome
-        created_at:                     Data Criação
+        nome:                           Name
+        active:                         Active
+        created_at:                     Creation Date
       control:
         id:                             ID
-        name:                      Descrição
-        obs:                            Observação
-        created_at:                     Data Criação
-      device_room:
+        name:                           Name
+        obs:                            Observation
+        active:                         Active
+        created_at:                     Creation Date
+      room_device:
         id:                             ID
-        name:                      Descrição
-      device_propriedade:
-        id:                             ID
-        name:                      Descrição
-        id_propriedade:                 ID Propriedade
-        created_at:                     Data Criação
-      automacao_group_condicao:
+        name:                           Name
+        active:                         Active
+        created_at:                     Creation Date
+      group_automation_condition:
         tipo_condicao:
           one:                         Tipo de condição
           complete_manually:           Completado Manualmente
           timer:                       Timer
           device:                  Device
-      automacao_group_acao:
+      group_automation_action:
         tipo_acao:
           one:                         Tipo de ação
           run_automation:              Rodar Automação
@@ -82,15 +84,15 @@ pt-BR:
 
   views:
     actions:
-      new:                              'Novo'
-      new-fem:                          'Nova'
-      edit:                             'Editar'
-      do_edit:                          'Edição'
-      save:                             'Salvar'
+      new:                              'New'
+      new-fem:                          'New'
+      edit:                             'Edit'
+      do_edit:                          'Editing'
+      save:                             'Save'
       login:                            'Login'
-      send_instruction:                 'Enviar instruções para redefinição da senha'
-      change_password:                  'Atualizar senha'
-      resend_confirmation_instructions: 'Reenviar instruções'
+      send_instruction:                 'Send instructions to password redefine'
+      change_password:                  'Update password'
+      resend_confirmation_instructions: 'Resend instructions'
   time:
     formats:
       data_hora:                        "%d/%B/%Y %H:%M"
@@ -99,17 +101,17 @@ pt-BR:
   devise:
     confirmations:
       show:
-        change_my_password:             Atualizar senha
-        new_password:                   Nova senha
-        confirm_new_password:           Confirme sua senha
+        change_my_password:             Update password
+        new_password:                   New password
+        confirm_new_password:           Confirm password
   users:
     password_change:
-      change_my_password:               'Atualizar senha'
-      new_password:                     'Nova senha'
+      change_my_password:               'Update password'
+      new_password:                     'New Password'
       confirm_new_password:             'Confirme sua senha'
   admin:
     administrador:
       edit:
-        change_my_password:             'Atualizar senha'
-        new_password:                   'Nova senha'
-        confirm_new_password:           'Confirme sua senha'
+        change_my_password:             'Update password'
+        new_password:                   'New Password'
+        confirm_new_password:           'Confirm password'

@@ -21,6 +21,8 @@
         <tr>
           <th><%= User.human_attribute_name(:id) %></th>
           <th><%= User.human_attribute_name(:email) %></th>
+          <th><%= User.human_attribute_name(:admin) %></th>
+          <th><%= User.human_attribute_name(:created_at) %></th>
           <th colspan="4"></th>
         </tr>
       </thead>
@@ -30,6 +32,7 @@
           <tr data-href="<%= admin_group_user_path(@group,user) %>">
             <td><%= user.id %></td>
             <td><%= user.email %></td>
+            <td><%= user.admin %></td>
             <td><%= ltime user.created_at %></td>
             <td><%= link_icon_to_edit(edit_admin_group_user_path(@group, user))%></td>
             <td><%= link_icon_to_destroy(admin_group_user_path(@group, user)) %></td>

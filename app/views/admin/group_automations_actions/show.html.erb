@@ -1,0 +1,25 @@
+<% breadcrumb :group_automation_action, @group_automation_action %>
+
+<div class="container-row">
+  <div class="row">
+    <b><%= GroupAutomationCondition.human_attribute_name(:id) %></b>
+    <%= @group_automation_action.id %>
+  </div>
+  <div class="row">
+    <b><%= GroupAutomationCondition.human_attribute_name(:tipo_acao) %></b>
+    <%= @group_automation_action.tipo_acao %>
+  </div>
+  <div class="row">
+    <b><%= GroupAutomationCondition.human_attribute_name(:delay_time) %></b>
+    <%= @group_automation_action.delay_time %>
+  </div>
+  <div class="row">
+    <b><%= GroupAutomationCondition.human_attribute_name(:created_at) %></b>
+    <%= ltime @group_automation_action.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_group_automation_group_automation_actions_path(@group_automation) %>
+    <%= link_no_icon_to_edit(edit_admin_group_automation_action_path(@group_automation_action))%>
+  </div>
+</div>

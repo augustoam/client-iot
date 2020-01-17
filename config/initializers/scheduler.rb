@@ -1,7 +1,7 @@
 require 'sidekiq/scheduler'
 
-#UserAutomationCondition.where(tipo_condicao: :timer).each do |automacao_group_condicao|
- # if automacao_group_condicao.schedule_cron.present?
-#    Sidekiq.set_schedule("#{automacao_group_condicao.id}_publish_mqtt", { 'cron' => automacao_group_condicao.schedule_cron, 'class' => 'MqttPublishJob', 'args' => "#{automacao_group_condicao.automacao_group.id}" })
+#GroupAutomationCondition.where(tipo_condicao: :timer).each do |group_automation_condition|
+ # if group_automation_condition.schedule_cron.present?
+#    Sidekiq.set_schedule("#{group_automation_condition.id}_publish_mqtt", { 'cron' => group_automation_condition.schedule_cron, 'class' => 'MqttPublishJob', 'args' => "#{group_automation_condition.group_automation.id}" })
 #  end
 #end

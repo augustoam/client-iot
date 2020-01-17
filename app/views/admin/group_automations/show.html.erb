@@ -1,0 +1,29 @@
+<% breadcrumb :group_automation, @group_automation %>
+
+<div class="container-row">
+  <div class="row">
+    <b><%= GroupAutomation.human_attribute_name(:id) %></b>
+    <%= @group_automation.id %>
+  </div>
+  <div class="row">
+    <b><%= GroupAutomation.human_attribute_name(:name) %></b>
+    <%= @group_automation.name %>
+  </div>
+  <div class="row">
+    <b><%= GroupAutomation.human_attribute_name(:ativo) %></b>
+    <%= @group_automation.ativo %>
+  </div>
+  <div class="row">
+    <b><%= GroupAutomation.human_attribute_name(:operador_condicao) %></b>
+    <%= @group_automation.operador_condicao %>
+  </div>
+  <div class="row">
+    <b><%= GroupAutomation.human_attribute_name(:created_at) %></b>
+    <%= ltime @group_automation.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_group_group_automations_path(@group) %>
+    <%= link_no_icon_to_edit(edit_admin_group_automation_path(@group_automation))%>
+  </div>
+</div>

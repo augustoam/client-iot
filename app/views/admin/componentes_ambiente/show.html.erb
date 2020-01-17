@@ -1,33 +1,33 @@
-<% breadcrumb :device_room, @device_room %>
+<% breadcrumb :room_device, @room_device %>
 
 <div class="container-row">
   <div class="row">
-    <b><%= DeviceRoom.human_attribute_name(:id) %></b>
-    <%= @device_room.id %>
+    <b><%= RoomDevice.human_attribute_name(:id) %></b>
+    <%= @room_device.id %>
   </div>
   <div class="row">
-    <b><%= DeviceRoom.human_attribute_name(:name) %></b>
-    <%= @device_room.name %>
+    <b><%= RoomDevice.human_attribute_name(:name) %></b>
+    <%= @room_device.name %>
   </div>
   <div class="row">
-    <b><%= DeviceRoom.human_attribute_name(:topico) %></b>
-    <%= @device_room.topico %>
+    <b><%= RoomDevice.human_attribute_name(:topico) %></b>
+    <%= @room_device.topico %>
   </div>
   <div class="row">
-    <b><%= DeviceRoom.human_attribute_name(:identificador_device_room) %></b>
-    <%= @device_room.identificador_device %>
+    <b><%= RoomDevice.human_attribute_name(:identificador_room_device) %></b>
+    <%= @room_device.identificador_device %>
   </div>
   <div class="row">
-    <b><%= DeviceRoom.human_attribute_name(:control) %></b>
-    <%= @device_room.control.name %>
+    <b><%= RoomDevice.human_attribute_name(:control) %></b>
+    <%= @room_device.control.name %>
   </div>
   <div class="row">
-    <b><%= DeviceRoom.human_attribute_name(:created_at) %></b>
-    <%= ltime @device_room.created_at %>
+    <b><%= RoomDevice.human_attribute_name(:created_at) %></b>
+    <%= ltime @room_device.created_at %>
   </div>
 
   <div class="row">
-    <%= link_icon_to_back admin_room_group_devices_room_path(@room_group) %>
-    <%= link_no_icon_to_edit(edit_admin_device_room_path(@device_room))%>
+    <%= link_icon_to_back admin_group_room_room_devices_path(@group_room) %>
+    <%= link_no_icon_to_edit(edit_admin_room_device_path(@room_device))%>
   </div>
 </div>

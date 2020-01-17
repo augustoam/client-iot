@@ -1,5 +1,5 @@
 
-App.device_room = App.cable.subscriptions.create "DeviceRoomChannel",
+App.room_device = App.cable.subscriptions.create "RoomDeviceChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
 
@@ -7,11 +7,11 @@ App.device_room = App.cable.subscriptions.create "DeviceRoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    a = data.device_room.split(' ')[1].replace('"', '')
+    a = data.room_device.split(' ')[1].replace('"', '')
     d = a.replace(/.$/, '')
     console.log data
     $("##{d}").html ""
-    $("##{d}").append data.device_room
+    $("##{d}").append data.room_device
 
-  estado: (device_room) ->
-    @perform 'estado', device_room: device_room
+  estado: (room_device) ->
+    @perform 'estado', room_device: room_device

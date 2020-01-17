@@ -4,68 +4,68 @@ class AutomacaoService
   CONDICAO_TIMER             = 'timer'
   CONDICAO_COMPLETE_MANUALLY = 'complete_manually'
 
-  def initialize(device_room)
-    @device_room = device_room
+  def initialize(room_device)
+    @room_device = room_device
   end
 
   def call
-    automacoes_group = AutomacaoGroup.joins(:automacoes_group_condicoes).where(UserAutomationCondition.table_name => { device_room: @device_room })
+    group_automations = GroupAutomation.joins(:group_automation_conditions).where(GroupAutomationCondition.table_name => { room_device: @room_device })
 
-    automacoes_group.each do |automacao_group|
+    group_automations.each do |group_automation|
       @condicao_valida  = false
-      automacao_group.automacoes_group_condicoes.each do |automacao_group_condicao|
+      group_automation.group_automation_conditions.each do |group_automation_condition|
 
-        if automacao_group_condicao.tipo_condicao. == CONDICAO_COMPONENTE
-          device_room = DeviceRoom.find(automacao_group_condicao.device_room_id)
-          if device_room.control.device.name.upcase == 'SYNCRELAY'
-            if device_room.estado.to_s == automacao_group_condicao.device_propriedade.id_propriedade
+        if group_automation_condition.tipo_condicao. == CONDICAO_COMPONENTE
+          room_device = RoomDevice.find(group_automation_condition.room_device_id)
+          if room_device.control.device.name.upcase == 'SYNCRELAY'
+            if room_device.estado.to_s == group_automation_condition.device_propriedade.id_propriedade
               @condicao_valida = true
             else
               @condicao_valida = false
             end
           end
 
-          if device_room.control.device.name.upcase == 'SYNCWEATHER'
+          if room_device.control.device.name.upcase == 'SYNCWEATHER'
 
-            params = JSON.parse(device_room.valor)
-            if automacao_group_condicao.device_propriedade.id_propriedade.upcase == 'ABOVE_TEMPERATURE'
-              if params['temperatura'].to_f > automacao_group_condicao.value_set.to_f
+            params = JSON.parse(room_device.valor)
+            if group_automation_condition.device_propriedade.id_propriedade.upcase == 'ABOVE_TEMPERATURE'
+              if params['temperatura'].to_f > group_automation_condition.value_set.to_f
                 @condicao_valida = true
               else
                 @condicao_valida = false
               end
             end
-            if automacao_group_condicao.device_propriedade.id_propriedade.upcase == 'BELOW_TEMPERATURE'
-              if params['temperatura'].to_f < automacao_group_condicao.value_set.to_f
+            if group_automation_condition.device_propriedade.id_propriedade.upcase == 'BELOW_TEMPERATURE'
+              if params['temperatura'].to_f < group_automation_condition.value_set.to_f
                 @condicao_valida = true
               else
                 @condicao_valida = false
               end
             end
-            if automacao_group_condicao.device_propriedade.id_propriedade.upcase == 'ABOVE_UMIDITY'
-              if params['umidade'].to_f > automacao_group_condicao.value_set.to_f
+            if group_automation_condition.device_propriedade.id_propriedade.upcase == 'ABOVE_UMIDITY'
+              if params['umidade'].to_f > group_automation_condition.value_set.to_f
                 @condicao_valida = true
               else
                 @condicao_valida = false
               end
             end
-            if automacao_group_condicao.device_propriedade.id_propriedade.upcase == 'BELOW_UMIDITY'
-              if params['umidade'].to_f < automacao_group_condicao.value_set.to_f
+            if group_automation_condition.device_propriedade.id_propriedade.upcase == 'BELOW_UMIDITY'
+              if params['umidade'].to_f < group_automation_condition.value_set.to_f
                 @condicao_valida = true
               end
             end
           end
 
-          if device_room.control.device.name.upcase == 'SYNCPRESENCE'
-            if automacao_group_condicao.device_propriedade.id_propriedade == 'MOTION_DETECTED'
-              if device_room.estado
+          if room_device.control.device.name.upcase == 'SYNCPRESENCE'
+            if group_automation_condition.device_propriedade.id_propriedade == 'MOTION_DETECTED'
+              if room_device.estado
                 @condicao_valida = true
               end
             end
           end
         end
       end
-      p ('automacao group: ').concat(automacoes_group.name).concat(' - ').concat(@condicao_valida)
+      p ('automacao group: ').concat(group_automations.name).concat(' - ').concat(@condicao_valida)
     end
   end
 end

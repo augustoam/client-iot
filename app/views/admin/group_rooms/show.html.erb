@@ -1,0 +1,29 @@
+<% breadcrumb :group_room, @group_room %>
+
+<div class="container-row">
+  <div class="row">
+    <b><%= GroupRoom.human_attribute_name(:id) %></b>
+    <%= @group_room.id %>
+  </div>
+  <div class="row">
+    <b><%= GroupRoom.human_attribute_name(:name) %></b>
+    <%= @group_room.name %>
+  </div>
+  <div class="row">
+    <b><%= GroupRoom.human_attribute_name(:room) %></b>
+    <%= @group_room.room %>
+  </div>
+  <div class="row">
+    <b><%= GroupRoom.human_attribute_name(:active) %></b>
+    <%= @group_room.active %>
+  </div>
+  <div class="row">
+    <b><%= GroupRoom.human_attribute_name(:created_at) %></b>
+    <%= ltime @group_room.created_at %>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_group_group_rooms_path(@group) %>
+    <%= link_no_icon_to_edit(edit_admin_group_room_path(@group_room))%>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<% breadcrumb :group_automation_actions, @group_automation %>
+
+<div class="row">
+  <%= search_form_for @q, url: admin_group_automation_group_automation_actions_path do |f| %>
+    <div class="col s12">
+      <div class="input-search">
+        <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
+          <i class="material-icons icon-search icon-hover">search</i>
+        <% end %>
+        <%= f.search_field :tipo_acao_cont, class: "form-control", placeholder: "Search Actions" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="container-row">
+  <b><%= plural_model_name_for(GroupAutomationAcao) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= GroupAutomationAcao.human_attribute_name(:id) %></th>
+          <th><%= GroupAutomationAcao.human_attribute_name(:tipo_acao) %></th>
+          <th><%= GroupAutomationAcao.human_attribute_name(:delay_time) %></th>
+          <th><%= GroupAutomationAcao.human_attribute_name(:created_at) %></th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @group_automation_actions.each do |group_automation_action| %>
+          <tr data-href="<%= admin_group_automation_action_path(group_automation_action) %>">
+            <td><%= group_automation_action.id %></td>
+            <td><%= group_automation_action.tipo_acao %></td>
+            <td><%= group_automation_action.delay_time %></td>
+            <td><%= ltime group_automation_action.created_at %></td>
+            <td><%= link_icon_to_edit(edit_admin_group_automation_action_path(group_automation_action))%></td>
+            <td><%= link_icon_to_destroy(admin_group_automation_action_path(group_automation_action)) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_group_group_automations_path(@group_automation.group) %>
+    <%= link_icon_to_new(new_admin_group_automation_group_automation_action_path(@group_automation), action_new(@group_automation_actions)) %>
+  </div>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @group_automations, renderer: MaterializePagination::Rails %>
+</div>

@@ -11,11 +11,11 @@
       <a class="collapsible-header white-text "><%= group.group.nome %>
         <i class="material-icons"></i>
       </a>
-      <% group.group.rooms_group.each do |room_group| %>
-        <% if room_group.visivel %>
+      <% group.group.group_rooms.each do |group_room| %>
+        <% if group_room.visivel %>
           <div class="collapsible-body grey darken-3">
             <ul>
-              <li><%= link_to room_group.nome, group_room_group_devices_room_path(group, room_group), class: "white-text" %></li>
+              <li><%= link_to group_room.nome, group_group_room_room_devices_path(group, group_room), class: "white-text" %></li>
             </ul>
           </div>
         <% end %>

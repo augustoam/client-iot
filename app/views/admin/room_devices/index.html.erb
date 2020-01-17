@@ -1,0 +1,58 @@
+<% breadcrumb :room_devices, @group_room %>
+
+<div class="row">
+  <%= search_form_for @q, url: admin_group_room_room_devices_path do |f| %>
+    <div class="col s12">
+      <div class="input-search">
+        <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
+          <i class="material-icons icon-search icon-hover">search</i>
+        <% end %>
+        <%= f.search_field :name_cont, class: "form-control", placeholder: "Search Devices" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="container-row">
+  <b><%= plural_model_name_for(RoomDevice) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= RoomDevice.human_attribute_name(:id) %></th>
+          <th><%= RoomDevice.human_attribute_name(:name) %></th>
+          <th><%= RoomDevice.human_attribute_name(:topic_id) %></th>
+          <th><%= RoomDevice.human_attribute_name(:online) %></th>
+          <th><%= RoomDevice.human_attribute_name(:device) %></th>
+          <th><%= RoomDevice.human_attribute_name(:active) %></th>
+          <th><%= RoomDevice.human_attribute_name(:created_at) %></th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @room_devices.each do |room_device| %>
+          <tr data-href="<%= admin_room_device_path(room_device) %>">
+            <td><%= room_device.id %></td>
+            <td><%= room_device.name %></td>
+            <td><%= room_device.topic_id %></td>
+            <td><%= room_device.online %></td>
+            <td><%= room_device.control.device %></td>
+            <td><%= ltime room_device.created_at %></td>
+            <td><%= link_icon_to_edit(edit_admin_room_device_path(room_device))%></td>
+            <td><%= link_icon_to_destroy(admin_room_device_path(room_device)) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_group_group_rooms_path(@group_room.group) %>
+    <%= link_icon_to_new(new_admin_group_room_room_device_path(@group_room), action_new(@room_devices)) %>
+  </div>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @room_devices, renderer: MaterializePagination::Rails %>
+</div>

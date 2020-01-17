@@ -25,7 +25,7 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'control', 'controls'
   inflect.irregular 'control_command', 'control_commands'
   inflect.irregular 'manufacturer', 'manufacturers'
-  inflect.irregular 'user_automation', 'users_automations'
-  inflect.irregular 'user_automation_condition', 'user_automation_conditions'
-  inflect.irregular 'user_automation_action', 'user_automation_actions'
+  inflect.irregular 'group_automation', 'group_automations'
+  inflect.irregular 'group_automation_condition', 'group_automation_conditions'
+  inflect.irregular 'group_automation_action', 'group_automation_actions'
 end

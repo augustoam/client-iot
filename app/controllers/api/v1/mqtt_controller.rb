@@ -3,7 +3,7 @@ class Api::V1::MqttController < Api::V1::BaseController
 
   def publish
     parametros = JSON.parse(params[:parametros])
-    device = DeviceRoom.find(parametros['device_room']['id'])
+    device = RoomDevice.find(parametros['room_device']['id'])
     if parametros['msg'].include? "off" or parametros['msg'].include? "on"
       if parametros['msg'] == 'power-off'
         estado = false

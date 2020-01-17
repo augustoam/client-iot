@@ -1,0 +1,57 @@
+<% breadcrumb :group_automations, @group %>
+
+<div class="row">
+  <%= search_form_for @q, url: admin_group_group_automations_path do |f| %>
+    <div class="col s12">
+      <div class="input-search">
+        <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
+          <i class="material-icons icon-search icon-hover">search</i>
+        <% end %>
+        <%= f.search_field :name_cont, class: "form-control", placeholder: "Search Automations" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="container-row">
+  <b><%= plural_model_name_for(GroupAutomation) %></b>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= GroupAutomation.human_attribute_name(:id) %></th>
+          <th><%= GroupAutomation.human_attribute_name(:name) %></th>
+          <th><%= GroupAutomation.human_attribute_name(:active) %></th>
+          <th><%= GroupAutomation.human_attribute_name(:condition_operator) %></th>
+          <th><%= GroupAutomation.human_attribute_name(:created_at) %></th>
+          <th colspan="4"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @group_automations.each do |group_automation| %>
+          <tr data-href="<%= admin_group_automation_path(group_automation) %>">
+            <td><%= group_automation.id %></td>
+            <td><%= group_automation.name %></td>
+            <td><%= group_automation.active %></td>
+            <td><%= group_automation.condition_operator %></td>
+            <td><%= ltime group_automation.created_at %></td>
+            <td><%= link_to 'Condições', admin_group_automation_group_automation_conditions_path(group_automation) %></td>
+            <td><%= link_to 'Ações', admin_group_automation_group_automation_actions_path(group_automation) %></td>
+            <td><%= link_icon_to_edit(edit_admin_group_automation_path(group_automation))%></td>
+            <td><%= link_icon_to_destroy(admin_group_automation_path(group_automation)) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <%= link_icon_to_back admin_groups_path %>
+    <%= link_icon_to_new(new_admin_group_group_automation_path(@group), action_new(@group_automations)) %>
+  </div>
+</div>
+
+<div class="center-align">
+  <%= will_paginate @group_automations, renderer: MaterializePagination::Rails %>
+</div>

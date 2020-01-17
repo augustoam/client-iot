@@ -5,9 +5,9 @@
       <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 publish-mqtt-infravermelho',
                       id: "comando-infra-vermelho-power",
                       data: {
-                             device_room: device_room.id,
-                             acao:                define_acao('power', device_room),
-                             topico:              device_room.topico
+                             room_device: room_device.id,
+                             acao:                define_acao('power', room_device),
+                             topico:              room_device.topico
                             } do %>
 
       <i class="large material-icons black-text" style="margin-top: 4px;">power_settings_new</i>
@@ -23,9 +23,9 @@
     <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 publish-mqtt-infravermelho',
                     id: "comando-infra-vermelho-volume-up",
                     data: {
-                           device_room: device_room.id,
-                           acao:                define_acao('volume-up', device_room),
-                           topico:              device_room.topico
+                           room_device: room_device.id,
+                           acao:                define_acao('volume-up', room_device),
+                           topico:              room_device.topico
                           } do %>
       <i class="large material-icons black-text" style="margin-top: 4px;">add</i>
     <% end %>
@@ -36,9 +36,9 @@
     <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 publish-mqtt-infravermelho',
                     id: "comando-infra-vermelho-canal-up",
                     data: {
-                           device_room: device_room.id,
-                           acao:                define_acao('canal-up', device_room),
-                           topico:              device_room.topico
+                           room_device: room_device.id,
+                           acao:                define_acao('canal-up', room_device),
+                           topico:              room_device.topico
                           } do %>
       <i class="large material-icons black-text" style="margin-top: 4px;">arrow_drop_up</i>
     <% end %>
@@ -51,9 +51,9 @@
     <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 publish-mqtt-infravermelho',
                     id: "comando-infra-vermelho-volume-down",
                     data: {
-                           device_room: device_room.id,
-                           acao:                define_acao('volume-down', device_room),
-                           topico:              device_room.topico
+                           room_device: room_device.id,
+                           acao:                define_acao('volume-down', room_device),
+                           topico:              room_device.topico
                        } do %>
       <i class="large material-icons black-text" style="margin-top: 4px;">remove</i>
     <% end %>
@@ -64,9 +64,9 @@
     <%= link_to '', class: 'z-depth-5 btn-floating btn-large grey lighten-3 publish-mqtt-infravermelho',
                     id: "comando-infra-vermelho-canal-down",
                     data: {
-                           device_room: device_room.id,
-                           acao:                define_acao('canal-down', device_room),
-                           topico:              device_room.topico
+                           room_device: room_device.id,
+                           acao:                define_acao('canal-down', room_device),
+                           topico:              room_device.topico
                           } do %>
       <i class="large material-icons black-text" style="margin-top: 4px;">arrow_drop_down</i>
     <% end %>
@@ -80,9 +80,9 @@
     <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey publish-mqtt-infravermelho',
                     id: "comando-infra-vermelho-info",
                     data: {
-                           device_room: device_room.id,
-                           acao:                define_acao('info', device_room),
-                           topico:              device_room.topico
+                           room_device: room_device.id,
+                           acao:                define_acao('info', room_device),
+                           topico:              room_device.topico
                        } do %>
       <i class="material-icons">announcement</i>
     <% end %>
@@ -93,9 +93,9 @@
     <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey publish-mqtt-infravermelho',
                     id: "comando-infra-vermelho-apps",
                     data: {
-                           device_room: device_room.id,
-                           acao:                define_acao('apps', device_room),
-                           topico:              device_room.topico
+                           room_device: room_device.id,
+                           acao:                define_acao('apps', room_device),
+                           topico:              room_device.topico
                       } do %>
       <i class="material-icons">apps</i>
     <% end %>
@@ -108,9 +108,9 @@
     <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey publish-mqtt-infravermelho',
                     id: "comando-infra-vermelho-arrow-up",
                     data: {
-                      device_room: device_room.id,
-                      acao:                define_acao('arrow-up', device_room),
-                      topico:              device_room.topico
+                      room_device: room_device.id,
+                      acao:                define_acao('arrow-up', room_device),
+                      topico:              room_device.topico
                        } do %>
       <i class="large material-icons">arrow_upward</i>
     <% end %>
@@ -124,9 +124,9 @@
       <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey publish-mqtt-infravermelho',
                       id: "comando-infra-vermelho-arrow-left",
                       data: {
-                             device_room: device_room.id,
-                             acao:                define_acao('arrow-left', device_room),
-                             topico:              device_room.topico
+                             room_device: room_device.id,
+                             acao:                define_acao('arrow-left', room_device),
+                             topico:              room_device.topico
                          } do %>
         <i class="large material-icons">arrow_back</i>
       <% end %>
@@ -137,9 +137,9 @@
       <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey publish-mqtt-infravermelho',
                       id: "comando-infra-vermelho-ok",
                       data: {
-                             device_room: device_room.id,
-                             acao:                define_acao('ok', device_room),
-                             topico:              device_room.topico
+                             room_device: room_device.id,
+                             acao:                define_acao('ok', room_device),
+                             topico:              room_device.topico
                         } do %>
         <i class="large material-icons">check</i>
       <% end %>
@@ -150,9 +150,9 @@
       <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey publish-mqtt-infravermelho',
                       id: "comando-infra-vermelho-arrow-right",
                       data: {
-                             device_room: device_room.id,
-                             acao:                define_acao('arrow-right', device_room),
-                             topico:              device_room.topico
+                             room_device: room_device.id,
+                             acao:                define_acao('arrow-right', room_device),
+                             topico:              room_device.topico
                         } do %>
         <i class="large material-icons">arrow_forward</i>
       <% end %>
@@ -166,9 +166,9 @@
     <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey publish-mqtt-infravermelho',
                     id: "comando-infra-vermelho-volume-down",
                     data: {
-                           device_room: device_room.id,
-                           acao:                define_acao('arrow-right', device_room),
-                           topico:              device_room.topico
+                           room_device: room_device.id,
+                           acao:                define_acao('arrow-right', room_device),
+                           topico:              room_device.topico
                        } do %>
       <i class="large material-icons">exit_to_app</i>
     <% end %>
@@ -179,9 +179,9 @@
     <%= link_to '', class: 'z-depth-5 btn-floating btn waves-effect waves-light grey publish-mqtt-infravermelho',
                     id: "comando-infra-vermelho-arrow-down",
                     data: {
-                      device_room: device_room.id,
-                      acao:                define_acao('arrow-down', device_room),
-                      topico:              device_room.topico
+                      room_device: room_device.id,
+                      acao:                define_acao('arrow-down', room_device),
+                      topico:              room_device.topico
                         } do %>
       <i class="large material-icons">arrow_downward</i>
     <% end %>

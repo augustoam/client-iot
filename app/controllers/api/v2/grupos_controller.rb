@@ -6,28 +6,28 @@ class Api::V2::GroupsController < Api::V2::BaseController
     user_sessao.groups_users.collect { |group_user|
       result = {}
       result[:group]           = group_user.group
-      result[:rooms_group] = group_user.group.rooms_group.collect do |room_group|
+      result[:group_rooms] = group_user.group.group_rooms.collect do |group_room|
         data = {}
         devices = {}
-        data[:room_group] = {
-          room_group: room_group,
-          devices_room:  room_group.devices_room.collect do |device_room|
-            devices[:device_room] = {
-              device_room: device_room,
-              control: device_room.control,
-              device: device_room.control.device
+        data[:group_room] = {
+          group_room: group_room,
+          room_devices:  group_room.room_devices.collect do |room_device|
+            devices[:room_device] = {
+              room_device: room_device,
+              control: room_device.control,
+              device: room_device.control.device
             }
           end
         }
       end
-      result[:automacoes_group] = group_user.group.automacoes_group.collect do |automacao_group|
+      result[:group_automations] = group_user.group.group_automations.collect do |group_automation|
         data = {}
-        automacao_group_condicao = {}
-        data[:automacao_group] = {
-          automacao_group: automacao_group,
-          automacao_group_condicoes: automacao_group.automacoes_group_condicoes do |automacao_group_condicao|
-            automacao_group_condicao[:automacao_group_condicao] = {
-              automacao_group_condicao: automacao_group_condicao
+        group_automation_condition = {}
+        data[:group_automation] = {
+          group_automation: group_automation,
+          group_automation_condicoes: group_automation.group_automation_conditions do |group_automation_condition|
+            group_automation_condition[:group_automation_condition] = {
+              group_automation_condition: group_automation_condition
             }
           end
         }

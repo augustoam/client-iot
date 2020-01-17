@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190114225332) do
+ActiveRecord::Schema.define(version: 20200117061001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,43 @@ ActiveRecord::Schema.define(version: 20190114225332) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "group_automation_actions", force: :cascade do |t|
+    t.integer "type"
+    t.decimal "delay_time"
+    t.integer "run_automation_id"
+    t.integer "group_automation_id"
+    t.integer "turn_on_off_automation_id"
+    t.integer "room_device_id"
+    t.integer "control_command_id"
+    t.boolean "turn_on_off"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "group_automation_conditions", force: :cascade do |t|
+    t.integer "group_automation_id"
+    t.integer "repeat"
+    t.integer "type"
+    t.integer "room_device_id"
+    t.integer "control_command_id"
+    t.datetime "turn_on"
+    t.string "value_set"
+    t.string "schedule_cron"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "group_automations", force: :cascade do |t|
+    t.integer "user_group_id"
+    t.boolean "condition_operator"
+    t.string "name", limit: 255
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "group_rooms", force: :cascade do |t|
     t.string "name", limit: 255
     t.integer "group_id"
@@ -104,8 +141,8 @@ ActiveRecord::Schema.define(version: 20190114225332) do
 
   create_table "room_devices", force: :cascade do |t|
     t.string "name", limit: 255
-    t.integer "room_id"
-    t.integer "device_id"
+    t.integer "group_room_id"
+    t.integer "control_id"
     t.string "topic_id"
     t.string "sensor_value"
     t.boolean "power"
@@ -121,7 +158,7 @@ ActiveRecord::Schema.define(version: 20190114225332) do
     t.string "topic_power"
     t.string "topic_online"
     t.string "topic_result"
-    t.string "topic_publish"
+    t.string "topic_state"
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -130,43 +167,6 @@ ActiveRecord::Schema.define(version: 20190114225332) do
   create_table "rooms", force: :cascade do |t|
     t.string "name", limit: 255
     t.string "obs"
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_automation_actions", force: :cascade do |t|
-    t.integer "type"
-    t.decimal "delay_time"
-    t.integer "run_automation_id"
-    t.integer "user_automation_id"
-    t.integer "turn_on_off_automation_id"
-    t.integer "room_device_id"
-    t.integer "control_command_id"
-    t.boolean "turn_on_off"
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_automation_conditions", force: :cascade do |t|
-    t.integer "user_automation_id"
-    t.integer "repeat"
-    t.integer "type"
-    t.integer "room_device_id"
-    t.integer "control_command_id"
-    t.datetime "turn_on"
-    t.string "value_set"
-    t.string "schedule_cron"
-    t.boolean "active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "user_automations", force: :cascade do |t|
-    t.integer "user_id"
-    t.boolean "condition_operator"
-    t.string "name", limit: 255
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -205,19 +205,20 @@ ActiveRecord::Schema.define(version: 20190114225332) do
   add_foreign_key "controls", "control_layouts"
   add_foreign_key "controls", "devices"
   add_foreign_key "controls", "manufacturers"
+  add_foreign_key "group_automation_actions", "control_commands"
+  add_foreign_key "group_automation_actions", "group_automations"
+  add_foreign_key "group_automation_actions", "group_automations", column: "run_automation_id"
+  add_foreign_key "group_automation_actions", "group_automations", column: "turn_on_off_automation_id"
+  add_foreign_key "group_automation_actions", "room_devices"
+  add_foreign_key "group_automation_conditions", "control_commands"
+  add_foreign_key "group_automation_conditions", "group_automations"
+  add_foreign_key "group_automation_conditions", "room_devices"
+  add_foreign_key "group_automations", "user_groups"
   add_foreign_key "group_rooms", "groups"
   add_foreign_key "group_rooms", "rooms"
   add_foreign_key "notification_tokens", "users"
-  add_foreign_key "room_devices", "devices"
-  add_foreign_key "room_devices", "rooms"
-  add_foreign_key "user_automation_actions", "control_commands"
-  add_foreign_key "user_automation_actions", "room_devices"
-  add_foreign_key "user_automation_actions", "user_automations"
-  add_foreign_key "user_automation_actions", "user_automations", column: "run_automation_id"
-  add_foreign_key "user_automation_actions", "user_automations", column: "turn_on_off_automation_id"
-  add_foreign_key "user_automation_conditions", "control_commands"
-  add_foreign_key "user_automation_conditions", "room_devices"
-  add_foreign_key "user_automation_conditions", "user_automations"
+  add_foreign_key "room_devices", "controls"
+  add_foreign_key "room_devices", "group_rooms"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
 end

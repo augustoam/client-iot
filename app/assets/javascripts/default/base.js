@@ -17,7 +17,7 @@ $(document).on('turbolinks:load', function() {
       // defaultValueRepeat($(this));
     })
 
-    $('select#automacao_group_condicao_repeat li').click(function(element, v) {
+    $('select#group_automation_condition_repeat li').click(function(element, v) {
       // console.log(element);
         // defaultValueRepeat($(this));
     });
@@ -34,9 +34,9 @@ function updateValueRepeat(element) {
   if ($('.repeat-data-content')[0].innerText.length > 0) {
     json = JSON.parse($('.repeat-data-content')[0].innerText)
     json.forEach(function(data) {
-      for (var i = 0; i < $('#automacao_group_condicao_repeat')[0].options.length; i++) {
-        if (data === $('#automacao_group_condicao_repeat')[0].options[i].value) {
-          $('#automacao_group_condicao_repeat')[0].options[i].selected = true;
+      for (var i = 0; i < $('#group_automation_condition_repeat')[0].options.length; i++) {
+        if (data === $('#group_automation_condition_repeat')[0].options[i].value) {
+          $('#group_automation_condition_repeat')[0].options[i].selected = true;
         }
       }
     })
@@ -46,7 +46,7 @@ function updateValueRepeat(element) {
 defaultValueRepeat = (element) => {
   // debugger
   if (element[0].value == 'once') {
-    $("select#automacao_group_condicao_repeat option").map(function() {
+    $("select#group_automation_condition_repeat option").map(function() {
       if ($(this).index() != 0)
         $(this)[0].selected = false;
     });
@@ -54,19 +54,19 @@ defaultValueRepeat = (element) => {
 
 
   if (element[0].value == 'every_day') {
-    $("select#automacao_group_condicao_repeat option").map(function() {
+    $("select#group_automation_condition_repeat option").map(function() {
       if ($(this).index() != 1)
         $(this)[0].selected = false;
     });
   }
 
-  $('#automacao_group_condicao_repeat').formSelect();
+  $('#group_automation_condition_repeat').formSelect();
 
     // json = JSON.parse($('.repeat-data-content')[0].innerText)
     // json.forEach(function(data) {
-    //   for (var i = 0; i < $('#automacao_group_condicao_repeat')[0].options.length; i++) {
-    //     if (data === $('#automacao_group_condicao_repeat')[0].options[i].value) {
-    //       $('#automacao_group_condicao_repeat')[0].options[i].selected = true;
+    //   for (var i = 0; i < $('#group_automation_condition_repeat')[0].options.length; i++) {
+    //     if (data === $('#group_automation_condition_repeat')[0].options[i].value) {
+    //       $('#group_automation_condition_repeat')[0].options[i].selected = true;
     //     }
     //   }
     // })
