@@ -2,9 +2,9 @@
   <%= f.error_notification %>
 
   <div class="row">
-    <%= f.input :tipo_acao,
-      wrapper_html: { class: 'm12 s12', id: 'tipo-acao-select' },
-      collection: tipo_acao_keys %>
+    <%= f.input :type_action,
+      wrapper_html: { class: 'm12 s12', id: 'type-action-select' },
+      collection: type_action_keys %>
   </div>
 
   <div class="row">
@@ -12,7 +12,7 @@
   </div>
 
   <div class="row">
-    <%= f.association :run_automacao, collection: group_automations(@group_automation.group), wrapper_html: { class: 'm12 s12 run-automacao-select' } %>
+    <%= f.association :run_automation, collection: group_automations(@group_automation.group), wrapper_html: { class: 'm12 s12 run-automacao-select' } %>
   </div>
 
   <div class="row">

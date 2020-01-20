@@ -105,7 +105,7 @@ crumb :group_automation_condition_edit do |group_automation_condition|
 end
 
 crumb :group_automation_actions do |group_automation|
-  link GroupAutomationAcao.model_name.human(count: 2), admin_group_automation_group_automation_actions_path(group_automation)
+  link GroupAutomationAction.model_name.human(count: 2), admin_group_automation_group_automation_actions_path(group_automation)
   parent :group_automations, group_automation.group
 end
 crumb :group_automation_action do |group_automation_action|

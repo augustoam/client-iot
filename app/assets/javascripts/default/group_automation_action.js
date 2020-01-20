@@ -1,21 +1,21 @@
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', function () {
 
-  $('#tipo-acao-select').change(function() {
-    updateFormAcao(false);
+  $('#type-action-select').change(function () {
+    updateFormAction(false);
   })
 
-  $('.device-acao-select').change(function() {
+  $('.device-acao-select').change(function () {
     //updatePropriedadesSelect($(this));
   })
 
-  $(".form_group_automation_action").submit(function() {
-    updateFormAcao(true);
+  $(".form_group_automation_action").submit(function () {
+    updateFormAction(true);
   })
 
 });
 
-function updateFormAcao(isSubmiting) {
-  var $tipoAcaoSelect = $("#tipo-acao-select").find('input');
+function updateFormAction(isSubmiting) {
+  var $tipoAcaoSelect = $("#type-action-select").find('input');
   var acao = $tipoAcaoSelect.val();
 
   function processaDiv($div, ativo) {
@@ -37,15 +37,15 @@ function updatePropriedadesSelect(element) {
 
   $("select#group_automation_action_device_propriedade_id option").empty();
 
-  $("select#group_automation_action_propriedades option").map(function() {
+  $("select#group_automation_action_propriedades option").map(function () {
     if ($(this).text().length > 0) {
-      
+
       $("select#group_automation_action_device_propriedade_id").append($(this)[0].outerHTML)
     }
   })
 
-  $("select#group_automation_action_device_propriedade_id option").map(function() {
-    if ($(this).text().length > 0 ) {
+  $("select#group_automation_action_device_propriedade_id option").map(function () {
+    if ($(this).text().length > 0) {
       if (device != JSON.parse($(this).text())[1]) {
         $(`select#group_automation_action_device_propriedade_id option[value=${$(this).index()}]`).remove()
       }

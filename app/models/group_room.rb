@@ -4,6 +4,6 @@ class GroupRoom < ApplicationRecord
   has_many :room_devices, dependent: :destroy
 
   def to_s
-    self.name.to_s
+    name.to_s
   end
 end

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  devise :database_authenticatable, :recoverable, :rememberable,
+         :trackable, :validatable, :confirmable
   has_many :user_groups, dependent: :destroy
   has_many :groups, through: :user_groups
   has_many :notification_tokens, dependent: :destroy
@@ -19,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def to_s
-    "#{email}"
+    email.to_s
   end
 
   def attempt_set_password(params)

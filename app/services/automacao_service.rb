@@ -15,7 +15,7 @@ class AutomacaoService
       @condicao_valida  = false
       group_automation.group_automation_conditions.each do |group_automation_condition|
 
-        if group_automation_condition.tipo_condicao. == CONDICAO_COMPONENTE
+        if group_automation_condition.type_condition. == CONDICAO_COMPONENTE
           room_device = RoomDevice.find(group_automation_condition.room_device_id)
           if room_device.control.device.name.upcase == 'SYNCRELAY'
             if room_device.estado.to_s == group_automation_condition.device_propriedade.id_propriedade

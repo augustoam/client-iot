@@ -7,7 +7,7 @@ module Admin::GroupAutomationsActionsHelper
     end
   end
 
-  def tipo_acao_keys
-     GroupAutomationAcao.tipo_acaos.keys.collect{|t| [t_enum(GroupAutomationAcao, "tipo_acao", t), t] }
+  def type_action_keys
+     GroupAutomationAction.type_actions.keys.collect{|t| [t_enum(GroupAutomationAction, "type_action", t), t] }
   end
 end

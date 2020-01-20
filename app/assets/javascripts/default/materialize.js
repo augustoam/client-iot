@@ -1,5 +1,5 @@
-$(document).on('turbolinks:load', function() {
-  $(document).ready(function() {
+$(document).on('turbolinks:load', function () {
+  $(document).ready(function () {
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
 
@@ -7,12 +7,12 @@ $(document).on('turbolinks:load', function() {
     $('select').formSelect();
 
     // Select dos tipos de condições da automação -group_automation_condition.js
-    $('#tipo-condicao-select').find('input').ready(function() {
-      updateFormCondicao();
+    $('#type-condition-select').find('input').ready(function () {
+      updateFormCondition();
     })
 
-    $('#tipo-acao-select').find('input').ready(function() {
-      updateFormAcao();
+    $('#type-action-select').find('input').ready(function () {
+      updateFormAction();
     })
 
     $('.collapsible').collapsible();
@@ -31,11 +31,11 @@ $(document).on('turbolinks:load', function() {
     draggable: true
   });
 
-  $('#msg-close').on('click', function() {
+  $('#msg-close').on('click', function () {
     document.getElementById("msg-hide").style.display = "none";
   });
 
-  $('#numeric-keyboard').on('focus', function() {
+  $('#numeric-keyboard').on('focus', function () {
     document.getElementById("numeric-keyboard").value = "";
   });
 
@@ -49,7 +49,7 @@ $(document).on('turbolinks:load', function() {
       indicators: true,
       duration: 100,
     }
-    );
+  );
 });
 
 function notice() {

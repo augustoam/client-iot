@@ -7,8 +7,8 @@ module Admin::GroupAutomationsConditionsHelper
     end
   end
 
-  def tipo_condicao_keys
-     GroupAutomationCondition.tipo_condicaos.keys.collect{|t| [t_enum(GroupAutomationCondition, "tipo_condicao", t), t] }
+  def type_condition_keys
+    GroupAutomationCondition.type_conditions.keys.collect{|t| [t_enum(GroupAutomationCondition, "type_condition", t), t] }
   end
 
 end

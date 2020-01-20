@@ -8,9 +8,9 @@
   </div>
 
   <div class="row">
-    <%= f.input :tipo_condicao,
-      wrapper_html: { class: 'm12 s12', id: 'tipo-condicao-select' },
-      collection: tipo_condicao_keys %>
+    <%= f.input :type_condition,
+      wrapper_html: { class: 'm12 s12', id: 'type-condition-select' },
+      collection: type_condition_keys %>
   </div>
 
   <div class="row">
@@ -35,7 +35,7 @@
   </div>
 
   <div class="row input-device-room" data-group-id="<%= @group_automation.group.id %>">
-    <%= f.association :room_device, collection: room_devicess(@group_automation.group.group_rooms), wrapper_html: { class: 'm12 s12 device-condicao-select', id: "device-room-select" } %>
+    <%= f.association :room_device, collection: room_devicess(@group_automation.group.group_rooms), wrapper_html: { class: 'm12 s12 device-condition-select', id: "device-room-select" } %>
   </div>
 
   <div class="row device-propriedade">

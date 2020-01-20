@@ -7,7 +7,7 @@
         <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
           <i class="material-icons icon-search icon-hover">search</i>
         <% end %>
-        <%= f.search_field :tipo_condicao_cont, class: "form-control", placeholder: "Search Conditions" %>
+        <%= f.search_field :type_condition_cont, class: "form-control", placeholder: "Search Conditions" %>
       </div>
     </div>
   <% end %>
@@ -20,7 +20,8 @@
       <thead>
         <tr>
           <th><%= GroupAutomationCondition.human_attribute_name(:id) %></th>
-          <th><%= GroupAutomationCondition.human_attribute_name(:tipo_condicao) %></th>
+          <th><%= GroupAutomationCondition.human_attribute_name(:type_condition) %></th>
+          <th><%= GroupAutomationCondition.human_attribute_name(:active) %></th>
           <th><%= GroupAutomationCondition.human_attribute_name(:value_set) %></th>
           <th><%= GroupAutomationCondition.human_attribute_name(:created_at) %></th>
           <th colspan="2"></th>
@@ -31,7 +32,8 @@
         <% @group_automation_conditions.each do |group_automation_condition| %>
           <tr data-href="<%= admin_group_automation_condition_path(group_automation_condition) %>">
             <td><%= group_automation_condition.id %></td>
-            <td><%= group_automation_condition.tipo_condicao %></td>
+            <td><%= group_automation_condition.type_condition %></td>
+            <td><%= group_automation_condition.active %></td>
             <td><%= group_automation_condition.value_set %></td>
             <td><%= ltime group_automation_condition.created_at %></td>
             <td><%= link_icon_to_edit(edit_admin_group_automation_condition_path(group_automation_condition))%></td>

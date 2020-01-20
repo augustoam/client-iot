@@ -1,10 +1,10 @@
 class GroupAutomation < ApplicationRecord
-  belongs_to :user_group
+  belongs_to :group
   has_many :group_automation_conditions
   has_many :group_automation_actions
-  enum condition_operator: [:and, :ou]
+  enum condition_operator:  %i[and ou]
 
   def to_s
-    self.name
+    name
   end
 end

@@ -2,8 +2,8 @@ class CreateGroupAutomationConditions < ActiveRecord::Migration[5.1]
   def change
     create_table :group_automation_conditions do |t|
       t.integer :group_automation_id
-      t.integer :repeat
-      t.integer :type
+      t.string :repeat
+      t.integer :type_condition
       t.integer :room_device_id
       t.integer :control_command_id
       t.datetime :turn_on

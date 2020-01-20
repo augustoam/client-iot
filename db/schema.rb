@@ -71,14 +71,14 @@ ActiveRecord::Schema.define(version: 20200117061001) do
   end
 
   create_table "group_automation_actions", force: :cascade do |t|
-    t.integer "type"
+    t.integer "type_action"
     t.decimal "delay_time"
     t.integer "run_automation_id"
     t.integer "group_automation_id"
     t.integer "turn_on_off_automation_id"
     t.integer "room_device_id"
     t.integer "control_command_id"
-    t.boolean "turn_on_off"
+    t.integer "turn_on_off"
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 20200117061001) do
 
   create_table "group_automation_conditions", force: :cascade do |t|
     t.integer "group_automation_id"
-    t.integer "repeat"
-    t.integer "type"
+    t.string "repeat"
+    t.integer "type_condition"
     t.integer "room_device_id"
     t.integer "control_command_id"
     t.datetime "turn_on"
@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(version: 20200117061001) do
   end
 
   create_table "group_automations", force: :cascade do |t|
-    t.integer "user_group_id"
-    t.boolean "condition_operator"
+    t.integer "group_id"
+    t.integer "condition_operator"
     t.string "name", limit: 255
     t.boolean "active", default: true
     t.datetime "created_at", null: false
@@ -213,7 +213,7 @@ ActiveRecord::Schema.define(version: 20200117061001) do
   add_foreign_key "group_automation_conditions", "control_commands"
   add_foreign_key "group_automation_conditions", "group_automations"
   add_foreign_key "group_automation_conditions", "room_devices"
-  add_foreign_key "group_automations", "user_groups"
+  add_foreign_key "group_automations", "groups"
   add_foreign_key "group_rooms", "groups"
   add_foreign_key "group_rooms", "rooms"
   add_foreign_key "notification_tokens", "users"

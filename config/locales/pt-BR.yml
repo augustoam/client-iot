@@ -68,13 +68,13 @@ pt-BR:
         active:                         Active
         created_at:                     Creation Date
       group_automation_condition:
-        tipo_condicao:
+        type_condition:
           one:                         Tipo de condição
           complete_manually:           Completado Manualmente
           timer:                       Timer
           device:                  Device
       group_automation_action:
-        tipo_acao:
+        type_action:
           one:                         Tipo de ação
           run_automation:              Rodar Automação
           turn_on_off_automation:      Desligar/Ligar Automação

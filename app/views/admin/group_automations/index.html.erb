@@ -36,8 +36,8 @@
             <td><%= group_automation.active %></td>
             <td><%= group_automation.condition_operator %></td>
             <td><%= ltime group_automation.created_at %></td>
-            <td><%= link_to 'Condições', admin_group_automation_group_automation_conditions_path(group_automation) %></td>
-            <td><%= link_to 'Ações', admin_group_automation_group_automation_actions_path(group_automation) %></td>
+            <td><%= link_to plural_model_name_for(GroupAutomationCondition), admin_group_automation_group_automation_conditions_path(group_automation) %></td>
+            <td><%= link_to plural_model_name_for(GroupAutomationAction), admin_group_automation_group_automation_actions_path(group_automation) %></td>
             <td><%= link_icon_to_edit(edit_admin_group_automation_path(group_automation))%></td>
             <td><%= link_icon_to_destroy(admin_group_automation_path(group_automation)) %></td>
           </tr>

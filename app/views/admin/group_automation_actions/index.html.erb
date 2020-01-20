@@ -7,22 +7,22 @@
         <%= button_tag(type: 'submit', class: "btn-flat btn-search") do %>
           <i class="material-icons icon-search icon-hover">search</i>
         <% end %>
-        <%= f.search_field :tipo_acao_cont, class: "form-control", placeholder: "Search Actions" %>
+        <%= f.search_field :type_action_cont, class: "form-control", placeholder: "Search Actions" %>
       </div>
     </div>
   <% end %>
 </div>
 
 <div class="container-row">
-  <b><%= plural_model_name_for(GroupAutomationAcao) %></b>
+  <b><%= plural_model_name_for(GroupAutomationAction) %></b>
   <div class="row">
     <table class="table">
       <thead>
         <tr>
-          <th><%= GroupAutomationAcao.human_attribute_name(:id) %></th>
-          <th><%= GroupAutomationAcao.human_attribute_name(:tipo_acao) %></th>
-          <th><%= GroupAutomationAcao.human_attribute_name(:delay_time) %></th>
-          <th><%= GroupAutomationAcao.human_attribute_name(:created_at) %></th>
+          <th><%= GroupAutomationAction.human_attribute_name(:id) %></th>
+          <th><%= GroupAutomationAction.human_attribute_name(:type_action) %></th>
+          <th><%= GroupAutomationAction.human_attribute_name(:delay_time) %></th>
+          <th><%= GroupAutomationAction.human_attribute_name(:created_at) %></th>
           <th colspan="2"></th>
         </tr>
       </thead>
@@ -31,7 +31,7 @@
         <% @group_automation_actions.each do |group_automation_action| %>
           <tr data-href="<%= admin_group_automation_action_path(group_automation_action) %>">
             <td><%= group_automation_action.id %></td>
-            <td><%= group_automation_action.tipo_acao %></td>
+            <td><%= group_automation_action.type_action %></td>
             <td><%= group_automation_action.delay_time %></td>
             <td><%= ltime group_automation_action.created_at %></td>
             <td><%= link_icon_to_edit(edit_admin_group_automation_action_path(group_automation_action))%></td>

@@ -7,10 +7,16 @@
   </div>
 
   <div class="row">
-    <b><%= GroupAutomationCondition.human_attribute_name(:tipo_condicao) %></b>
-    <%= @group_automation_condition.tipo_condicao %>
+    <b><%= GroupAutomationCondition.human_attribute_name(:type_condition) %></b>
+    <%= @group_automation_condition.type_condition %>
   </div>
 
+  <div class="row">
+    <b><%= GroupAutomationCondition.human_attribute_name(:active) %></b>
+    <%= @group_automation_condition.active %>
+  </div>
+
+  <b>Timer</b>
   <div class="row">
     <b><%= GroupAutomationCondition.human_attribute_name(:repeat) %></b>
     <%= @group_automation_condition.repeat %>
@@ -19,6 +25,28 @@
   <div class="row">
     <b><%= GroupAutomationCondition.human_attribute_name(:turn_on) %></b>
     <%= @group_automation_condition.turn_on %>
+  </div>
+
+  <div class="row">
+    <b><%= GroupAutomationCondition.human_attribute_name(:schedule_cron) %></b>
+    <%= @group_automation_condition.schedule_cron %>
+  </div>
+
+  <b>Device</b>
+
+  <div class="row">
+    <b><%= GroupAutomationCondition.human_attribute_name(:room_device) %></b>
+    <%= @group_automation_condition.room_device %>
+  </div>
+
+  <div class="row">
+    <b><%= GroupAutomationCondition.human_attribute_name(:control_command) %></b>
+    <%= @group_automation_condition.control_command %>
+  </div>
+
+  <div class="row">
+    <b><%= GroupAutomationCondition.human_attribute_name(:value_set) %></b>
+    <%= @group_automation_condition.value_set %>
   </div>
 
   <div class="row">
