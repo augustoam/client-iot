@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # include Mobylette::RespondToMobileRequests
   include Pundit
   protect_from_forgery with: :null_session, if: proc { |c| c.request.format.json? }
-  before_action :authenticate_any!, :temperatura
+  # before_action :authenticate_any!
   helper_method :current_user, :log_in
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     if admin_signed_in?
       true
     else
-      authenticate_user!
+       authenticate_user!
     end
   end
 
@@ -22,16 +22,6 @@ class ApplicationController < ActionController::Base
 
   def log_in
     cookies.signed[:user_id] = current_user.id
-  end
-
-  def temperatura
-    @temperatura = ''
-    # RoomDevice
-    #   .joins(room: { group: :users })
-    #   .where(User.table_name => { id: current_user }, name: 'Temperatura')
-    #   .each do |room_device|
-    #   @temperatura += room_device.room.group.nome + ' ' + room_device.valor.to_s + ' C°'
-    # end
   end
 
   private

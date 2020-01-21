@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :devices
   root 'home#index'
 
   mount ActionCable.server => '/cable'
@@ -17,7 +16,6 @@ Rails.application.routes.draw do
 
   get '/users' => redirect('/users/sign_in')
   get '/admin' => redirect('/admin/sign_in')
-
 
   scope  module: 'api/v1/sessions' do
     post :session_new
@@ -102,9 +100,7 @@ Rails.application.routes.draw do
     resources :administrador
     resources :manufacturers
     resources :rooms
-    resources :devices do
-      resources :devices_propriedades, shallow: true
-    end
+    resources :devices
     resources :control_layouts
     resources :users do
       get :index_all, on: :collection
@@ -112,9 +108,7 @@ Rails.application.routes.draw do
     end
     resources :groups do
       resources :group_automations, shallow: true do
-        resources :group_automation_conditions, shallow: true do
-          post :update_device_propriedades, on: :collection
-        end
+        resources :group_automation_conditions, shallow: true
         resources :group_automation_actions, shallow: true
       end
       resources :users do

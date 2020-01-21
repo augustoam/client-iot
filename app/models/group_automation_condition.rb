@@ -20,17 +20,15 @@ class GroupAutomationCondition < ApplicationRecord
   def update_columns
     if type_condition == 'complete_manually'
       self.repeat = nil
-      self.turn_on = nil
+      self.turn_on = nilg
       self.room_device_id = nil
       self.control_command_id = nil
       self.value_set = nil
-    end
-    if type_condition == 'timer'
+    elsif type_condition == 'timer'
       self.room_device_id = nil
       self.control_command_id = nilc
       self.value_set = nil
-    end
-    if type_condition == 'device'
+    elsif type_condition == 'device'
       self.repeat = nil
       self.turn_on = nil
     end
