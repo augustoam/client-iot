@@ -17,13 +17,6 @@ Rails.application.routes.draw do
   get '/users' => redirect('/users/sign_in')
   get '/admin' => redirect('/admin/sign_in')
 
-  scope  module: 'api/v1/sessions' do
-    post :session_new
-  end
-
-  scope  module: 'api/v1/registrations' do
-    post :registration_new
-  end
 
   resources :users do
     get :password_change
@@ -62,13 +55,19 @@ Rails.application.routes.draw do
     get :index
   end
 
-  require 'sidekiq/web'
-  require 'sidekiq-scheduler/web'
-  if Rails.env.production?
-    Sidekiq::Web.use Rack::Auth::Basic do |username, password|
-      ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_USERNAME'])) &
-        ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV['SIDEKIQ_PASSWORD']))
+  namespace :api do
+    namespace :v2 do
+      resources :users do
+        post :authenticate, on: :collection
+        post :reset_password, on: :collection
+      end
+      resources :registrations
     end
   end
-  mount Sidekiq::Web, at: '/filas'
+
+  require 'sidekiq/web'
+  require 'sidekiq-scheduler/web'
+  authenticate :admin do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

@@ -20,13 +20,13 @@ class GroupAutomationCondition < ApplicationRecord
   def update_columns
     if type_condition == 'complete_manually'
       self.repeat = nil
-      self.turn_on = nilg
+      self.turn_on = nil
       self.room_device_id = nil
       self.control_command_id = nil
       self.value_set = nil
     elsif type_condition == 'timer'
       self.room_device_id = nil
-      self.control_command_id = nilc
+      self.control_command_id = nil
       self.value_set = nil
     elsif type_condition == 'device'
       self.repeat = nil
@@ -35,35 +35,36 @@ class GroupAutomationCondition < ApplicationRecord
   end
 
   def set_schedule
-    # if type_condition == 'timer'
-    #   if repeat.include?('once')
-    #     Sidekiq.set_schedule("#{id}_publish_mqtt", { 'at' => turn_on, 'class' => 'MqttPublishJob', 'args' => "#{self.group_automation.id}" })
-    #   else
-    #     turn_time = human_datetime(turn_on)
-    #     every = 'every '
-    #     case
-    #     when repeat.include?('every_day')
-    #       time_cron = human_time(turn_on).concat(' * * 0-7')
-    #     when repeat.include?('weekends')
-    #       time_cron = human_time(turn_on).concat(' * * 0-6')
-    #     when repeat.include?('weekdays')
-    #       time_cron = human_time(turn_on).concat(' * * 1,2,3,4,5')
-    #     else
-    #       JSON.parse(repeat).each_with_index do |option, index|
+    
+    if type_condition == 'timer'
+      if repeat.include?('once')
+        Sidekiq.set_schedule("#{id}_publish_mqtt", { 'at' => turn_on, 'class' => 'MqttPublishJob', 'args' => "#{self.group_automation.id}" })
+      else
+        turn_time = human_datetime(turn_on)
+        every = 'every '
+        case
+        when repeat.include?('every_day')
+          time_cron = human_time(turn_on).concat(' * * 0-7')
+        when repeat.include?('weekends')
+          time_cron = human_time(turn_on).concat(' * * 0-6')
+        when repeat.include?('weekdays')
+          time_cron = human_time(turn_on).concat(' * * 1,2,3,4,5')
+        else
+          JSON.parse(repeat).each_with_index do |option, index|
 
-    #         every.concat(option)
-    #         if index != JSON.parse(repeat).count-1 && option != ""
-    #           every.concat(' and ')
-    #         end
-    #       end
-    #       every.concat(' ', turn_time)
-    #       time_cron = Fugit::Nat.parse(every).to_cron_s
-    #     end
+            every.concat(option)
+            if index != JSON.parse(repeat).count-1 && option != ""
+              every.concat(' and ')
+            end
+          end
+          every.concat(' ', turn_time)
+          time_cron = Fugit::Nat.parse(every).to_cron_s
+        end
 
-    #     self.schedule_cron = time_cron
-    #     Sidekiq.set_schedule("#{id}_publish_mqtt", { 'cron' => time_cron, 'class' => 'MqttPublishJob', 'args' => "#{self.group_automation.id}" })
-    #   end
-    # end
+        self.schedule_cron = time_cron
+        Sidekiq.set_schedule("#{id}_publish_mqtt", { 'cron' => time_cron, 'class' => 'MqttPublishJob', 'args' => "#{self.group_automation.id}" })
+      end
+    end
   end
 
   def human_datetime(time, pattern = '%d %Y %H:%M')

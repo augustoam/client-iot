@@ -5,8 +5,8 @@ class Api::V2::BaseController < ActionController::API
 
   rescue_from JWTSessions::Errors::Unauthorized, with: :not_authorized
 
-  def user_sessao
-      @user_sessao = User.find_by(email: payload['email'])
+  def user_session
+      @user_session = User.find_by(email: payload['email'])
   end
 
   def set_session_token
@@ -16,6 +16,6 @@ class Api::V2::BaseController < ActionController::API
   private
 
   def not_authorized
-    render json: { error: 'Not authorized' }, status: :unauthorized
+    render json: { code: 401, msg: 'Not authorized' }, status: :unauthorized
   end
 end

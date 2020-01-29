@@ -41,7 +41,7 @@ class Admin::UsersController < ApplicationController
         @group_user.user = @user
         @group_user.save
 
-        ConvidarUserByEmailJob.perform_later(@user)
+        # ConvidarUserByEmailJob.perform_later(@user)
 
         redirect_to admin_group_users_path(@group), notice: "Usuário criado com sucesso"
       end

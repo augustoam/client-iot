@@ -10,12 +10,12 @@ class SessionAuthenticationService
   end
 
   def call
-    autentica_user!
+    authenticate!
     self
   end
 
   def success?
-    @sessao_valida || false
+    @valid_session || false
   end
 
   def server_payload
@@ -23,7 +23,7 @@ class SessionAuthenticationService
   end
 
   def server_error
-    { json: { error: 'Senha inválida' }, status: :unauthorized }
+    raise 'Unauthorized'
   end
 
   private
@@ -34,14 +34,14 @@ class SessionAuthenticationService
     }
   end
 
-  def autentica_user!
+  def authenticate!
     find_user_by_email!
-    @sessao_valida = @user.valid_password?(@params[:password])
+    @valid_session = @user.valid_password?(@params[:password])
   end
 
   def find_user_by_email!
     @user = User.find_for_database_authentication(email: @params[:email])
 
-    raise 'Usuário inexistente' unless @user.present?
+    raise 'Unauthorized' unless @user.present?
   end
 end
