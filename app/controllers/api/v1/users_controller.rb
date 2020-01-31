@@ -1,4 +1,4 @@
-class Api::V2::UsersController < Api::V2::BaseController
+class Api::V1::UsersController < Api::V1::BaseController
   skip_before_action :authorize_access_request!
   
   def reset_password
@@ -45,8 +45,6 @@ class Api::V2::UsersController < Api::V2::BaseController
     end
 
     @user.save
-    SendConfirmationInstructionsJob.perform_later(@user)
-    
     render json: {
       code: 201,
       msg: 'Verifique seu email para prosseguir com a confirmação da sua conta!',

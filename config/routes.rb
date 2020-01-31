@@ -56,12 +56,14 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    namespace :v2 do
+    namespace :v1 do
       resources :users do
         post :authenticate, on: :collection
         post :reset_password, on: :collection
       end
-      resources :registrations
+      resources :groups do
+        get :get_groups,  on: :collection
+      end
     end
   end
 

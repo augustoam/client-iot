@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  # devise :database_authenticatable, :registerable,
+  #        :recoverable, :rememberable, :validatable
   devise :database_authenticatable, :recoverable, :rememberable,
          :trackable, :validatable, :confirmable
   has_many :user_groups, dependent: :destroy
@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :notification_tokens, dependent: :destroy
   has_many :room_devices, through: :group_rooms
   has_many :group_rooms, through: :group
+  
+  after_create :send_on_create_confirmation_instructions
 
   validates :email, presence: true, format: { with: Devise::email_regexp }
 
@@ -19,6 +21,7 @@ class User < ApplicationRecord
   # instructions on creation. This can be overridden
   # in models to map to a nice sign up e-mail.
   def send_on_create_confirmation_instructions
+    SendConfirmationInstructionsJob.perform_later(self)
     # Overridden para não enviar e-mail ao criar um User
     # Ao criar um User o e-mail de confirmation é enviado pelo Job ConvidarUserByEmailJob
   end
